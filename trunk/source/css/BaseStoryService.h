@@ -167,6 +167,8 @@ public:
 	//进入副本
 	virtual void gts_instenter_req( BasicProtocol* p, bool& autorelease){}
 	virtual void cts_instenter_ack( BasicProtocol* p, bool& autorelease){}
+	virtual void cts_enterinstovertime_ntf( BasicProtocol* p, bool& autorelease){}
+	virtual void gts_instenterconfirm_ntf( BasicProtocol* p, bool& autorelease){}
 	//玩家信息初始化
 	void dpx_chrload_ack( BasicProtocol* p, bool& autorelease);
 	void dpx_chrfin_ntf( BasicProtocol* p, bool& autorelease);

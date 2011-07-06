@@ -410,9 +410,36 @@ void CTSSvr::css_enterinst_req( BasicProtocol* p, bool& autorelease)
 	}
 
 	//记录临时状态
-	user->enter_instcell_ctrl_.wait_cellproxy( req, pcell->get_csslink());
+	user->enter_instcell_ctrl_.wait_cellproxy( req, pcell);
 
 	//转发请求到副本服务器
+	req->cellid_ =pcell->get_cellid();
 	pcell->get_csslink()->send_protocol( p);
 	autorelease =false;
+}
+
+void CTSSvr::css_enterinst_ack( BasicProtocol* p, bool& autorelease)
+{
+	//cts-> inst map -> cts
+	//占位请求
+	CTS_GETPLAYER_FROMCACHE( user, p);
+
+	Pro_AppEnterIns_ack* ack =dynamic_cast<Pro_AppEnterIns_ack*>( p);
+	S_BOOL bsuccess =(ack->result_ == 0);
+
+	user->send_to_css( p);
+	autorelease =false;
+
+	if( bsuccess)
+		user->enter_instcell_ctrl_.wait_cellconfirm();
+	else
+		user->enter_instcell_ctrl_.reset();
+}
+
+void CTSSvr::css_enterinstconfirm_ntf( BasicProtocol* p, bool& autorelease)
+{
+	CTS_GETPLAYER_FROMCACHE( user, p);
+
+	//完成进入副本注册流程
+	user->enter_instcell_ctrl_.finish_cellconfirm();
 }

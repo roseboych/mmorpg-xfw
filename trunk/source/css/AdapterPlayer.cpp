@@ -23,8 +23,10 @@
 
 AdapterPlayer::AdapterPlayer():
 insvr_( 0),
-gts_link_( 0)
+gts_link_( 0),
+inst_svr_cache_( 0)
 {
+	inst_uuid_cache_.reset();
 }
 
 void AdapterPlayer::send_to_gts( BasicProtocol* p)
@@ -41,6 +43,12 @@ void AdapterPlayer::reset()
 
 	insvr_ =0;
 	gts_link_ =0;
+}
+
+void AdapterPlayer::reset_instcache()
+{
+	inst_uuid_cache_.reset();
+	inst_svr_cache_ =0;
 }
 
 bool AdapterPlayer::is_freeplayer()
@@ -60,6 +68,8 @@ void AdapterPlayer::player_regist2world( PRO::Pro_ChrRegistToWorld_req* req, boo
 	this->insvr_ =svr;
 	this->gts_link_ =CSSMODULE->get_gtslinkbyuserglobal( global_index_);
 	this->uuid_.set_uuid( req->get_uuiduserid(), req->get_uuidinitstmp());
+
+	reset_instcache();
 
 	//注册到执行队列
 	NETCMD_FUN_MAP fun =boost::bind( &BaseStoryService::cts_chrreg2world_req, this->insvr_, _1, _2);
@@ -157,4 +167,28 @@ void AdapterPlayer::player_teleport( PRO::Pro_AppTeleport_ack* ack, bool& autore
 	NetCommand* pcmd =TASKCMD_NEW NetCommand( ack, fun, true);
 	insvr_->regist_netcmd( pcmd);
 	autorelease =false;
+}
+
+void AdapterPlayer::player_instcellproxy( PRO::Pro_AppEnterIns_req* req, bool& autorelease)
+{
+	ToTranscriptConfig& tconf =WORLDINFO->get_totranscriptconfig();
+	transcript_teleport_info* pteleport =tconf.get_teleportinfobyid( req->telid_);
+
+	S_INT_8 ret =0;
+	req->cellid_;
+	pteleport->instmap_id_;
+}
+
+void AdapterPlayer::player_enterinstack( PRO::Pro_AppEnterIns_ack* ack, bool& autorelease)
+{
+	if( !ack->same_session( this->uuid_))
+		return;
+
+}
+
+void AdapterPlayer::player_enterinstovertime( PRO::Pro_AppEnterInsOvertime_ntf* ntf, bool& autorelease)
+{
+	if( !ntf->same_session( this->uuid_))
+		return;
+
 }

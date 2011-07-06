@@ -22,6 +22,7 @@ service_( 0)
 	service_.player_ =this;
 	css_svr_ =0;
 	have_force_close_ =false;
+	is_instsvr_ =false;
 }
 
 Player::~Player()
@@ -50,6 +51,7 @@ void Player::reset()
 	team_proxy_ =0;
 
 	have_force_close_ =false;
+	is_instsvr_ =false;
 }
 
 void Player::prepare()
@@ -64,6 +66,7 @@ void Player::prepare()
 	selteam_tmpstamp_ =ACE_OS::gettimeofday().get_msec();
 
 	have_force_close_ =false;
+	is_instsvr_ =false;
 }
 
 void Player::proxy_confirm( TeamProxySession* proxy)

@@ -24,6 +24,11 @@ InstanceStoryServiceImpl::~InstanceStoryServiceImpl()
 {
 }
 
+S_INT_32 InstanceStoryServiceImpl::get_cellid()
+{
+	return inscell_opt_->get_cellid();
+}
+
 bool InstanceStoryServiceImpl::init_service( StoryMapOption* opt, INSCellOption* cellopt)
 {
 	inscell_opt_ =cellopt;

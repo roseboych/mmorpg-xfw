@@ -14,6 +14,7 @@
 #include "../TeamProxySession.h"
 #include "../CSSLink.h"
 #include "../CTSModule.h"
+#include "../InstCellState.h"
 
 Player::Player():
 gts_link_( 0),
@@ -60,22 +61,32 @@ void Player::tick( const ACE_UINT64& t)
 
 void Player::instcell_proxy_overtime()
 {
-	enter_instcell_ctrl_.reset();
-
+	//向主地图服务器发送超时提醒
 	PRO::Pro_AppEnterInsOvertime_ntf *ntf =PROTOCOL_NEW PRO::Pro_AppEnterInsOvertime_ntf();
 	PRO_UUID_FILL( ntf, this->global_index_, this->uuid_);
-	send_to_css( ntf);
+	ntf->cellid_ =enter_instcell_ctrl_.inst_cell_->get_cellid();
+	send_to_css( ntf->clone());
+
+	//向副本地图发送超时提醒
+	ACE_ASSERT( enter_instcell_ctrl_.css_svr_ != 0);
+	enter_instcell_ctrl_.css_svr_->send_protocol( ntf);
+
+	enter_instcell_ctrl_.reset();
 }
 
 void Player::instcell_confirm_overtime()
 {
-	enter_instcell_ctrl_.reset();
+	//向副本地图发送超时提醒
+	PRO::Pro_AppEnterInsOvertime_ntf *ntf =PROTOCOL_NEW PRO::Pro_AppEnterInsOvertime_ntf();
+	PRO_UUID_FILL( ntf, this->global_index_, this->uuid_);
+	ntf->cellid_ =enter_instcell_ctrl_.inst_cell_->get_cellid();
+	send_to_css( ntf);
 
 	//此时玩家已经从主世界退出，所以需要重新注册到主世界
-
 	StoryMapOption* opt =WORLDINFO->get_mainstorybyxy( this->lastposx_, this->lastposy_);
 	ACE_ASSERT( opt != 0);
 
+	//重新把和css的关联设置为和主世界地图的关联
 	this->css_link_ =CTSMODULE->get_csslink( opt->owner_css_->server_index_);
 
 	//发送注册请求
@@ -87,4 +98,6 @@ void Player::instcell_confirm_overtime()
 	loadreq->cssindex_ =opt->owner_css_->server_index_;
 
 	send_to_css( loadreq);
+
+	enter_instcell_ctrl_.reset();
 }

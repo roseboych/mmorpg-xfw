@@ -21,6 +21,9 @@ namespace PRO{
 	class Pro_AppTeleport_req;
 	class Pro_AppTeleport_ack;
 	class Pro_ChrRegistToWorld_req;
+	class Pro_AppEnterIns_req;
+	class Pro_AppEnterIns_ack;
+	class Pro_AppEnterInsOvertime_ntf;
 }
 
 /**
@@ -46,15 +49,42 @@ public:
 	void player_teleport( PRO::Pro_AppTeleport_ack* ack, bool& autorelease);
 	void player_teleportout( PRO::Pro_AppTeleport_req* req, bool& autorelease);
 
+	/**
+	* 玩家进入副本占位请求
+	* 只在副本css服务器处理
+	* @param req
+	* @param autorelease
+	**/
+	void player_instcellproxy( PRO::Pro_AppEnterIns_req* req, bool& autorelease);
+	/*
+	* 主世界地图css服务器处理进入副本返回
+	* @param ack
+	* @param autorelase
+	*/
+	void player_enterinstack( PRO::Pro_AppEnterIns_ack* ack, bool& autorelease);
+	/*
+	* 主世界和副本地图处理进入副本超时
+	* @param ntf
+	* @param autorelase
+	*/
+	void player_enterinstovertime( PRO::Pro_AppEnterInsOvertime_ntf* ntf, bool& autorelease);
+
+public:
+	void reset_instcache();
+
+	//进入副本占位缓冲
+	uuid_session		inst_uuid_cache_;
+	BaseStoryService*	inst_svr_cache_;
+
 public:
 	//玩家标识号
-	uuid_session uuid_;
+	uuid_session		uuid_;
 	//全局索引,系统初始化时分配
-	S_INT_32	global_index_;
+	S_INT_32			global_index_;
 
 	//玩家所在的svr
 	BaseStoryService*	insvr_;
-	GTSLink	*gts_link_;
+	GTSLink*			gts_link_;
 };
 
 #endif	//__ADAPTERPLAYER__H__

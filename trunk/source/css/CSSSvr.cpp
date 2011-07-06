@@ -357,6 +357,17 @@ BaseStoryService* CSSSvr::get_storyservicebymap( S_INT_32 mapid)
 	return 0;
 }
 
+InstanceStoryServiceImpl* CSSSvr::get_inststorysvrbycellid( S_INT_32 cellid)
+{
+	for( int ii =0; ii < inststory_nums_; ++ii)
+	{
+		if( inststorys_[ii].get_cellid() == cellid)
+			return &(inststorys_[ii]);
+	}
+
+	return 0;
+}
+
 void CSSSvr::notify_instinitctrl()
 {
 	for( S_INT_32 ind =0; ind < inststory_nums_; ++ind)

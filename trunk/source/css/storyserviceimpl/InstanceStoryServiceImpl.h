@@ -55,6 +55,8 @@ public:
 
 	void			set_serverstate( TRANSCRIPT_SERVER_STATE ns);
 
+	S_INT_32		get_cellid();
+
 protected:
 	/**
 	* 状态监测定时器
@@ -79,6 +81,8 @@ public:
 	//进入副本
 	virtual void gts_instenter_req( BasicProtocol* p, bool& autorelease);
 	virtual void cts_instenter_ack( BasicProtocol* p, bool& autorelease);
+	virtual void cts_enterinstovertime_ntf( BasicProtocol* p, bool& autorelease);
+	virtual void gts_instenterconfirm_ntf( BasicProtocol* p, bool& autorelease);
 };
 
 #endif	//__INSTANCESTORYSERVICEIMPL__H__

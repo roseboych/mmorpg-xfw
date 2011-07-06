@@ -128,22 +128,22 @@ public:
 public: 
     Pro_AppUnitLeave_ntf();
 
-protected: 
+protected:
     BEGIN_LOAD_PRO( pdata, buflen, ext)
 		LOAD_LIST_PRO_BEGIN( pdata, buflen, player_info)
 			LOAD_INT32_PRO_LS( pdata, buflen, chrid_)
-		LOAD_LIST_PRO_END( players_ )
-    END_LOAD_PRO() 
+		LOAD_LIST_PRO_END( players_)
+    END_LOAD_PRO()
 
     BEGIN_SAVE_PRO( pdata, buflen, len, ext)
 		SAVE_LIST_PRO_BEGIN( pdata, buflen, len, players_, player_info)
 			SAVE_INT32_PRO_LS( pdata, buflen, len, chrid_)
 		SAVE_LIST_PRO_END()
-    END_SAVE_PRO() 
+    END_SAVE_PRO()
 
     BEGIN_CLONE_PRO( Pro_AppUnitLeave_ntf, proo )
-		CLONE_LIST_PRO(proo, players_)
-    END_CLONE_PRO() 
+		CLONE_LIST_PRO( proo, players_)
+    END_CLONE_PRO()
 
 public: 
 	S_INT_32 pro_len_;
@@ -174,17 +174,17 @@ protected:
     BEGIN_LOAD_PRO( pdata, buflen, ext)
 		LOAD_INT8_PRO( pdata, buflen, telid_)
 		LOAD_INT8_PRO( pdata, buflen, teltoid_)
-    END_LOAD_PRO() 
+    END_LOAD_PRO()
 
     BEGIN_SAVE_PRO( pdata, buflen, len, ext)
 		SAVE_INT8_PRO( pdata, buflen, len, telid_)
 		SAVE_INT8_PRO( pdata, buflen, len, teltoid_)
-    END_SAVE_PRO() 
+    END_SAVE_PRO()
 
     BEGIN_CLONE_PRO( Pro_AppTeleport_req, proo )
-		CLONE_VAR_PRO(proo, telid_)
-		CLONE_VAR_PRO(proo, teltoid_)
-    END_CLONE_PRO() 
+		CLONE_VAR_PRO( proo, telid_)
+		CLONE_VAR_PRO( proo, teltoid_)
+    END_CLONE_PRO()
 
 public:
 	S_INT_8 telid_; // 使用的teleport配置
@@ -226,28 +226,28 @@ protected:
     END_SAVE_PRO() 
 
     BEGIN_CLONE_PRO( Pro_AppTeleport_ack, proo )
-		CLONE_VAR_PRO(proo, result_)
-		CLONE_VAR_PRO(proo, cssindex_)
-		CLONE_VAR_PRO(proo, chrid_)
-		CLONE_VAR_PRO(proo, mapid_)
-		CLONE_VAR_PRO(proo, locationx_)
-		CLONE_VAR_PRO(proo, locationy_)
-		CLONE_VAR_PRO(proo, locationz_)
-		CLONE_VAR_PRO(proo, facing_)
+		CLONE_VAR_PRO( proo, result_)
+		CLONE_VAR_PRO( proo, cssindex_)
+		CLONE_VAR_PRO( proo, chrid_)
+		CLONE_VAR_PRO( proo, mapid_)
+		CLONE_VAR_PRO( proo, locationx_)
+		CLONE_VAR_PRO( proo, locationy_)
+		CLONE_VAR_PRO( proo, locationz_)
+		CLONE_VAR_PRO( proo, facing_)
     END_CLONE_PRO()
 
 public:
 	// 0:成功 1:转跳点无效 2:必须先进入世界 3:同一个地图内 
 	// 4:开始点不是当前地图 5:目标地图不在服务器组支持中 6:玩家正在进入副本
-	S_INT_8 result_;
-	S_INT_32 mapid_; // 地图id
-	S_FLOAT_32 locationx_; // 位置
-	S_FLOAT_32 locationy_; // 位置
-	S_FLOAT_32 locationz_; // 位置
-	S_FLOAT_32 facing_; // 旋转
+	S_INT_8		result_;
+	S_INT_32	mapid_; // 地图id
+	S_FLOAT_32	locationx_; // 位置
+	S_FLOAT_32	locationy_; // 位置
+	S_FLOAT_32	locationz_; // 位置
+	S_FLOAT_32	facing_; // 旋转
 	//以下为服务器使用
-	S_INT_32 cssindex_;
-	S_INT_32 chrid_;
+	S_INT_32	cssindex_;
+	S_INT_32	chrid_;
 };
 
 /**
@@ -267,6 +267,7 @@ protected:
 		LOAD_FLOAT32_PRO( pdata, buflen, posx_)
 		LOAD_FLOAT32_PRO( pdata, buflen, posy_)
 		LOAD_FLOAT32_PRO( pdata, buflen, posz_)
+		LOAD_INT32_PRO( pdata, buflen, cellid_)
 	END_LOAD_PRO()
 
 	BEGIN_SAVE_PRO( pdata, buflen, len, ext)
@@ -274,21 +275,24 @@ protected:
 		SAVE_FLOAT32_PRO( pdata, buflen, len, posx_)
 		SAVE_FLOAT32_PRO( pdata, buflen, len, posy_)
 		SAVE_FLOAT32_PRO( pdata, buflen, len, posz_)
+		SAVE_INT32_PRO( pdata, buflen, len, cellid_)
 	END_SAVE_PRO()
 
 	BEGIN_CLONE_PRO( Pro_AppEnterIns_req, proo )
-		CLONE_VAR_PRO(proo, telid_)
-		CLONE_VAR_PRO(proo, posx_)
-		CLONE_VAR_PRO(proo, posy_)
-		CLONE_VAR_PRO(proo, posz_)
+		CLONE_VAR_PRO( proo, telid_)
+		CLONE_VAR_PRO( proo, posx_)
+		CLONE_VAR_PRO( proo, posy_)
+		CLONE_VAR_PRO( proo, posz_)
+		CLONE_VAR_PRO( proo, cellid_)
 	END_CLONE_PRO()
 
 public:
-	S_INT_8 telid_;	// 副本转跳点配置id
+	S_INT_8		telid_;		// 副本转跳点配置id
 	//服务器使用
-	S_FLOAT_32 posx_; // 位置
-	S_FLOAT_32 posy_; // 位置
-	S_FLOAT_32 posz_; // 位置
+	S_FLOAT_32	posx_;		// 位置 css->cts
+	S_FLOAT_32	posy_;		// 位置
+	S_FLOAT_32	posz_;		// 位置
+	S_INT_32	cellid_;	//副本服务器cellid, cts->css
 };
 
 /**
@@ -305,20 +309,25 @@ public:
 protected: 
 	BEGIN_LOAD_PRO( pdata, buflen, ext)
 		LOAD_INT8_PRO( pdata, buflen, result_)
+		LOAD_INT32_PRO( pdata, buflen, cssindex_)
 	END_LOAD_PRO()
 
 	BEGIN_SAVE_PRO( pdata, buflen, len, ext)
 		SAVE_INT8_PRO( pdata, buflen, len, result_)
+		SAVE_INT32_PRO( pdata, buflen, len, cssindex_)
 	END_SAVE_PRO()
 
 	BEGIN_CLONE_PRO( Pro_AppEnterIns_ack, proo )
-		CLONE_VAR_PRO(proo, result_)
+		CLONE_VAR_PRO( proo, result_)
+		CLONE_VAR_PRO( proo, cssindex_)
 	END_CLONE_PRO()
 
 public:
 	// 0:成功 1:转跳点无效 2:必须先进入世界 3:已经存在一个进入副本请求 4:开始点不是当前地图
-	// 5:没有可用的副本 
-	S_INT_8 result_;
+	// 5:没有可用的副本 6:不能从副本进入副本
+	S_INT_8		result_;
+	//服务器使用
+	S_INT_32	cssindex_;
 };
 
 /**
@@ -334,70 +343,32 @@ public:
 
 protected: 
 	BEGIN_LOAD_PRO( pdata, buflen, ext)
+		LOAD_INT32_PRO( pdata, buflen, cellid_)
 	END_LOAD_PRO()
 
 	BEGIN_SAVE_PRO( pdata, buflen, len, ext)
+		SAVE_INT32_PRO( pdata, buflen, len, cellid_)
 	END_SAVE_PRO()
 
-	BEGIN_CLONE_PRO( Pro_AppEnterInsOvertime_ntf, proo )
+	BEGIN_CLONE_PRO( Pro_AppEnterInsOvertime_ntf, proo)
+		CLONE_VAR_PRO( proo, cellid_)
 	END_CLONE_PRO()
 
 public:
+	//cts -> inst maps时使用
+	S_INT_32	cellid_;
 };
 
 /**
-* @class Pro_AppEnterInsReqAlloc_req
-* 
-* @brief 进入副本预分配占位
-**/
-class Pro_AppEnterInsReqAlloc_req : public AppProtocol<Pro_AppEnterInsReqAlloc_req> 
-{ 
-	typedef AppProtocol<Pro_AppEnterInsReqAlloc_req> inherit;
-public: 
-	Pro_AppEnterInsReqAlloc_req();
-
-protected: 
-	BEGIN_LOAD_PRO( pdata, buflen, ext)
-	END_LOAD_PRO()
-
-	BEGIN_SAVE_PRO( pdata, buflen, len, ext)
-	END_SAVE_PRO()
-
-	BEGIN_CLONE_PRO( Pro_AppEnterInsReqAlloc_req, proo )
-	END_CLONE_PRO()
-
-public:
-};
-
-class Pro_AppEnterInsReqAlloc_ack : public AppProtocol<Pro_AppEnterInsReqAlloc_ack> 
-{ 
-	typedef AppProtocol<Pro_AppEnterInsReqAlloc_ack> inherit;
-public: 
-	Pro_AppEnterInsReqAlloc_ack();
-
-protected: 
-	BEGIN_LOAD_PRO( pdata, buflen, ext)
-	END_LOAD_PRO()
-
-	BEGIN_SAVE_PRO( pdata, buflen, len, ext)
-	END_SAVE_PRO()
-
-	BEGIN_CLONE_PRO( Pro_AppEnterInsReqAlloc_ack, proo )
-	END_CLONE_PRO()
-
-public:
-};
-
-/**
-* @class Pro_AppEnterInsConfirm_req
+* @class Pro_AppEnterInsConfirm_ntf
 * 
 * @brief 进入副本预分配占位确认
 **/
-class Pro_AppEnterInsConfirm_req : public AppProtocol<Pro_AppEnterInsConfirm_req> 
+class Pro_AppEnterInsConfirm_ntf : public AppProtocol<Pro_AppEnterInsConfirm_ntf> 
 { 
-	typedef AppProtocol<Pro_AppEnterInsConfirm_req> inherit;
+	typedef AppProtocol<Pro_AppEnterInsConfirm_ntf> inherit;
 public: 
-	Pro_AppEnterInsConfirm_req();
+	Pro_AppEnterInsConfirm_ntf();
 
 protected: 
 	BEGIN_LOAD_PRO( pdata, buflen, ext)
@@ -406,7 +377,7 @@ protected:
 	BEGIN_SAVE_PRO( pdata, buflen, len, ext)
 	END_SAVE_PRO()
 
-	BEGIN_CLONE_PRO( Pro_AppEnterInsConfirm_req, proo )
+	BEGIN_CLONE_PRO( Pro_AppEnterInsConfirm_ntf, proo )
 	END_CLONE_PRO()
 
 public:
