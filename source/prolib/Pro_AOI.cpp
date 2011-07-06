@@ -46,18 +46,8 @@ Pro_AppEnterInsOvertime_ntf::Pro_AppEnterInsOvertime_ntf()
 {
 }
 
-Pro_AppEnterInsReqAlloc_req::Pro_AppEnterInsReqAlloc_req()
-:inherit( AOI_ENTERINSPREALLOC_REQ)
-{
-}
-
-Pro_AppEnterInsReqAlloc_ack::Pro_AppEnterInsReqAlloc_ack()
-:inherit( AOI_ENTERINSPREALLOC_ACK)
-{
-}
-
-Pro_AppEnterInsConfirm_req::Pro_AppEnterInsConfirm_req()
-:inherit( AOI_ENTERINSCONFIRM_REQ)
+Pro_AppEnterInsConfirm_ntf::Pro_AppEnterInsConfirm_ntf()
+:inherit( AOI_ENTERINSCONFIRM_NTF)
 {
 }
 

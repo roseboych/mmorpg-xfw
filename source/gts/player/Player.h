@@ -102,23 +102,25 @@ public:
 	S_INT_32	curchrid_;
 	//关联到的css服务器
 	CSSLink*	css_svr_;
+	//是否是副本服务器
+	S_BOOL		is_instsvr_;
 
 	//是否强制关闭
 	bool		have_force_close_;
+
+	//选服用的时间戳
+	ACE_UINT64	selteam_tmpstamp_;
 
 public:
 	//玩家状态
 	PLAYERSTATUS_TYPE_ENUM	status_;
 	//玩家session
-	uuid_session	uuid_;
-
-	//选服用的时间戳
-	ACE_UINT64	selteam_tmpstamp_;
+	uuid_session		uuid_;
 
 	//关联的socket服务
-	GTS_Service	service_;
+	GTS_Service			service_;
 	//玩家全局索引，系统定义
-	int	global_index_;
+	int					global_index_;
 
 	TeamProxySession*	team_proxy_;
 };

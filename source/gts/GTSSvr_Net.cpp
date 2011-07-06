@@ -272,10 +272,16 @@ void GTSSvr::net_teleport_req( BasicProtocol* p, bool& autorelease)
 {
 	GTS_GETPLAYER_FROMCACHE( user, p);
 
+	S_INT_8 ret =0;
 	if( !user->is_ingame())
+		ret =2;
+	else if( user->is_instsvr_)
+		ret =6;
+
+	if( ret != 0)
 	{
 		Pro_AppTeleport_ack* ack =PROTOCOL_NEW Pro_AppTeleport_ack();
-		ack->result_ =2;
+		ack->result_ =ret;
 		user->send_protocol( ack);
 
 		return;
@@ -308,6 +314,8 @@ void GTSSvr::css_chrreg2world_req( BasicProtocol* p, bool& autorelease)
 
 	//建立和css的关联
 	user->css_svr_ =this->get_csslink( req->cssindex_);
+	//该协议表示进入主世界地图
+	user->is_instsvr_ =false;
 }
 
 void GTSSvr::css_chrload_ack( BasicProtocol* p, bool& autorelease)
@@ -330,10 +338,16 @@ void GTSSvr::net_instenter_req( BasicProtocol* p, bool& autorelease)
 {
 	GTS_GETPLAYER_FROMCACHE( user, p);
 
+	S_INT_8	ret =0;
 	if( !user->is_ingame())
+		ret =2;
+	else if( user->is_instsvr_)
+		ret =6;	//不能从副本进入副本
+
+	if( ret != 0)
 	{
 		Pro_AppEnterIns_ack* ack =PROTOCOL_NEW Pro_AppEnterIns_ack();
-		ack->result_ =2;
+		ack->result_ =ret;
 		user->send_protocol( ack);
 
 		return;
@@ -348,6 +362,18 @@ void GTSSvr::css_instenter_ack( BasicProtocol* p, bool& autorelease)
 	GTS_GETPLAYER_FROMCACHE( user, p);
 
 	Pro_AppEnterIns_ack* ack =dynamic_cast<Pro_AppEnterIns_ack*>( p);
+
+	if( ack->result_ == 0)
+	{
+		//指向副本所在的css服务器
+		user->css_svr_ =this->get_csslink( ack->cssindex_);
+		user->is_instsvr_ =true;
+
+		//发送进入副本确认
+		Pro_AppEnterInsConfirm_ntf* ntf =PROTOCOL_NEW Pro_AppEnterInsConfirm_ntf();
+		PRO_UUID_FILL2( ntf, ack);
+		user->send_to_css( ntf);
+	}
 
 	user->send_protocol( p);
 	autorelease =false;

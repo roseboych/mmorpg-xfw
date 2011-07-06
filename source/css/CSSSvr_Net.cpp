@@ -44,6 +44,10 @@ void CSSSvr::gts_netadapter( BasicProtocol* p, bool& autorelease)
 	{
 		fun =boost::bind( &BaseStoryService::gts_instenter_req, svr, _1, _2);
 	}
+	else if( p->iid_ == AOI_ENTERINSCONFIRM_NTF)
+	{
+		fun =boost::bind( &BaseStoryService::gts_instenterconfirm_ntf, svr, _1, _2);
+	}
 	else if( p->iid_ == SVR_LNKEEPLOAD_NTF)
 	{
 		fun =boost::bind( &BaseStoryService::gts_lnkkeepload_req, svr, _1, _2);
@@ -143,6 +147,24 @@ void CSSSvr::cts_netadapter( BasicProtocol* p, bool& autorelease)
 			user->player_teleport( ack, autorelease);
 			return;
 		}
+		else if( p->iid_ == AOI_ENTERINS_REQ)
+		{
+			Pro_AppEnterIns_req* req =dynamic_cast<Pro_AppEnterIns_req*>( p);
+			user->player_instcellproxy( req, autorelease);
+			return;
+		}
+		else if( p->iid_ == AOI_ENTERINS_ACK)
+		{
+			Pro_AppEnterIns_ack* ack =dynamic_cast<Pro_AppEnterIns_ack*>( p);
+			user->player_enterinstack( ack, autorelease);
+			return;
+		}
+		else if( p->iid_ == AOI_ENTERINSOT_NTF)
+		{
+			Pro_AppEnterInsOvertime_ntf* ntf =dynamic_cast<Pro_AppEnterInsOvertime_ntf*>( p);
+			user->player_enterinstovertime( ntf, autorelease);
+			return;
+		}
 		else if( p->iid_ == SVR_USERLOST_NTF)
 		{
 			//玩家掉线特别处理
@@ -175,7 +197,7 @@ void CSSSvr::cts_netadapter( BasicProtocol* p, bool& autorelease)
 
 	//派发到指定的内容处理
 	NETCMD_FUN_MAP fun =0;
-	if( p->iid_ == 0)
+	if( p->iid_ == 100)
 	{
 	}
 

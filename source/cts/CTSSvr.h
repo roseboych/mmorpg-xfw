@@ -173,6 +173,8 @@ public:
 	void css_teleport_ack( BasicProtocol* p, bool& autorelease);
 	//进入副本
 	void css_enterinst_req( BasicProtocol* p, bool& autorelease);
+	void css_enterinst_ack( BasicProtocol* p, bool& autorelease);
+	void css_enterinstconfirm_ntf( BasicProtocol* p, bool& autorelease);
 };
 
 inline 

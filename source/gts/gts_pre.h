@@ -71,4 +71,11 @@ enum PLAYERSTATUS_TYPE_ENUM{
 ##pro->set_uuidinitstmp( sess.init_timestamp_);	\
 	}
 
+#define PRO_UUID_FILL2( des, src)							\
+	{														\
+##des->set_uuidglobalindex( ##src->uuid_.global_index_);	\
+##des->set_uuiduserid( ##src->uuid_.userid_);				\
+##des->set_uuidinitstmp( ##src->uuid_.init_stmp_);			\
+	}
+
 #endif //__GTS_PRE__H__

@@ -100,6 +100,13 @@ public:
 	BaseStoryService* get_storyservicebymap( S_INT_32 mapid);
 
 	/**
+	* 根据cellid获取对应的服务
+	* @param cellid
+	* @return
+	**/
+	InstanceStoryServiceImpl* get_inststorysvrbycellid( S_INT_32 cellid);
+
+	/**
 	* 发送到rgs
 	* @param p	使用人分配，调用函数负责释放
 	**/

@@ -88,6 +88,14 @@ void CTS_Service::from_css( BasicProtocol *p)
 	{
 		fun =boost::bind( &CTSSvr::css_enterinst_req, CTSMODULE, _1, _2);
 	}
+	else if( p->iid_ == AOI_ENTERINS_ACK)
+	{
+		fun =boost::bind( &CTSSvr::css_enterinst_ack, CTSMODULE, _1, _2);
+	}
+	else if( p->iid_ == AOI_ENTERINSCONFIRM_NTF)
+	{
+		fun =boost::bind( &CTSSvr::css_enterinstconfirm_ntf, CTSMODULE, _1, _2);
+	}
 
 	if( fun)
 	{

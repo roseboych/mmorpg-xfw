@@ -23,3 +23,15 @@ void InstanceStoryServiceImpl::cts_instenter_ack( BasicProtocol* p, bool& autore
 {
 	ACE_ASSERT( FALSE && "shouldn't receive this protocol");
 }
+
+void InstanceStoryServiceImpl::cts_enterinstovertime_ntf( BasicProtocol* p, bool& autorelease)
+{
+	CSS_GETPLAYER_FROMSTORY( user, p);
+}
+
+void InstanceStoryServiceImpl::gts_instenterconfirm_ntf( BasicProtocol* p, bool& autorelease)
+{
+	CSS_GETPLAYER_FROMSTORY( user, p);
+
+
+}
