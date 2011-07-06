@@ -1,0 +1,151 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "prolib", "prolib\prolib.vcproj", "{3A6183DB-1E67-4300-A152-2A5CB1C0F0D2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "corelib", "corelib\corelib.vcproj", "{1770ADCD-A51B-43DD-A419-8A1E002EE8CF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E872FB85-06A9-4643-80EA-E9DA026DE3F4} = {E872FB85-06A9-4643-80EA-E9DA026DE3F4}
+		{D1C34CD4-7945-415F-A4E9-03920339AE3D} = {D1C34CD4-7945-415F-A4E9-03920339AE3D}
+		{3A6183DB-1E67-4300-A152-2A5CB1C0F0D2} = {3A6183DB-1E67-4300-A152-2A5CB1C0F0D2}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "css", "css\css.vcproj", "{A55ADCFF-6FA5-4DC4-A808-42DB403E4402}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1770ADCD-A51B-43DD-A419-8A1E002EE8CF} = {1770ADCD-A51B-43DD-A419-8A1E002EE8CF}
+		{3A6183DB-1E67-4300-A152-2A5CB1C0F0D2} = {3A6183DB-1E67-4300-A152-2A5CB1C0F0D2}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cts", "cts\cts.vcproj", "{3A539ACE-4D51-488D-BCDE-B893814EFC3E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1770ADCD-A51B-43DD-A419-8A1E002EE8CF} = {1770ADCD-A51B-43DD-A419-8A1E002EE8CF}
+		{3A6183DB-1E67-4300-A152-2A5CB1C0F0D2} = {3A6183DB-1E67-4300-A152-2A5CB1C0F0D2}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dpx", "dpx\dpx.vcproj", "{508BCE21-F401-490E-88BD-5317BA9B7512}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1770ADCD-A51B-43DD-A419-8A1E002EE8CF} = {1770ADCD-A51B-43DD-A419-8A1E002EE8CF}
+		{3A6183DB-1E67-4300-A152-2A5CB1C0F0D2} = {3A6183DB-1E67-4300-A152-2A5CB1C0F0D2}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gts", "gts\gts.vcproj", "{8283AEAF-8E6F-426B-9565-52509A91804A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1770ADCD-A51B-43DD-A419-8A1E002EE8CF} = {1770ADCD-A51B-43DD-A419-8A1E002EE8CF}
+		{3A6183DB-1E67-4300-A152-2A5CB1C0F0D2} = {3A6183DB-1E67-4300-A152-2A5CB1C0F0D2}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lgs", "lgs\lgs.vcproj", "{B1479714-3FDC-449A-A6CA-EFBA784B6A9A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1770ADCD-A51B-43DD-A419-8A1E002EE8CF} = {1770ADCD-A51B-43DD-A419-8A1E002EE8CF}
+		{3A6183DB-1E67-4300-A152-2A5CB1C0F0D2} = {3A6183DB-1E67-4300-A152-2A5CB1C0F0D2}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rgs", "rgs\rgs.vcproj", "{EFD4062C-572A-4FEF-9AA8-8C001E7E8760}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1770ADCD-A51B-43DD-A419-8A1E002EE8CF} = {1770ADCD-A51B-43DD-A419-8A1E002EE8CF}
+		{3A6183DB-1E67-4300-A152-2A5CB1C0F0D2} = {3A6183DB-1E67-4300-A152-2A5CB1C0F0D2}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "logmodule", "logmodule\logmodule.vcproj", "{E872FB85-06A9-4643-80EA-E9DA026DE3F4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ClientNet", "ClientNet\ClientNet.vcproj", "{A643C157-1397-406E-BE60-F89040E684F8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "reslib", "reslib\reslib.vcproj", "{D1C34CD4-7945-415F-A4E9-03920339AE3D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ACE", "ace\ACE.vcproj", "{790470CD-FECA-1BAD-6757-8A6300006755}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A6183DB-1E67-4300-A152-2A5CB1C0F0D2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3A6183DB-1E67-4300-A152-2A5CB1C0F0D2}.Debug|Win32.Build.0 = Debug|Win32
+		{3A6183DB-1E67-4300-A152-2A5CB1C0F0D2}.Release|Win32.ActiveCfg = Release|Win32
+		{3A6183DB-1E67-4300-A152-2A5CB1C0F0D2}.Release|Win32.Build.0 = Release|Win32
+		{1770ADCD-A51B-43DD-A419-8A1E002EE8CF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1770ADCD-A51B-43DD-A419-8A1E002EE8CF}.Debug|Win32.Build.0 = Debug|Win32
+		{1770ADCD-A51B-43DD-A419-8A1E002EE8CF}.Release|Win32.ActiveCfg = Release|Win32
+		{1770ADCD-A51B-43DD-A419-8A1E002EE8CF}.Release|Win32.Build.0 = Release|Win32
+		{A55ADCFF-6FA5-4DC4-A808-42DB403E4402}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A55ADCFF-6FA5-4DC4-A808-42DB403E4402}.Debug|Win32.Build.0 = Debug|Win32
+		{A55ADCFF-6FA5-4DC4-A808-42DB403E4402}.Release|Win32.ActiveCfg = Release|Win32
+		{A55ADCFF-6FA5-4DC4-A808-42DB403E4402}.Release|Win32.Build.0 = Release|Win32
+		{3A539ACE-4D51-488D-BCDE-B893814EFC3E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3A539ACE-4D51-488D-BCDE-B893814EFC3E}.Debug|Win32.Build.0 = Debug|Win32
+		{3A539ACE-4D51-488D-BCDE-B893814EFC3E}.Release|Win32.ActiveCfg = Release|Win32
+		{3A539ACE-4D51-488D-BCDE-B893814EFC3E}.Release|Win32.Build.0 = Release|Win32
+		{508BCE21-F401-490E-88BD-5317BA9B7512}.Debug|Win32.ActiveCfg = Debug|Win32
+		{508BCE21-F401-490E-88BD-5317BA9B7512}.Debug|Win32.Build.0 = Debug|Win32
+		{508BCE21-F401-490E-88BD-5317BA9B7512}.Release|Win32.ActiveCfg = Release|Win32
+		{508BCE21-F401-490E-88BD-5317BA9B7512}.Release|Win32.Build.0 = Release|Win32
+		{8283AEAF-8E6F-426B-9565-52509A91804A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8283AEAF-8E6F-426B-9565-52509A91804A}.Debug|Win32.Build.0 = Debug|Win32
+		{8283AEAF-8E6F-426B-9565-52509A91804A}.Release|Win32.ActiveCfg = Release|Win32
+		{8283AEAF-8E6F-426B-9565-52509A91804A}.Release|Win32.Build.0 = Release|Win32
+		{B1479714-3FDC-449A-A6CA-EFBA784B6A9A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B1479714-3FDC-449A-A6CA-EFBA784B6A9A}.Debug|Win32.Build.0 = Debug|Win32
+		{B1479714-3FDC-449A-A6CA-EFBA784B6A9A}.Release|Win32.ActiveCfg = Release|Win32
+		{B1479714-3FDC-449A-A6CA-EFBA784B6A9A}.Release|Win32.Build.0 = Release|Win32
+		{EFD4062C-572A-4FEF-9AA8-8C001E7E8760}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EFD4062C-572A-4FEF-9AA8-8C001E7E8760}.Debug|Win32.Build.0 = Debug|Win32
+		{EFD4062C-572A-4FEF-9AA8-8C001E7E8760}.Release|Win32.ActiveCfg = Release|Win32
+		{EFD4062C-572A-4FEF-9AA8-8C001E7E8760}.Release|Win32.Build.0 = Release|Win32
+		{E872FB85-06A9-4643-80EA-E9DA026DE3F4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E872FB85-06A9-4643-80EA-E9DA026DE3F4}.Debug|Win32.Build.0 = Debug|Win32
+		{E872FB85-06A9-4643-80EA-E9DA026DE3F4}.Release|Win32.ActiveCfg = Release|Win32
+		{E872FB85-06A9-4643-80EA-E9DA026DE3F4}.Release|Win32.Build.0 = Release|Win32
+		{A643C157-1397-406E-BE60-F89040E684F8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A643C157-1397-406E-BE60-F89040E684F8}.Debug|Win32.Build.0 = Debug|Win32
+		{A643C157-1397-406E-BE60-F89040E684F8}.Release|Win32.ActiveCfg = Release|Win32
+		{A643C157-1397-406E-BE60-F89040E684F8}.Release|Win32.Build.0 = Release|Win32
+		{D1C34CD4-7945-415F-A4E9-03920339AE3D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D1C34CD4-7945-415F-A4E9-03920339AE3D}.Debug|Win32.Build.0 = Debug|Win32
+		{D1C34CD4-7945-415F-A4E9-03920339AE3D}.Release|Win32.ActiveCfg = Release|Win32
+		{D1C34CD4-7945-415F-A4E9-03920339AE3D}.Release|Win32.Build.0 = Release|Win32
+		{790470CD-FECA-1BAD-6757-8A6300006755}.Debug|Win32.ActiveCfg = Debug|Win32
+		{790470CD-FECA-1BAD-6757-8A6300006755}.Debug|Win32.Build.0 = Debug|Win32
+		{790470CD-FECA-1BAD-6757-8A6300006755}.Release|Win32.ActiveCfg = Release|Win32
+		{790470CD-FECA-1BAD-6757-8A6300006755}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 11
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs-app:8080/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ace\\ACE_vc9_Static.vcproj
+		SccProjectName1 = ace
+		SccLocalPath1 = ace
+		SccProjectUniqueName2 = prolib\\prolib.vcproj
+		SccProjectName2 = prolib
+		SccLocalPath2 = prolib
+		SccProjectUniqueName3 = corelib\\corelib.vcproj
+		SccProjectName3 = corelib
+		SccLocalPath3 = corelib
+		SccProjectUniqueName4 = css\\css.vcproj
+		SccProjectName4 = css
+		SccLocalPath4 = css
+		SccProjectUniqueName5 = cts\\cts.vcproj
+		SccProjectName5 = cts
+		SccLocalPath5 = cts
+		SccProjectUniqueName6 = dpx\\dpx.vcproj
+		SccProjectName6 = dpx
+		SccLocalPath6 = dpx
+		SccProjectUniqueName7 = gts\\gts.vcproj
+		SccProjectName7 = gts
+		SccLocalPath7 = gts
+		SccProjectUniqueName8 = lgs\\lgs.vcproj
+		SccProjectName8 = lgs
+		SccLocalPath8 = lgs
+		SccProjectUniqueName9 = rgs\\rgs.vcproj
+		SccProjectName9 = rgs
+		SccLocalPath9 = rgs
+		SccProjectUniqueName10 = logmodule\\logmodule.vcproj
+		SccProjectName10 = logmodule
+		SccLocalPath10 = logmodule
+	EndGlobalSection
+EndGlobal

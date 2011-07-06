@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="GBK"?>
+<physx>
+	<objects>
+		<!--
+		任何object均有Translation, Rotation, Scale, WireColor四个属性
+		-->
+		<object name="xxx1">
+			<translation>7.289, 36.379, 67.544</translation>
+			<rotation>
+				<row>1.00, 0.00, 0.00</row>
+				<row>0.00, 1.00, 0.00</row>
+				<row>0.00, 0.00, 1.00</row>
+			</rotation>
+			<!—
+			shapedesc
+			template属性是给场景编辑器识别模板用的, 如果全为0, 说明Shape数据来源于nif文件内的ABV; 
+			type用来描述Shape的类型, 共六种: box, sphere, capsule, plane, trianglemesh, heightfield
+			-->
+			<shapedesc name="MapID_xxx_xxx1" template= "e8,77,a1, a9, c3, 27, 70,44,a0,e7,4c,f4,54,ea,6f,69" type="capsule">
+				<translation>7.289, 36.379, 67.544</translation>
+				<rotation>
+					<row>1.00, 0.00, 0.00</row>
+					<row>0.00, 1.00, 0.00</row>
+					<row>0.00, 0.00, 1.00</row>
+				</rotation>
+				<scale>1.00</scale>
+				<wirecolor>1.00, 0.50, 1.00</wirecolor>
+				<!-- 以下为每种类型Shape特有的属性 -->
+				<Property class="Float" name="Radius">29.999</Property>
+				<Property class="Float" name="Height">55.453</Property>
+			</shapedesc>
+			<!--
+			一个Obj可由多个Shape组成，可以有多个ShapeDesc
+			-->
+			<shapedesc name="Box_1" template="3,92,b3,d4,b2,83,bb,46,9a,92,5e,44,23,c,5f,a1" type="box">
+				<translation>7.289, 36.379, 67.544</translation>
+				<rotation>
+					<row>1.00, 0.00, 0.00</row>
+					<row>0.00, 1.00, 0.00</row>
+					<row>0.00, 0.00, 1.00</row>
+				</rotation>
+				<scale>1.00</scale>
+				<wirecolor>1.00, 0.50, 1.00</wirecolor>
+			</shapedesc>
+			<shapedesc name="Sphere_2" template="3,92,b3,d4,b2,83,bb,46,9a,92,5e,44,23,c,5f,a1" type="sphere">
+				<translation>7.289, 36.379, 67.544</translation>
+				<rotation>
+					<row>1.00, 0.00, 0.00</row>
+					<row>0.00, 1.00, 0.00</row>
+					<row>0.00, 0.00, 1.00</row>
+				</rotation>
+				<scale>1.00</scale>
+				<wirecolor>1.00, 0.50, 1.00</wirecolor>
+			</shapedesc>
+		</object>
+		<!--
+		前缀"NULL_"表示Shape没有指定所属 Entity, Obj 名称定为Shape名称加前缀"NULL_" 
+		-->
+		<object name="NULL_my 003">
+			<translation>7.289, 36.379, 67.544</translation>
+			<rotation>
+				<row>1.00, 0.00, 0.00</row>
+				<row>0.00, 1.00, 0.00</row>
+				<row>0.00, 0.00, 1.00</row>
+			</rotation>
+			<shapedesc name="my 003" template="81,85,63,9c,37,57,2,4a,9e,96,e5,11,ee,3d,ee,c0" type="trianglemesh" data="TriangleMeshDesc_0">
+				<Property class="Float" name="Scale">1.00</Property>
+				<Property class="Color(RGB)" name="WireColor">0.501, 1.00, 1.00</Property>
+			</shapedesc>
+		</object>
+		<object name="terrain 001 HeightField">
+			<translation>7.289, 36.379, 67.544</translation>
+			<rotation>
+				<row>1.00, 0.00, 0.00</row>
+				<row>0.00, 1.00, 0.00</row>
+				<row>0.00, 0.00, 1.00</row>
+			</rotation>
+			<!-- 
+			每一个heighfield对应一个Terrain Sector
+			-->
+			<!--
+			axis表示地形高度值以Z轴朝上
+			-->
+			<shapedesc name="terrain sector 001" template="0,0,0" type="heightfield" axis="z" data="HeightFieldDesc_0">
+				<Property class="Float" name="Scale">1.00</Property>
+				<Property class="Color(RGB)" name="WireColor">1.00, 0.5019608139991760, 1.00</Property>
+				<!-- HeightField 特有的属性 -->
+				<Property class="Float" name="HeightScale">1.00</Property>
+				<Property class="Float" name="RowScale">1.00</Property>
+				<Property class="Float" name="ColumnScale">1.00</Property>
+				<Property class="Float" name="materialIndexHighBits">1</Property>
+				<Property class="Float" name="holeMaterial">2</Property>
+			</shapedesc>
+			<shapedesc name="terrain sector 002" template="0,0,0" type="heightfield" axis="z" data="HeightFieldDesc_1"></shapedesc>
+		</object>
+	</objects>
+	<datas>
+		<!--
+		TriangleMeshDesc以及 HeightFieldDesc 数据都以Base64编码存储,以节省存储及处理开销
+		-->
+		<trianglemesh name="TriangleMeshDesc_0">
+			<Points>BAQAAgQEAAAEBAACBAQAAAQEAAIEBAAABAQAAgQEAAAE… BAABAQAAgQEAAAEBAACBAQAAAQEAAIEBAAABAQAAgQEA… 
+			</Points>
+			<Triangles>BAQAAgQEAAAEBAACBAQAAAQEAAIEBAAABAQAAgQEAAA… BAQAAgQEAAAEBAACBAQAAAQEAAIEBAAABAQAAgQEAAA… 
+			</Triangles>
+		</trianglemesh>
+		<heightfiled name="HeightFiledDesc_0" rows="129" columns="129"> BAQAAgQEAAAEBAACBAQAAAQEAAIEBAAABAQAAgQ… BAQAAgQEAAAEBAACBAQAAAQEAAIEBAAABAQAAgQ… BAQAAgQEAAAEBAACBAQAAAQEAAIEBAAABAQAAgQ… 
+		</heightfiled>
+		<heightfiled name="HeightFiledDesc_1" rows="129" columns="129"> BAQAAgQEAAAEBAACBAQAAAQEAAIEBAAABAQAAgQ… BAQAAgQEAAAEBAACBAQAAAQEAAIEBAAABAQAAgQ… BAQAAgQEAAAEBAACBAQAAAQEAAIEBAAABAQAAgQ… 
+		</heightfiled>
+	</datas>
+</physx>

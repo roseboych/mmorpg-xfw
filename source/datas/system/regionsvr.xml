@@ -1,0 +1,51 @@
+<!--
+region节点定义了整个大区包含的服务器组信息
+-->
+<region>
+	<!--
+	userdb节点定义了用户数据库信息.
+	dbname:	数据库名字
+	ip:		数据库所在的ip地址
+	port:	数据库的端口号
+	user:	数据库用户名
+	pwd:	密码
+	-->
+	<userdb ip="127.0.0.1" port="4141" user="root" pwd="" dbname="userdb"/>
+
+	<!--
+	svrteam节点定义了大区包含的服务器组。可以有多个节点
+	sn:			服务器组编号。对应system目录下的"编号.app"配置文件
+	maxuser:	服务器组支持的最大玩家数
+	-->
+	<svrteam sn="1" maxuser="2000"/>
+	
+	<!--
+	lgss节点配置了登陆网关服务器
+	-->
+	<lgss>
+		<!--
+		lgs节点定义了lgs服务器的基本配置
+		sn:		lgs编号
+		ip:		服务器监听地址
+		port:	服务器监听端口
+		maxuser:支持的最多玩家数
+		-->
+		<lgs sn="1" ip="127.0.0.1" port="18000" maxuser="3000"/>
+	</lgss>
+	
+	<!--
+	rgs节点配置了单个rgs的运行信息
+	ip:		服务器监听地址
+	port:	服务器监听端口
+  controllerport: 管理工具监听端口
+	-->
+  <rgs ip="127.0.0.1" port="15000" controllerport="1200">
+    <!--
+    管理工具帐号
+    -->
+    <controllers>
+      <user name="admin" password=""/>
+    </controllers>
+  </rgs>
+	
+</region>

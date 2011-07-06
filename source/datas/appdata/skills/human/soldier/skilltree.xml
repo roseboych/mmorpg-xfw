@@ -1,0 +1,61 @@
+<skilltree>
+	<!--
+	skills节点定义了支持的所有技能
+	-->
+	<skills>
+		<!--
+	    id:技能编号,在该配置文件中唯一
+	    immediate:瞬发技能[true|true/false]
+	    data_package:使用的技能数据包类型
+	    cooltime:冷却时间(单位秒),缺省0
+      	driving:[true|true/false]true:主动技能 false:被动技能
+      	singleattack:[true|true/false]true:单体攻击 false:范围攻击
+		-->
+	    <skill id="01000001" desc="近身攻击" immediate="true" data_package="0" cooltime="2" driving="true" singleattack="true"/>
+    	<skill id="01000002" desc="冰霜护盾" immediate="true" data_package="1" cooltime="10" driving="true" singleattack="true"/>
+	</skills>
+	<states>
+		<!--
+		state节点定义了某个状态支持的技能配置
+		name:状态名称，在<prolib/datastore/character_define.h>中定义
+		-->
+		<state name="nofightsitdown">
+		</state>
+		<state name="nofightstand">
+		</state>
+		<state name="nofightwalk">
+		</state>
+		<state name="nofightrun">
+		</state>
+		<state name="nofightride">
+		</state>
+		<state name="nofightfly">
+		</state>
+		<state name="fightstand">
+			<skill id="01000001" />
+			<skill id="01000002" />
+		</state>
+		<state name="fightwalk">
+			<skill id="01000001" />
+			<skill id="01000002" />
+		</state>
+		<state name="fightrun">
+			<skill id="01000001" />
+			<skill id="01000002" />
+		</state>
+		<state name="fightride">
+			<skill id="01000002" />
+		</state>
+		<state name="fightfly">
+			<skill id="01000002" />
+		</state>
+		<state name="navigatefly">
+		</state>
+		<state name="deathstand">
+		</state>
+		<state name="deathwalk">
+		</state>
+		<state name="deathrun">
+		</state>
+	</states>
+</skilltree>

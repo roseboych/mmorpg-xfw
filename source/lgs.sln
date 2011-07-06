@@ -1,0 +1,67 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "corelib", "corelib\corelib.vcproj", "{1770ADCD-A51B-43DD-A419-8A1E002EE8CF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D1C34CD4-7945-415F-A4E9-03920339AE3D} = {D1C34CD4-7945-415F-A4E9-03920339AE3D}
+		{3A6183DB-1E67-4300-A152-2A5CB1C0F0D2} = {3A6183DB-1E67-4300-A152-2A5CB1C0F0D2}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "prolib", "prolib\prolib.vcproj", "{3A6183DB-1E67-4300-A152-2A5CB1C0F0D2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lgs", "lgs\lgs.vcproj", "{B1479714-3FDC-449A-A6CA-EFBA784B6A9A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1770ADCD-A51B-43DD-A419-8A1E002EE8CF} = {1770ADCD-A51B-43DD-A419-8A1E002EE8CF}
+		{3A6183DB-1E67-4300-A152-2A5CB1C0F0D2} = {3A6183DB-1E67-4300-A152-2A5CB1C0F0D2}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "reslib", "reslib\reslib.vcproj", "{D1C34CD4-7945-415F-A4E9-03920339AE3D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1770ADCD-A51B-43DD-A419-8A1E002EE8CF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1770ADCD-A51B-43DD-A419-8A1E002EE8CF}.Debug|Win32.Build.0 = Debug|Win32
+		{1770ADCD-A51B-43DD-A419-8A1E002EE8CF}.Release|Win32.ActiveCfg = Release|Win32
+		{1770ADCD-A51B-43DD-A419-8A1E002EE8CF}.Release|Win32.Build.0 = Release|Win32
+		{3A6183DB-1E67-4300-A152-2A5CB1C0F0D2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3A6183DB-1E67-4300-A152-2A5CB1C0F0D2}.Debug|Win32.Build.0 = Debug|Win32
+		{3A6183DB-1E67-4300-A152-2A5CB1C0F0D2}.Release|Win32.ActiveCfg = Release|Win32
+		{3A6183DB-1E67-4300-A152-2A5CB1C0F0D2}.Release|Win32.Build.0 = Release|Win32
+		{B1479714-3FDC-449A-A6CA-EFBA784B6A9A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B1479714-3FDC-449A-A6CA-EFBA784B6A9A}.Debug|Win32.Build.0 = Debug|Win32
+		{B1479714-3FDC-449A-A6CA-EFBA784B6A9A}.Release|Win32.ActiveCfg = Release|Win32
+		{B1479714-3FDC-449A-A6CA-EFBA784B6A9A}.Release|Win32.Build.0 = Release|Win32
+		{D1C34CD4-7945-415F-A4E9-03920339AE3D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D1C34CD4-7945-415F-A4E9-03920339AE3D}.Debug|Win32.Build.0 = Debug|Win32
+		{D1C34CD4-7945-415F-A4E9-03920339AE3D}.Release|Win32.ActiveCfg = Release|Win32
+		{D1C34CD4-7945-415F-A4E9-03920339AE3D}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs-app:8080/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ace\\ACE_vc9_Static.vcproj
+		SccProjectName1 = ace
+		SccLocalPath1 = ace
+		SccProjectUniqueName2 = corelib\\corelib.vcproj
+		SccProjectName2 = corelib
+		SccLocalPath2 = corelib
+		SccProjectUniqueName3 = prolib\\prolib.vcproj
+		SccProjectName3 = prolib
+		SccLocalPath3 = prolib
+		SccProjectUniqueName4 = lgs\\lgs.vcproj
+		SccProjectName4 = lgs
+		SccLocalPath4 = lgs
+		SccProjectUniqueName5 = logmodule\\logmodule.vcproj
+		SccProjectName5 = logmodule
+		SccLocalPath5 = logmodule
+	EndGlobalSection
+EndGlobal

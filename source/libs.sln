@@ -1,0 +1,68 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "prolib", "prolib\prolib.vcproj", "{3A6183DB-1E67-4300-A152-2A5CB1C0F0D2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "corelib", "corelib\corelib.vcproj", "{1770ADCD-A51B-43DD-A419-8A1E002EE8CF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3A6183DB-1E67-4300-A152-2A5CB1C0F0D2} = {3A6183DB-1E67-4300-A152-2A5CB1C0F0D2}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "logmodule", "logmodule\logmodule.vcproj", "{E872FB85-06A9-4643-80EA-E9DA026DE3F4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "reslib", "reslib\reslib.vcproj", "{D1C34CD4-7945-415F-A4E9-03920339AE3D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1770ADCD-A51B-43DD-A419-8A1E002EE8CF} = {1770ADCD-A51B-43DD-A419-8A1E002EE8CF}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ACE", "ace\ACE.vcproj", "{790470CD-FECA-1BAD-6757-8A6300006755}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A6183DB-1E67-4300-A152-2A5CB1C0F0D2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3A6183DB-1E67-4300-A152-2A5CB1C0F0D2}.Debug|Win32.Build.0 = Debug|Win32
+		{3A6183DB-1E67-4300-A152-2A5CB1C0F0D2}.Release|Win32.ActiveCfg = Release|Win32
+		{3A6183DB-1E67-4300-A152-2A5CB1C0F0D2}.Release|Win32.Build.0 = Release|Win32
+		{1770ADCD-A51B-43DD-A419-8A1E002EE8CF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1770ADCD-A51B-43DD-A419-8A1E002EE8CF}.Debug|Win32.Build.0 = Debug|Win32
+		{1770ADCD-A51B-43DD-A419-8A1E002EE8CF}.Release|Win32.ActiveCfg = Release|Win32
+		{1770ADCD-A51B-43DD-A419-8A1E002EE8CF}.Release|Win32.Build.0 = Release|Win32
+		{E872FB85-06A9-4643-80EA-E9DA026DE3F4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E872FB85-06A9-4643-80EA-E9DA026DE3F4}.Debug|Win32.Build.0 = Debug|Win32
+		{E872FB85-06A9-4643-80EA-E9DA026DE3F4}.Release|Win32.ActiveCfg = Release|Win32
+		{E872FB85-06A9-4643-80EA-E9DA026DE3F4}.Release|Win32.Build.0 = Release|Win32
+		{D1C34CD4-7945-415F-A4E9-03920339AE3D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D1C34CD4-7945-415F-A4E9-03920339AE3D}.Debug|Win32.Build.0 = Debug|Win32
+		{D1C34CD4-7945-415F-A4E9-03920339AE3D}.Release|Win32.ActiveCfg = Release|Win32
+		{D1C34CD4-7945-415F-A4E9-03920339AE3D}.Release|Win32.Build.0 = Release|Win32
+		{790470CD-FECA-1BAD-6757-8A6300006755}.Debug|Win32.ActiveCfg = Debug|Win32
+		{790470CD-FECA-1BAD-6757-8A6300006755}.Debug|Win32.Build.0 = Debug|Win32
+		{790470CD-FECA-1BAD-6757-8A6300006755}.Release|Win32.ActiveCfg = Release|Win32
+		{790470CD-FECA-1BAD-6757-8A6300006755}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs-app:8080/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ace\\ACE_vc9_Static.vcproj
+		SccProjectName1 = ace
+		SccLocalPath1 = ace
+		SccProjectUniqueName2 = prolib\\prolib.vcproj
+		SccProjectName2 = prolib
+		SccLocalPath2 = prolib
+		SccProjectUniqueName3 = corelib\\corelib.vcproj
+		SccProjectName3 = corelib
+		SccLocalPath3 = corelib
+		SccProjectUniqueName4 = logmodule\\logmodule.vcproj
+		SccProjectName4 = logmodule
+		SccLocalPath4 = logmodule
+	EndGlobalSection
+EndGlobal
