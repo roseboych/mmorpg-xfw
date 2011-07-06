@@ -1,0 +1,158 @@
+<!--
+定义了角色的状态树，和状态之间的转化关系
+-->
+<behaviors> 
+	<!--
+	state节点定义了状态的转出关系
+	from:表示起点状态
+	-->
+	<state from="nofightsitdown" >
+		<!--
+		goto节点定义了目标状态
+		to:表示目标状态
+		-->
+		<goto to="nofightstand" />
+		<goto to="nofightwalk" />
+		<goto to="nofightrun" /> 
+		<goto to="fightstand" />
+		<goto to="deathstand" />
+    <!--
+    fight节点定义了非战斗状态对应的战斗状态,在状态自动转跳的时候使用。只存在于非战斗状态
+    -->
+    <fight to="fightstand"/>
+	</state> 
+	<state from="nofightstand" >
+		<goto to="nofightsitdown" />
+		<goto to="nofightwalk" />
+		<goto to="nofightrun" />
+		<goto to="nofightride" />
+		<goto to="nofightfly" />
+		<goto to="fightstand" />
+		<goto to="fightwalk" />
+		<goto to="fightrun" />
+		<goto to="fightride" /> 
+		<goto to="fightfly" />
+		<goto to="navigatefly" />
+		<goto to="deathstand" />
+    <fight to="fightstand"/>
+	</state>
+	<state from="nofightwalk" >
+		<goto to="nofightsitdown" />
+		<goto to="nofightstand" />
+		<goto to="nofightrun" />
+		<goto to="nofightride" />
+		<goto to="nofightfly" />
+		<goto to="fightstand" />
+		<goto to="fightwalk" />
+		<goto to="fightrun" />
+		<goto to="fightride" /> 
+		<goto to="fightfly" />
+		<goto to="navigatefly" />
+		<goto to="deathstand" />
+    <fight to="fightwalk"/>
+	</state>
+	<state from="nofightrun" >
+		<goto to="nofightsitdown" />
+		<goto to="nofightstand" />
+		<goto to="nofightwalk" />
+		<goto to="nofightride" />
+		<goto to="nofightfly" />
+		<goto to="fightstand" />
+		<goto to="fightwalk" />
+		<goto to="fightrun" />
+		<goto to="fightride" />
+		<goto to="fightfly" />
+		<goto to="navigatefly" />
+		<goto to="deathstand" />
+    <fight to="fightrun"/>
+	</state>
+	<state from="nofightride" >
+		<goto to="nofightstand" />
+		<goto to="fightride" />
+		<goto to="navigatefly" />
+		<goto to="deathstand" />
+    <fight to="fightride"/>
+	</state>
+	<state from="nofightfly" >
+		<goto to="nofightstand" />
+		<goto to="fightfly" />
+		<goto to="deathstand" />
+    <fight to="fightfly"/>
+	</state>
+	<state from="fightstand" >
+		<goto to="nofightsitdown" />
+		<goto to="nofightstand" />
+		<goto to="nofightwalk" />
+		<goto to="nofightride" />
+		<goto to="nofightfly" />
+		<goto to="fightwalk" />
+		<goto to="fightrun" /> 
+		<goto to="fightride" />
+		<goto to="fightfly" />
+		<goto to="deathstand" />
+	</state>
+	<state from="fightwalk" >
+		<goto to="nofightsitdown" />
+		<goto to="nofightstand" />
+		<goto to="nofightwalk" />
+		<goto to="nofightride" />
+		<goto to="nofightfly" />
+		<goto to="fightstand" />
+		<goto to="fightrun" /> 
+		<goto to="fightride" />
+		<goto to="fightfly" />
+		<goto to="deathstand" />
+	</state>
+	<state from="fightrun" >
+		<goto to="nofightsitdown" />
+		<goto to="nofightstand" />
+		<goto to="nofightwalk" />
+		<goto to="nofightride" />
+		<goto to="nofightfly" />
+		<goto to="fightstand" />
+		<goto to="fightwalk" /> 
+		<goto to="fightride" />
+		<goto to="fightfly" />
+		<goto to="deathstand" />
+	</state>
+	<state from="fightride" > 
+		<goto to="nofightstand" />
+		<goto to="nofightride" />
+		<goto to="fightstand" />
+		<goto to="fightwalk" />
+		<goto to="fightrun" />
+		<goto to="deathstand" />
+	</state>
+	<state from="fightfly" > 
+		<goto to="nofightstand" />
+		<goto to="nofightfly" />
+		<goto to="fightstand" />
+		<goto to="fightwalk" />
+		<goto to="fightrun" />
+		<goto to="deathstand" />
+	</state>
+	<state from="navigatefly" >
+		<goto to="nofightstand" />
+	</state>
+	<state from="deathstand" >
+		<goto to="deathwalk" />
+		<goto to="deathrun" />
+		<goto to="nofightstand" />
+		<goto to="nofightwalk" />
+		<goto to="nofightrun" />
+	</state>
+	<state from="deathwalk" >
+		<goto to="deathstand" />
+		<goto to="deathrun" />
+		<goto to="nofightstand" />
+		<goto to="nofightwalk" />
+		<goto to="nofightrun" />
+	</state>
+	<state from="deathrun" >
+		<goto to="deathstand" />
+		<goto to="deathwalk" />
+		<goto to="nofightstand" />
+		<goto to="nofightwalk" />
+		<goto to="nofightrun" />
+	</state>
+</behaviors>

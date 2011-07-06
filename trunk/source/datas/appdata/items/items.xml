@@ -1,0 +1,50 @@
+<!--
+物品配置信息
+-->
+<items>
+  <!--装备物品-->
+  <equipment>
+    <!--
+	  itemid:物品id
+    pos:装备位置
+    level:装备等级
+    twohand:1:双手武器 0:单手武器
+	  -->
+    <item itemid="1" pos="0" level="1" twohand="0" desc="左手剑">
+      <!--
+      对player的属性影响。如果需要对属性进行细分，那么对equipment进行2级或者3级分类
+      -->
+      <props force="8" agile="2" armor="10"/>
+      <!--
+      价格配置
+      买 gmbuy:游戏币 rmbuy:人民币 卖 gmsale:游戏币 rmsale:人民币 (-1:不支持)
+      -->
+      <sale gmbuy="0" rmbuy="-1" gmsale="0" rmsale="-1"/>
+    </item>
+    <item itemid="2" pos="0" level="1" twohand="1" desc="双手法杖">
+      <props force="8" agile="2" armor="10" spirit="5"/>
+      <sale gmbuy="0" rmbuy="-1" gmsale="0" rmsale="-1"/>
+    </item>
+  </equipment>
+  <!--消费品-->
+  <consume>
+    <!--
+    itemid:物品id
+    stack: 0不允许堆叠，堆叠个数
+    -->
+    <item itemid="3" stack="20" desc="小血瓶">
+      <sale gmbuy="0" rmbuy="-1" gmsale="0" rmsale="-1"/>
+    </item>
+  </consume>
+  <!--任务物品-->
+  <task>
+    <item itemid="4" stack="0" desc="信封"></item>    
+  </task>
+  <!--商品-->
+  <merchandise>
+  </merchandise>
+  <!--其他-->
+  <other>
+    <item itemid="5" desc="炉石"></item>
+  </other>
+</items>

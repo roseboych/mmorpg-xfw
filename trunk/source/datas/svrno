@@ -1,0 +1,11 @@
+﻿<app region="1" sn="1" cpu="1" loopnum="5" confsrc="filesrc">
+	<filesrc datadir="../../source/datas" />
+	
+	<!--
+	log节点定义了服务器的日志模块
+	enable:		是否使用日志 true|false
+	loglevel:	日志等级	debug|info|warn|error|fatal
+	console:	是否输出到控制台	yes|no
+	-->
+	<log enable="true" loglevel="debug" console="yes"/>
+</app>

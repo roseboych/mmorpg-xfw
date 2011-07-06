@@ -1,0 +1,7 @@
+﻿<!--
+地图物理信息配置
+mapid:地图id
+leftposx,leftposy,bottomx,bottomy:地图坐标
+-->
+<mapinfo mapid="1" leftposx="-3823" leftposy="-5463" bottomx="13668" bottomy="12146">
+</mapinfo>

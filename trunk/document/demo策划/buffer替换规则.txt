@@ -1,0 +1,7 @@
+buffer替换规则
+1、每个玩家应用buffer数量不限。
+2、每个玩家的系统buffer数量不限。
+3、每种buffer同时只能有一条存在。
+4、新增加的buffer如果已经存在，用新的数据替换旧的buffer数据，同时发送变更通知。
+5、如果buffer时效到期，移除到期的buffer。
+6、如果buffer对属性有影响，在buffer发生变化之后要重新计算player的属性。

@@ -1,0 +1,28 @@
+<!--
+定义了buffer系统中用到的所有buffer
+-->
+<bufferdefine>
+  <!--
+  定义了系统的所有buffer
+  id:buffer编号.分别在sys_buffer,app_buffer2个块内保证唯一。系统会自动添加类型头
+  notifyother:[true/false]是否通知他人(需要表现的buffer)
+  save2db:[true/false]是否需要永久保存(下线之后是否有效)
+  scopetype:[0/1]计时类型。0:按照在线时间计算 1:按照绝对时间计算
+  scopetime:有效时间长度,精确到秒
+  tickstep:运算间隔，精确到毫秒(缺省情况为500)
+  buffscript:对应的执行脚本文件名，不区分大小写
+  affectbaseprop:[true/false|false]是否会影响玩家基本属性
+  scripttick:[true/false|false]脚本是否支持tick函数
+  -->
+  <sys_buffer>
+    <buffer id="10000001" notifyother="false" desc="双倍经验" 
+            save2db="true" scopetype="1" scopetime="3600" tickstep="10000" affectbaseprop="false" />
+  </sys_buffer>
+  <!--
+  定义了应用的所有buffer
+  -->
+  <app_buffer>
+    <buffer id="20000001" notifyother="true" desc="冰霜护盾" save2db="true" scopetype="0" 
+            scopetime="600" tickstep="1000" affectbaseprop="true" buffscript="frostshield" scripttick="false"/>
+  </app_buffer>
+</bufferdefine>
