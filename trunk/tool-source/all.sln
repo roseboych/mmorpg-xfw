@@ -9,6 +9,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sharelib", "sharelib\sharelib.vcproj", "{B08FB7EB-C3A3-4347-8AAF-1D23090AA77C}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RobotClient", "robotclient\RobotTest.vcproj", "{12FE9412-9046-44DB-8923-7DAC3861575B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B08FB7EB-C3A3-4347-8AAF-1D23090AA77C} = {B08FB7EB-C3A3-4347-8AAF-1D23090AA77C}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProfileEventViewer", "profileeventviewer\ProfileEventViewer.csproj", "{2BC83E24-6FC1-4044-A536-3B82041CF276}"
 EndProject

@@ -11,9 +11,7 @@
 #include <atlctrls.h>
 #include <atltime.h>
 
-#ifndef _DEBUG
 #include <atlmisc.h>
-#endif
 
 #include <list>
 
@@ -190,7 +188,7 @@ private:
 private:
 	TcpAcceptListener listener_;
 	CListViewCtrl lstclients_;
-	CString log_;
+	WTL::CString log_;
 
 public:
 	LRESULT OnTimer(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);

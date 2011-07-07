@@ -25,9 +25,10 @@ void BasicImpl::logon()
 		return;
 
 	Pro_Login_req *req =new Pro_Login_req();
-	req->token_ =(LPCTSTR)user_name_;
-	req->token_ +=":";
-	req->token_ +=(LPCTSTR)user_pwd_;
+	std::string str =(LPCTSTR)user_name_;
+	str +=":";
+	str +=(LPCTSTR)user_pwd_;
+	req->token_ =str;
 
 	send_lgs_protocol( req);
 
@@ -70,7 +71,7 @@ void BasicImpl::recv_logonack( BasicProtocol *p)
 		this->lastregion_ =ack->lastregion_;
 		this->lastlogout_ =ack->lastlogout_;
 		this->is_lnkkeep_ =ack->is_lnkkeep_;
-		this->gts_ip_ =ack->gts_ip_;
+		this->gts_ip_ =ack->gts_ip_.c_str();
 		this->gts_port_ =ack->gts_port_;
 		this->token_ =ack->token_;
 		this->proxy_index_ =ack->proxy_index_;
