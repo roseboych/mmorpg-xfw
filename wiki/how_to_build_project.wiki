@@ -17,3 +17,5 @@
 * 6 编译服务器程序，服务器程序工程文件在 source 目录
 
 * 7 编译服务器测试工具,服务器测试工具工程文件在 tool-source 目录
+  *需要打开服务器程序工程，注销prolib/prolibdef.h 中的{{{#define PROLIB_USED_BY_SERVERSIDE	1}}}，然后编译prolib,接着编译测试工具。
+  *编译之后记得回复prolib的修改
