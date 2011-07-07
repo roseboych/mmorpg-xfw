@@ -60,6 +60,7 @@ public:
 	S_BOOL	is_enterinst(){
 		return enter_instcell_ctrl_.is_enterinstcell();
 	}
+	void	instcell_quit();
 
 public:
 	/**

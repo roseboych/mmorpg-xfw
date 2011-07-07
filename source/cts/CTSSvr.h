@@ -175,6 +175,8 @@ public:
 	void css_enterinst_req( BasicProtocol* p, bool& autorelease);
 	void css_enterinst_ack( BasicProtocol* p, bool& autorelease);
 	void css_enterinstconfirm_ntf( BasicProtocol* p, bool& autorelease);
+	//退出副本
+	void css_quitinst_req( BasicProtocol* p, bool& autorelease);
 };
 
 inline 

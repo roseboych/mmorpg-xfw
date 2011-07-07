@@ -88,10 +88,13 @@ enum PRO_BOOST_ENUM
 	//进入退出副本
 	AOI_ENTERINS_REQ,
 	AOI_ENTERINS_ACK,
-	//进入副本超时
-	AOI_ENTERINSOT_NTF,
 	//进入副本确认
 	AOI_ENTERINSCONFIRM_NTF,
+	//进入副本超时
+	AOI_ENTERINSOT_NTF,
+	//退出副本
+	AOI_QUITINS_REQ,
+	AOI_QUITINS_ACK,
 
 	// 初始化协议最大序号
 	GAME_MAX,

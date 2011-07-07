@@ -175,6 +175,9 @@ public:
 	//副本切换
 	void net_instenter_req( BasicProtocol* p, bool& autorelease);
 	void css_instenter_ack( BasicProtocol* p, bool& autorelease);
+	//退出副本
+	void net_instquit_req( BasicProtocol* p, bool& autorelease);
+	void css_instquit_ack( BasicProtocol* p, bool& autorelease);
 	//移动请求
 	//宠物召唤
 	//换装

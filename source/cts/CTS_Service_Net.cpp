@@ -96,6 +96,10 @@ void CTS_Service::from_css( BasicProtocol *p)
 	{
 		fun =boost::bind( &CTSSvr::css_enterinstconfirm_ntf, CTSMODULE, _1, _2);
 	}
+	else if( p->iid_ == AOI_QUITINS_REQ)
+	{
+		fun =boost::bind( &CTSSvr::css_quitinst_req, CTSMODULE, _1, _2);
+	}
 
 	if( fun)
 	{

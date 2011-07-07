@@ -268,6 +268,7 @@ protected:
 		LOAD_FLOAT32_PRO( pdata, buflen, posy_)
 		LOAD_FLOAT32_PRO( pdata, buflen, posz_)
 		LOAD_INT32_PRO( pdata, buflen, cellid_)
+		LOAD_INT32_PRO( pdata, buflen, chrid_)
 	END_LOAD_PRO()
 
 	BEGIN_SAVE_PRO( pdata, buflen, len, ext)
@@ -276,6 +277,7 @@ protected:
 		SAVE_FLOAT32_PRO( pdata, buflen, len, posy_)
 		SAVE_FLOAT32_PRO( pdata, buflen, len, posz_)
 		SAVE_INT32_PRO( pdata, buflen, len, cellid_)
+		SAVE_INT32_PRO( pdata, buflen, len, chrid_)
 	END_SAVE_PRO()
 
 	BEGIN_CLONE_PRO( Pro_AppEnterIns_req, proo )
@@ -284,6 +286,7 @@ protected:
 		CLONE_VAR_PRO( proo, posy_)
 		CLONE_VAR_PRO( proo, posz_)
 		CLONE_VAR_PRO( proo, cellid_)
+		CLONE_VAR_PRO( proo, chrid_)
 	END_CLONE_PRO()
 
 public:
@@ -293,6 +296,7 @@ public:
 	S_FLOAT_32	posy_;		// 位置
 	S_FLOAT_32	posz_;		// 位置
 	S_INT_32	cellid_;	//副本服务器cellid, cts->css
+	S_INT_32	chrid_;
 };
 
 /**
@@ -324,7 +328,7 @@ protected:
 
 public:
 	// 0:成功 1:转跳点无效 2:必须先进入世界 3:已经存在一个进入副本请求 4:开始点不是当前地图
-	// 5:没有可用的副本 6:不能从副本进入副本
+	// 5:没有可用的副本 6:不能从副本进入副本 7:不允许进入副本
 	S_INT_8		result_;
 	//服务器使用
 	S_INT_32	cssindex_;
@@ -355,7 +359,7 @@ protected:
 	END_CLONE_PRO()
 
 public:
-	//cts -> inst maps时使用
+	//cts -> inst maps时使用, 缺省值-1
 	S_INT_32	cellid_;
 };
 
@@ -382,6 +386,60 @@ protected:
 
 public:
 };
+
+/**
+* @class Pro_AppQuitInst_req
+* 
+* @brief 退出副本
+**/
+class Pro_AppQuitInst_req : public AppProtocol<Pro_AppQuitInst_req> 
+{ 
+	typedef AppProtocol<Pro_AppQuitInst_req> inherit;
+public: 
+	Pro_AppQuitInst_req();
+
+protected: 
+	BEGIN_LOAD_PRO( pdata, buflen, ext)
+	END_LOAD_PRO()
+
+	BEGIN_SAVE_PRO( pdata, buflen, len, ext)
+	END_SAVE_PRO()
+
+	BEGIN_CLONE_PRO( Pro_AppQuitInst_req, proo )
+	END_CLONE_PRO()
+
+public:
+};
+
+/**
+* @class Pro_AppQuitInst_ack
+* 
+* @brief 退出副本
+**/
+class Pro_AppQuitInst_ack : public AppProtocol<Pro_AppQuitInst_ack> 
+{ 
+	typedef AppProtocol<Pro_AppQuitInst_ack> inherit;
+public: 
+	Pro_AppQuitInst_ack();
+
+protected: 
+	BEGIN_LOAD_PRO( pdata, buflen, ext)
+		LOAD_INT32_PRO( pdata, buflen, result_)
+	END_LOAD_PRO()
+
+	BEGIN_SAVE_PRO( pdata, buflen, len, ext)
+		SAVE_INT32_PRO( pdata, buflen, len, result_)
+	END_SAVE_PRO()
+
+	BEGIN_CLONE_PRO( Pro_AppQuitInst_ack, proo)
+		CLONE_VAR_PRO( proo, result_)
+	END_CLONE_PRO()
+
+public:
+	//0:成功 1:不在副本内
+	S_INT_8	result_;
+};
+
 
 PROTOCOL_NAMESPACE_END
 

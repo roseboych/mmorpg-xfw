@@ -73,6 +73,8 @@ BEGIN_PRO_FACTORY()
 	PRO_MAPPING( AOI_ENTERINS_ACK, Pro_AppEnterIns_ack)
 	PRO_MAPPING( AOI_ENTERINSOT_NTF, Pro_AppEnterInsOvertime_ntf)
 	PRO_MAPPING( AOI_ENTERINSCONFIRM_NTF, Pro_AppEnterInsConfirm_ntf)
+	PRO_MAPPING( AOI_QUITINS_REQ, Pro_AppQuitInst_req)
+	PRO_MAPPING( AOI_QUITINS_ACK, Pro_AppQuitInst_ack)
 
 	//app/pro_avatar.h
 	PRO_MAPPING( APP_EQUIPITEM_REQ, Pro_EquipItem_req)

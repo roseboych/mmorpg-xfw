@@ -218,39 +218,39 @@ protected:
 
 protected:
 	//proactor
-	int		cpu_num_;
-	int		main_loop_;
+	int					cpu_num_;
+	int					main_loop_;
 
 	//proactor/reactor共用该类
-	Module_Proactor	 proactor_;
+	Module_Proactor		proactor_;
 
 	//iocp锁分派
-	MutexAllocator* mutex_allocator_;
-	bool	delete_mutex_allocator_;
+	MutexAllocator*		mutex_allocator_;
+	bool				delete_mutex_allocator_;
 
 	//主线程定时器
 	ACE_Thread_Timer_Queue_Adapter< ACE_Timer_Heap>	timer_;
 
 	//退出模块标志
-	bool	exit_module_;
+	bool				exit_module_;
 
 	//应用锁
 	ACE_Thread_Mutex	module_mutex_;
 
 	//监听连接逻辑
 	NS_STL::list<BasicService*>	waiting_registservice_;
-	SERVICE_REGIST_FUN_MAP	waiting_registfun_;
-	SERVICE_DISCONN_FUN_MAP	disconn_fun_;
+	SERVICE_REGIST_FUN_MAP		waiting_registfun_;
+	SERVICE_DISCONN_FUN_MAP		disconn_fun_;
 
 	//数据库线程池
 	Asynch_DBPools	dbpool_;
-	bool	support_dbpool_;
+	bool			support_dbpool_;
 
 	//主线程定时器
 	TimerContainer	module_timer_;
 
 	//线程变量
-	TLSContext	tls_context_;
+	TLSContext		tls_context_;
 
 	//--------------------------------消息队列相关--------------------------//
 public:

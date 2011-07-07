@@ -42,12 +42,22 @@ Pro_AppEnterIns_ack::Pro_AppEnterIns_ack()
 }
 
 Pro_AppEnterInsOvertime_ntf::Pro_AppEnterInsOvertime_ntf()
-:inherit( AOI_ENTERINSOT_NTF)
+:inherit( AOI_ENTERINSOT_NTF),cellid_( -1)
 {
 }
 
 Pro_AppEnterInsConfirm_ntf::Pro_AppEnterInsConfirm_ntf()
 :inherit( AOI_ENTERINSCONFIRM_NTF)
+{
+}
+
+Pro_AppQuitInst_req::Pro_AppQuitInst_req()
+:inherit( AOI_QUITINS_REQ)
+{
+}
+
+Pro_AppQuitInst_ack::Pro_AppQuitInst_ack()
+:inherit( AOI_QUITINS_ACK)
 {
 }
 
