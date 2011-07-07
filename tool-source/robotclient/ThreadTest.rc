@@ -48,8 +48,8 @@ BEGIN
     "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
     "LANGUAGE 4, 2\r\n"
     "#pragma code_page(936)\r\n"
-    "#include ""res\\ThreadTest.rc2""  // ·Ç Microsoft Visual C++ ±à¼­¹ıµÄ×ÊÔ´\r\n"
-    "#include ""afxres.rc""         // ±ê×¼×é¼ş\r\n"
+    "#include ""res\\ThreadTest.rc2""  // é Microsoft Visual C++ ç¼–è¾‘è¿‡çš„èµ„æº\r\n"
+    "#include ""afxres.rc""         // æ ‡å‡†ç»„ä»¶\r\n"
     "#endif\r\n"
     "\0"
 END
@@ -243,8 +243,8 @@ END
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
 LANGUAGE 4, 2
 #pragma code_page(936)
-#include "res\ThreadTest.rc2"  // ·Ç Microsoft Visual C++ ±à¼­¹ıµÄ×ÊÔ´
-#include "afxres.rc"         // ±ê×¼×é¼ş
+#include "res\ThreadTest.rc2"  // é Microsoft Visual C++ ç¼–è¾‘è¿‡çš„èµ„æº
+#include "afxres.rc"         // æ ‡å‡†ç»„ä»¶
 #endif
 
 /////////////////////////////////////////////////////////////////////////////

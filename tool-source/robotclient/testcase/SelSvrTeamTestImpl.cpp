@@ -95,7 +95,7 @@ void SelSvrTeamTestImpl::do_lgs( BasicProtocol *p)
 			if( lack->result_ == 0)
 			{
 				proxy_index_ =lack->proxy_index_;
-				gts_ip_ =lack->gts_ip_;
+				gts_ip_ =lack->gts_ip_.c_str();
 				gts_port_ =lack->gts_port_;
 				token_ =lack->token_;
 

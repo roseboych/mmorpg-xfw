@@ -74,7 +74,7 @@ void StaticString<_STRINGLEN>::operator = ( const char* pstr)
 	if( pstr == 0)
 		this->str_length_ =0;
 	else
-		str_length_ =strlen( pstr);
+		str_length_ =(int)strlen( pstr);
 
 	if( str_length_ > _STRINGLEN)
 		str_length_ =_STRINGLEN;

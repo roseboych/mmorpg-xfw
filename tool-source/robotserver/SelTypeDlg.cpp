@@ -1,4 +1,4 @@
-// SelTypeDlg.cpp : 实现文件
+// SelTypeDlg.cpp : 瀹炵幇鏂囦欢
 //
 
 #include "stdafx.h"

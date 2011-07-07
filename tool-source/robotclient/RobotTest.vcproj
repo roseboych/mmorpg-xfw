@@ -107,11 +107,11 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="Release"
-			IntermediateDirectory="Release"
+			OutputDirectory="..\objs\robotclient\release"
+			IntermediateDirectory="..\objs\robotclient\release"
 			ConfigurationType="1"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
-			UseOfMFC="1"
+			UseOfMFC="2"
 			CharacterSet="2"
 			>
 			<Tool
@@ -133,10 +133,10 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories=".;.\log4c\include"
-				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;LOG4CXX_STATIC"
+				AdditionalIncludeDirectories=".;../;../sharelib/lua;../sharelib;./log4c/include;../../3lib/boost;../../source"
+				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;LOG4CXX_STATIC;_CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="false"
-				RuntimeLibrary="0"
+				RuntimeLibrary="3"
 				TreatWChar_tAsBuiltInType="true"
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
@@ -158,10 +158,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="lualib.lib"
-				OutputFile="./run/$(ProjectName).exe"
+				AdditionalDependencies="Ws2_32.lib prolib.lib sharelib.lib"
+				OutputFile="../../tool-run/$(ProjectName).exe"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories=".\luabindlib"
+				AdditionalLibraryDirectories="../../source/lib;../sharelib/libs;../../3lib/boost_1_39_0/bin"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"

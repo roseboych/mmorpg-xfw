@@ -157,7 +157,7 @@ void CMainDlg::InsterLog( char* pFmt, ... )
 	char buf[1024];
 	va_start(args, pFmt);
 	vsprintf(buf, pFmt, args);
-	log_ = CString(text) + CString(buf) + "\r\n" + log_;
+	log_ = WTL::CString(text) + WTL::CString(buf) + "\r\n" + log_;
 	::SetWindowText( GetDlgItem(IDC_EDT_LOG),  log_);
 }
 

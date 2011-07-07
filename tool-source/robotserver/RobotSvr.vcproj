@@ -55,7 +55,7 @@
 				PreprocessorDefinitions="WIN32;_WINDOWS;STRICT;_DEBUG;_CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="3"
+				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="4"
@@ -108,8 +108,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="Release"
-			IntermediateDirectory="Release"
+			OutputDirectory="..\objs\robotsvr\release"
+			IntermediateDirectory="..\objs\robotsvr\release"
 			ConfigurationType="1"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			ATLMinimizesCRunTimeLibraryUsage="false"
@@ -141,10 +141,10 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="../"
-				PreprocessorDefinitions="WIN32;_WINDOWS;STRICT;NDEBUG"
+				AdditionalIncludeDirectories="../;../../3lib/boost;../../source;"
+				PreprocessorDefinitions="WIN32;_WINDOWS;STRICT;NDEBUG;_CRT_SECURE_NO_WARNINGS"
 				ExceptionHandling="0"
-				RuntimeLibrary="0"
+				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="0"
@@ -163,9 +163,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Ws2_32.lib"
-				OutputFile="../run/$(ProjectName).exe"
+				AdditionalDependencies="Ws2_32.lib prolib.lib sharelib.lib"
+				OutputFile="../../tool-run/$(ProjectName).exe"
 				LinkIncremental="1"
+				AdditionalLibraryDirectories="../../source/lib;../sharelib/libs"
 				SubSystem="2"
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
