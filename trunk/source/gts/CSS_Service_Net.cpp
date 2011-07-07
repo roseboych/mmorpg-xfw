@@ -46,6 +46,10 @@ void CSS_Service::assort_protocol( BasicProtocol *p)
 	{
 		fun =boost::bind( &GTSSvr::css_instenter_ack, GTSMODULE, _1, _2);
 	}
+	else if( p->iid_ == AOI_QUITINS_ACK)
+	{
+		fun =boost::bind( &GTSSvr::css_instquit_ack, GTSMODULE, _1, _2);
+	}
 	else if( 
 		   p->iid_ == GAME_LOGOUT_NTF
 		|| p->iid_ == AOI_UNITENTER_NTF

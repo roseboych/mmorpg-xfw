@@ -379,6 +379,38 @@ void GTSSvr::css_instenter_ack( BasicProtocol* p, bool& autorelease)
 	autorelease =false;
 }
 
+void GTSSvr::net_instquit_req( BasicProtocol* p, bool& autorelease)
+{
+	GTS_GETPLAYER_FROMCACHE( user, p);
+
+	if( !user->is_ingame() || !user->is_instsvr_)
+	{
+		Pro_AppQuitInst_ack* ack =PROTOCOL_NEW Pro_AppQuitInst_ack();
+		PRO_UUID_FILL2( ack, p);
+		ack->result_ =1;
+		user->send_protocol( ack);
+		return;
+	}
+
+	user->send_to_css( p);
+	autorelease =false;
+}
+
+void GTSSvr::css_instquit_ack( BasicProtocol* p, bool& autorelease)
+{
+	GTS_GETPLAYER_FROMCACHE( user, p);
+
+	Pro_AppQuitInst_ack* ack =dynamic_cast<Pro_AppQuitInst_ack*>( p);
+	if( ack->result_ == 0)
+	{
+		user->css_svr_ =0;
+		user->is_instsvr_ =false;
+	}
+
+	user->send_protocol( p);
+	autorelease =false;
+}
+
 void GTSSvr::transfer_to_net( BasicProtocol* p, bool& autorelease)
 {
 	GTS_GETPLAYER_FROMCACHE( user, p);

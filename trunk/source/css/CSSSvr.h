@@ -81,6 +81,13 @@ public:
 	inline AdapterPlayer* get_adapterplayer( int ind);
 
 	/**
+	* 从service反向调用的清除副本缓存信息
+	* 当玩家注册到副本失败时调用
+	* @param globalindex	全局索引
+	**/
+	void reset_adapterplayer_instcache( S_INT_32 globalindex);
+
+	/**
 	* 获取自身的配置
 	* @return
 	**/
@@ -125,14 +132,14 @@ protected:
 
 protected:
 	//可以连接的cts
-	CTSLink	ctssvr_;
+	CTSLink		ctssvr_;
 
 	//可以连接的dpx
-	DPXLink	dpxsvr_;
+	DPXLink		dpxsvr_;
 
 	//可以被连接的gts
 	ACE_Auto_Array_Ptr<GTSLink> gtssvr_;
-	S_INT_32	gtssvr_nums_;
+	S_INT_32					gtssvr_nums_;
 
 	//css连接的封装
 	CSSLinkWrap	csssvr_;
@@ -144,7 +151,7 @@ protected:
 	ACE_Thread_Mutex					player_mutex_;
 
 	//内容处理线程池
-	ContentServiceThread	dothreads_;
+	ContentServiceThread				dothreads_;
 
 	//支持的主游戏模式
 	ACE_Auto_Array_Ptr<MainStoryServiceImpl>		mainstorys_;

@@ -64,6 +64,10 @@ void GTS_Service::assort_protocol( BasicProtocol *p)
 	{
 		fun =boost::bind( &GTSSvr::net_instenter_req, GTSMODULE, _1, _2);
 	}
+	else if( p->iid_ == AOI_QUITINS_REQ)
+	{
+		fun =boost::bind( &GTSSvr::net_instquit_req, GTSMODULE, _1, _2);
+	}
 	else if(
 		//宠物相关
 		p->iid_ == APP_PETSUMMON_REQ ||

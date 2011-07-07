@@ -24,6 +24,7 @@ namespace PRO{
 	class Pro_AppEnterIns_req;
 	class Pro_AppEnterIns_ack;
 	class Pro_AppEnterInsOvertime_ntf;
+	class Pro_AppEnterInsConfirm_ntf;
 }
 
 /**
@@ -39,11 +40,6 @@ public:
 	void send_to_gts( BasicProtocol* p);
 
 	void reset();
-
-	/**
-	* 是否是一个空闲的玩家
-	**/
-	bool is_freeplayer();
 
 	void player_regist2world( PRO::Pro_ChrRegistToWorld_req* req, bool& autorelease);
 	void player_teleport( PRO::Pro_AppTeleport_ack* ack, bool& autorelease);
@@ -68,9 +64,17 @@ public:
 	* @param autorelase
 	*/
 	void player_enterinstovertime( PRO::Pro_AppEnterInsOvertime_ntf* ntf, bool& autorelease);
+	/*
+	* 收到gts的进入副本确认通知
+	* @param ntf
+	* @param autorelease
+	*/
+	void player_enterinstconfirm( PRO::Pro_AppEnterInsConfirm_ntf* ntf, bool& autorelease);
 
 public:
-	void reset_instcache();
+	void	reset_instcache();
+	//是否处于副本注册第一阶段 cts->css(inst map)
+	bool	has_instregistcache(){ return inst_svr_cache_ != 0;}
 
 	//进入副本占位缓冲
 	uuid_session		inst_uuid_cache_;

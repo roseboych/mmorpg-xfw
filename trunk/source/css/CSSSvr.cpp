@@ -376,3 +376,14 @@ void CSSSvr::notify_instinitctrl()
 		inststorys_[ind].regist_netcmd( pcmd);
 	}
 }
+
+void CSSSvr::reset_adapterplayer_instcache( S_INT_32 globalindex)
+{
+	AdapterPlayer* user =get_adapterplayer( globalindex);
+	if( user == 0)
+		return;
+
+	ACE_Guard<ACE_Thread_Mutex> mon( player_mutex_);
+
+	user->reset_instcache();
+}

@@ -129,8 +129,8 @@ public:
 	/**
 	* 构建一个玩家类
 	**/
-	static Player* create_player();
-	static void destroy_player( Player* p);
+	static Player*	create_player();
+	static void		destroy_player( Player* p);
 
 public:
 	//-----------------------------------skill对外接口封装函数------------------------------------

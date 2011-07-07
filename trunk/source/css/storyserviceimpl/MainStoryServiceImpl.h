@@ -50,9 +50,11 @@ public:
 	//--------------------------------------协议处理--------------------------------------
 	//进入副本
 	virtual void gts_instenter_req( BasicProtocol* p, bool& autorelease);
+	virtual void cts_instenter_req( BasicProtocol* p, bool& autorelease);
 	virtual void cts_instenter_ack( BasicProtocol* p, bool& autorelease);
 	virtual void cts_enterinstovertime_ntf( BasicProtocol* p, bool& autorelease);
 	virtual void gts_instenterconfirm_ntf( BasicProtocol* p, bool& autorelease);
+	virtual void gts_instquit_req( BasicProtocol* p, bool& autorelease);
 };
 
 #endif	//__MAINSTORYSERVICEIMPL__H__

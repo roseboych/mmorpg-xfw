@@ -414,6 +414,7 @@ void CTSSvr::css_enterinst_req( BasicProtocol* p, bool& autorelease)
 
 	//转发请求到副本服务器
 	req->cellid_ =pcell->get_cellid();
+	req->chrid_ =user->chrid_;
 	pcell->get_csslink()->send_protocol( p);
 	autorelease =false;
 }
@@ -442,4 +443,11 @@ void CTSSvr::css_enterinstconfirm_ntf( BasicProtocol* p, bool& autorelease)
 
 	//完成进入副本注册流程
 	user->enter_instcell_ctrl_.finish_cellconfirm();
+}
+
+void CTSSvr::css_quitinst_req( BasicProtocol* p, bool& autorelease)
+{
+	CTS_GETPLAYER_FROMCACHE( user, p);
+
+	user->instcell_quit();
 }

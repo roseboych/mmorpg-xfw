@@ -18,6 +18,7 @@
 #pragma pack( pop)
 
 #include "BaseStoryService.h"
+#include "storyserviceimpl/InstanceStoryServiceImpl.h"
 #include "CSSModule.h"
 #include "character/Player.h"
 
@@ -49,11 +50,9 @@ void AdapterPlayer::reset_instcache()
 {
 	inst_uuid_cache_.reset();
 	inst_svr_cache_ =0;
-}
 
-bool AdapterPlayer::is_freeplayer()
-{
-	return (insvr_ == 0);
+	if( insvr_ != 0 && insvr_->is_instancestoryservice())
+		reset();
 }
 
 void AdapterPlayer::player_regist2world( PRO::Pro_ChrRegistToWorld_req* req, bool& autorelease)
@@ -64,12 +63,12 @@ void AdapterPlayer::player_regist2world( PRO::Pro_ChrRegistToWorld_req* req, boo
 	BaseStoryService* svr =CSSMODULE->get_storyservicebymap( req->mapid_);
 	ACE_ASSERT( svr != 0);
 
+	reset_instcache();
+
 	//保存值
 	this->insvr_ =svr;
 	this->gts_link_ =CSSMODULE->get_gtslinkbyuserglobal( global_index_);
 	this->uuid_.set_uuid( req->get_uuiduserid(), req->get_uuidinitstmp());
-
-	reset_instcache();
 
 	//注册到执行队列
 	NETCMD_FUN_MAP fun =boost::bind( &BaseStoryService::cts_chrreg2world_req, this->insvr_, _1, _2);
@@ -117,7 +116,7 @@ void AdapterPlayer::player_teleportout( PRO::Pro_AppTeleport_req* req, bool& aut
 
 	//发送返回
 	PRO::Pro_AppTeleport_ack* ack =PROTOCOL_NEW PRO::Pro_AppTeleport_ack();
-	PLAYERC_UUID_FILL( ack, req->get_uuidglobalindex(), req->get_uuiduserid(), req->get_uuidinitstmp());
+	PRO_UUID_FILL2( ack, req);
 	ack->result_ =ret;
 
 	if( ret == 0)
@@ -175,20 +174,107 @@ void AdapterPlayer::player_instcellproxy( PRO::Pro_AppEnterIns_req* req, bool& a
 	transcript_teleport_info* pteleport =tconf.get_teleportinfobyid( req->telid_);
 
 	S_INT_8 ret =0;
-	req->cellid_;
-	pteleport->instmap_id_;
+	InstanceStoryServiceImpl* psvr =CSSMODULE->get_inststorysvrbycellid( req->cellid_);
+	if( psvr == 0)
+		ret =5;	//没有可用的副本
+	else if( psvr->get_serverstate() != TRANSCRIPT_SVRST_CANENTER)
+		ret =7;	//不允许进入副本
+
+	if( ret != 0)
+	{
+		PRO::Pro_AppEnterIns_ack* ack =PROTOCOL_NEW PRO::Pro_AppEnterIns_ack();
+		PRO_UUID_FILL2( ack, req);
+		ack->result_ =ret;
+		CSSMODULE->send_to_cts( ack);
+		return;
+	}
+
+	//缓存注册信息
+	inst_uuid_cache_.set_uuid( req->get_uuiduserid(), req->get_uuidinitstmp());
+	inst_svr_cache_ =psvr;
+
+	//注册到执行队列
+	NETCMD_FUN_MAP fun =boost::bind( &BaseStoryService::cts_instenter_req, this->inst_svr_cache_, _1, _2);
+	NetCommand* pcmd =TASKCMD_NEW NetCommand( req, fun, true);
+	inst_svr_cache_->regist_netcmd( pcmd);
+	autorelease =false;
 }
 
 void AdapterPlayer::player_enterinstack( PRO::Pro_AppEnterIns_ack* ack, bool& autorelease)
 {
-	if( !ack->same_session( this->uuid_))
+	if( !ack->same_session( this->uuid_) || insvr_ == 0)
 		return;
 
+	bool bsucc =(ack->result_ == 0);
+
+	NETCMD_FUN_MAP fun =boost::bind( &BaseStoryService::cts_instenter_ack, this->insvr_, _1, _2);
+	NetCommand* pcmd =TASKCMD_NEW NetCommand( ack, fun, true);
+	insvr_->regist_netcmd( pcmd);
+	autorelease =false;
+
+	//如果注册成功，对于主世界来说需要注销玩家
+	if( bsucc)
+		this->reset();
+}
+
+void AdapterPlayer::player_enterinstconfirm( PRO::Pro_AppEnterInsConfirm_ntf* ntf, bool& autorelease)
+{
+	if( inst_svr_cache_ == 0 || !ntf->same_session( this->inst_uuid_cache_))
+		return;
+
+	insvr_ =inst_svr_cache_;
+	uuid_ =inst_uuid_cache_;
+	this->gts_link_ =CSSMODULE->get_gtslinkbyuserglobal( global_index_);
+
+	inst_svr_cache_ =0;
+	inst_uuid_cache_.reset();
+
+	NETCMD_FUN_MAP fun =boost::bind( &BaseStoryService::gts_instenterconfirm_ntf, this->insvr_, _1, _2);
+	NetCommand* pcmd =TASKCMD_NEW NetCommand( ntf, fun, true);
+	insvr_->regist_netcmd( pcmd);
+	autorelease =false;
 }
 
 void AdapterPlayer::player_enterinstovertime( PRO::Pro_AppEnterInsOvertime_ntf* ntf, bool& autorelease)
 {
-	if( !ntf->same_session( this->uuid_))
-		return;
+	//发送给副本服务器的
+	if( ntf->cellid_ != NO_INITVALUE)
+	{
+		BaseStoryService* svr =0;
+		if( has_instregistcache())
+		{
+			if( !ntf->same_session( inst_uuid_cache_))
+				return;
 
+			svr =this->inst_svr_cache_;
+		}
+		else if( insvr_ != 0 && insvr_->is_instancestoryservice())
+		{
+			if( !ntf->same_session( this->uuid_))
+				return;
+
+			svr =insvr_;
+		}
+
+		if( svr != 0)
+		{
+			NETCMD_FUN_MAP fun =boost::bind( &BaseStoryService::cts_enterinstovertime_ntf, svr, _1, _2);
+			NetCommand* pcmd =TASKCMD_NEW NetCommand( ntf, fun, true);
+			autorelease =false;
+
+			svr->regist_netcmd( pcmd);
+		}
+	}
+	else if( insvr_ != 0)
+	{
+		if( !ntf->same_session( this->uuid_))
+			return;
+
+		//发给主世界地图服务器的
+		NETCMD_FUN_MAP fun =boost::bind( &BaseStoryService::cts_enterinstovertime_ntf, this->insvr_, _1, _2);
+		NetCommand* pcmd =TASKCMD_NEW NetCommand( ntf, fun, true);
+		autorelease =false;
+
+		insvr_->regist_netcmd( pcmd);
+	}
 }

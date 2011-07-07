@@ -33,6 +33,12 @@ void CSSSvr::gts_netadapter( BasicProtocol* p, bool& autorelease)
 			user->player_teleportout( req, autorelease);
 			return;
 		}
+		else if( p->iid_ == AOI_ENTERINSCONFIRM_NTF)
+		{
+			Pro_AppEnterInsConfirm_ntf* ntf =dynamic_cast<Pro_AppEnterInsConfirm_ntf*>( p);
+			user->player_enterinstconfirm( ntf, autorelease);
+			return;
+		}
 	}
 
 	if( svr == 0)
@@ -44,9 +50,9 @@ void CSSSvr::gts_netadapter( BasicProtocol* p, bool& autorelease)
 	{
 		fun =boost::bind( &BaseStoryService::gts_instenter_req, svr, _1, _2);
 	}
-	else if( p->iid_ == AOI_ENTERINSCONFIRM_NTF)
+	else if( p->iid_ == AOI_QUITINS_REQ)
 	{
-		fun =boost::bind( &BaseStoryService::gts_instenterconfirm_ntf, svr, _1, _2);
+		fun =boost::bind( &BaseStoryService::gts_instquit_req, svr, _1, _2);
 	}
 	else if( p->iid_ == SVR_LNKEEPLOAD_NTF)
 	{

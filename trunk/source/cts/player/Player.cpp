@@ -82,6 +82,11 @@ void Player::instcell_confirm_overtime()
 	ntf->cellid_ =enter_instcell_ctrl_.inst_cell_->get_cellid();
 	send_to_css( ntf);
 
+	instcell_quit();
+}
+
+void Player::instcell_quit()
+{
 	//此时玩家已经从主世界退出，所以需要重新注册到主世界
 	StoryMapOption* opt =WORLDINFO->get_mainstorybyxy( this->lastposx_, this->lastposy_);
 	ACE_ASSERT( opt != 0);
