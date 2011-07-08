@@ -7,6 +7,7 @@
 */
 #include "SvrTeamInfo.h"
 
+#include <corelib/corelibdef.h>
 #include <reslib/deploy/GlobalConfig.h>
 #include <reslib/deploy/SvrTeamOption.h>
 

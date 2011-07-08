@@ -9,7 +9,7 @@
 #define __PROLIBDEF__H__
 
 //if prolib used by client, please comment this defined
-#define PROLIB_USED_BY_SERVERSIDE	1
+//#define PROLIB_USED_BY_SERVERSIDE	1
 
 #if PROLIB_USED_BY_SERVERSIDE
 	#include "corelib/memory/CoreMemory.h"
