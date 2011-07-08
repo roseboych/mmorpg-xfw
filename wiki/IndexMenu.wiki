@@ -2,17 +2,16 @@
 #labels Phase-Implementation,Phase-Requirements
 
 = mmorpg-xfw的目录索引 =
+<h4> *1.* 环境设置 </h4>
+<h5> 			*1.1* 如何编译项目 HowToBuildProject </h5>
+<h5> 			*1.2* 如何设置运行环境 HowToSettingDebugEnv </h5>
+<br>
+<h4> *2.* 项目目录结构 ProjectDirIntro </h4>
+<br>
+<h4> *3.* </h4>
 
-<h4> *1.* 环境设置 </h4> <br>
-<h5> *1.1* 如何编译项目 HowToBuildProject </h5> <br>
-<h5> *1.2* 如何设置运行环境 HowToSettingDebugEnv </h5>  <br>
-<br>
-<h4> *2.* 项目目录结构 ProjectDirIntro </h4> <br>
-
-
 <br>
 <br>
-<br>
-<h4> 其他 </h4>
+=== 其他 ===
 *开发中用到的第三方库和软件 LibAndTools * <br>
 *最近的修改 RecentChanges * <br>
