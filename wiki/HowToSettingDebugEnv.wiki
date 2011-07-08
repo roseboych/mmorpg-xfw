@@ -25,7 +25,7 @@
 <h5> *4.* 创建测试数据 </h5>
 		>mysql -u root -p <br>
 		>use gamedb; <br>
-		>call generate_testdata(1000,0); <br>
+		>call generate_testdata(1000,1000); <br>
 	
 <h5> *5.* 创建odbc数据源 </h5>
 		A. 打开控制面板 -> 管理工具 -> Data Sources(ODBC) <br>
@@ -52,6 +52,8 @@
 	* 压力测试需同时使用2个程序
 
 <h5> *2.* 执行tool-run\setup_debugenv.bat </h5>
+
+<h2>_注意_:必须是中文操作系统</h2>
 
 <br>
 >> IndexMenu <<
