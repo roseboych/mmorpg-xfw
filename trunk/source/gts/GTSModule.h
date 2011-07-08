@@ -31,7 +31,7 @@
 
 #define GTS_GETPLAYER_FROMCACHE( usr, pro)						\
 	Player* ##usr =get_player( ##pro->get_uuidglobalindex());	\
-	if( ##usr == 0 || ! ##p->same_session( ##usr->uuid_))		\
+	if( ##usr == 0 || !##pro->same_session( ##usr->uuid_))		\
 		return
 
 /**

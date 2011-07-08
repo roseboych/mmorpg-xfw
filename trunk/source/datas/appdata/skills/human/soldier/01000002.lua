@@ -1,8 +1,8 @@
-ï»¿-- reslib application
+-- reslib application
 -- @category	skill system script
 -- @package
 -- @author	Created by Lu Jianfeng ( lujf1978@163.com), 2010
--- å†°éœœæŠ¤ç›¾
+-- ±ùËª»¤¶Ü
 
 class 's0000_01000002' (skillimplbase)
 
@@ -18,6 +18,6 @@ function s0000_01000002:useskill( player, rundata)
 	return 0;
 end
 
--- æ³¨å†ŒæŠ€èƒ½åˆ°æ³¨å†Œè¡¨ä¸­
--- äººæ— æˆ˜å£« _skill_reg[0][0]
+-- ×¢²á¼¼ÄÜµ½×¢²á±íÖĞ
+-- ÈË×å Õ½Ê¿ _skill_reg[0][0]
 _skill_reg[0][0]["01000002"]=s0000_01000002();

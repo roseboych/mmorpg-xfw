@@ -31,7 +31,7 @@ svrteam节点定义了整个服务器组的部署情况
 	port:		服务器监听端口
 	-->
 	<dpx ip="127.0.0.1" port="40000">
-		<gamedb ip="127.0.0.1" port="4141" user="root" pwd="" dbname="gamedb"/>
+		<gamedb ip="127.0.0.1" port="3306" user="root" pwd="" dbname="gamedb"/>
 	</dpx>
 
 	<!--

@@ -1,16 +1,16 @@
-ï»¿-- css application
+-- css application
 -- @category	player script
 -- @package
 -- @author	Created by Lu Jianfeng ( lujf1978@163.com), 2010
--- è§’è‰²å±æ€§åŸºæœ¬é…ç½®è¡¨
+-- ½ÇÉ«ÊôĞÔ»ù±¾ÅäÖÃ±í
 
--- ç§æ—å’ŒèŒä¸šå±æ€§æ•°æ®é…ç½®
--- åŠ›é‡forceï¼Œæ•æ·agileï¼Œè€åŠ›enduranceï¼Œæ™ºåŠ›intellectï¼Œç²¾ç¥spiritï¼ŒæŠ¤ç”²armor
--- å‡çº§ç»éªŒ maxexp, maxhp, maxmp
--- æŒ‰ç…§å„ä¸ªç§æ—è¿›è¡Œåˆ†ç±»é…ç½®
+-- ÖÖ×åºÍÖ°ÒµÊôĞÔÊı¾İÅäÖÃ
+-- Á¦Á¿force£¬Ãô½İagile£¬ÄÍÁ¦endurance£¬ÖÇÁ¦intellect£¬¾«Éñspirit£¬»¤¼×armor
+-- Éı¼¶¾­Ñé maxexp, maxhp, maxmp
+-- °´ÕÕ¸÷¸öÖÖ×å½øĞĞ·ÖÀàÅäÖÃ
 -- 
 
--- å…¨å±€é…ç½®è¡¨
+-- È«¾ÖÅäÖÃ±í
 cfg_character_props ={}
 --race=0 profession=0 level 1~5
 cfg_character_props[0] ={}
@@ -36,8 +36,8 @@ cfg_character_props[0][1][5] ={ force=100, agile=105, armor=700, endurance=600, 
 
 
 
--- å±æ€§åˆå§‹åŒ–
--- @param player å½“å‰å¤„ç†çš„player
+-- ÊôĞÔ³õÊ¼»¯
+-- @param player µ±Ç°´¦ÀíµÄplayer
 function init_character_property( player)
 	if player == nil then return end;
 	
@@ -60,8 +60,8 @@ function init_character_property( player)
 	player.armor =props.armor;
 end
 
--- è§„æ•´propertyæ•°æ®ï¼Œé˜²æ­¢æœ‰è¶…è¿‡æœ€å¤§å€¼å‡ºç°çš„æƒ…å†µ
--- @param player å½“å‰å¤„ç†çš„player
+-- ¹æÕûpropertyÊı¾İ£¬·ÀÖ¹ÓĞ³¬¹ı×î´óÖµ³öÏÖµÄÇé¿ö
+-- @param player µ±Ç°´¦ÀíµÄplayer
 function max_character_property( player)
 	if player == nil then return end;
 	
