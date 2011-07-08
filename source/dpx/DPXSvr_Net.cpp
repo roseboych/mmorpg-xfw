@@ -37,7 +37,9 @@ void DPXSvr::cts_userlost_ntf( BasicProtocol* p, bool& autorelease)
 
 void DPXSvr::cts_userregist_ntf( BasicProtocol* p, bool& autorelease)
 {
-	DPX_GETPLAYER_FROMCACHE( user, p);
+	Player* user =get_player( p->get_uuidglobalindex());
+	if( user == 0)
+		return;
 
 	uuid_session id;
 	id.set_uuid( p->get_uuiduserid(), p->get_uuidinitstmp());

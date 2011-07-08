@@ -15,7 +15,8 @@
 
 MySkillContainer::MySkillContainer():
 owner_player_( 0),
-skill_tree_( 0)
+skill_tree_( 0),
+cur_skill_( 0)
 {
 }
 

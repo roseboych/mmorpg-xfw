@@ -10,7 +10,7 @@ region节点定义了整个大区包含的服务器组信息
 	user:	数据库用户名
 	pwd:	密码
 	-->
-	<userdb ip="127.0.0.1" port="4141" user="root" pwd="" dbname="userdb"/>
+	<userdb ip="127.0.0.1" port="3306" user="root" pwd="" dbname="userdb"/>
 
 	<!--
 	svrteam节点定义了大区包含的服务器组。可以有多个节点

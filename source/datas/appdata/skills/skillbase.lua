@@ -1,56 +1,56 @@
-ï»¿-- reslib application
+-- reslib application
 -- @category	skill system script
 -- @package
 -- @author	Created by Lu Jianfeng ( lujf1978@163.com), 2010
--- skillè„šæœ¬çš„åŸºç±»å®šä¹‰
+-- skill½Å±¾µÄ»ùÀà¶¨Òå
 
 class 'skillimplbase'
 	
 function skillimplbase:__init()
 end
 
--- å­¦ä¹ æŠ€èƒ½,å®Œæˆæ¡ä»¶åˆ¤å®šå’ŒæŸäº›å±æ€§å€¼çš„æ‰£é™¤
--- @param player	å½“å‰ç©å®¶
--- @return 0:æˆåŠŸ <0:ä¸é€šçš„å¤±è´¥æ¡ä»¶
+-- Ñ§Ï°¼¼ÄÜ,Íê³ÉÌõ¼şÅĞ¶¨ºÍÄ³Ğ©ÊôĞÔÖµµÄ¿Û³ı
+-- @param player	µ±Ç°Íæ¼Ò
+-- @return 0:³É¹¦ <0:²»Í¨µÄÊ§°ÜÌõ¼ş
 function skillimplbase:studyskill( player)
 	return -1;
 end
 
--- ä½¿ç”¨æŠ€èƒ½
--- @param player	å½“å‰ç©å®¶
--- @param rundata	æŠ€èƒ½æ•°æ®åŒ…
+-- Ê¹ÓÃ¼¼ÄÜ
+-- @param player	µ±Ç°Íæ¼Ò
+-- @param rundata	¼¼ÄÜÊı¾İ°ü
 function skillimplbase:useskill( player, rundata)
 	return 0;
 end
 
--- éç¬å‘æŠ€èƒ½çš„tickå…¥å£å‡½æ•°
--- @param player	å½“å‰ç©å®¶
--- @param rundata	è¿è¡Œæ—¶æ•°æ®
--- @param tnow		å½“å‰æ—¶é—´
--- @return	0:æ­£å¸¸æ‰§è¡Œ 1:skillç»“æŸ
+-- ·ÇË²·¢¼¼ÄÜµÄtickÈë¿Úº¯Êı
+-- @param player	µ±Ç°Íæ¼Ò
+-- @param rundata	ÔËĞĞÊ±Êı¾İ
+-- @param tnow		µ±Ç°Ê±¼ä
+-- @return	0:Õı³£Ö´ĞĞ 1:skill½áÊø
 function skillimplbase:process( player, rundata, tnow)
 	return 1;
 end
 
--- æŠ€èƒ½ç±»å‘½åè§„èŒƒ
+-- ¼¼ÄÜÀàÃüÃû¹æ·¶
 -- sxxxx_xxxxxxxx
--- æ‰€æœ‰å®ç°ç±»:så­—æ¯+2ä½åå…­è¿›åˆ¶è¡¨ç¤ºçš„ç§æ—+2ä½åå…­è¿›åˆ¶è¡¨ç¤ºçš„èŒä¸š+å­—æ¯'_'åˆ†å‰²+8ä½16è¿›åˆ¶è¡¨ç¤ºçš„æŠ€èƒ½ç¼–å·
+-- ËùÓĞÊµÏÖÀà:s×ÖÄ¸+2Î»Ê®Áù½øÖÆ±íÊ¾µÄÖÖ×å+2Î»Ê®Áù½øÖÆ±íÊ¾µÄÖ°Òµ+×ÖÄ¸'_'·Ö¸î+8Î»16½øÖÆ±íÊ¾µÄ¼¼ÄÜ±àºÅ
 
--- ç”¨æ¥æ³¨å†Œæ‰€æœ‰æ”¯æŒçš„æŠ€èƒ½å®ç°ç±»
+-- ÓÃÀ´×¢²áËùÓĞÖ§³ÖµÄ¼¼ÄÜÊµÏÖÀà
 _skill_reg ={}
 
--- äººæ—
+-- ÈË×å
 _skill_reg[0] ={}
------- æˆ˜å£«
+------ Õ½Ê¿
 _skill_reg[0][0] ={}
------- æ³•å¸ˆ
+------ ·¨Ê¦
 _skill_reg[0][1] ={}
 
-------------------------------------------------------------å®šä¹‰äº†å¯¹skillimplbaseç±»çš„å…¬å…±å‡½æ•°çš„å°è£…---------------------------------------------
--- å¯¹studyskillçš„å°è£…
--- @param skid		æŠ€èƒ½id
+------------------------------------------------------------¶¨ÒåÁË¶ÔskillimplbaseÀàµÄ¹«¹²º¯ÊıµÄ·â×°---------------------------------------------
+-- ¶ÔstudyskillµÄ·â×°
+-- @param skid		¼¼ÄÜid
 -- @param player	
--- @return 0:æˆåŠŸ -1:æŠ€èƒ½æœªæ³¨å†Œ
+-- @return 0:³É¹¦ -1:¼¼ÄÜÎ´×¢²á
 function skill_study( skid, player)
 	local sk =_skill_reg[player.race][player.profession][skid];
 	
@@ -59,7 +59,7 @@ function skill_study( skid, player)
 	return sk:studyskill( player);
 end
 
---å¯¹useskillçš„å°è£…
+--¶ÔuseskillµÄ·â×°
 -- @param skid
 -- @param player
 -- @param rundata

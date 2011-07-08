@@ -1,34 +1,34 @@
-ï»¿-- reslib application
+-- reslib application
 -- @category	buffer system script
 -- @package
 -- @author	Created by Lu Jianfeng ( lujf1978@163.com), 2010
--- bufferè„šæœ¬çš„åŸºç±»å®šä¹‰
+-- buffer½Å±¾µÄ»ùÀà¶¨Òå
 
 class 'bufferimplbase'
 
--- åˆå§‹åŒ–æ„é€ å‡½æ•°
+-- ³õÊ¼»¯¹¹Ôìº¯Êı
 function bufferimplbase:__init()
 end
 
--- playerå±æ€§åˆå§‹åŒ–æ—¶è°ƒç”¨çš„å‡½æ•°
--- @param player å½“å‰çš„player
+-- playerÊôĞÔ³õÊ¼»¯Ê±µ÷ÓÃµÄº¯Êı
+-- @param player µ±Ç°µÄplayer
 function bufferimplbase:initplayerprop( player)
 end
 
--- bufferçš„tickå‡½æ•°å…¥å£
--- @param player å½“å‰çš„player
--- @param buffdata å½“å‰è¦å¤„ç†çš„bufferæ•°æ®åŒ…
+-- bufferµÄtickº¯ÊıÈë¿Ú
+-- @param player µ±Ç°µÄplayer
+-- @param buffdata µ±Ç°Òª´¦ÀíµÄbufferÊı¾İ°ü
 function bufferimplbase:tick( player, buffdata)
 end
 
--- ä¿å­˜äº†æ‰€æœ‰çš„bufferå®ç°
+-- ±£´æÁËËùÓĞµÄbufferÊµÏÖ
 _buf_reg ={}
 
-------------------------------------------------------------å®šä¹‰äº†å¯¹bufferimplbaseç±»çš„å…¬å…±å‡½æ•°çš„å°è£…---------------------------------------------
+------------------------------------------------------------¶¨ÒåÁË¶ÔbufferimplbaseÀàµÄ¹«¹²º¯ÊıµÄ·â×°---------------------------------------------
 
--- å°è£…äº†å¯¹bufferç±»çš„è°ƒç”¨
--- @param iid	bufferå®ä¾‹åç§°,å’Œ.luæ–‡ä»¶åä¸€è‡´
--- @param player å½“å‰å¤„ç†çš„player
+-- ·â×°ÁË¶ÔbufferÀàµÄµ÷ÓÃ
+-- @param iid	bufferÊµÀıÃû³Æ,ºÍ.luÎÄ¼şÃûÒ»ÖÂ
+-- @param player µ±Ç°´¦ÀíµÄplayer
 function buff_initplayerprop( iid, player)
 	local buff_ins =_buf_reg[iid];
 	
@@ -37,10 +37,10 @@ function buff_initplayerprop( iid, player)
 	buff_ins:initplayerprop( player);
 end
 
--- å°è£…äº†å¯¹bufferç±»çš„è°ƒç”¨
--- @param iid	bufferå®ä¾‹åç§°,å’Œ.luæ–‡ä»¶åä¸€è‡´
--- @param player å½“å‰å¤„ç†çš„player
--- @param buffdata å½“å‰è¦å¤„ç†çš„bufferæ•°æ®åŒ…
+-- ·â×°ÁË¶ÔbufferÀàµÄµ÷ÓÃ
+-- @param iid	bufferÊµÀıÃû³Æ,ºÍ.luÎÄ¼şÃûÒ»ÖÂ
+-- @param player µ±Ç°´¦ÀíµÄplayer
+-- @param buffdata µ±Ç°Òª´¦ÀíµÄbufferÊı¾İ°ü
 function buff_tick( iid, player, buffdata)
 	local buff_ins =_buf_reg[iid];
 	

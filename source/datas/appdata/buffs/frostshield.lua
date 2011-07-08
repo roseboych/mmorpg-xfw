@@ -1,8 +1,8 @@
-ï»¿-- reslib application
+-- reslib application
 -- @category	buffer system script
 -- @package
 -- @author	Created by Lu Jianfeng ( lujf1978@163.com), 2010
--- å†°éœœæŠ¤ç›¾çš„è„šæœ¬å®šä¹‰
+-- ±ùËª»¤¶ÜµÄ½Å±¾¶¨Òå
 
 class 'b_frostshield' (bufferimplbase)
 
@@ -20,5 +20,5 @@ end
 function b_frostshield:tick( player, buffdata)
 end
 
--- æ³¨å†Œåˆ°_buf_regå…¨å±€å˜é‡
+-- ×¢²áµ½_buf_regÈ«¾Ö±äÁ¿
 _buf_reg["frostshield"] =b_frostshield();

@@ -1,4 +1,4 @@
-drop procedure if exists addbuffer;
+锘縟rop procedure if exists addbuffer;
 
 drop procedure if exists addchrinfo;
 
@@ -58,9 +58,9 @@ create table chr_buffer
 (
    bufferid             int not null,
    chrid                int not null,
-   types                smallint comment '0:系统buffer 1:应用buffer',
-   createtime           int comment 'yymmddhhssmm',
-   scopetime            int comment '相对时间类型的buffer有效',
+   types                smallint ,
+   createtime           int ,
+   scopetime            int ,
    primary key (bufferid, chrid)
 );
 
@@ -68,18 +68,18 @@ create table chrdata
 (
    chrid                int not null auto_increment,
    userid               int not null,
-   region               smallint not null comment '所在的大区',
+   region               smallint not null ,
    nickname             varchar(20) not null,
-   race                 smallint not null comment '1:人族',
-   profession           smallint not null comment '1:战士 2:法师',
-   sex                  smallint not null default 0 comment '0:man 1:female',
+   race                 smallint not null ,
+   profession           smallint not null ,
+   sex                  smallint not null default 0 ,
    moneys               int not null default 0,
    levels               int not null default 0,
    bagslots             smallint not null,
    skill01              int,
    skill02              int,
-   petid                int not null default -1 comment '-1:当前没有宠物 >= 0 关联到petdata表',
-   isdel                smallint not null default 0 comment '1:yes 0:no',
+   petid                int not null default -1 ,
+   isdel                smallint not null default 0 ,
    primary key (chrid),
    unique key AK_unq_chrnickname (nickname, region)
 )
@@ -120,7 +120,7 @@ create table chrdata_base
    lastposy             float not null default 2147483647,
    lastposz             float not null default 2147483647,
    lastfacing           float not null default -1,
-   died                 smallint not null default 0 comment '0:living 1:died',
+   died                 smallint not null default 0 ,
    exp                  int not null default 0,
    primary key (chrid)
 );
@@ -129,12 +129,12 @@ create table chritems
 (
    itemid               int not null auto_increment,
    chrid                int,
-   inavatar             smallint not null default 0 comment '0:在背包中 1:普通装 2:属于时装',
-   inpart               smallint not null default 0 comment 'inavatar=1,2 有效 0-16  0:表示存放的格子',
+   inavatar             smallint not null default 0 ,
+   inpart               smallint not null default 0 ,
    itemcode             int not null,
-   validatetype         smallint not null comment '0:按次计 1:按绝对时间计 2:永久',
-   starttime            int comment 'validatetype=0 表示剩余次数 =3保留 =1剩余的在线时间 =2开始时间yyyymmddhh',
-   endtime              int comment '=2时有效，表示结束时间  =0保存堆跌次数',
+   validatetype         smallint not null ,
+   starttime            int ,
+   endtime              int ,
    primary key (itemid)
 );
 
@@ -175,9 +175,7 @@ begin
         insert into chr_buffer( chrid, bufferid, types, createtime, scopetime)
             values( cid, bufid, t, ct, st);
     end if;
-    
-        
-    /*数据库错误*/
+           
     if row_count() = 0 then
         select -2;
     end if;
@@ -198,14 +196,12 @@ begin
 
     DECLARE EXIT HANDLER FOR SQLSTATE '23000'
     begin
-        /*昵称重复*/
         select -1;
     end;
     
     set @cnt=0;
     select count(chrid) into @cnt from chrdata where userid=uid and region=rid and isdel=0;
     if @cnt >= 5 then
-        /*最多4个*/
         select -2;
     else
         insert into chrdata(userid,region,nickname,race,profession,sex,moneys,levels,bagslots,skill01,skill02,petid,isdel)
@@ -242,7 +238,6 @@ create procedure addchritem (cid int, inp smallint, icode int, vtype smallint, s
 begin
     declare exit handler for sqlstate '23000' 
     begin
-        /*外键不存在*/
         select -1;
     end;
     
@@ -252,7 +247,6 @@ begin
     set @cnt =0;
     select @cnt := count(*) from chritems where chrid=cid and inavatar=0;
     if @cnt >= @bagnums then
-        /*背包数量满*/
         select -2;
     else
         insert into chritems(chrid,inavatar,inpart,itemcode,validatetype,starttime,endtime)
@@ -408,14 +402,12 @@ begin
         
         set @kk =1;
         while @kk <= @ss do
-            /*创建帐号*/
             set @vd =@jj*10000+@kk;
             insert into userdb.userinfo( username,password,validatetime,lastregion,types,isdel) 
                 values( @vd, @vd, 8888888, 1, 0, 0);
                 
             select @iid := last_insert_id();
                 
-            /*创建角色*/
             if @vd < ign then
                 call addchrinfo( @iid, 1, @iid, 0, 0, 0, 1000, 1000, 1000, 999999, 10, 10, 0, 0,
                     20, 10, 20, 10, 20, 10,
@@ -529,7 +521,6 @@ begin
     end;
     
     if dot = 0 then
-        /*背包到普通装*/
         update chritems set inavatar=1,inpart=pt where itemid=id and inavatar=0;
             
         if row_count() = 0 then
@@ -538,7 +529,6 @@ begin
             select 0;
         end if;
     elseif dot = 1 then
-        /*普通装到背包*/
         update chritems set inavatar=0,inpart=pt where itemid=id and inavatar=1;
             
         if row_count() = 0 then
@@ -547,7 +537,6 @@ begin
             select 0;
         end if;
     elseif dot = 2 then
-        /*背包到时装*/
         update chritems set inavatar=2,inpart=pt where itemid=id and inavatar=0;
             
         if row_count() = 0 then
@@ -557,7 +546,6 @@ begin
         end if;
 
     else
-        /*时装到背包*/
         update chritems set inavatar=0,inpart=pt where itemid=id and inavatar=2;
             
         if row_count() = 0 then

@@ -1,4 +1,4 @@
-drop procedure if exists getuserinfo;
+锘縟rop procedure if exists getuserinfo;
 
 drop index uinfo_isdel_ind on userinfo;
 
@@ -11,12 +11,12 @@ create table userinfo
    userid               int not null auto_increment,
    username             varchar(20) not null,
    password             varchar(33) not null,
-   validatetime         int comment '精确到分钟',
+   validatetime         int,
    lastregion           smallint default 0,
-   lastlogout           int not null default 0 comment 'yymmddhhss',
-   types                smallint not null default 0 comment '0:普通帐号 1:GM',
-   isdel                smallint not null default 0 comment '0:正常 1:封号',
-   deltime              int not null default 0 comment 'yymmddhhss',
+   lastlogout           int not null default 0,
+   types                smallint not null default 0,
+   isdel                smallint not null default 0,
+   deltime              int not null default 0,
    primary key (userid)
 )
 type = InnoDB;
