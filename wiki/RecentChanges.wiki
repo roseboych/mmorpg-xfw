@@ -1,6 +1,9 @@
 #summary 最近的重要修改
 #labels Featured
 
+<br>
+>> IndexMenu <<
+
 = r8 =
 
 Features added:
@@ -25,3 +28,6 @@ Bug Fixes:
 	* 修正了缺少头文件包含问题
 
 Known issues:
+
+<br>
+>> IndexMenu <<
