@@ -114,6 +114,7 @@ Player* InstanceStoryServiceImpl::player_regist( const BasicProtocol::internal_u
 
 	//初始化玩家基本信息
 	user->regist( uuid.global_index_, uuid.userid_, uuid.init_stmp_, chrid);
+	user->is_in_inst =true;
 
 	GTSLink* l =CSSMODULE->get_gtslinkbyuserglobal( user->global_index_);
 	ACE_ASSERT( l != 0);

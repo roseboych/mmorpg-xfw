@@ -3,7 +3,7 @@
 mapid:地图id
 leftposx,leftposy,bottomx,bottomy:地图坐标
 -->
-<mapinfo mapid="1" leftposx="-3823" leftposy="-5463" bottomx="13668" bottomy="12146">
+<mapinfo mapid="1" width="51200" height="51200">
 	<!--
 	定义了副本控制类 
 	ctrlclass: DefaultInstCtrl|定义了使用的控制类.如果未定义，使用缺省类

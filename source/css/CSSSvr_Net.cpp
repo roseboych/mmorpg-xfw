@@ -23,10 +23,6 @@ void CSSSvr::gts_netadapter( BasicProtocol* p, bool& autorelease)
 	{
 		ACE_Guard<ACE_Thread_Mutex> mon( player_mutex_);
 
-		if( user->insvr_ == 0 || !p->same_session( user->uuid_))
-			return;
-		svr =user->insvr_;
-
 		if( p->iid_ == AOI_TELEPORT_REQ)
 		{
 			Pro_AppTeleport_req *req =dynamic_cast<Pro_AppTeleport_req*>(p);
@@ -39,6 +35,10 @@ void CSSSvr::gts_netadapter( BasicProtocol* p, bool& autorelease)
 			user->player_enterinstconfirm( ntf, autorelease);
 			return;
 		}
+		else if( !p->same_session( user->uuid_))
+			return;
+
+		svr =user->insvr_;
 	}
 
 	if( svr == 0)
@@ -173,22 +173,8 @@ void CSSSvr::cts_netadapter( BasicProtocol* p, bool& autorelease)
 		}
 		else if( p->iid_ == SVR_USERLOST_NTF)
 		{
-			//玩家掉线特别处理
-			if( !p->same_session( user->uuid_))
-				return;
-
-			MODULE_LOG_DEBUG( MODULE_TEMP, "userlost from cts[adapter]. user:[%d]", p->uuid_.userid_);
-
-			if( user->insvr_)
-			{
-				NETCMD_FUN_MAP fun =boost::bind( &BaseStoryService::cts_userlost_ntf, user->insvr_, _1, _2);
-				NetCommand* pcmd =TASKCMD_NEW NetCommand( p, fun, true);
-				user->insvr_->regist_netcmd( pcmd);
-				autorelease =false;
-			}
-
-			//清除玩家信息
-			user->reset();
+			Pro_SvrUserLost_NTF * ntf =dynamic_cast<Pro_SvrUserLost_NTF*>( p);
+			user->player_userlost( ntf, autorelease);
 
 			return;
 		}

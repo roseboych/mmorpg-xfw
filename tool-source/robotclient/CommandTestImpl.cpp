@@ -405,6 +405,7 @@ void CommandTestImpl::InitScriptBind()
 			.def("teleport", (void (CommandTestImpl::*)(int,int))&CommandTestImpl::teleport)
 			.def("moveto", (void (CommandTestImpl::*)(int,int,int))&CommandTestImpl::moveto)
 			.def("enterinst", (void (CommandTestImpl::*)(int))&CommandTestImpl::enterinst)
+			.def("quitinst", (void (CommandTestImpl::*)(void))&CommandTestImpl::quitinst)
 			.def("petfollow", (void (CommandTestImpl::*)(int))&CommandTestImpl::petfollow)
 			.def("petback", (void (CommandTestImpl::*)(void))&CommandTestImpl::petback)
 
@@ -786,15 +787,24 @@ void CommandTestImpl::gts_linkdo()
 
 			break;
 		}
-		/*
+	case AOI_QUITINS_ACK:
+		{
+			Pro_AppQuitInst_ack* ack =dynamic_cast<Pro_AppQuitInst_ack*>( recv);
+
+			fm.Format( "退出副本回复 result:%d\r\n", ack->result_);
+			*pstr += fm;
+
+			break;
+		}
 	case APP_PLAYERMOVE_NTF:
 		{
 			Pro_PlayerMove_ntf* ntf =dynamic_cast<Pro_PlayerMove_ntf*>(recv);
-			fm.Format( "运动物体[%d][%d]移动到[x:%f,y:%f,z:%f]\r\n", ntf->unittype, ntf->unitid,
-				ntf->locationx_, ntf->locationy_, ntf->locationz_);
+			fm.Format( "玩家[%d][%d]移动到[x:%f,y:%f,z:%f] 状态[%d]\r\n", ntf->chrid_,
+				ntf->locationx_, ntf->locationy_, ntf->locationz_, ntf->curstate_);
 			*pstr =fm;
 			break;
 		}
+		/*
 	case AOI_UNITMOVE_ACK:
 		{
 			Pro_AppUnitMove_ack* ack =dynamic_cast<Pro_AppUnitMove_ack*>(recv);
@@ -1092,6 +1102,24 @@ void CommandTestImpl::enterinst( int v1)
 
 	Pro_AppEnterIns_req* req =new Pro_AppEnterIns_req();
 	req->telid_ =v1;
+
+	if( !send_to_gts( req))
+	{
+		ret_desc_ ="发送协议失败\r\n";
+		return;
+	}
+}
+
+void CommandTestImpl::quitinst()
+{
+	ret_desc_ ="";
+	if( !islogon())
+	{
+		ret_desc_ ="用户未登陆\r\n";
+		return;
+	}
+
+	Pro_AppQuitInst_req* req =new Pro_AppQuitInst_req();
 
 	if( !send_to_gts( req))
 	{

@@ -102,6 +102,8 @@ public:
 	S_INT_32	curchrid_;
 	//关联到的css服务器
 	CSSLink*	css_svr_;
+	//是否在迁移css服务器
+	S_BOOL		is_switchcss_;
 	//是否是副本服务器
 	S_BOOL		is_instsvr_;
 

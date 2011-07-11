@@ -101,6 +101,7 @@ void Player::instcell_quit()
 	loadreq->chrid_ =this->chrid_;
 	loadreq->mapid_ =opt->get_mapid();
 	loadreq->cssindex_ =opt->owner_css_->server_index_;
+	loadreq->is_quitinst_ =1;
 
 	send_to_css( loadreq);
 

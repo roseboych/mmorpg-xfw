@@ -63,7 +63,8 @@ Pro_ChrDel_ack::Pro_ChrDel_ack()
 
 //----------------------------Pro_ChrRegistToWorld_req------------//
 Pro_ChrRegistToWorld_req::Pro_ChrRegistToWorld_req()
-:inherit( GAME_CHRREGTOWORLD_REQ)
+:inherit( GAME_CHRREGTOWORLD_REQ),
+is_quitinst_( 0)
 {
 }
 

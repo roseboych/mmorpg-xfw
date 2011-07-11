@@ -18,6 +18,7 @@
 class BaseStoryService;
 
 namespace PRO{ 
+	class Pro_SvrUserLost_NTF;
 	class Pro_AppTeleport_req;
 	class Pro_AppTeleport_ack;
 	class Pro_ChrRegistToWorld_req;
@@ -40,6 +41,13 @@ public:
 	void send_to_gts( BasicProtocol* p);
 
 	void reset();
+
+	/**
+	* 玩家断线
+	* @param ntf
+	* @param autorelease
+	**/
+	void player_userlost( PRO::Pro_SvrUserLost_NTF* ntf, bool& autorelease);
 
 	void player_regist2world( PRO::Pro_ChrRegistToWorld_req* req, bool& autorelease);
 	void player_teleport( PRO::Pro_AppTeleport_ack* ack, bool& autorelease);

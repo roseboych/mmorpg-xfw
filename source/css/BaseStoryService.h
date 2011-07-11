@@ -138,9 +138,9 @@ protected:
 	bool						is_support_script_;
 
 	//服务线程定时器
-	TimerContainer	content_timer_;
+	TimerContainer		content_timer_;
 	//上一次处理时间
-	S_TIMESTAMP		last_dotime_;
+	S_TIMESTAMP			last_dotime_;
 
 	//处理的地图配置
 	StoryMapOption*		mapres_;

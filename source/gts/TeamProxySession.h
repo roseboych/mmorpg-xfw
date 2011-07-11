@@ -57,10 +57,11 @@ public:
 public:
 	PROXY_STATUS_ENUM	status_;
 	//保存玩家的session记录
-	uuid_session	uuid_;
+	uuid_session		uuid_;
+
 	//断线保持时临时存储的css指向
-	CSSLink*	lnkkeep_csslink_;
-	S_INT_32	lnkkeep_chrid_;
+	CSSLink*			lnkkeep_csslink_;
+	S_INT_32			lnkkeep_chrid_;
 
 	S_TIMESTAMP token_;
 

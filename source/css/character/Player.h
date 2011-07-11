@@ -169,6 +169,8 @@ public:
 	GTSLink*		gts_link_;
 	//是否正在进入副本
 	bool			is_entertranscript_;
+	//在副本中
+	bool			is_in_inst;
 
 	//上次更新坐标时间
 	ACE_UINT64		t_lastupdate_;

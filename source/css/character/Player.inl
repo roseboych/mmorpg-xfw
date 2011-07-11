@@ -82,11 +82,15 @@ S_FLOAT_32 Player::get_facing()
 inline 
 bool Player::is_needupdatepos( const ACE_UINT64& tnow)
 {
-	if( ::abs( lastposx_ - baseinfo_.posx_) < 10.f && ::abs( lastposy_ - baseinfo_.posy_) < 10.f &&
-		::abs( lastfacing_ - baseinfo_.facing_) < 5.f)
+	//副本不需要保存玩家位置
+	if( is_in_inst)
 		return false;
 
 	if( t_lastupdate_ + PLAYER_UPDATEPOS_TIMESTEP*1000 > tnow)
+		return false;
+
+	if( ::abs( lastposx_ - baseinfo_.posx_) < 10.f && ::abs( lastposy_ - baseinfo_.posy_) < 10.f &&
+		::abs( lastfacing_ - baseinfo_.facing_) < 5.f)
 		return false;
 
 	return true;

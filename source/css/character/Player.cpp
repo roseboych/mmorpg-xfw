@@ -20,7 +20,8 @@ Player::Player():inherit(),
 status_( PLAYERSTATUS_NONE),
 gts_link_( 0),
 fight_target_obj_( 0),
-is_entertranscript_( false)
+is_entertranscript_( false),
+is_in_inst( false)
 {
 	mybuffers_.set_owner( this);
 	myskills_.set_owner( this);
@@ -34,6 +35,7 @@ Player::~Player()
 	gts_link_ =0;
 	status_ =PLAYERSTATUS_NONE;
 	fight_target_obj_ =0;
+	is_in_inst =false;
 }
 
 Player* Player::create_player()
@@ -72,6 +74,7 @@ void Player::reset()
 	status_ =PLAYERSTATUS_NONE;
 	gts_link_ =0;
 	is_entertranscript_ =false;
+	is_in_inst =false;
 }
 
 S_INT_32 Player::get_id()
@@ -108,6 +111,15 @@ void Player::props_load( PRO::Pro_ChrLoad_ack* ack)
 void Player::regist_fin( PRO::Pro_ChrFin_NTF* fin)
 {
 	//TODO:存储装备信息
+	//如果是副本，则保留注册副本时保存的出生点信息
+	//同时把ntf协议中的位置信息修改为副本位置信息(副本位置不保存到数据库)
+	if( this->is_in_inst)
+	{
+		fin->baseinfo_.posx_ =baseinfo_.posx_;
+		fin->baseinfo_.posy_ =baseinfo_.posy_;
+		fin->baseinfo_.posz_ =baseinfo_.posz_;
+	}
+
 	PlayerData::init_others( fin);
 
 	this->status_ =PLAYERSTATUS_INSCENE;

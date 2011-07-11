@@ -1,12 +1,12 @@
 ﻿<!--
 定义了整个世界的构成。世界坐标以左下角坐标为原点坐标(0,0)。
-width:整个世界的宽度,单位cm
-height:整个世界的高度,单位cm
+width:整个世界的宽度,单位cm (必须是1000的整数倍)
+height:整个世界的高度,单位cm (必须是1000的整数倍)
 注：
 世界坐标：针对整个世界的坐标。
 地图坐标：地图的左上角坐标是(0,0),地图坐标是相对于左上角坐标的相对坐标.
 -->
-<worlddef width="512000" height="512000">
+<worlddef width="10240000" height="10240000">
 	<!--
 	出生点列表,可以对应不同的种族
 	-->
@@ -62,7 +62,10 @@ height:整个世界的高度,单位cm
 				tp:定义了目标点和from描述一致
 				-->
 				<to id="0" tp="2:1"/>
-			</port>
+			</port> 
+			<port id="1" from="2:1">
+				<to id="0" tp="1:1"/>
+			</port> 
 		</teleports>
 	</allteleports>
 	
@@ -75,8 +78,8 @@ height:整个世界的高度,单位cm
 		id:传送点id,全局唯一
 		mainmap:主地图 编号
 		instmap:副本地图编号
-		mx,my,mz:主地图的进入点
-		ix,iy,iz:副本地图的出生点
+		mx,my,mz:主地图的进入点, [地图坐标]
+		ix,iy,iz:副本地图的出生点 , [地图坐标]
 		-->
 		<teleport id="0" mainmap="1" instmap="1" mx="100" my="100" mz="0" ix="50" iy="50" iz="0" />
 	</transcripts-teleports>
@@ -91,7 +94,8 @@ height:整个世界的高度,单位cm
 		offsetx:相对世界坐标的x偏移
 		offsety:相对世界坐标的y偏移
 		-->
-		<map id="1" offsetx="0" offsety="0" desc=""/>
+		<map id="1" offsetx="0" offsety="0" desc="test map 1"/>
+		<map id="2" offsetx="102400" offsety="0" desc="test map 2"/>
 	</mainstorys>
 	
 	<!--
