@@ -482,18 +482,21 @@ protected:
 		LOAD_INT32_PRO( pdata, totlen, chrid_)
 		LOAD_INT32_PRO( pdata, totlen, mapid_)
 		LOAD_INT32_PRO( pdata, totlen, cssindex_)
+		LOAD_INT8_PRO( pdata, totlen, is_quitinst_)
 	END_LOAD_PRO()
 
 	BEGIN_SAVE_PRO( pdata, buflen, len, ext)
 		SAVE_INT32_PRO( pdata, buflen, len, chrid_)
 		SAVE_INT32_PRO( pdata, buflen, len, mapid_)
 		SAVE_INT32_PRO( pdata, buflen, len, cssindex_)
+		SAVE_INT8_PRO( pdata, buflen, len, is_quitinst_)
 	END_SAVE_PRO()
 
 	BEGIN_CLONE_PRO( Pro_ChrRegistToWorld_req, proo)
 		CLONE_VAR_PRO( proo, chrid_)
 		CLONE_VAR_PRO( proo, mapid_)
 		CLONE_VAR_PRO( proo, cssindex_)
+		CLONE_VAR_PRO( proo, is_quitinst_)
 	END_CLONE_PRO()
 
 public:
@@ -503,6 +506,8 @@ public:
 	S_INT_32	mapid_;
 	//gts使用
 	S_INT_32	cssindex_;
+	//是否是退出副本时触发的事件 0:no 1:yes
+	S_INT_8		is_quitinst_;
 };
 
 /**

@@ -23,6 +23,7 @@ service_( 0)
 	css_svr_ =0;
 	have_force_close_ =false;
 	is_instsvr_ =false;
+	is_switchcss_ =false;
 }
 
 Player::~Player()
@@ -52,6 +53,7 @@ void Player::reset()
 
 	have_force_close_ =false;
 	is_instsvr_ =false;
+	is_switchcss_ =false;
 }
 
 void Player::prepare()
@@ -67,6 +69,7 @@ void Player::prepare()
 
 	have_force_close_ =false;
 	is_instsvr_ =false;
+	is_switchcss_ =false;
 }
 
 void Player::proxy_confirm( TeamProxySession* proxy)

@@ -58,6 +58,8 @@ Player* MainStoryServiceImpl::player_regist( const BasicProtocol::internal_uuid&
 
 	//初始化玩家基本信息
 	user->regist( uuid.userid_, uuid.init_stmp_, chrid);
+	user->is_in_inst =false;
+
 	//注册到在线玩家
 	BaseStoryService::regist_to_onlineplayers( user);
 

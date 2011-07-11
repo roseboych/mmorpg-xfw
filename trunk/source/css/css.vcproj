@@ -59,9 +59,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="prolib_d.lib corelib_d.lib logmodule_d.lib reslib_d.lib apr-1.lib aprutil-1.lib apriconv-1.lib xml.lib ACEsd.lib PhysXLoader.lib NxCooking.lib"
+				AdditionalDependencies="prolib_d.lib corelib_d.lib logmodule_d.lib reslib_d.lib apr-1.lib aprutil-1.lib apriconv-1.lib xml.lib ACEsd.lib"
 				OutputFile="..\..\run\css\$(ProjectName)_d.exe"
-				AdditionalLibraryDirectories="..\lib;..\..\3lib\boost\bin;..\..\3lib\physx\bin;..\..\3lib\apr\debug;&quot;..\..\3lib\apr-util\debug&quot;;&quot;..\..\3lib\apr-iconv\debug&quot;"
+				AdditionalLibraryDirectories="..\lib;..\..\3lib\boost\bin;..\..\3lib\apr\debug;&quot;..\..\3lib\apr-util\debug&quot;;&quot;..\..\3lib\apr-iconv\debug&quot;"
 				GenerateDebugInformation="true"
 				TargetMachine="1"
 			/>
@@ -132,9 +132,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="prolib.lib corelib.lib logmodule.lib reslib.lib apr-1.lib aprutil-1.lib apriconv-1.lib xml.lib ACEs.lib PhysXLoader.lib NxCooking.lib"
+				AdditionalDependencies="prolib.lib corelib.lib logmodule.lib reslib.lib apr-1.lib aprutil-1.lib apriconv-1.lib xml.lib ACEs.lib"
 				OutputFile="..\..\run\css\$(ProjectName).exe"
-				AdditionalLibraryDirectories="..\lib;..\..\3lib\boost\bin;..\..\3lib\physx\bin;..\..\3lib\apr\release;&quot;..\..\3lib\apr-util\release&quot;;&quot;..\..\3lib\apr-iconv\release&quot;"
+				AdditionalLibraryDirectories="..\lib;..\..\3lib\boost\bin;..\..\3lib\apr\release;&quot;..\..\3lib\apr-util\release&quot;;&quot;..\..\3lib\apr-iconv\release&quot;"
 				GenerateDebugInformation="true"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
@@ -752,10 +752,6 @@
 					Name="quadtreeimpl"
 					>
 				</Filter>
-			</Filter>
-			<Filter
-				Name="physystem"
-				>
 			</Filter>
 		</Filter>
 		<Filter

@@ -81,6 +81,15 @@ void BaseStoryService::cts_chrreg2world_req( BasicProtocol* p, bool& autorelease
 	Pro_ChrRegistToWorld_req* req =dynamic_cast<Pro_ChrRegistToWorld_req*>(p);
 	Player* user =this->player_regist( p->uuid_, req->chrid_);
 
+	//为了保证协议的时序性，退出副本的请求一定是在注册到主世界地图之前发送
+	if( req->is_quitinst_)
+	{
+		Pro_AppQuitInst_ack* ack =PROTOCOL_NEW Pro_AppQuitInst_ack();
+		PRO_UUID_FILL( ack, user->global_index_, user->uuid_);
+		ack->result_ =0;
+		user->send_to_gts( ack);
+	}
+
 	//转发请求给gts
 	user->send_to_gts( req);
 	autorelease =false;
@@ -123,8 +132,11 @@ void BaseStoryService::cts_teleport_ack( BasicProtocol* p, bool& autorelease)
 	//保存最新位置
 	Pro_DBPosRotSave_ntf* ntf =PROTOCOL_NEW Pro_DBPosRotSave_ntf();
 	PRO_UUID_FILL( ntf, user->global_index_, user->uuid_);
+	//保存世界坐标
 	ntf->lastposx_ =ack->locationx_;
 	ntf->lastposy_ =ack->locationy_;
+	scene_manage_->local_to_world( ntf->lastposx_, ntf->lastposy_);
+
 	ntf->lastposz_ =ack->locationz_;
 	ntf->lastfacing_ =ack->facing_;
 
@@ -135,6 +147,10 @@ void BaseStoryService::cts_teleport_ack( BasicProtocol* p, bool& autorelease)
 	PRO_UUID_FILL( lntf, user->global_index_, user->uuid_);
 	lntf->chrid_ =user->chrid_;
 	lntf->cssindex_ =ack->cssindex_;
+
+	ack->result_ =0;
+	user->send_to_gts( ack);
+	autorelease =false;
 
 	CSSMODULE->send_to_dpx( lntf);
 }

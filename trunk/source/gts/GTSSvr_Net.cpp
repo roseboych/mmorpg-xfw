@@ -277,6 +277,8 @@ void GTSSvr::net_teleport_req( BasicProtocol* p, bool& autorelease)
 		ret =2;
 	else if( user->is_instsvr_)
 		ret =6;
+	else if( user->is_switchcss_)
+		ret =7;
 
 	if( ret != 0)
 	{
@@ -286,6 +288,8 @@ void GTSSvr::net_teleport_req( BasicProtocol* p, bool& autorelease)
 
 		return;
 	}
+
+	user->is_switchcss_ =true;
 
 	user->send_to_css( p);
 	autorelease =false;
@@ -301,6 +305,8 @@ void GTSSvr::css_teleport_ack( BasicProtocol* p, bool& autorelease)
 		user->status_ =PLAYERSTATUS_INGAME;
 		user->css_svr_ =this->get_csslink( ack->cssindex_);
 	}
+
+	user->is_switchcss_ =false;
 
 	user->send_protocol( p);
 	autorelease =false;
@@ -343,6 +349,8 @@ void GTSSvr::net_instenter_req( BasicProtocol* p, bool& autorelease)
 		ret =2;
 	else if( user->is_instsvr_)
 		ret =6;	//不能从副本进入副本
+	else if( user->is_switchcss_)
+		ret =8;
 
 	if( ret != 0)
 	{
@@ -352,6 +360,8 @@ void GTSSvr::net_instenter_req( BasicProtocol* p, bool& autorelease)
 
 		return;
 	}
+
+	user->is_switchcss_ =true;
 
 	user->send_to_css( p);
 	autorelease =false;
@@ -375,6 +385,8 @@ void GTSSvr::css_instenter_ack( BasicProtocol* p, bool& autorelease)
 		user->send_to_css( ntf);
 	}
 
+	user->is_switchcss_ =false;
+
 	user->send_protocol( p);
 	autorelease =false;
 }
@@ -383,7 +395,7 @@ void GTSSvr::net_instquit_req( BasicProtocol* p, bool& autorelease)
 {
 	GTS_GETPLAYER_FROMCACHE( user, p);
 
-	if( !user->is_ingame() || !user->is_instsvr_)
+	if( !user->is_ingame() || !user->is_instsvr_ || user->is_switchcss_)
 	{
 		Pro_AppQuitInst_ack* ack =PROTOCOL_NEW Pro_AppQuitInst_ack();
 		PRO_UUID_FILL2( ack, p);
@@ -391,6 +403,8 @@ void GTSSvr::net_instquit_req( BasicProtocol* p, bool& autorelease)
 		user->send_protocol( ack);
 		return;
 	}
+
+	user->is_switchcss_ =true;
 
 	user->send_to_css( p);
 	autorelease =false;
@@ -406,6 +420,8 @@ void GTSSvr::css_instquit_ack( BasicProtocol* p, bool& autorelease)
 		user->css_svr_ =0;
 		user->is_instsvr_ =false;
 	}
+
+	user->is_switchcss_ =false;
 
 	user->send_protocol( p);
 	autorelease =false;

@@ -55,6 +55,47 @@ void AdapterPlayer::reset_instcache()
 		reset();
 }
 
+void AdapterPlayer::player_userlost( PRO::Pro_SvrUserLost_NTF* ntf, bool& autorelease)
+{
+	bool bclear =false;
+	if( this->insvr_)
+	{
+		//玩家掉线特别处理
+		if( ntf->same_session( this->uuid_))
+		{
+			MODULE_LOG_DEBUG( MODULE_TEMP, "userlost from cts[adapter]. user:[%d] mapid:[%d]", ntf->uuid_.userid_, insvr_->get_storyoption()->get_mapid());
+
+			NETCMD_FUN_MAP fun =boost::bind( &BaseStoryService::cts_userlost_ntf, this->insvr_, _1, _2);
+			NetCommand* pcmd =TASKCMD_NEW NetCommand( ntf->clone(), fun, true);
+			this->insvr_->regist_netcmd( pcmd);
+
+			bclear =true;
+		}
+	}
+
+	if( this->inst_svr_cache_)
+	{
+		if( ntf->same_session( this->inst_uuid_cache_))
+		{
+			MODULE_LOG_DEBUG( MODULE_TEMP, "userlost from cts[adapter]. user:[%d] mapid:[%d]", ntf->uuid_.userid_, inst_svr_cache_->get_storyoption()->get_mapid());
+
+			NETCMD_FUN_MAP fun =boost::bind( &BaseStoryService::cts_userlost_ntf, this->inst_svr_cache_, _1, _2);
+			NetCommand* pcmd =TASKCMD_NEW NetCommand( ntf, fun, true);
+			this->inst_svr_cache_->regist_netcmd( pcmd);
+			autorelease =false;
+
+			bclear =true;
+		}
+	}
+
+	//清除玩家信息
+	if( bclear)
+	{
+		this->reset();
+		this->reset_instcache();
+	}
+}
+
 void AdapterPlayer::player_regist2world( PRO::Pro_ChrRegistToWorld_req* req, bool& autorelease)
 {
 	CSSOption* opt =CSSMODULE->get_owneropt();
@@ -79,6 +120,9 @@ void AdapterPlayer::player_regist2world( PRO::Pro_ChrRegistToWorld_req* req, boo
 
 void AdapterPlayer::player_teleportout( PRO::Pro_AppTeleport_req* req, bool& autorelease)
 {
+	if( !req->same_session( this->uuid_))
+		return;
+
 	ACE_ASSERT( this->insvr_ != 0);
 	//验证转跳点
 	S_INT_8 ret =0;
@@ -124,6 +168,7 @@ void AdapterPlayer::player_teleportout( PRO::Pro_AppTeleport_req* req, bool& aut
 		ack->cssindex_ =opt2->server_index_;
 		ack->mapid_ =t2->ownermapid_;
 
+		//目标地图的地图坐标
 		ack->locationx_ =t2->pos_.x_;
 		ack->locationy_ =t2->pos_.y_;
 		ack->locationz_ =t2->pos_.z_;

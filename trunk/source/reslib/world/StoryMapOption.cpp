@@ -49,12 +49,12 @@ bool StoryMapOption::load_mapres()
 	if( mapid_ == NO_INITVALUE || mid != mapid_)
 		return false;
 
-	leftx_ =XmlUtil::GetXmlAttrInt( root, "leftposx", 0);
-	lefty_ =XmlUtil::GetXmlAttrInt( root, "leftposy", 0);
-	bottomx_ =XmlUtil::GetXmlAttrInt( root, "bottomx", 0);
-	bottomy_ =XmlUtil::GetXmlAttrInt( root, "bottomy", 0);
-	width_ =bottomx_ - leftx_;
-	height_ =bottomy_ - lefty_;
+	width_ =XmlUtil::GetXmlAttrInt( root, "width", 0);
+	height_ =XmlUtil::GetXmlAttrInt( root, "height", 0);
+	leftx_ =0;
+	lefty_ =0;
+	bottomx_ =width_ -1;
+	bottomy_ =height_ -1;
 
 	if( width_ <= 0 || height_ <= 0)
 		return false;

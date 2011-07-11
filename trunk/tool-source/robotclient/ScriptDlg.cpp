@@ -48,7 +48,7 @@ void ScriptDlg::OnBnClickedRunBut()
 
          int ret =scrimpl_.RunLuaShellCmd( cmd);
          if( ret != 1)
-             AfxMessageBox("è„šæœ¬error!");
+             AfxMessageBox("½Å±¾error!");
 		 else
 		 {
              run_result_ =scrimpl_.ret_desc_ + "\r\n" + run_result_;
@@ -58,7 +58,7 @@ void ScriptDlg::OnBnClickedRunBut()
 	 }
 	 else
 	 {
-		AfxMessageBox("è¯·è¾“å…¥è„šæœ¬!");
+		AfxMessageBox("ÇëÊäÈë½Å±¾!");
 	 }	
 }
 
@@ -81,7 +81,7 @@ BOOL ScriptDlg::OnInitDialog()
 
     UpdateData( false);
 
-	//æ”¯æŒçš„è„šæœ¬å‡½æ•°
+	//Ö§³ÖµÄ½Å±¾º¯Êı
 	support_fun_.AddString( "logon('1','1')");
 	support_fun_.AddString( "logout()");
 	support_fun_.AddString( "selsvrteam(0)");
@@ -91,9 +91,10 @@ BOOL ScriptDlg::OnInitDialog()
 	support_fun_.AddString( "selchr(1)");
 	support_fun_.AddString( "delchr(1)");
 	support_fun_.AddString( "mapchat('xxxxx')");
-	support_fun_.AddString( "teleport(1,1)");
+	support_fun_.AddString( "teleport(0,0)");
 	support_fun_.AddString( "moveto(100,100,100)");
-	support_fun_.AddString( "enterinst(1)");
+	support_fun_.AddString( "enterinst(0)");
+	support_fun_.AddString( "quitinst()");
 	support_fun_.AddString( "petfollow(1)");
 	support_fun_.AddString( "petback()");
 
