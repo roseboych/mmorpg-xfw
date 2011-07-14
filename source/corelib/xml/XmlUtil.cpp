@@ -54,6 +54,23 @@ bool XmlUtil::GetXmlAttrBool( TiXmlElement* e, const char* attr, bool defv)
 		return defv;
 }
 
+bool XmlUtil::GetXmlAttrYesNo( TiXmlElement* e, const char* attr, bool defv)
+{
+	if( e == 0)
+		return defv;
+
+	const char* r =e->Attribute( attr);
+	if( r == 0)
+		return defv;
+
+	if( stricmp( r, "yes") ==0)
+		return true;
+	else if( stricmp( r, "no") ==0)
+		return false;
+	else
+		return defv;
+}
+
 bool XmlUtil::GetXmlAttrBoolFromInt( TiXmlElement* e, const char* attr, bool defv, int ntruev)
 {
 	if( e == 0)

@@ -39,6 +39,7 @@ public:
 	* @return 
 	**/
 	static bool GetXmlAttrBool( TiXmlElement* e, const char* attr, bool defv=false);
+	static bool GetXmlAttrYesNo( TiXmlElement* e, const char* attr, bool defv=false);
 	static int GetXmlAttrInt( TiXmlElement* e, const char* attr, int defv =0);
 	static float GetXmlAttrFloat( TiXmlElement* e, const char* attr, float defv =0.f);
 	static NS_STL::string GetXmlAttrStr( TiXmlElement*e, const char* attr, const char* defv="");
