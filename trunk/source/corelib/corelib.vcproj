@@ -1115,6 +1115,50 @@
 				>
 			</File>
 		</Filter>
+		<Filter
+			Name="condition"
+			>
+			<File
+				RelativePath=".\condition\ConditionContext.h"
+				>
+			</File>
+			<File
+				RelativePath=".\condition\ConditionElement.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\condition\ConditionElement.h"
+				>
+			</File>
+			<File
+				RelativePath=".\condition\ConditionLeaf.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\condition\ConditionLeaf.h"
+				>
+			</File>
+			<File
+				RelativePath=".\condition\ConditionNode.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\condition\ConditionNode.h"
+				>
+			</File>
+			<File
+				RelativePath=".\condition\ConditionValue.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\condition\ConditionValue.h"
+				>
+			</File>
+			<File
+				RelativePath=".\condition\IPropertyOperator.h"
+				>
+			</File>
+		</Filter>
 		<File
 			RelativePath=".\corelibdef.h"
 			>
