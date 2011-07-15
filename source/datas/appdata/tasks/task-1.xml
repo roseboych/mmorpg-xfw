@@ -1,0 +1,73 @@
+<!--
+任务定义
+-->
+<task id="1">
+	<!--
+	name：任务名称，客户端显示用。根据不同的客户端设计不同的rich text显示
+	-->
+	<name><![CDATA[送信]]></name>
+	<!--
+	desc：描述。
+	-->
+	<desc><![CDATA[把信送给xxx同学]]></desc>
+	<!--
+	获取任务的条件
+	-->
+	<get-condition>
+		<!--
+		客户端用来判断是否可以接任务的脚本
+		-->
+		<client>
+		<![CDATA[ ]]>
+		</client>
+		<!--
+		服务器用来判断是否可以接任务的脚本
+		-->
+		<server>
+		<![CDATA[ 
+		function task_cangetit()
+		end
+		]]>
+		</server>
+	</get-condition>
+	<!--
+	是否完成任务判断脚本
+	-->
+	<submit-condition>
+		<client>
+		</client>
+		<server>
+		</server>
+	</submit-condition>
+	<!--
+	任务消耗，在提交任务时将要扣除的部分
+	-->
+	<task-consume>
+		<!--
+		消耗物品
+		id:物品编号，必须在物品列表中
+		num:物品数量
+		taskitem:[yes|no]是否必须是任务物品,缺省yes
+		destroy:[yes|no]是否在提交任务之后销毁该物品,缺省yes
+		-->
+		<item id="400000001" num="1" taskitem="yes" destroy="yes" />
+	</task-consume>
+	<!--
+	任务奖励
+	-->
+	<task-reward>
+		<!--
+		奖励分组，给玩家多个选择。
+		id:分组id，在当前奖励配置中唯一。从1开始连续编号
+		exp:奖励的经验
+		-->
+		<group id="1" exp="100">
+			<!--
+			奖励的物品
+			id:物品编号，必须在物品列表中
+			num:物品数量
+			-->
+			<item id="300000001" num="2" />
+		</group>
+	</task-reward>
+</task>

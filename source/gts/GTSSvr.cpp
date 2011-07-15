@@ -250,6 +250,8 @@ void GTSSvr::player_disconnected( GTS_Service* ps)
 	}
 
 	//选服成功
+	//TODO:断线保持
+	/*
 	if( ps->player_->is_ingame())
 	{
 		MODULE_LOG_DEBUG( MODULE_TEMP, "userlost from client. user:[%d], and will keep living in 5 minutes.", ps->player_->uuid_.userid_);
@@ -268,6 +270,7 @@ void GTSSvr::player_disconnected( GTS_Service* ps)
 		player_linkkeep( ps->player_);
 	}
 	else
+	*/
 	{
 		MODULE_LOG_DEBUG( MODULE_TEMP, "userlost from client. user:[%d]", ps->player_->uuid_.userid_);
 
