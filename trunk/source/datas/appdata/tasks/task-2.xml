@@ -1,0 +1,33 @@
+<task id="2">
+	<name><![CDATA[´òÒ°Öí]]></name>
+	<desc><![CDATA[´òÒ°Öí»ñµÃ10¸öÒ°Öíâ²ÑÀ]]></desc>
+	<get-condition>
+		<client>
+		<![CDATA[ ]]>
+		</client>
+		<server>
+		<![CDATA[ 
+		function task_cangetit()
+		end
+		]]>
+		</server>
+	</get-condition>
+	<submit-condition>
+		<client>
+		<![CDATA[ ]]>
+		</client>
+		<server>
+		<![CDATA[ ]]>
+		</server>
+	</submit-condition>
+	<task-consume>
+		<item id="400000002" num="1" taskitem="yes" destroy="yes" />
+	</task-consume>
+	<task-reward>
+		<group id="1" exp="0">
+			<item id="300000001" num="2" />
+		</group>
+		<group id="2" exp="1000">
+		</group>
+	</task-reward>
+</task>

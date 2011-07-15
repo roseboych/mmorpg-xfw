@@ -784,6 +784,30 @@
 					RelativePath=".\storyserviceimpl\MainStoryServiceImpl.h"
 					>
 				</File>
+				<Filter
+					Name="EnterInstCondition"
+					>
+					<File
+						RelativePath=".\storyserviceimpl\EnterInstCondHelper.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\storyserviceimpl\EnterInstCondHelper.h"
+						>
+					</File>
+					<File
+						RelativePath=".\storyserviceimpl\EnterInstConditionBase.h"
+						>
+					</File>
+					<File
+						RelativePath=".\storyserviceimpl\EnterInstCondOfTask.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\storyserviceimpl\EnterInstCondOfTask.h"
+						>
+					</File>
+				</Filter>
 			</Filter>
 			<Filter
 				Name="instancestory"

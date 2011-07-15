@@ -4,18 +4,17 @@
 <br>
 >> IndexMenu <<
 
-= r8 =
+= r8, r18 =
 
 Features added:
-  * 增加了进入和退出副本的流程控制
-
+	* 增加了进入和退出副本的功能
+	* 增加了副本控制接口定义
+	
 Enhancements:
 
 Bug Fixes:
 
 Known issues:
-  * 对进入主世界地图和异常短线处理的影响未调试。
-
 
 = r10, r11 =
 
@@ -28,6 +27,19 @@ Bug Fixes:
 	* 修正了缺少头文件包含问题
 
 Known issues:
+
+= r8 =
+
+Features added:
+  * 增加了进入和退出副本的流程控制
+
+Enhancements:
+
+Bug Fixes:
+
+Known issues:
+  * 对进入主世界地图和异常短线处理的影响未调试。
+
 
 <br>
 >> IndexMenu <<

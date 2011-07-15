@@ -4,9 +4,28 @@ mapid:地图id
 leftposx,leftposy,bottomx,bottomy:地图坐标
 -->
 <mapinfo mapid="1" width="51200" height="51200">
-	<!--
-	定义了副本控制类 
-	ctrlclass: DefaultInstCtrl|定义了使用的控制类.如果未定义，使用缺省类
-	-->
-	<inst_ctrl ctrlclass=""/>
+
+	<enter_condition check="yes" condtype="class" classimpl="EnterInstCondOfTask" >
+		<classimpl-condition>
+			<EnterInstCondOfTask>
+			</EnterInstCondOfTask>
+		</classimpl-condition>
+		<sys-condition>
+			<desc>玩家等级在1~10级，经验值大于1000</desc>
+			<condition type="node" connector="and">
+				<condition type="leaf" operator="between" >
+					<lparam type="const" consttype="int" constvalue="1" />
+					<rparam type="const" consttype="int" constvalue="10" />
+					<xparam type="object" objectname="curplayer" propertyname="level" />
+				</condition>
+				<condition type="leaf" operator="great" >
+					<lparam type="object" objectname="curplayer" propertyname="exp" />
+					<rparam type="const" consttype="int" constvalue="1000" />
+				</condition>
+			</condition>
+		</sys-condition>
+	</enter_condition>
+	
+	<inst_ctrl ctrlclass="DefaultInstCtrl|"/>
+
 </mapinfo>

@@ -1,50 +1,61 @@
 <!--
-ç‰©å“é…ç½®ä¿¡æ¯
+ÎïÆ·ÅäÖÃÐÅÏ¢
 -->
 <items>
-  <!--è£…å¤‡ç‰©å“-->
+  <!--
+  ×°±¸ÎïÆ·
+  -->
   <equipment>
     <!--
-	  itemid:ç‰©å“id
-    pos:è£…å¤‡ä½ç½®
-    level:è£…å¤‡ç­‰çº§
-    twohand:1:åŒæ‰‹æ­¦å™¨ 0:å•æ‰‹æ­¦å™¨
+	  itemid:ÎïÆ·id
+    pos:×°±¸Î»ÖÃ
+    level:×°±¸µÈ¼¶
+    twohand:1:Ë«ÊÖÎäÆ÷ 0:µ¥ÊÖÎäÆ÷
 	  -->
-    <item itemid="1" pos="0" level="1" twohand="0" desc="å·¦æ‰‹å‰‘">
+    <item itemid="1" pos="0" level="1" twohand="0" desc="×óÊÖ½£">
       <!--
-      å¯¹playerçš„å±žæ€§å½±å“ã€‚å¦‚æžœéœ€è¦å¯¹å±žæ€§è¿›è¡Œç»†åˆ†ï¼Œé‚£ä¹ˆå¯¹equipmentè¿›è¡Œ2çº§æˆ–è€…3çº§åˆ†ç±»
+      ¶ÔplayerµÄÊôÐÔÓ°Ïì¡£Èç¹ûÐèÒª¶ÔÊôÐÔ½øÐÐÏ¸·Ö£¬ÄÇÃ´¶Ôequipment½øÐÐ2¼¶»òÕß3¼¶·ÖÀà
       -->
       <props force="8" agile="2" armor="10"/>
       <!--
-      ä»·æ ¼é…ç½®
-      ä¹° gmbuy:æ¸¸æˆå¸ rmbuy:äººæ°‘å¸ å– gmsale:æ¸¸æˆå¸ rmsale:äººæ°‘å¸ (-1:ä¸æ”¯æŒ)
+      ¼Û¸ñÅäÖÃ
+      Âò gmbuy:ÓÎÏ·±Ò rmbuy:ÈËÃñ±Ò Âô gmsale:ÓÎÏ·±Ò rmsale:ÈËÃñ±Ò (-1:²»Ö§³Ö)
       -->
       <sale gmbuy="0" rmbuy="-1" gmsale="0" rmsale="-1"/>
     </item>
-    <item itemid="2" pos="0" level="1" twohand="1" desc="åŒæ‰‹æ³•æ–">
+    <item itemid="2" pos="0" level="1" twohand="1" desc="Ë«ÊÖ·¨ÕÈ">
       <props force="8" agile="2" armor="10" spirit="5"/>
       <sale gmbuy="0" rmbuy="-1" gmsale="0" rmsale="-1"/>
     </item>
   </equipment>
-  <!--æ¶ˆè´¹å“-->
+  <!--
+  Ïû·ÑÆ·
+  -->
   <consume>
     <!--
-    itemid:ç‰©å“id
-    stack: 0ä¸å…è®¸å †å ï¼Œå †å ä¸ªæ•°
+    itemid:ÎïÆ·id
+    stack: 0²»ÔÊÐí¶Ñµþ£¬¶Ñµþ¸öÊý
     -->
-    <item itemid="3" stack="20" desc="å°è¡€ç“¶">
+    <item itemid="300000001" stack="20" desc="Ð¡ÑªÆ¿">
       <sale gmbuy="0" rmbuy="-1" gmsale="0" rmsale="-1"/>
     </item>
   </consume>
-  <!--ä»»åŠ¡ç‰©å“-->
+  <!--
+  ÈÎÎñÎïÆ·
+  -->
   <task>
-    <item itemid="4" stack="0" desc="ä¿¡å°"></item>    
+    <item itemid="400000001" stack="0" desc="ÐÅ·â"></item>
+    <item itemid="400000002" stack="20" desc="â²ÑÀ"></item>
   </task>
-  <!--å•†å“-->
+  <!--
+  ÉÌÆ·
+  -->
   <merchandise>
   </merchandise>
-  <!--å…¶ä»–-->
+  <!--
+  ÆäËû
+  -->
   <other>
-    <item itemid="5" desc="ç‚‰çŸ³"></item>
+    <item itemid="5" desc="Â¯Ê¯"></item>
   </other>
 </items>

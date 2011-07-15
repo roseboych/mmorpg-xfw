@@ -1,0 +1,52 @@
+条件计算配置说明
+1.条件计算已二叉树的形式展现
+2.当前只支持int,float,string三种数据类型.
+3.当前支持的条件组合操作符 and,or,not三种.
+4.当前支持的运算操作符 >,>=,<,<=,==,!=, >< 对应 great,egreat,less,eless,equal,nequal,between七种.
+5.运算用的值支持 对象属性,常量值 2种.
+
+xml节点配置说明
+
+<!--
+条件配置的节点
+type:该节点的类型。 node:关系节点 leaf:运算节点
+connector:关系定义。在type=node时有效
+operator:运算定义。在type=leaf时有效
+				between: 在operator=between时 下面的xparam节点必须对应 > x <中的 x, lparam对应 > 前的值 rparam对应 <后的值。
+-->
+<condition type="node|leaf" connector="and|or|not" operator="great|egreat|less|eless|equal|nequal|between" >
+	<condition type="node|leaf" connector="and|or|not" operator="great|egreat|less|eless|equal|nequal|between" >
+		<!--
+		lparam:在condition的type=leaf时有效
+		type:参数类型 const:常量 object:对象属性值
+		consttype:在type=const时有效，定义了常量类型
+		constvalue:在type=const时有效，定义了常量值
+		objectname:在type=object时有效，定义了对象在context中的名称
+		propertyname:在type=object时有效，定义了对象中的属性名称
+		-->
+		<lparam type="const|object" consttype="int|float|string" constvalue="" objectname="" propertyname="" />
+		<rparam type="const|object" consttype="int|float|string" constvalue="" objectname="" propertyname="" />
+		<xparam type="const|object" consttype="int|float|string" constvalue="" objectname="" propertyname="" />
+	</condition>
+</condition>
+
+
+example
+需要实现的条件：玩家等级在1~10级，经验值大于1000,血量小于500
+<condition type="node" connector="and">
+	<condition type="node" connector="and">
+		<condition type="leaf" operator="between" >
+			<lparam type="const" consttype="int" constvalue="1" />
+			<rparam type="const" consttype="int" constvalue="10" />
+			<xparam type="object" objectname="curplayer" propertyname="level" />
+		</condition>
+		<condition type="leaf" operator="great" >
+			<lparam type="object" objectname="curplayer" propertyname="exp" />
+			<rparam type="const" consttype="int" constvalue="1000" />
+		</condition>
+	</condition>
+	<condition type="leaf" operator="less" >
+		<lparam type="object" objectname="curplayer" propertyname="hp" />
+		<rparam type="const" consttype="int" constvalue="500" />
+	</condition>
+</condition>
