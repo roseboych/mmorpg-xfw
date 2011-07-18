@@ -26,6 +26,7 @@ void Player::script_regist( lua_State* l)
 			.property( "money", &PlayerData::get_money, &PlayerData::set_money)
 			.property( "hp", &PlayerData::get_hp, &PlayerData::set_hp)
 			.property( "mp", &PlayerData::get_mp, &PlayerData::set_mp)
+			.property( "exp", &PlayerData::get_exp, &PlayerData::set_exp)
 			.property( "died", &PlayerData::get_died, &PlayerData::set_died)
 			.def_readwrite( "maxhp", &PlayerData::max_hp_)
 			.def_readwrite( "maxmp", &PlayerData::max_mp_)
@@ -39,4 +40,28 @@ void Player::script_regist( lua_State* l)
 			.def( "attachbuffer", (BufferRuntime* (PlayerData::*)(S_INT_32))&PlayerData::attach_newbuffer)
 			.def( "cancelbuffer", (void (PlayerData::*)(S_INT_32))&PlayerData::cancel_onebuffer)
 	];
+}
+
+PropertyOperatorValue Player::get_property( const char* propname)
+{
+	NS_STL::string pname =propname;
+	PropertyOperatorValue ret;
+	if( pname == "sex")
+		ret.set_int( get_sex());
+	else if( pname == "race")
+		ret.set_int( get_race());
+	else if( pname == "level")
+		ret.set_int( get_level());
+	else if( pname == "hp")
+		ret.set_int( get_hp());
+	else if( pname == "mp")
+		ret.set_int( get_mp());
+	else if( pname == "exp")
+		ret.set_int( get_exp());
+	else
+	{
+		ACE_ASSERT( false && "player not support such property");
+	}
+
+	return ret;
 }

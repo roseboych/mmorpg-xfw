@@ -24,6 +24,10 @@ public:
 	virtual int get_mp() =0;
 	virtual void set_mp( int v) =0;
 	virtual int inc_mp( int v) =0;
+	//经验
+	virtual int get_exp() =0;
+	virtual void set_exp( int v) =0;
+	virtual int inc_exp( int v) =0;
 	//力量force
 	virtual int get_force() =0;
 	virtual void set_force( int v) =0;

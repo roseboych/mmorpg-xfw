@@ -14,6 +14,7 @@
 #include <string>
 
 class ConditionContext;
+class TiXmlElement;
 
 /**
 * @class ConditionValue
@@ -41,6 +42,8 @@ public:
 	ConditionValueConst( S_FLOAT_32 val);
 	ConditionValueConst( const S_CHAR_8* val);
 
+	ConditionValueConst( TiXmlElement* e);
+
 	virtual PropertyOperatorValue get_conditionvalue( ConditionContext& context);
 
 protected:
@@ -56,6 +59,8 @@ class ConditionValueObject : public ConditionValue
 {
 public:
 	ConditionValueObject( const char* objname, const char* propname);
+
+	ConditionValueObject( TiXmlElement* e);
 
 	virtual PropertyOperatorValue get_conditionvalue( ConditionContext& context);
 

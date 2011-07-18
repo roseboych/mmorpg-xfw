@@ -72,7 +72,7 @@ public:
 	NS_STL::string	mapdesc_;
 
 	//相对世界地图的坐标偏移
-	S_INT_32	offsetx_, offsety_;
+	S_INT_32		offsetx_, offsety_;
 
 	//副本地图扩展配置
 	//是否副本地图

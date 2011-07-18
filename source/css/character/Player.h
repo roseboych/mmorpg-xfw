@@ -22,6 +22,7 @@
 #include "PlayerData.h"
 #include "PlayerActionSelector.h"
 #include "UnitEventListener.h"
+#include <corelib/condition/IPropertyOperator.h>
 
 class GTSLink;
 
@@ -30,7 +31,7 @@ class GTSLink;
 * 
 * @brief 玩家信息
 **/
-class Player : public UnitBase, public PlayerData, public UnitEventListener
+class Player : public UnitBase, public PlayerData, public UnitEventListener, public IPropertyOperator
 {
 	typedef UnitBase inherit;
 public:
@@ -80,6 +81,9 @@ public:
 	virtual bool is_initfinish(){ return status_ > PLAYERSTATUS_REGIST;}
 
 	virtual bool can_beattacked( UnitBase* pattack);
+
+	//-----------------------------------IPropertyOperator virtual function implementation-------------------------------
+	virtual PropertyOperatorValue get_property( const char* propname);
 
 public:
 	/**

@@ -20,6 +20,9 @@ class ConditionNode : public ConditionElement
 {
 public:
 	ConditionNode( ConditionElement* l, ConditionElement* r =0, CONDITION_CONNECTOR connector =CONDITION_CONNECTOR_AND);
+	ConditionNode( TiXmlElement* e);
+
+	virtual ~ConditionNode();
 
 	virtual S_BOOL is_leaf(){ return false;}
 

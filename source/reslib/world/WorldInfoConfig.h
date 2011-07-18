@@ -53,7 +53,7 @@ public:
 	StoryMapOption* get_mainstorybyxy( S_FLOAT_32 x, S_FLOAT_32 y);
 
 	/**
-	* 根据分类获取分类描述
+	* 根据地图id获取副本地图描述
 	* @param ct
 	* @return
 	**/

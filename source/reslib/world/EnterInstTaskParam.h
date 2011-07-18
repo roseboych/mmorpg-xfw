@@ -10,9 +10,22 @@
 
 #include "reslib/world/EnterInstParamBase.h"
 
-class EnterInstParamOfTask : public EnterInstParamBase
+/**
+* @class EnterInstTaskParam
+* 
+* @brief 进入任务副本条件判断参数
+* 
+**/
+class EnterInstTaskParam : public EnterInstParamBase
 {
+	ENTERINSTCHECK_DEFINE( EnterInstTaskParam)
+public:
+	EnterInstTaskParam();
 
+	virtual bool load_params( TiXmlElement* ptr);
+
+public:
+	S_INT_32	level_;
 };
 
 #endif	//__ENTERINSTPARAMOFTASK__H__

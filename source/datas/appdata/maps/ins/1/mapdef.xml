@@ -5,22 +5,21 @@ leftposx,leftposy,bottomx,bottomy:地图坐标
 -->
 <mapinfo mapid="1" width="51200" height="51200">
 
-	<enter_condition check="yes" condtype="class" classimpl="EnterInstCondOfTask" >
+	<enter_condition check="yes" condtype="condition" classimpl="EnterInstTask" >
 		<classimpl-condition>
-			<EnterInstCondOfTask>
-			</EnterInstCondOfTask>
+			<EnterInstTask level="1" />
 		</classimpl-condition>
 		<sys-condition>
 			<desc>玩家等级在1~10级，经验值大于1000</desc>
 			<condition type="node" connector="and">
 				<condition type="leaf" operator="between" >
-					<lparam type="const" consttype="int" constvalue="1" />
+					<lparam type="const" consttype="int" constvalue="0" />
 					<rparam type="const" consttype="int" constvalue="10" />
 					<xparam type="object" objectname="curplayer" propertyname="level" />
 				</condition>
-				<condition type="leaf" operator="great" >
+				<condition type="leaf" operator="egreat" >
 					<lparam type="object" objectname="curplayer" propertyname="exp" />
-					<rparam type="const" consttype="int" constvalue="1000" />
+					<rparam type="const" consttype="int" constvalue="0" />
 				</condition>
 			</condition>
 		</sys-condition>

@@ -110,6 +110,25 @@ S_INT_32 PlayerData::inc_mp( S_INT_32 v)
 }
 
 inline 
+S_INT_32 PlayerData::get_exp()
+{
+	return baseinfo_.exp_;
+}
+
+inline
+void PlayerData::set_exp( S_INT_32 v)
+{
+	baseinfo_.exp_ =v;
+}
+
+inline
+S_INT_32 PlayerData::inc_exp( S_INT_32 v)
+{
+	baseinfo_.exp_ += v;
+	return baseinfo_.exp_;
+}
+
+inline 
 S_INT_32 PlayerData::get_force()
 {
 	return prop_force_;
