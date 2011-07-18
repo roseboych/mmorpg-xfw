@@ -21,6 +21,7 @@ class ConditionLeaf : public ConditionElement
 {
 public:
 	ConditionLeaf();
+	ConditionLeaf( TiXmlElement* e);
 	virtual ~ConditionLeaf();
 
 	virtual S_BOOL is_leaf(){ return true;}

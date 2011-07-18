@@ -1,26 +1,25 @@
-===== readme ====
+===== readme =====
 1. 对副本地图的扩展配置进行说明
 2. 扩展说明定义在mapdef.xml文件中的mapinfo根节点下面
 
-===== 内容说明 ====
+===== 内容说明 =====
 <mapinfo>
 	<!--
 	进入副本条件 
 	check:[yes|no] yes:需要检查进入条件 no:不需要检查进入条件
 	condtype:[class|condition|script] class:使用对应的类实现 condition:使用条件配置系统(condition) script:使用lua脚本
-	classimpl:(condtype=class时有效) [EnterInstCondOfTask]
-					EnterInstCondOfTask: 进入组队任务副本的条件判定类
+	classimpl:(condtype=class时有效) [EnterInstTask]
+					EnterInstTask: 进入组队任务副本的条件判定类
 	-->
-	<enter_condition check="yes|no" condtype="class|condition|script" classimpl="EnterInstCondOfTask|" >
+	<enter_condition check="yes|no" condtype="class|condition|script" classimpl="EnterInstTask|" >
 		<!--
 		系统实现对应的条件配置
 		-->
 		<classimpl-condition>
 			<!--
-			EnterInstCondOfTask实现对应的条件配置
+			EnterInstTask实现对应的条件配置
 			-->
-			<EnterInstCondOfTask>
-			</EnterInstCondOfTask>
+			<EnterInstTask level="1" />
 		</classimpl-condition>
 		<sys-condition>
 			<desc>玩家等级在1~10级，经验值大于1000</desc>

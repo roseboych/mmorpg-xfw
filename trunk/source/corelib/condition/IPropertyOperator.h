@@ -53,7 +53,7 @@ public:
 	}
 
 	bool operator > ( const PropertyOperatorValue& v) const{
-		ACE_ASSERT( (value_type_ == PROPERTYOPER_VT_STR || v.value_type_ == PROPERTYOPER_VT_STR) && value_type_ != v.value_type_);
+		ACE_ASSERT( !((value_type_ == PROPERTYOPER_VT_STR || v.value_type_ == PROPERTYOPER_VT_STR) && value_type_ != v.value_type_));
 		switch( value_type_)
 		{
 		case PROPERTYOPER_VT_INT:
@@ -69,7 +69,7 @@ public:
 	}
 
 	bool operator >= ( const PropertyOperatorValue& v) const{
-		ACE_ASSERT( (value_type_ == PROPERTYOPER_VT_STR || v.value_type_ == PROPERTYOPER_VT_STR) && value_type_ != v.value_type_);
+		ACE_ASSERT( !((value_type_ == PROPERTYOPER_VT_STR || v.value_type_ == PROPERTYOPER_VT_STR) && value_type_ != v.value_type_));
 		switch( value_type_)
 		{
 		case PROPERTYOPER_VT_INT:
@@ -85,7 +85,7 @@ public:
 	}
 
 	bool operator < ( const PropertyOperatorValue& v) const{
-		ACE_ASSERT( (value_type_ == PROPERTYOPER_VT_STR || v.value_type_ == PROPERTYOPER_VT_STR) && value_type_ != v.value_type_);
+		ACE_ASSERT( !((value_type_ == PROPERTYOPER_VT_STR || v.value_type_ == PROPERTYOPER_VT_STR) && value_type_ != v.value_type_));
 		switch( value_type_)
 		{
 		case PROPERTYOPER_VT_INT:
@@ -101,7 +101,7 @@ public:
 	}
 
 	bool operator <= ( const PropertyOperatorValue& v) const{
-		ACE_ASSERT( (value_type_ == PROPERTYOPER_VT_STR || v.value_type_ == PROPERTYOPER_VT_STR) && value_type_ != v.value_type_);
+		ACE_ASSERT( !((value_type_ == PROPERTYOPER_VT_STR || v.value_type_ == PROPERTYOPER_VT_STR) && value_type_ != v.value_type_));
 		switch( value_type_)
 		{
 		case PROPERTYOPER_VT_INT:
@@ -117,7 +117,7 @@ public:
 	}
 
 	bool operator == ( const PropertyOperatorValue& v) const{
-		ACE_ASSERT( (value_type_ == PROPERTYOPER_VT_STR || v.value_type_ == PROPERTYOPER_VT_STR) && value_type_ != v.value_type_);
+		ACE_ASSERT( !((value_type_ == PROPERTYOPER_VT_STR || v.value_type_ == PROPERTYOPER_VT_STR) && value_type_ != v.value_type_));
 		switch( value_type_)
 		{
 		case PROPERTYOPER_VT_INT:
@@ -133,7 +133,7 @@ public:
 	}
 
 	bool operator != ( const PropertyOperatorValue& v) const{
-		ACE_ASSERT( (value_type_ == PROPERTYOPER_VT_STR || v.value_type_ == PROPERTYOPER_VT_STR) && value_type_ != v.value_type_);
+		ACE_ASSERT( !((value_type_ == PROPERTYOPER_VT_STR || v.value_type_ == PROPERTYOPER_VT_STR) && value_type_ != v.value_type_));
 		switch( value_type_)
 		{
 		case PROPERTYOPER_VT_INT:

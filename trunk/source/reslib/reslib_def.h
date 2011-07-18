@@ -12,4 +12,17 @@
 
 #include <corelib/memory/CoreMemory.h>
 
+//功能支持
+enum FUNCTION_SUPPORT
+{
+	//none
+	FUNSUPPORT_NONE =0,
+	//c++实现
+	FUNSUPPORT_CLASSIMPL,
+	//条件判定实现
+	FUNSUPPORT_CONDITION,
+	//脚本支持
+	FUNSUPPORT_SCRIPT,
+};
+
 #endif	//__RESLIB_DEF__H__

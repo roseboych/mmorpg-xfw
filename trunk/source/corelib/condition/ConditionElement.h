@@ -11,6 +11,7 @@
 #include "corelib/corelibdef.h"
 
 class ConditionContext;
+class TiXmlElement;
 
 //定义了条件的组合方式
 enum CONDITION_CONNECTOR
@@ -47,20 +48,26 @@ enum CONDITION_OPERATOR
 class ConditionElement
 {
 public:
-	ConditionElement();
+	/**
+	* 从xml节点中构造condition
+	* @param e
+	* @return
+	**/
+	static ConditionElement* construct_condition( TiXmlElement* e);
 
+public:
 	/**
 	* 是否是叶子节点，只有叶子节点进行逻辑运算
 	* @return
 	**/
-	virtual S_BOOL is_leaf() =0;
+	virtual S_BOOL	is_leaf() =0;
 
 	/**
 	* 根据条件计算设定的条件逻辑
 	* @param context
 	* @return
 	**/
-	virtual S_BOOL condition_calcuate( ConditionContext& context) =0;
+	virtual S_BOOL	condition_calcuate( ConditionContext& context) =0;
 };
 
 #endif	//__CONDITIONELEMENT__H__

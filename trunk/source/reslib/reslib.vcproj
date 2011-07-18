@@ -345,15 +345,19 @@
 					Name="instance"
 					>
 					<File
+						RelativePath=".\world\EnterInstParamBase.cpp"
+						>
+					</File>
+					<File
 						RelativePath=".\world\EnterInstParamBase.h"
 						>
 					</File>
 					<File
-						RelativePath=".\world\EnterInstParamOfTask.cpp"
+						RelativePath=".\world\EnterInstTaskParam.cpp"
 						>
 					</File>
 					<File
-						RelativePath=".\world\EnterInstParamOfTask.h"
+						RelativePath=".\world\EnterInstTaskParam.h"
 						>
 					</File>
 					<File

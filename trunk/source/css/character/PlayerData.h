@@ -99,6 +99,10 @@ public:
 	inline virtual S_INT_32 get_mp();
 	inline virtual void set_mp( S_INT_32 v);
 	inline virtual S_INT_32 inc_mp( S_INT_32 v);
+	inline virtual S_INT_32 get_exp();
+	inline virtual void set_exp( S_INT_32 v);
+	inline virtual S_INT_32 inc_exp( S_INT_32 v);
+
 	inline virtual S_INT_32 get_force();
 	inline virtual void set_force( S_INT_32 v);
 	inline virtual S_INT_32 inc_force( S_INT_32 v);
