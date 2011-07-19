@@ -13,7 +13,11 @@
 #include <corelib/util/FileUtil.h>
 #include <corelib/log/logmacro.h>
 
+#include "reslib/deploy/GlobalConfig.h"
 #include "reslib/world/EnterInstParamBase.h"
+#include "reslib/world/StoryMapOption.h"
+
+#include <ace/Assert.h>
 
 InstMapOption::InstMapOption():
 ctrl_classname_( "")
@@ -22,11 +26,16 @@ ctrl_classname_( "")
 	enterinst_fun_ =FUNSUPPORT_NONE;
 	enterinst_param_ =0;
 	enterinst_condition_ =0;
-	enterinst_script_ ="";
+	inst_script_ ="";
 }
 
-S_BOOL InstMapOption::load_instmapopt( TiXmlElement* e)
+S_BOOL InstMapOption::load_instmapopt( TiXmlElement* e, StoryMapOption* storyopt)
 {
+	IConfigContentSource* dsrc =GLOBALCONFIG_INS->get_confsrc();
+	ACE_ASSERT( dsrc != 0);
+
+	inst_script_ =dsrc->get_txtfilecontent( storyopt->get_respath().c_str(), "inst-impl.lua");
+
 	TiXmlElement* entnode = e->FirstChildElement( "enter_condition");
 	if( entnode && !load_enterinstopt( entnode))
 		return false;
@@ -82,6 +91,7 @@ S_BOOL InstMapOption::load_enterinstopt( TiXmlElement* e)
 	else
 	{
 		//script
+		enterinst_fun_ =FUNSUPPORT_SCRIPT;
 	}
 
 	return true;

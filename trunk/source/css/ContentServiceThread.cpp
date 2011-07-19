@@ -58,7 +58,6 @@ void ContentServiceThread::end_threads()
 int ContentServiceThread::svc()
 {
 	BaseStoryService* svr =0;
-	//int loopnum =CSSMODULE->main_loop();
 
 	//初始化内容线程的tls
 	TLSContext tls_context;
@@ -66,17 +65,11 @@ int ContentServiceThread::svc()
 
 	ACE_UINT64 now_t =0;
 	ACE_Time_Value st( 0, 1000);
-	int sleepstep =0;
 
 	//线程循环
 	while( !will_exit_)
 	{
-		if( sleepstep >= 100)
-		{
-			ACE_OS::sleep( st);
-			sleepstep =0;
-		}
-		++sleepstep;
+		ACE_OS::sleep( st);
 
 		//获取服务，处理
 		svr =CSSMODULE->pop_storyservice();

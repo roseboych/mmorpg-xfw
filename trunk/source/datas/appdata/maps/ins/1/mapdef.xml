@@ -5,7 +5,7 @@ leftposx,leftposy,bottomx,bottomy:地图坐标
 -->
 <mapinfo mapid="1" width="51200" height="51200">
 
-	<enter_condition check="yes" condtype="condition" classimpl="EnterInstTask" >
+	<enter_condition check="yes" condtype="script" classimpl="EnterInstTask" >
 		<classimpl-condition>
 			<EnterInstTask level="1" />
 		</classimpl-condition>

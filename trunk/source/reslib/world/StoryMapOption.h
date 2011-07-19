@@ -1,4 +1,4 @@
-ï»¿/**
+/**
 * reslib
 *
 * @category		world config
@@ -26,7 +26,7 @@ class CSSOption;
 /**
 * @class StoryMapOption
 * 
-* @brief åœ°å›¾é…ç½®ä¿¡æ¯
+* @brief µØÍ¼ÅäÖÃĞÅÏ¢
 **/
 class StoryMapOption
 {
@@ -34,13 +34,13 @@ public:
 	StoryMapOption( const char* path, int mapid, int offsetx =0, int offsety =0, bool binst =false);
 
 	/**
-	* åŠ è½½åœ°å›¾èµ„æº
+	* ¼ÓÔØµØÍ¼×ÊÔ´
 	* @return
 	**/
 	bool load_mapres();
 
 	/**
-	* è·å–åœ°å›¾èµ„æºé…ç½®è·¯å¾„ï¼Œè·¯å¾„ä¸‹åŒ…å«å’Œè¯¥åœ°å›¾ç›¸å…³çš„æ‰€æœ‰èµ„æº
+	* »ñÈ¡µØÍ¼×ÊÔ´ÅäÖÃÂ·¾¶£¬Â·¾¶ÏÂ°üº¬ºÍ¸ÃµØÍ¼Ïà¹ØµÄËùÓĞ×ÊÔ´
 	* @return
 	**/
 	NS_STL::string get_mapdefpath(){ return res_path_;}
@@ -59,11 +59,13 @@ public:
 
 	bool worldxy_inthismap( S_FLOAT_32 x, S_FLOAT_32 y);
 
+	NS_STL::string get_respath(){ return res_path_;}
+
 public:
-	//åœ°å›¾ç¼–å·
+	//µØÍ¼±àºÅ
 	S_INT_32	mapid_;
 
-	//å®½åº¦å’Œé«˜åº¦(åœ°å›¾åæ ‡)
+	//¿í¶ÈºÍ¸ß¶È(µØÍ¼×ø±ê)
 	S_INT_32	leftx_, lefty_;
 	S_INT_32	bottomx_, bottomy_;
 	S_INT_32	width_;
@@ -71,20 +73,20 @@ public:
 
 	NS_STL::string	mapdesc_;
 
-	//ç›¸å¯¹ä¸–ç•Œåœ°å›¾çš„åæ ‡åç§»
+	//Ïà¶ÔÊÀ½çµØÍ¼µÄ×ø±êÆ«ÒÆ
 	S_INT_32		offsetx_, offsety_;
 
-	//å‰¯æœ¬åœ°å›¾æ‰©å±•é…ç½®
-	//æ˜¯å¦å‰¯æœ¬åœ°å›¾
+	//¸±±¾µØÍ¼À©Õ¹ÅäÖÃ
+	//ÊÇ·ñ¸±±¾µØÍ¼
 	bool			is_instancemap_;
-	//å‰¯æœ¬åœ°å›¾ç›¸å…³é…ç½®
+	//¸±±¾µØÍ¼Ïà¹ØÅäÖÃ
 	InstMapOption	instmap_opt_;
 
-	//æ‰€å±çš„cssæœåŠ¡å™¨,åªå¯¹ä¸»ä¸–ç•Œæœ‰æ•ˆï¼Œå¯¹å‰¯æœ¬æ— æ•ˆ
+	//ËùÊôµÄcss·şÎñÆ÷,Ö»¶ÔÖ÷ÊÀ½çÓĞĞ§£¬¶Ô¸±±¾ÎŞĞ§
 	CSSOption*	owner_css_;
 
 protected:
-	//èµ„æºä½ç½®
+	//×ÊÔ´Î»ÖÃ
 	NS_STL::string	res_path_;
 };
 

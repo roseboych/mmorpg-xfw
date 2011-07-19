@@ -1,4 +1,4 @@
-ï»¿/**
+/**
 * reslib
 *
 * @category		world config
@@ -24,7 +24,7 @@ offsety_( offsety),
 is_instancemap_( binst),
 owner_css_( 0)
 {
-	//æž„é€ è·¯å¾„
+	//¹¹ÔìÂ·¾¶
 	char buf[16] ={0,};
 	NS_STL::string ret =ACE_OS::itoa( mapid, buf, 10);
 	res_path_ += ret;
@@ -34,8 +34,7 @@ owner_css_( 0)
 bool StoryMapOption::load_mapres()
 {
 	IConfigContentSource* dsrc =GLOBALCONFIG_INS->get_confsrc();
-	if( dsrc == 0)
-		return false;
+	ACE_ASSERT( dsrc != 0);
 
 	NS_STL::string cnt =dsrc->get_txtfilecontent( res_path_.c_str(), "mapdef.xml");
 
@@ -59,7 +58,7 @@ bool StoryMapOption::load_mapres()
 	if( width_ <= 0 || height_ <= 0)
 		return false;
 
-	if( is_instancemap_ && !instmap_opt_.load_instmapopt( root))
+	if( is_instancemap_ && !instmap_opt_.load_instmapopt( root, this))
 		return false;
 
 	return true;
