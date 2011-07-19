@@ -15,6 +15,7 @@
 #include <reslib/skills/SkillTreeConfig.h>
 #include <reslib/buffers/BufferConfig.h>
 #include <reslib/gamesetting/XGameSetting.h>
+#include <reslib/world/WorldInfoConfig.h>
 
 #include "character/playerbuffer/BufferRuntime.h"
 
@@ -52,6 +53,13 @@ bool ScriptContext::regist_bindclass()
 	if( !BUFFER_CFG->regist_to_storyscriptcontext( *this))
 	{
 		MODULE_LOG_ERROR( MODULE_BOOT, "buffer module script regist to script context failed.......");
+		return false;
+	}
+
+	//世界信息注册
+	if( !WORLDINFO->regist_to_storyscriptcontext( *this))
+	{
+		MODULE_LOG_ERROR( MODULE_BOOT, "world data script regist to script context failed.......");
 		return false;
 	}
 

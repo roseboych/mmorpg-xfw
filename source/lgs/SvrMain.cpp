@@ -71,7 +71,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
 namespace app { namespace script {
 
-	bool ScriptContext::regist_bindclass()
+bool ScriptContext::regist_bindclass()
 {
 	return true;
 }

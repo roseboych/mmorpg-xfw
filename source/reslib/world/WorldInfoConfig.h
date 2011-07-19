@@ -1,4 +1,4 @@
-ï»¿/**
+/**
 * reslib
 *
 * @category		world config
@@ -22,10 +22,16 @@
 #include "reslib/world/TeleportConfig.h"
 #include "reslib/world/ToTranscriptConfig.h"
 
+#include <string>
+
+NAMESPACE_APPSCRIPT_BEGIN
+class ScriptContext;
+NAMESPACE_APPSCRIPT_END
+
 /**
 * @class WorldInfoConfig
 * 
-* @brief ä¸–ç•Œä¿¡æ¯é…ç½®
+* @brief ÊÀ½çĞÅÏ¢ÅäÖÃ
 **/
 class WorldInfoConfig
 {
@@ -38,13 +44,20 @@ public:
 	~WorldInfoConfig();
 
 	/**
-	* åˆå§‹åŒ–åœ°å›¾èµ„æº
+	* ³õÊ¼»¯µØÍ¼×ÊÔ´
 	* @return
 	**/
 	bool load_worldconfig();
 
 	/**
-	* è·å–ä¸»é€»è¾‘ä¸­ä½¿ç”¨çš„åœ°å›¾èµ„æº
+	* ×¢²áËùÓĞµÄbuffer½Å±¾µ½½Å±¾»·¾³
+	* @param context
+	* @param bool
+	**/
+	bool regist_to_storyscriptcontext( app::script::ScriptContext& context);
+
+	/**
+	* »ñÈ¡Ö÷Âß¼­ÖĞÊ¹ÓÃµÄµØÍ¼×ÊÔ´
 	* @param mid
 	* @return
 	**/
@@ -53,14 +66,14 @@ public:
 	StoryMapOption* get_mainstorybyxy( S_FLOAT_32 x, S_FLOAT_32 y);
 
 	/**
-	* æ ¹æ®åœ°å›¾idè·å–å‰¯æœ¬åœ°å›¾æè¿°
+	* ¸ù¾İµØÍ¼id»ñÈ¡¸±±¾µØÍ¼ÃèÊö
 	* @param ct
 	* @return
 	**/
 	StoryMapOption* get_instancemapres( S_INT_32 insid);
 
 	/**
-	* è®¡ç®—æ€»çš„åœ°å›¾æ•°,åŒ…æ‹¬å‰¯æœ¬æ•°é‡ï¼Œç”¨æ¥è®¡ç®—éœ€è¦å¯åŠ¨çš„çº¿ç¨‹æ•°
+	* ¼ÆËã×ÜµÄµØÍ¼Êı,°üÀ¨¸±±¾ÊıÁ¿£¬ÓÃÀ´¼ÆËãĞèÒªÆô¶¯µÄÏß³ÌÊı
 	**/
 	S_INT_32			get_mainstorynum();
 	S_INT_32			get_insstorynum();
@@ -77,21 +90,23 @@ protected:
 	void release();
 
 private:
-	//æ•´ä¸ªä¸–ç•Œçš„é•¿å®½
+	//Õû¸öÊÀ½çµÄ³¤¿í
 	int		worldwidth_;
 	int		worldheight_;
 
-	//å‡ºç”Ÿç‚¹
+	//³öÉúµã
 	WORLDBORNPOS_MAP		bornpos_;
-	//è½¬è·³ç‚¹
+	//×ªÌøµã
 	TeleportConfig			teleport_config_;
-	//å‰¯æœ¬è½¬è·³ç‚¹
+	//¸±±¾×ªÌøµã
 	ToTranscriptConfig		totranscript_config_;
 
-	//msåœ°å›¾èµ„æº
+	//msµØÍ¼×ÊÔ´
 	MAINSTORYOPTION_MAP		mainmaps_;
-	//insåœ°å›¾èµ„æº
+	//insµØÍ¼×ÊÔ´
 	INSTSTORYOPTION_MAP		instmaps_;
+	//¸±±¾½Å±¾
+	NS_STL::string			inst_script_;
 };
 
 #define WORLDINFO ACE_Singleton< WorldInfoConfig, ACE_Null_Mutex>::instance()

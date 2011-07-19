@@ -13,6 +13,7 @@
 #include <reslib/world/StoryMapOption.h>
 #include <reslib/world/InstMapOption.h>
 #include <corelib/condition/ConditionContext.h>
+#include <corelib/script/ScriptContext.h>
 #include "../BaseStoryService.h"
 #include "../character/Player.h"
 
@@ -65,6 +66,17 @@ S_BOOL EnterInstCondHelper::can_joininstance( BaseStoryService* psvr, StoryMapOp
 	}
 	else if( instopt->instmap_opt_.enterinst_fun_ == FUNSUPPORT_SCRIPT)
 	{
+		S_INT_32 bret =-1;
+		app::script::ScriptContext& context =psvr->get_scriptcontext();
+		try{
+			bret =luabind::call_function<S_INT_32>( context.get_luastate(), "inst_entercheck", instopt->get_mapid(), curplayer);
+		}
+		catch( ...){
+			lua_pop( context.get_luastate(), 1);
+			bret =-1;
+		}
+
+		return bret == 0;
 	}
 
 	return false;

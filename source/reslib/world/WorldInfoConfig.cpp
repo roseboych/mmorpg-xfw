@@ -1,4 +1,4 @@
-ï»¿/**
+/**
 * reslib
 *
 * @category		world config
@@ -8,6 +8,7 @@
 #include "reslib/world/WorldInfoConfig.h"
 
 #include <corelib/mconf/IConfigContentSource.h>
+#include <corelib/script/ScriptContext.h>
 #include <corelib/xml/XmlUtil.h>
 #include <corelib/util/ShareUtil.h>
 #include <corelib/util/FileUtil.h>
@@ -22,6 +23,33 @@ WorldInfoConfig::WorldInfoConfig()
 WorldInfoConfig::~WorldInfoConfig()
 {
 	release();
+}
+
+bool WorldInfoConfig::regist_to_storyscriptcontext( app::script::ScriptContext& context)
+{
+	//×¢²á¸±±¾»ù´¡½Å±¾
+	if( !context.run_script( inst_script_.c_str()))
+	{
+		MODULE_LOG_ERROR( MODULE_BOOT, "regist appdata/maps/ins/inst-base.lua script file failed");
+		return false;
+	}
+
+	//×¢²á¸÷¸ö¸±±¾µÄ½Å±¾
+	INSTSTORYOPTION_MAP::iterator eiter =instmaps_.end();
+	for( INSTSTORYOPTION_MAP::iterator iter =instmaps_.begin(); iter != eiter; ++iter)
+	{
+		StoryMapOption* opt =iter->second;
+		if( opt->instmap_opt_.inst_script_ != "")
+		{
+			if( !context.run_script( opt->instmap_opt_.inst_script_.c_str()))
+			{
+				MODULE_LOG_ERROR( MODULE_BOOT, "regist appdata/maps/ins/%d/inst-impl.lua script file failed", opt->get_mapid());
+				return false;
+			}
+		}
+	}
+
+	return true;
 }
 
 void WorldInfoConfig::release()
@@ -54,7 +82,7 @@ bool WorldInfoConfig::load_worldconfig()
 	worldwidth_ =XmlUtil::GetXmlAttrInt( root, "width", 0);
 	worldheight_ =XmlUtil::GetXmlAttrInt( root, "height", 0);
 
-	//åŠ è½½å‡ºç”Ÿç‚¹
+	//¼ÓÔØ³öÉúµã
 	TiXmlElement* bn =root->FirstChildElement( "bornpos");
 	if( bn)
 	{
@@ -74,7 +102,7 @@ bool WorldInfoConfig::load_worldconfig()
 		}
 	}
 
-	//åŠ è½½è½¬è·³ç‚¹
+	//¼ÓÔØ×ªÌøµã
 	TiXmlElement* teleports =root->FirstChildElement( "allteleports");
 	if( teleports)
 	{
@@ -89,7 +117,7 @@ bool WorldInfoConfig::load_worldconfig()
 			return false;
 	}
 
-	//åŠ è½½ä¸»é€»è¾‘åœ°å›¾
+	//¼ÓÔØÖ÷Âß¼­µØÍ¼
 	TiXmlElement* maps =root->FirstChildElement( "mainstorys");
 	if( maps == 0)
 		return false;
@@ -120,7 +148,15 @@ bool WorldInfoConfig::load_worldconfig()
 		mainmaps_[mid] =mr;
 	}
 
-	//åŠ è½½å‰¯æœ¬é…ç½®
+	//¼ÓÔØ¸±±¾»ù´¡½Å±¾
+	inst_script_ =dsrc->get_txtfilecontent( "appdata/maps/ins", "inst-base.lua");
+	if( inst_script_.size() <= 0)
+	{
+		MODULE_LOG_ERROR( MODULE_BOOT, "load instance base lua script file(appdata/maps/ins/inst-base.lua) failed");
+		return false;
+	}
+
+	//¼ÓÔØ¸±±¾ÅäÖÃ
 	TiXmlElement* inststorys =root->FirstChildElement( "inststorys");
 	if( inststorys)
 	{
@@ -173,7 +209,7 @@ void WorldInfoConfig::get_mainstorymapres( NS_STL::list<int>& mids, NS_STL::vect
 {
 	if( mids.size() == 0)
 	{
-		//èŽ·å–æ‰€æœ‰çš„
+		//»ñÈ¡ËùÓÐµÄ
 		for( MAINSTORYOPTION_MAP::iterator iter =mainmaps_.begin(); iter != mainmaps_.end(); ++iter)
 			mr.push_back( iter->second);
 	}
