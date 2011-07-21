@@ -773,18 +773,6 @@
 				RelativePath=".\ContentServiceThread.h"
 				>
 			</File>
-			<File
-				RelativePath=".\storyserviceimpl\EnterInstCondHelper.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\storyserviceimpl\EnterInstCondHelper.h"
-				>
-			</File>
-			<File
-				RelativePath=".\storyserviceimpl\EnterInstConditionBase.h"
-				>
-			</File>
 			<Filter
 				Name="mainstory"
 				>
@@ -837,6 +825,18 @@
 				Name="EnterInstCondition"
 				>
 				<File
+					RelativePath=".\storyserviceimpl\EnterInstCondHelper.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\storyserviceimpl\EnterInstCondHelper.h"
+					>
+				</File>
+				<File
+					RelativePath=".\storyserviceimpl\EnterInstConditionBase.h"
+					>
+				</File>
+				<File
 					RelativePath=".\storyserviceimpl\EnterInstTask.cpp"
 					>
 				</File>
@@ -845,6 +845,30 @@
 					>
 				</File>
 			</Filter>
+		</Filter>
+		<Filter
+			Name="tasks"
+			>
+			<File
+				RelativePath=".\tasks\TaskBase.h"
+				>
+			</File>
+			<File
+				RelativePath=".\tasks\TaskDefaultImpl.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\tasks\TaskDefaultImpl.h"
+				>
+			</File>
+			<File
+				RelativePath=".\tasks\TaskHelper.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\tasks\TaskHelper.h"
+				>
+			</File>
 		</Filter>
 		<File
 			RelativePath=".\css_pre.h"

@@ -48,7 +48,7 @@ void PlayerData::init_baseinfo( PRO::Pro_ChrLoad_ack* pack)
 		PRO::equipment_item &info =(*iter);
 
 		//获取物品配置
-		ItemInfoBase* pitem =ITEMRESMGR_INS->get_iteminfobyid( info.itemcode_);
+		ItemInfoBase* pitem =ITEMRES_CFG->get_iteminfobyid( info.itemcode_);
 		ACE_ASSERT( pitem != 0);
 		if( pitem == 0)
 			continue;

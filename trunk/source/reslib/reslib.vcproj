@@ -603,6 +603,62 @@
 				>
 			</File>
 		</Filter>
+		<Filter
+			Name="tasks"
+			>
+			<File
+				RelativePath=".\tasks\TaskConfig.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\tasks\TaskConfig.h"
+				>
+			</File>
+			<File
+				RelativePath=".\tasks\TaskConsume.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\tasks\TaskConsume.h"
+				>
+			</File>
+			<File
+				RelativePath=".\tasks\TaskInfo.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\tasks\TaskInfo.h"
+				>
+			</File>
+			<File
+				RelativePath=".\tasks\TaskParamBase.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\tasks\TaskParamBase.h"
+				>
+			</File>
+			<File
+				RelativePath=".\tasks\TaskReward.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\tasks\TaskReward.h"
+				>
+			</File>
+			<Filter
+				Name="classimpl"
+				>
+				<File
+					RelativePath=".\tasks\TaskDefaultImplParam.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\tasks\TaskDefaultImplParam.h"
+					>
+				</File>
+			</Filter>
+		</Filter>
 		<File
 			RelativePath=".\IPlayerProperty.h"
 			>

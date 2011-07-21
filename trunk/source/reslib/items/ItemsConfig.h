@@ -59,6 +59,6 @@ private:
 	ITEMS_MAP	items_;
 };
 
-#define ITEMRESMGR_INS	ACE_Singleton< ItemsConfig, ACE_Null_Mutex>::instance()
+#define ITEMRES_CFG		ACE_Singleton< ItemsConfig, ACE_Null_Mutex>::instance()
 
 #endif	//__ITEMSCONFIG__H__

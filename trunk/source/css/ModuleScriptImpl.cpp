@@ -16,6 +16,7 @@
 #include <reslib/buffers/BufferConfig.h>
 #include <reslib/gamesetting/XGameSetting.h>
 #include <reslib/world/WorldInfoConfig.h>
+#include <reslib/tasks/TaskConfig.h>
 
 #include "character/playerbuffer/BufferRuntime.h"
 
@@ -38,7 +39,7 @@ bool ScriptContext::regist_bindclass()
 	Player::script_regist( lua_state_);
 
 	//物品注册
-	if( !ITEMRESMGR_INS->regist_to_storyscriptcontext( *this))
+	if( !ITEMRES_CFG->regist_to_storyscriptcontext( *this))
 	{
 		MODULE_LOG_ERROR( MODULE_BOOT, "item resource script regist to script context failed.......");
 		return false;
@@ -53,6 +54,12 @@ bool ScriptContext::regist_bindclass()
 	if( !BUFFER_CFG->regist_to_storyscriptcontext( *this))
 	{
 		MODULE_LOG_ERROR( MODULE_BOOT, "buffer module script regist to script context failed.......");
+		return false;
+	}
+
+	if( !TASKRES_CFG->regist_to_storyscriptcontext( *this))
+	{
+		MODULE_LOG_ERROR( MODULE_BOOT, "task module script regist to script context failed.......");
 		return false;
 	}
 

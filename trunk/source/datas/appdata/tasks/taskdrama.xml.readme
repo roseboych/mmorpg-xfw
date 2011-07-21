@@ -1,0 +1,28 @@
+== readme ==
+
+== 内容 ==
+
+<!--
+任务编剧
+-->
+<task-drama>
+	<!--
+	定义了所有可用的或者曾经可用的任务
+	-->
+	<support-task>  
+		<!--
+		task 定义了任务
+		id: 任务编号，全局唯一.
+		validate:[yes|nor]当前是否有效
+		-->
+		<task id="1" validate="yes" />
+	</support-task>
+	<main-tasks>
+	</main-tasks>
+	<branch-tasks> 
+		<branch >
+		</branch>
+	</branch-tasks>
+	<system-tasks>
+	</system-tasks>
+</task-drama>

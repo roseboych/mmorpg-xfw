@@ -1,0 +1,35 @@
+===== readme =====
+1.定义了任务中用到的脚本函数
+2.脚本放在任务目录下
+3.脚本文件的命名：server.lua
+
+===== 内容说明 =====
+
+-- reslib application
+-- @category	task system script
+-- @package
+-- @author	Created by Lu Jianfeng ( lujf1978@163.com), 2011
+-- 任务脚本的实现类
+
+class 'task_任务编号' (taskbase)
+
+function task_任务编号:__init()
+	taskbase.__init()
+end
+
+-- 获取任务检查
+-- @param player	当前玩家
+-- @return 0:成功 <0:失败
+function task_任务编号:get_task( player)
+	return 0;
+end
+
+-- 提交任务检查
+-- @param player	当前玩家
+-- @return 0:成功 <0:失败
+function task_任务编号:submit_task( player)
+	return 0;
+end
+
+-- 注册任务类到注册表中
+_task_sc[副本编号]=task_任务编号();
