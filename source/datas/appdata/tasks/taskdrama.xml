@@ -1,17 +1,7 @@
-<!--
-任务编剧
--->
 <task-drama>
-	<!--
-	定义了所有可用的或者曾经可用的任务
-	-->
 	<support-task>  
-		<!--
-		task 定义了任务
-		id: 任务编号，全局唯一.
-		validate:当前是否有效 1:有效 0:无效
-		-->
-		<task id="1" validate="1" />
+		<task id="1" validate="yes" />
+		<task id="2" validate="yes" />
 	</support-task>
 	<main-tasks>
 	</main-tasks>

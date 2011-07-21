@@ -23,6 +23,7 @@
 #include <reslib/world/WorldInfoConfig.h>
 #include <reslib/items/ItemsConfig.h>
 #include <reslib/skills/SkillTreeConfig.h>
+#include <reslib/tasks/TaskConfig.h>
 #include <reslib/buffers/BufferConfig.h>
 #include <reslib/gamesetting/XGameSetting.h>
 
@@ -66,7 +67,7 @@ int CSSModule::before_module_init( int argc, ACE_TCHAR *argv[])
 		return -1;
 	}
 
-	if( !ITEMRESMGR_INS->load_itemconfig())
+	if( !ITEMRES_CFG->load_itemconfig())
 	{
 		MODULE_LOG_ERROR( MODULE_BOOT, "load item resource failed.....");
 		return -1;
@@ -81,6 +82,12 @@ int CSSModule::before_module_init( int argc, ACE_TCHAR *argv[])
 	if( !BUFFER_CFG->load_bufferconfig())
 	{
 		MODULE_LOG_ERROR( MODULE_BOOT, "load buffer config resource failed.....");
+		return -1;
+	}
+
+	if( !TASKRES_CFG->load_taskconfig())
+	{
+		MODULE_LOG_ERROR( MODULE_BOOT, "load task config resource failed.....");
 		return -1;
 	}
 

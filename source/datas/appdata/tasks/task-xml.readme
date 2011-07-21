@@ -1,7 +1,18 @@
+== readme ==
+1.任务定义文件
+2.命名方式：task.xml
+3.存放位置:appdata/tasks/任务编号
+4.定义的任务没有注册到taskdrama.xml,则不会生效
+5.对于已经上线的任务不能删除
+
+== 内容 ==
 <!--
 任务定义
+id:任务编号，必须是数字组合。
+condtype:[class|script]获取和提交任务的实现支持. class:c++类实现 script:脚本实现
+				condtype=class时必须配置task-condition节点
 -->
-<task id="1">
+<task id="1" condtype="class|script">
 	<!--
 	name：任务名称，客户端显示用。根据不同的客户端设计不同的rich text显示
 	-->
@@ -11,34 +22,19 @@
 	-->
 	<desc><![CDATA[描述]]></desc>
 	<!--
-	获取任务的条件
+	获取和提交任务用到的参数配置
+	task-condition:只在condtype=class时有效
+	classimpl:[TaskDefaultImpl]实现类的名称
 	-->
-	<get-condition>
+	<task-condition classimpl="TaskDefaultImpl">
 		<!--
-		客户端用来判断是否可以接任务的脚本
+		对应classimpl=TaskDefaultImpl的参数配置
+		minlevel:最低等级
+		maxlevel:最高等级
 		-->
-		<client>
-		<![CDATA[ ]]>
-		</client>
-		<!--
-		服务器用来判断是否可以接任务的脚本
-		-->
-		<server>
-		<![CDATA[ 
-		function task_cangetit()
-		end
-		]]>
-		</server>
-	</get-condition>
-	<!--
-	是否完成任务判断脚本
-	-->
-	<submit-condition>
-		<client>
-		</client>
-		<server>
-		</server>
-	</submit-condition>
+		<TaskDefaultImpl minlevel="1" maxlevel="10">
+		</TaskDefaultImpl>
+	</task-condition>
 	<!--
 	任务消耗，在提交任务时将要扣除的部分
 	-->

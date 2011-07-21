@@ -1,0 +1,60 @@
+===== readme =====
+1.定义了任务系统中用到的脚本函数
+2.脚本放在appdata/tasks目录下
+3.脚本命名为task-base.lua
+
+===== 内容说明 =====
+
+-- reslib application
+-- @category	task system script
+-- @package
+-- @author	Created by Lu Jianfeng ( lujf1978@163.com), 2011
+-- 任务脚本的基类定义
+
+class 'taskbase'
+
+function taskbase:__init()
+end
+
+-- 获取任务检查
+-- @param player	当前玩家
+-- @return 0:成功 <0:失败
+function taskbase:get_task( player)
+	return 0;
+end
+
+-- 提交任务检查
+-- @param player	当前玩家
+-- @return 0:成功 <0:失败
+function taskbase:submit_task( player)
+	return 0;
+end
+
+--用来注册所有和任务相关的脚本
+_task_sc ={}
+
+--------------------------------定义了所有任务相关的函数-----------------------------
+
+-- 获取任务检查
+-- @param tid		任务编号
+-- @param player	
+-- @return 0:成功 -1:失败
+function task_get( tid, player)
+	local ts =_task_sc[tid];
+	
+	if ts == nil then return -1 end;
+	
+	return ts:get_task( player);
+end
+
+-- 提交任务
+-- @param tid		任务编号
+-- @param player	
+-- @return 0:成功 -1:失败
+function task_submit( tid, player)
+	local ts =_task_sc[tid];
+	
+	if ts == nil then return -1 end;
+	
+	return ts:submit_task( player);
+end
