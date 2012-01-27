@@ -1,0 +1,19 @@
+<pro-region>
+    <meta proid="1000004,1000005" />
+
+    <global-struct>
+        
+        
+        
+        <!--
+        defined global struct that buffer system will used
+        -->
+        <struct name="bufferdata_item" desc="buffer信息">
+            <member name="bufferid_" type="int32" desc="buffer编号" />
+            <member name="types_" type="int8" desc="类型 0:系统buffer 1:应用buffer" />
+            <member name="createtime_" type="int32" desc="" />
+            <member name="scopetime_" type="int32" desc="" />
+        </struct>
+    </global-struct>
+
+</pro-region>

@@ -1,0 +1,11 @@
+<pro-region>
+    <meta proid="1000000,1000001" />
+
+    <global-enum>
+        <!--
+        <enum name="" desc="">
+            <item name="" value="" desc=""></item>
+        </enum>
+        -->
+    </global-enum>
+</pro-region>

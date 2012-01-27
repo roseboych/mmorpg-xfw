@@ -1,0 +1,9 @@
+<pro-region>
+    <meta proid="1000002,1000003" />
+
+    <macro-define>
+        <macro name="CHR_PETNAME_LEN" value="32" type="int32" desc="宠物名字长度"></macro>
+        <macro name="CHR_NICKNAME_LEN" value="32" type="int32" desc="角色名字长度"></macro>
+    </macro-define>
+
+</pro-region>

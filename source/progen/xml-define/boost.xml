@@ -1,0 +1,81 @@
+<!--
+按照功能区间定义协议
+-->
+<pro-region>
+    <!--
+    proid:协议编号区段
+    -->
+    <meta proid="2000,3000" />
+
+    <global-struct>
+        <!--
+        <struct name="" desc="">
+            <member name="" type=""></member>
+        </struct>
+        -->
+    </global-struct>
+
+    <global-enum>
+        <!--
+        <enum name="" desc="">
+            <item name="" value="" desc=""></item>
+        </enum>
+        -->
+    </global-enum>
+
+  	<pro-meta>
+  		<pro id="AOI_UNITENTER_NTF" name="Pro_AppUnitEnter_ntf" onlyserver="no">
+  			<desc><![CDATA[ 其他玩家进入视野 ]]></desc>
+  			<local-struct name="player_info" desc="">
+  				<member name="chrid_" type="int32" desc="角色id"></member>
+                <!--
+                macrolen: global macro define
+                ilen: int
+                -->
+  				<member name="nickname_" type="staticstring" macrolen="CHR_NICKNAME_LEN" desc="角色名称"></member>
+  				<member name="sex_" type="int8" desc="性别"></member>
+  				<member name="race_" type="int8" desc="种族"></member>
+  				<member name="profession_" type="int8"></member>
+  				<member name="petid_" type="int32" desc="-1为无效值"></member>
+  				<member name="petcode_" type="int32" desc="宠物怪物id"></member>
+  				<member name="petname_" type="staticstring" macrolen="CHR_PETNAME_LEN" desc="宠物名称"></member>
+  				<member name="locationx_" type="float32"></member>
+  				<member name="locationy_" type="float32"></member>
+  				<member name="locationz_" type="float32"></member>
+  				<member name="facing_" type="float32" desc="面向"></member>
+  				<member name="state_" type="int8"></member>
+  			</local-struct>
+  			
+  			<construct-block>
+                <c></c>
+                <java></java>
+  			</construct-block>
+  			
+  			<destruct-block>
+                <c></c>
+                <java></java>
+            </destruct-block>
+  			
+  			<custom-function>
+  				<c>
+  					<![CDATA[
+bool put_unitinfo( player_info& info) 
+{
+    if( players_.size() >= 42) return false;
+    else players_.push_back( info);
+    return true;
+}
+  					]]>
+  				</c>
+                <java>
+                    <![CDATA[]]>
+                </java>
+  			</custom-function>
+  			
+  			<members>
+  				<member name="pro_len_" type="int32"></member>
+  				<member name="players_" type="local-struct" struct-name="player_info" desc="进入玩家视野的列表" islist="yes"></member>
+  			</members>
+  		</pro>
+  	</pro-meta>
+</pro-region>

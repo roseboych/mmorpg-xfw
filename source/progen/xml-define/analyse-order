@@ -1,0 +1,6 @@
+﻿<order>
+    <xml>macro</xml>
+	<xml>enum</xml>
+    <xml>struct</xml>
+    <xml>boost</xml>
+</order>

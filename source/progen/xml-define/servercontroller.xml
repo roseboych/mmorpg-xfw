@@ -1,0 +1,22 @@
+﻿<pro-region>
+    <meta proid="1000,1500" />
+
+    <pro-meta>
+        <pro id="CONTROLLER_LOGIN_REQ" name="Pro_CtrlLogin_req" onlyserver="yes">
+            <desc><![CDATA[ 管理工具登陆 ]]></desc>
+        </pro>
+
+        <pro id="CONTROLLER_LOGIN_ACK" name="Pro_CtrlLogin_ack" onlyserver="yes">
+            <desc><![CDATA[ 管理工具登陆 ]]></desc>
+        </pro>
+
+        <pro id="CONTROLLER_PROFILER_FILTERCTRL" name="Pro_CtrlProfilerFilterCtrl" onlyserver="yes">
+            <desc><![CDATA[ 性能分析参数设置 ]]></desc>
+        </pro>
+
+        <pro id="CONTROLLER_PROFILER_ANALYSISCTRL" name="Pro_CtrlProfilerAnalysisCtrl" onlyserver="yes">
+            <desc><![CDATA[ 性能分析开关控制 ]]></desc>
+        </pro>
+
+    </pro-meta>
+</pro-region>
