@@ -42,7 +42,7 @@ void PlayerInfo::prepare()
 	cts_link_ =0;
 }
 
-void PlayerInfo::login_prepare( S_INT_32 serverindex, S_TIMESTAMP session, LGSLink* l)
+void PlayerInfo::login_prepare( int serverindex, S_TIMESTAMP session, LGSLink* l)
 {
 	status_ =PLAYERSTATUS_LOGINING;
 	uuid_.set_timestamp( session);
@@ -109,7 +109,7 @@ void PlayerInfo::quit_team()
 	this->cts_link_ =0;
 }
 
-void PlayerInfo::quitteam_reconn( S_INT_32 serverindex, S_TIMESTAMP session, LGSLink* l)
+void PlayerInfo::quitteam_reconn( int serverindex, S_TIMESTAMP session, LGSLink* l)
 {
 	status_ =PLAYERSTATUS_SELTEAM;
 	uuid_.set_timestamp( session);
@@ -118,7 +118,7 @@ void PlayerInfo::quitteam_reconn( S_INT_32 serverindex, S_TIMESTAMP session, LGS
 	this->server_index_ =serverindex;
 }
 
-void PlayerInfo::link_keep( S_TIMESTAMP& token, S_INT_32 teamid, S_INT_32 gtsid, S_INT_32 proxyindex)
+void PlayerInfo::link_keep( S_TIMESTAMP& token, int teamid, int gtsid, int proxyindex)
 {
 	status_ =PLAYERSTATUS_LNKKEEP;
 	qt_token_ =token;
@@ -128,7 +128,7 @@ void PlayerInfo::link_keep( S_TIMESTAMP& token, S_INT_32 teamid, S_INT_32 gtsid,
 	tstamp_ =ACE_OS::gettimeofday().get_msec();
 }
 
-void PlayerInfo::login_succ_of_lnkkeep( S_INT_32 serverindex, LGSLink* l)
+void PlayerInfo::login_succ_of_lnkkeep( int serverindex, LGSLink* l)
 {
 	status_ =PLAYERSTATUS_LNKKEEP_SELTEAMING;
 	this->server_index_ =serverindex;

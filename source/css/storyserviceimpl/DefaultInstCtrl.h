@@ -21,7 +21,7 @@ public:
 	virtual ~DefaultInstCtrl();
 
 	virtual void init_ctrl();
-	virtual S_BOOL tick( const ACE_UINT64& now_t);
+	virtual bool tick( const ACE_UINT64& now_t);
 
 protected:
 

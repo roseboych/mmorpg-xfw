@@ -274,10 +274,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\ProtocolFactory.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\ProtocolFactory.h"
 				>
 			</File>
@@ -326,29 +322,9 @@
 			Name="datastore"
 			>
 			<File
-				RelativePath=".\datastore\buffer_define.h"
-				>
-			</File>
-			<File
-				RelativePath=".\datastore\character_define.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\datastore\character_define.h"
-				>
-			</File>
-			<File
 				RelativePath=".\datastore\skill_define.h"
 				>
 			</File>
-			<File
-				RelativePath=".\datastore\world_define.h"
-				>
-			</File>
-			<Filter
-				Name="buffstore"
-				>
-			</Filter>
 			<Filter
 				Name="skillstore"
 				>
@@ -371,119 +347,27 @@
 			</Filter>
 		</Filter>
 		<Filter
-			Name="protocol"
+			Name="gen"
 			>
-			<Filter
-				Name="apppro"
+			<File
+				RelativePath=".\gen\Pro_all.cpp"
 				>
-				<File
-					RelativePath=".\app\Pro_Avatar.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\app\Pro_Avatar.h"
-					>
-				</File>
-				<File
-					RelativePath=".\app\Pro_buffer.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\app\Pro_buffer.h"
-					>
-				</File>
-				<File
-					RelativePath=".\app\Pro_Chat.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\app\Pro_Chat.h"
-					>
-				</File>
-				<File
-					RelativePath=".\app\Pro_Pet.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\app\Pro_Pet.h"
-					>
-				</File>
-				<File
-					RelativePath=".\app\Pro_Skill.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\app\Pro_Skill.h"
-					>
-				</File>
-				<File
-					RelativePath=".\app\Pro_State.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\app\Pro_State.h"
-					>
-				</File>
-			</Filter>
-			<Filter
-				Name="controller"
+			</File>
+			<File
+				RelativePath=".\Pro_all.h"
 				>
-				<File
-					RelativePath=".\Pro_controller.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\Pro_controller.h"
-					>
-				</File>
-				<File
-					RelativePath=".\server_controller.h"
-					>
-				</File>
-			</Filter>
-			<Filter
-				Name="syspro"
+			</File>
+			<File
+				RelativePath=".\Pro_define.h"
 				>
-				<File
-					RelativePath=".\boost.h"
-					>
-				</File>
-				<File
-					RelativePath=".\Pro_AOI.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\Pro_AOI.h"
-					>
-				</File>
-				<File
-					RelativePath=".\Pro_boot.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\Pro_boot.h"
-					>
-				</File>
-				<File
-					RelativePath=".\Pro_chr.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\Pro_chr.h"
-					>
-				</File>
-			</Filter>
+			</File>
+			<File
+				RelativePath=".\gen\ProtocolFactory.cpp"
+				>
+			</File>
 		</Filter>
 		<File
 			RelativePath=".\core_type.h"
-			>
-		</File>
-		<File
-			RelativePath=".\pre.h"
-			>
-		</File>
-		<File
-			RelativePath=".\Pro_all.h"
 			>
 		</File>
 		<File

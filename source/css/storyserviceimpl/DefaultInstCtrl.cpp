@@ -29,7 +29,7 @@ void DefaultInstCtrl::init_ctrl()
 	inst_service_->set_serverstate( TRANSCRIPT_SVRST_CANENTER);
 }
 
-S_BOOL DefaultInstCtrl::tick( const ACE_UINT64& now_t)
+bool DefaultInstCtrl::tick( const ACE_UINT64& now_t)
 {
 	return inherit::tick( now_t);
 }

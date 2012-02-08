@@ -23,12 +23,16 @@
 #endif	//_USE_32BIT_TIME_T
 
 #define S_INT_64	__int64
+
 #define	S_INT_32	int
+#define S_UINT_32	unsigned int
+
 #define S_INT_16	short
+
 #define S_INT_8		char
-#define S_CHAR_8	char
+#define S_UINT_8	unsigned char
+
 #define S_FLOAT_32	float
-#define S_BOOL		bool
 
 #ifdef _USE_32BIT_TIME_T
 	#define S_TIMESTAMP		long
@@ -36,11 +40,6 @@
 	#define S_TIMESTAMP		unsigned __int64
 #endif	//unsigned int
 
-#define S_UINT_32		unsigned int
-#define S_UINT_16		unsigned short
-#define S_UINT_8		unsigned char
-#define S_UCHAR_8		unsigned char
-#define S_UINT_64		unsigned __int64
 #define S_ULONG_32		unsigned long
 #define S_ULONG_64		unsigned __int64
 

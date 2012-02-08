@@ -22,7 +22,7 @@ void GTSLink::set_option( GTSOption* s)
 	set_serverindex( opt_->server_index_);
 }
 
-bool GTSLink::is_useringts( S_INT_32 userindex)
+bool GTSLink::is_useringts( int userindex)
 {
 	if( userindex >= opt_->startuser_ && userindex < (opt_->startuser_ + opt_->usernum_))
 		return true;

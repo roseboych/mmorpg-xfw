@@ -25,12 +25,12 @@ CSSOption* INSCellOption::get_cssopt()
 	return ins_opt_->cssopt_;
 }
 
-S_INT_32 INSCellOption::get_mapid()
+int INSCellOption::get_mapid()
 {
 	return ins_opt_->sn_;
 }
 
-S_INT_32 INSCellOption::get_cssserverid()
+int INSCellOption::get_cssserverid()
 {
 	return ins_opt_->cssopt_->server_index_;
 }

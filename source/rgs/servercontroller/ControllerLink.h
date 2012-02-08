@@ -26,7 +26,7 @@ public:
 
 	virtual void send_protocol( BasicProtocol* p);
 
-	virtual S_INT_32 get_serverindex(){ return NO_INITVALUE;}
+	virtual int get_serverindex(){ return NO_INITVALUE;}
 
 	Controller_Service* get_controllerservice(){ return &service_;}
 

@@ -37,8 +37,8 @@ void Player::script_regist( lua_State* l)
 			.def_readwrite( "intellect", &PlayerData::prop_intellect_)
 			.def_readwrite( "spirit", &PlayerData::prop_spirit_)
 			.def_readwrite( "armor", &PlayerData::prop_armor_)
-			.def( "attachbuffer", (BufferRuntime* (PlayerData::*)(S_INT_32))&PlayerData::attach_newbuffer)
-			.def( "cancelbuffer", (void (PlayerData::*)(S_INT_32))&PlayerData::cancel_onebuffer)
+			.def( "attachbuffer", (BufferRuntime* (PlayerData::*)(int))&PlayerData::attach_newbuffer)
+			.def( "cancelbuffer", (void (PlayerData::*)(int))&PlayerData::cancel_onebuffer)
 	];
 }
 

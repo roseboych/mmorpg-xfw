@@ -46,7 +46,7 @@ void Player::selteamconfirm( TeamProxySession* proxy, S_TIMESTAMP st)
 	proxy->selteam_confirm( this);
 }
 
-void Player::chrsel( S_INT_32 chrid, S_FLOAT_32 posx, S_FLOAT_32 posy, S_FLOAT_32 posz)
+void Player::chrsel( int chrid, float posx, float posy, float posz)
 {
 	this->chrid_ =chrid;
 	this->lastposx_ =posx;

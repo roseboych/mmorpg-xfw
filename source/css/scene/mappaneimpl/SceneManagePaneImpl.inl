@@ -6,7 +6,7 @@
 * @author		Created by Lu Jianfeng, 2009
 */
 inline 
-MapPane* SceneManagePaneImpl::get_mappane( S_INT_32 column, S_INT_32 row)
+MapPane* SceneManagePaneImpl::get_mappane( int column, int row)
 {
 	if( column < pane_column_min_ || column > pane_column_max_)
 		return 0;
@@ -17,7 +17,7 @@ MapPane* SceneManagePaneImpl::get_mappane( S_INT_32 column, S_INT_32 row)
 }
 
 inline 
-MapPane* SceneManagePaneImpl::get_mappanebyxy( S_FLOAT_32 x, S_FLOAT_32 y)
+MapPane* SceneManagePaneImpl::get_mappanebyxy( float x, float y)
 {
 	int c =POSX2PANEX(x);
 	int r =POSY2PANEY(y);
@@ -26,7 +26,7 @@ MapPane* SceneManagePaneImpl::get_mappanebyxy( S_FLOAT_32 x, S_FLOAT_32 y)
 }
 
 inline 
-void SceneManagePaneImpl::get_playerviewpanes( S_INT_32 c, S_INT_32 r, NS_STL::vector<MapPane*>& mp)
+void SceneManagePaneImpl::get_playerviewpanes( int c, int r, NS_STL::vector<MapPane*>& mp)
 {
 	//获取9屏信息
 	int ii =r-VIEW_PLANE_RADIUS;
@@ -56,7 +56,7 @@ void SceneManagePaneImpl::get_playerviewpanes( S_INT_32 c, S_INT_32 r, NS_STL::v
 }
 
 inline 
-void SceneManagePaneImpl::get_playerviewpanes( S_INT_32 x1, S_INT_32 y1, S_INT_32 x2, S_INT_32 y2, NS_STL::vector<MapPane*>& mp)
+void SceneManagePaneImpl::get_playerviewpanes( int x1, int y1, int x2, int y2, NS_STL::vector<MapPane*>& mp)
 {
 	x1 =(x1 < pane_column_min_? pane_column_min_ : x1);
 	x2 =(x2 > pane_column_max_? pane_column_max_ : x2);

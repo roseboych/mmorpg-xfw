@@ -81,8 +81,8 @@ public:
 	/**
 	* 玩家选服占位
 	**/
-	inline TeamProxySession* get_playerproxybyind( S_INT_32 proxyindex);
-	TeamProxySession* team_proxy( S_INT_32 proxyind, S_INT_32 userid, S_TIMESTAMP st);
+	inline TeamProxySession* get_playerproxybyind( int proxyindex);
+	TeamProxySession* team_proxy( int proxyind, int userid, S_TIMESTAMP st);
 
 	/**
 	* 释放一个正在使用的玩家
@@ -105,23 +105,23 @@ protected:
 protected:
 	//可以连接的linesvr
 	ACE_Auto_Array_Ptr<CSSLink> csssvr_;
-	S_INT_32	csssvr_nums_;
+	int							csssvr_nums_;
 
 	//可以连接的cts
-	CTSLink	ctssvr_;
+	CTSLink						ctssvr_;
 
 	//支持的玩家总数
 	ACE_Auto_Array_Ptr<Player>	players_;
 	static ACE_Cached_Allocator<Player, ACE_Null_Mutex>	cache_players_;
-	S_INT_32	start_player_;
-	S_INT_32	player_nums_;
+	int			start_player_;
+	int			player_nums_;
 	//正在使用的玩家列表
 	USED_PLAYERS_VECTOR	used_players_;
 	//选服占位
 	ACE_Auto_Array_Ptr<TeamProxySession> team_proxys_;
 
 	//本gts的server_index_
-	S_INT_32	gts_index_;
+	int					gts_index_;
 
 	//---------------------------系统维护实现--------------------------------//
 public:
@@ -210,7 +210,7 @@ Player* GTSSvr::get_player( int ind)
 }
 
 inline
-TeamProxySession* GTSSvr::get_playerproxybyind( S_INT_32 proxyindex)
+TeamProxySession* GTSSvr::get_playerproxybyind( int proxyindex)
 {
 	int lind =proxyindex - start_player_;
 	if( lind < 0 || lind >= player_nums_)

@@ -15,7 +15,7 @@
 /**
 * @class ConditionLeaf
 * 
-* @brief Ìõ¼şÅĞ¶¨Ò¶×Ó½Úµã
+* @brief æ¡ä»¶åˆ¤å®šå¶å­èŠ‚ç‚¹
 **/
 class ConditionLeaf : public ConditionElement
 {
@@ -24,13 +24,13 @@ public:
 	ConditionLeaf( TiXmlElement* e);
 	virtual ~ConditionLeaf();
 
-	virtual S_BOOL is_leaf(){ return true;}
-	virtual S_BOOL condition_calcuate( ConditionContext& context);
+	virtual bool is_leaf(){ return true;}
+	virtual bool condition_calcuate( ConditionContext& context);
 
 protected:
-	//ÔËËã·û
+	//è¿ç®—ç¬¦
 	CONDITION_OPERATOR	operator_;
-	//ÔËËã·û×óÓÒÖµ x_Ö»ÔÚbetweenÖĞÊ¹ÓÃ
+	//è¿ç®—ç¬¦å·¦å³å€¼ x_åªåœ¨betweenä¸­ä½¿ç”¨
 	ConditionValue		*left_, *right_, *x_;
 };
 

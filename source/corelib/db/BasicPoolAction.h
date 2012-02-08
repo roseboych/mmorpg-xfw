@@ -63,9 +63,9 @@ protected:
 
 public:
 	//类型
-	int	 type_;
+	int				type_;
 	//创建时间
-	S_TIMESTAMP	create_time_;
+	S_TIMESTAMP		create_time_;
 };
 
 #endif	//__BASICPOOLACTION__H__

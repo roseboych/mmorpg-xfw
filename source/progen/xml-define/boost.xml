@@ -1,81 +1,218 @@
-<!--
-按照功能区间定义协议
--->
 <pro-region>
-    <!--
-    proid:协议编号区段
-    -->
-    <meta proid="2000,3000" />
-
-    <global-struct>
-        <!--
-        <struct name="" desc="">
-            <member name="" type=""></member>
-        </struct>
-        -->
-    </global-struct>
-
-    <global-enum>
-        <!--
-        <enum name="" desc="">
-            <item name="" value="" desc=""></item>
-        </enum>
-        -->
-    </global-enum>
+    <meta proid="1,500" />
 
   	<pro-meta>
-  		<pro id="AOI_UNITENTER_NTF" name="Pro_AppUnitEnter_ntf" onlyserver="no">
-  			<desc><![CDATA[ 其他玩家进入视野 ]]></desc>
-  			<local-struct name="player_info" desc="">
-  				<member name="chrid_" type="int32" desc="角色id"></member>
-                <!--
-                macrolen: global macro define
-                ilen: int
-                -->
-  				<member name="nickname_" type="staticstring" macrolen="CHR_NICKNAME_LEN" desc="角色名称"></member>
-  				<member name="sex_" type="int8" desc="性别"></member>
-  				<member name="race_" type="int8" desc="种族"></member>
-  				<member name="profession_" type="int8"></member>
-  				<member name="petid_" type="int32" desc="-1为无效值"></member>
-  				<member name="petcode_" type="int32" desc="宠物怪物id"></member>
-  				<member name="petname_" type="staticstring" macrolen="CHR_PETNAME_LEN" desc="宠物名称"></member>
-  				<member name="locationx_" type="float32"></member>
-  				<member name="locationy_" type="float32"></member>
-  				<member name="locationz_" type="float32"></member>
-  				<member name="facing_" type="float32" desc="面向"></member>
-  				<member name="state_" type="int8"></member>
-  			</local-struct>
-  			
-  			<construct-block>
-                <c></c>
+        <pro id="SVR_REGIST_REQ" name="Pro_SvrRegist_req" onlyserver="yes">
+            <desc><![CDATA[服务器注册请求]]></desc>
+            <members>
+                <member name="svr_type_" type="int8" desc="服务器类型 NETSVR_TYPE_ENUM定义"></member>
+                <member name="regionsn_" type="int32" desc="服务器组id rgs, lgs不需要设置"></member>
+                <member name="appsn_" type="int32" desc="服务器sn"></member>
+            </members>
+        </pro>
+
+        <pro id="SVR_REGIST_ACK" name="Pro_SvrRegist_ack" onlyserver="yes">
+            <desc><![CDATA[服务器注册请求回复]]></desc>
+            <members>
+                <member name="result_" type="int8" desc="0:成功 1:失败"></member>
+            </members>
+        </pro>
+
+        <pro id="SVR_ONLINETICK_NTF" name="Pro_SvrOnlineTick_NTF" onlyserver="yes">
+            <desc><![CDATA[服务器心跳]]></desc>
+            <members>
+            </members>
+        </pro>
+        
+        <pro id="SVR_SVRTEAMINFO_NTF" name="Pro_SvrTeamInfo_NTF" onlyserver="yes">
+            <desc><![CDATA[RGS发送的各个服务器组的更新信息 rgs->lgs lgs->client]]></desc>
+            <local-struct name="svrteaminfo" desc="">
+                <member name="server_index_" type="int32" desc="server_index 索引，选择服务器组时使用"></member>
+                <member name="teamid_" type="int32" desc="服务器组id"></member>
+                <member name="maxuser_" type="int32" desc="最大玩家数"></member>
+                <member name="curuser_" type="int32" desc="当前玩家数"></member>
+                <member name="is_validate_" type="int8" desc="是否有效 0:false 1:true"></member>
+            </local-struct>
+            <members>
+                <member name="teams_" type="local-struct" struct-name="svrteaminfo" desc="" islist="yes"></member>
+            </members>
+        </pro>
+        
+        <pro id="SVR_SELTEAMTIMEOUT_NTF" name="Pro_SvrSelTeamTimeout_NTF" onlyserver="yes">
+            <desc><![CDATA[选服务器组超时通知]]></desc>
+            <members>
+                <member name="proxy_index_" type="int32" desc="超时的服务器组"></member>
+            </members>
+        </pro>
+        
+        <pro id="SVR_SELSERVER_REQ" name="Pro_SvrSelTeam_req" onlyserver="yes">
+            <desc><![CDATA[选服务器组请求]]></desc>
+            <members>
+                <member name="team_index_" type="int32" desc="选择的服务器组"></member>
+            </members>
+        </pro>
+        
+        <pro id="SVR_SELSERVER_ACK" name="Pro_SvrSelTeam_ack" onlyserver="yes">
+            <desc><![CDATA[选服务器组请求回复]]></desc>
+            <members>
+                <member name="team_index_" type="int32" desc="选择的服务器组"></member>
+                <member name="result_" type="int8" desc="0:成功 1:服务器组不可用 2:服务器组人满 3:选择服务器组失败 4:已经发送过选组请求 5:断线保持不能选服"></member>
+                <member name="proxy_index_" type="int32" desc=""></member>
+                <member name="token_" type="timestamp" desc="返回的令牌"></member>
+                <member name="gts_ip_" type="staticstring" ilen="24" desc="可以连接的gts信息"></member>
+                <member name="gts_port_" type="int32" desc=""></member>
+            </members>
+        </pro>
+
+        <pro id="SVR_SELSERVERPROXY_REQ" name="Pro_SvrSelTeamProxy_req" onlyserver="yes">
+            <desc><![CDATA[选服务器组占位请求]]></desc>
+            <members>
+                <member name="proxy_index_" type="int32" desc=""></member>
+            </members>
+        </pro>
+        
+        <pro id="SVR_SELSERVERPROXY_ACK" name="Pro_SvrSelTeamProxy_ack">
+            <desc><![CDATA[选服务器组占位请求回复]]></desc>
+            <members>
+                <member name="proxy_index_" type="int32" desc=""></member>
+                <member name="result_" type="int8" desc="0:成功 1:失败"></member>
+                <member name="userid_" type="int32" desc=""></member>
+                <member name="token_" type="timestamp" desc="返回的令牌"></member>
+                <member name="gts_index_" type="int32" desc="gts索引"></member>
+            </members>
+        </pro>
+        
+        <pro id="SVR_SELSERVERCONFIRM_REQ" name="Pro_SvrSelTeamConfirm_req">
+            <desc><![CDATA[选服确认请求]]></desc>
+            <members>
+                <member name="proxy_index_" type="int32" desc="系统分配的代理编号"></member>
+                <member name="token_" type="timestamp" desc="验证用令牌"></member>
+            </members>
+        </pro>
+        
+        <pro id="SVR_SELSERVERCONFIRM_ACK" name="Pro_SvrSelTeamConfirm_ack">
+            <desc><![CDATA[选服确认请求]]></desc>
+            <members>
+                <member name="proxy_index_" type="int32" desc="选择的服务器组"></member>
+                <member name="result_" type="int8" desc="0:成功 1:占位不存在 2:令牌验证失败"></member>
+                <member name="userid_" type="int32" desc="服务器使用"></member>
+                <member name="init_stmp_" type="timestamp" desc=""></member>
+            </members>
+        </pro>
+        
+        <pro id="SVR_QUITSERVER_REQ" name="Pro_SvrQuitTeam_req" onlyserver="yes">
+            <desc><![CDATA[退出服务器组请求]]></desc>
+            <members>
+            </members>
+        </pro>
+        
+        <pro id="SVR_QUITSERVER_ACK" name="Pro_SvrQuitTeam_ack" onlyserver="yes">
+            <desc><![CDATA[退出服务器组请求回复]]></desc>
+            <members>
+                <member name="result_" type="int8" desc="0:成功 1:失败"></member>
+                <member name="token_" type="timestamp" desc="重连用令牌"></member>
+            </members>
+        </pro>
+        
+        <pro id="SVR_QUITSERVERRECONN_REQ" name="Pro_SvrQuitTeamReconn_req" onlyserver="yes">
+            <desc><![CDATA[退出服务器组请求回复]]></desc>
+            <members>
+                <member name="userid_" type="int32" desc="玩家userid_"></member>
+                <member name="token_" type="timestamp" desc="重连用令牌"></member>
+            </members>
+        </pro>
+        
+        <pro id="SVR_QUITSERVERRECONN_ACK" name="Pro_SvrQuitTeamReconn_ack" onlyserver="yes">
+            <desc><![CDATA[退出服务器组请求回复]]></desc>
+            <members>
+                <member name="result_" type="int8" desc="0:成功 1:玩家不存在 2:令牌错误 3:不是退服玩家"></member>
+                <member name="userid_" type="int32" desc="玩家userid_"></member>
+            </members>
+        </pro>
+        
+        <pro id="SVR_INSTUPDATE_NTF" name="Pro_SvrInstUpdate_ntf" >
+            <desc><![CDATA[副本服务器状态更新通知]]></desc>
+            <members>
+                <member name="cellid_" type="int32" desc="副本编号"></member>
+                <member name="state_" type="int8" desc="1:不可用 2:可以进入 3:拒绝进入"></member>
+            </members>
+        </pro>
+        
+        <pro id="SVR_USERLOST_NTF" name="Pro_SvrUserLost_NTF" >
+            <desc><![CDATA[服务器内部使用的玩家断线通知]]></desc>
+            <members>
+                <member name="proxy_index_" type="int32" desc="临时使用cts->gts,等待注册时使用"></member>
+            </members>
+        </pro>
+        
+        <pro id="GAME_LOGIN_REQ" name="Pro_Login_req" >
+            <desc><![CDATA[玩家登陆请求]]></desc>
+            <members>
+                <member name="token_" type="staticstring" ilen="64" desc="username+password"></member>
+            </members>
+        </pro>
+        
+        <pro id="GAME_LOGIN_ACK" name="Pro_Login_ack" >
+            <desc><![CDATA[玩家登陆回复]]></desc>
+            
+            <construct-block>
+                <c>
+                    <![CDATA[
+is_lnkkeep_ =0;
+  					]]>                    
+                </c>
                 <java></java>
-  			</construct-block>
-  			
-  			<destruct-block>
-                <c></c>
-                <java></java>
-            </destruct-block>
-  			
-  			<custom-function>
-  				<c>
-  					<![CDATA[
-bool put_unitinfo( player_info& info) 
-{
-    if( players_.size() >= 42) return false;
-    else players_.push_back( info);
-    return true;
-}
-  					]]>
-  				</c>
-                <java>
-                    <![CDATA[]]>
-                </java>
-  			</custom-function>
-  			
-  			<members>
-  				<member name="pro_len_" type="int32"></member>
-  				<member name="players_" type="local-struct" struct-name="player_info" desc="进入玩家视野的列表" islist="yes"></member>
-  			</members>
-  		</pro>
+            </construct-block>
+            
+            <members>
+                <member name="result_" type="int8" desc="0:成功 1:用户名密码错误 2:玩家已经登陆 3:登陆冷却中 4:其他错误 5:大区已经满 6:数据库错误 7:帐号不存在"></member>
+                <member name="userid_" type="int32" desc=""></member>
+                <member name="validatetime_" type="int32" desc="可用的在线时间"></member>
+                <member name="lastregion_" type="int16" desc="最后登陆服务器组"></member>
+                <member name="lastlogout_" type="int32" desc="最后登陆时间"></member>
+                <member name="is_lnkkeep_" type="int8" desc="是否断线重连 0:不是 1:是	缺省:0"></member>
+                <member name="gts_ip_" type="staticstring" ilen="24" desc="如果is_lnkkeep_ == 1 有效"></member>
+                <member name="gts_port_" type="int16" desc=""></member>
+                <member name="token_" type="timestamp" desc="如果is_lnkkeep_ == 1 有效	重连令牌"></member>
+                <member name="proxy_index_" type="int32" desc="如果is_lnkkeep_ == 1 有效"></member>
+                <member name="session_" type="timestamp" desc="如果is_lnkkeep_ == 1 有效 更新lgs的session	[服务器使用]"></member>
+            </members>
+        </pro>
+        
+        <pro id="GAME_USERREGIST_NTF" name="Pro_UserRegist_ntf" >
+            <desc><![CDATA[玩家注册通知 to dpx]]></desc>
+            <members>
+            </members>
+        </pro>
+        
+        <pro id="SVR_DISCONNKEEP_NTF" name="Pro_SvrDisconnKeep_req" >
+            <desc><![CDATA[玩家断线保持通知]]></desc>
+            <members>
+                <member name="token_" type="timestamp" desc="附带的令牌信息"></member>
+                <member name="team_id_" type="int32" desc="team index"></member>
+                <member name="gts_id_" type="int32" desc="gts索引"></member>
+                <member name="proxy_index_" type="int32" desc="proxy index"></member>
+            </members>
+        </pro>
+        
+        <pro id="SVR_LNKEEPLOAD_NTF" name="Pro_SvrLnkkeepLoad_req" >
+            <desc><![CDATA[玩家登陆请求]]></desc>
+            <members>
+            </members>
+        </pro>
+        
+        <pro id="GAME_LOGOUT_REQ" name="Pro_Logout_req" >
+            <desc><![CDATA[玩家注销请求]]></desc>
+            <members>
+            </members>
+        </pro>
+        
+        <pro id="GAME_LOGOUT_NTF" name="Pro_Logout_ntf">
+            <desc><![CDATA[玩家注销通知]]></desc>
+            <members>
+                <member name="chrid_" type="int32" desc="注销人"></member>
+            </members>
+        </pro>
+        
   	</pro-meta>
 </pro-region>

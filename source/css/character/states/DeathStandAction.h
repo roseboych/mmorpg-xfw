@@ -22,7 +22,7 @@ class DeathStandAction : public BaseActionState
 public:
 	DeathStandAction();
 
-	virtual S_INT_8 get_statetype(){ return ( S_INT_8)CHRSTATE_DEATH_STAND;}
+	virtual char get_statetype(){ return ( char)CHRSTATE_DEATH_STAND;}
 };
 
 #endif	//__DEATHSTANDACTION__H__

@@ -62,10 +62,10 @@ void SkillRuntime::update_lastruntime()
 
 bool SkillRuntime::process( const ACE_UINT64& tnow, Player* user)
 {
-	S_INT_8 ret =0;
+	char ret =0;
 	app::script::ScriptContext& context =CONTENTSERVICE_INS->get_scriptcontext();
 	try{
-		ret =luabind::call_function<S_INT_8>( context.get_luastate(), "skill_process", skill_desc_->skillidsn_.c_str(), 
+		ret =luabind::call_function<char>( context.get_luastate(), "skill_process", skill_desc_->skillidsn_.c_str(), 
 			user, runtime_data_);
 	}
 	catch( ...){

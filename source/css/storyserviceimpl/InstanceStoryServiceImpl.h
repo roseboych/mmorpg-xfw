@@ -28,7 +28,7 @@ class InstanceStoryServiceImpl : public BaseStoryService
 {
 public:
 	typedef BaseStoryService inherit;
-	typedef NS_STL::map< S_INT_32, Player*>	ONLINEPLAYER_MAP;
+	typedef NS_STL::map< int, Player*>	ONLINEPLAYER_MAP;
 
 public:
 	InstanceStoryServiceImpl();
@@ -42,7 +42,7 @@ public:
 	virtual void	uninit_service();
 
 	virtual Player* get_player( const BasicProtocol::internal_uuid& uuid);
-	virtual Player* player_regist( const BasicProtocol::internal_uuid& uuid, S_INT_32 chrid);
+	virtual Player* player_regist( const BasicProtocol::internal_uuid& uuid, int chrid);
 	virtual void	player_unregist( const BasicProtocol::internal_uuid& uuid);
 	virtual void	player_unregist( Player* user);
 
@@ -56,7 +56,7 @@ public:
 	void					set_serverstate( TRANSCRIPT_SERVER_STATE ns);
 	TRANSCRIPT_SERVER_STATE	get_serverstate(){ return svr_state_;}
 
-	S_INT_32		get_cellid();
+	int				get_cellid();
 
 protected:
 	/**

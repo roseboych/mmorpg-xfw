@@ -24,7 +24,7 @@ InstanceStoryServiceImpl::~InstanceStoryServiceImpl()
 {
 }
 
-S_INT_32 InstanceStoryServiceImpl::get_cellid()
+int InstanceStoryServiceImpl::get_cellid()
 {
 	return inscell_opt_->get_cellid();
 }
@@ -107,7 +107,7 @@ Player* InstanceStoryServiceImpl::get_player( const BasicProtocol::internal_uuid
 	return fiter->second;
 }
 
-Player* InstanceStoryServiceImpl::player_regist( const BasicProtocol::internal_uuid& uuid, S_INT_32 chrid)
+Player* InstanceStoryServiceImpl::player_regist( const BasicProtocol::internal_uuid& uuid, int chrid)
 {
 	Player* user =Player::create_player();
 	ACE_ASSERT( user != 0);

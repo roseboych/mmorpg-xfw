@@ -59,14 +59,14 @@ protected:
 	//css之间的连接关系：index小的主动连接index大的服务器
 	//被连接的css
 	ACE_Auto_Array_Ptr<CSSLink>	css_;
-	S_INT_32	css_nums_;
+	int							css_nums_;
 	//主动连接的css
-	ACE_Auto_Array_Ptr<CSS2Link> css2_;
-	S_INT_32	css2_nums_;
+	ACE_Auto_Array_Ptr<CSS2Link>	css2_;
+	int								css2_nums_;
 	//如果2个maininstance或者ins分布在同一个进程内
-	CSSLocalLink csslocal_;
+	CSSLocalLink	csslocal_;
 
-	S_INT_32	owner_server_index_;
+	int				owner_server_index_;
 };
 
 inline 

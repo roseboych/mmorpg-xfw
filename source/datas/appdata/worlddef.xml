@@ -63,7 +63,8 @@ height:整个世界的高度,单位cm (必须是1000的整数倍)
 				-->
 				<to id="0" tp="2:1"/>
 			</port> 
-			<port id="1" from="2:1">
+			<port id="1" from="2:1"
+>
 				<to id="0" tp="1:1"/>
 			</port> 
 		</teleports>

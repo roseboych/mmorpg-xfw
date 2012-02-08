@@ -48,7 +48,7 @@ public:
 	* 角色选择
 	* @param chrid
 	**/
-	void chrsel( S_INT_32 chrid, S_FLOAT_32 posx, S_FLOAT_32 posy, S_FLOAT_32 posz);
+	void chrsel( int chrid, float posx, float posy, float posz);
 
 	inline bool is_lnkkeep();
 
@@ -57,7 +57,7 @@ public:
 	**/
 	void	instcell_proxy_overtime();
 	void	instcell_confirm_overtime();
-	S_BOOL	is_enterinst(){
+	bool	is_enterinst(){
 		return enter_instcell_ctrl_.is_enterinstcell();
 	}
 	void	instcell_quit();
@@ -66,7 +66,7 @@ public:
 	/**
 	* 是否同一个session
 	**/
-	inline bool is_samesession( S_INT_32 chrid, S_TIMESTAMP st);
+	inline bool is_samesession( int chrid, S_TIMESTAMP st);
 	inline bool is_samesession( uuid_session& u);
 
 	inline void send_to_gts( BasicProtocol* p);
@@ -74,9 +74,9 @@ public:
 
 public:
 	//当前角色
-	S_INT_32	chrid_;
+	int			chrid_;
 	//最后位置
-	S_FLOAT_32	lastposx_, lastposy_, lastposz_;
+	float		lastposx_, lastposy_, lastposz_;
 	//是否处于断线保持
 	bool		is_lnkkeep_;
 
@@ -105,7 +105,7 @@ bool Player::is_emptyplayer()
 }
 
 inline 
-bool Player::is_samesession( S_INT_32 uid, S_TIMESTAMP st)
+bool Player::is_samesession( int uid, S_TIMESTAMP st)
 {
 	return uuid_.is_samesession( uid, st);
 }

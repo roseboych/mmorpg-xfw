@@ -2,10 +2,71 @@
     <meta proid="1000000,1000001" />
 
     <global-enum>
-        <!--
-        <enum name="" desc="">
-            <item name="" value="" desc=""></item>
+        <!--character system defined-->
+        <enum name="ACTOR_TYPE_ENUM" desc="定义了unit对象的类型">
+            <item name="ACTOR_TYPE_NONE" value="0" desc=""></item>
+            <item name="ACTOR_TYPE_PLAYER" value="0x10" hex="yes" desc="玩家"></item>
+            <item name="ACTOR_TYPE_NPC" value="0x20" hex="yes" desc="NPC"></item>
+            <item name="ACTOR_TYPE_MONSTER" value="0x30" hex="yes" desc="怪物"></item>
         </enum>
-        -->
+
+        <enum name="CHRSTATE_TYPE_ENUM" desc="玩家游戏状态定义">
+            <item name="CHRSTATE_NONE" value="-1" desc=""></item>
+            
+            <item name="CHRSTATE_NOFIGHT_SITDOWN" value="0" desc="非战斗-坐"></item>
+            <item name="CHRSTATE_NOFIGHT_STAND" desc="站立"></item>
+            <item name="CHRSTATE_NOFIGHT_WALK" desc="走动"></item>
+            <item name="CHRSTATE_NOFIGHT_RUN" desc="跑"></item>
+            <item name="CHRSTATE_NOFIGHT_RIDE" desc="骑乘"></item>
+            <item name="CHRSTATE_NOFIGHT_FLY" desc="飞行"></item>
+            
+            <item name="CHRSTATE_FIGHT_STAND" desc="战斗-站立"></item>
+            <item name="CHRSTATE_FIGHT_WALK" desc="走动"></item>
+            <item name="CHRSTATE_FIGHT_RUN" desc="跑"></item>
+            <item name="CHRSTATE_FIGHT_RIDE" desc="骑乘"></item>
+            <item name="CHRSTATE_FIGHT_FLY" desc="飞行"></item>
+            
+            <item name="CHRSTATE_NAV_FLY" desc="导航-飞行"></item>
+            
+            <item name="CHRSTATE_DEATH_STAND" desc="死亡-站立"></item>
+            <item name="CHRSTATE_DEATH_WALK" desc="走动"></item>
+            <item name="CHRSTATE_DEATH_RUN" desc="跑"></item>
+            
+            <item name="CHRSTATE_MAX" desc="max"></item>
+        </enum>
+
+        <enum name="CHR_RACE_TYPE_ENUM" desc="玩家种族定义">
+            <item name="CHR_RACE_HUMAN" value="0" desc="人族"></item>
+            
+            <item name="CHR_RACE_MAX" desc=""></item>
+        </enum>
+
+        <enum name="PROFESSION_HUMAN_TYPE_ENUM" desc="职业定义">
+            <item name="PROFESSION_HUMAN_SOLDIER" value="0" desc="战士"></item>
+            <item name="PROFESSION_HUMAN_MASTER" desc="法师"></item>
+
+            <item name="PROFESSION_HUMAN_MAX" desc=""></item>
+        </enum>
+
+        <enum name="AVATAR_SLOT_ENUM" desc="角色avatar部位定义">
+            <item name="AVATAR_SLOT_HEAD" value="0" desc="头"></item>
+            <item name="AVATAR_SLOT_LEFTHANDE" desc="手"></item>
+            <item name="AVATAR_SLOT_RIGHTHANDE" desc="手"></item>
+            <item name="AVATAR_SLOT_UPPERBODY" desc="上身"></item>
+            <item name="AVATAR_SLOT_LOWERBODY" desc="下身"></item>
+            <item name="AVATAR_SLOT_WAIST" desc="腰"></item>
+            <item name="AVATAR_SLOT_LEFTFOOT" desc="脚"></item>
+            <item name="AVATAR_SLOT_RIGHTFOOT" desc="脚"></item>
+
+            <item name="AVATAR_SLOT_MAX" desc=""></item>
+        </enum>
+        
+        <!--world defined-->
+        <enum name="SCENEOWNER_TYPE_ENUM" desc="地图sector的属性定义 地块所有情况">
+            <item name="SCENEOWNER_DISPUTE" value="-1" desc="争议地区"></item>
+            <item name="SCENEOWNER_NEUTRAL" value="-2" desc="中立地区"></item>
+            <item name="SCENEOWNER_HUMAN" value="CHR_RACE_HUMAN" hex="yes" desc="人族地区"></item>
+        </enum>
+        
     </global-enum>
 </pro-region>

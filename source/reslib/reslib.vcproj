@@ -586,6 +586,14 @@
 				RelativePath="..\datas\appdata\character\character_behavior.xml"
 				>
 			</File>
+			<File
+				RelativePath=".\character\character_define.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\character\character_define.h"
+				>
+			</File>
 			<Filter
 				Name="script file"
 				>

@@ -7,7 +7,7 @@
 */
 #include "InstCellMapGroup.h"
 
-InstCellMapGroup::InstCellMapGroup( S_INT_32 mapid):
+InstCellMapGroup::InstCellMapGroup( int mapid):
 mapid_( mapid)
 {
 

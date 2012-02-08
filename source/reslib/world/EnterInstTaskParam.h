@@ -1,7 +1,7 @@
 /**
 * reslib
 *
-* @category		副本配置
+* @category		鍓湰閰嶇疆
 * @package		
 * @author		Created by Lu Jianfeng ( lujf1978@163.com ), 2011
 */
@@ -13,7 +13,7 @@
 /**
 * @class EnterInstTaskParam
 * 
-* @brief 进入任务副本条件判断参数
+* @brief 杩涘叆浠诲姟鍓湰鏉′欢鍒ゆ柇鍙傛暟
 * 
 **/
 class EnterInstTaskParam : public EnterInstParamBase
@@ -25,7 +25,7 @@ public:
 	virtual bool load_params( TiXmlElement* ptr);
 
 public:
-	S_INT_32	level_;
+	int		level_;
 };
 
 #endif	//__ENTERINSTPARAMOFTASK__H__

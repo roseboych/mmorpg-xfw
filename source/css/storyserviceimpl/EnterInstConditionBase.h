@@ -24,7 +24,7 @@ public:																\
 /**
 * @class EnterInstConditionBase
 * 
-* @brief ½øÈë¸±±¾Ìõ¼şÅĞ¶¨
+* @brief è¿›å…¥å‰¯æœ¬æ¡ä»¶åˆ¤å®š
 * 
 **/
 class EnterInstConditionBase
@@ -33,12 +33,12 @@ public:
 	virtual const NS_STL::string& get_classname() =0;
 
 	/*
-	* ÔÚmain mapÉÏÅĞ¶ÏÊÇ·ñÄÜ¹»½øÈëÖ¸¶¨¸±±¾
+	* åœ¨main mapä¸Šåˆ¤æ–­æ˜¯å¦èƒ½å¤Ÿè¿›å…¥æŒ‡å®šå‰¯æœ¬
 	* @param param
 	* @param curplayer
 	* @return
 	*/
-	virtual S_BOOL join_instance( EnterInstParamBase* param, Player* curplayer) =0;
+	virtual bool join_instance( EnterInstParamBase* param, Player* curplayer) =0;
 };
 
 #endif	//__ENTERINSTCONDITIONBASE__H__

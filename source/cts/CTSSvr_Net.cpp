@@ -117,7 +117,7 @@ void CTSSvr::rgs_team_selreq( BasicProtocol* p, bool& autorelease)
 {
 	Pro_SvrSelTeam_req* req =dynamic_cast<Pro_SvrSelTeam_req*>(p);
 
-	S_INT_8 ret =0;
+	char ret =0;
 	Player* user =get_playerbyid( p->get_uuiduserid());
 	if( user != 0)
 		ret =4;
@@ -384,7 +384,7 @@ void CTSSvr::css_enterinst_req( BasicProtocol* p, bool& autorelease)
 
 	Pro_AppEnterIns_req* req =dynamic_cast<Pro_AppEnterIns_req*>( p);
 
-	S_INT_8 ret =0;
+	char ret =0;
 	InstCellState* pcell =0;
 	if( user->is_enterinst())
 		ret =3;	//已有一个进入请求
@@ -426,7 +426,7 @@ void CTSSvr::css_enterinst_ack( BasicProtocol* p, bool& autorelease)
 	CTS_GETPLAYER_FROMCACHE( user, p);
 
 	Pro_AppEnterIns_ack* ack =dynamic_cast<Pro_AppEnterIns_ack*>( p);
-	S_BOOL bsuccess =(ack->result_ == 0);
+	bool bsuccess =(ack->result_ == 0);
 
 	user->send_to_css( p);
 	autorelease =false;

@@ -13,6 +13,8 @@ namespace progen.pro_meta
         private string name_ = "";
         private int value_ = ProMetaConst.INVALIDE_VALUE;
         private bool value_set_ = false;
+        private bool ishex_ = false;
+        private string value_hex_ = "";
         private string desc_ = "";
 
         public string Name
@@ -35,6 +37,16 @@ namespace progen.pro_meta
             get { return this.value_; }
         }
 
+        public bool IsHexValue
+        {
+            get { return this.ishex_; }
+        }
+
+        public string HexValue
+        {
+            get { return this.value_hex_; }
+        }
+
         #endregion
 
         #region IMetaLoader implementation
@@ -50,7 +62,11 @@ namespace progen.pro_meta
             if( XmlUtil.GetAttrStrVal(e, "value", "") != "")
             {
                 value_set_ = true;
-                value_ = XmlUtil.GetAttrIntVal(e, "value", ProMetaConst.INVALIDE_VALUE);
+                ishex_ = XmlUtil.GetAttrBoolValByYesNo(e, "hex", false);
+                if (ishex_)
+                    value_hex_ = XmlUtil.GetAttrStrVal(e, "value", "");
+                else
+                    value_ = XmlUtil.GetAttrIntVal(e, "value", ProMetaConst.INVALIDE_VALUE);
             }
         }
 

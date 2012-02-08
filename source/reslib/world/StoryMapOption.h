@@ -26,7 +26,7 @@ class CSSOption;
 /**
 * @class StoryMapOption
 * 
-* @brief µØÍ¼ÅäÖÃĞÅÏ¢
+* @brief åœ°å›¾é…ç½®ä¿¡æ¯
 **/
 class StoryMapOption
 {
@@ -34,59 +34,59 @@ public:
 	StoryMapOption( const char* path, int mapid, int offsetx =0, int offsety =0, bool binst =false);
 
 	/**
-	* ¼ÓÔØµØÍ¼×ÊÔ´
+	* åŠ è½½åœ°å›¾èµ„æº
 	* @return
 	**/
 	bool load_mapres();
 
 	/**
-	* »ñÈ¡µØÍ¼×ÊÔ´ÅäÖÃÂ·¾¶£¬Â·¾¶ÏÂ°üº¬ºÍ¸ÃµØÍ¼Ïà¹ØµÄËùÓĞ×ÊÔ´
+	* è·å–åœ°å›¾èµ„æºé…ç½®è·¯å¾„ï¼Œè·¯å¾„ä¸‹åŒ…å«å’Œè¯¥åœ°å›¾ç›¸å…³çš„æ‰€æœ‰èµ„æº
 	* @return
 	**/
 	NS_STL::string get_mapdefpath(){ return res_path_;}
 
-	S_INT_32 get_mapid(){ return mapid_;}
+	int get_mapid(){ return mapid_;}
 
-	void world_to_local( S_FLOAT_32& x, S_FLOAT_32& y){
+	void world_to_local( float& x, float& y){
 		x =x - offsetx_;
 		y =y - offsety_;
 	}
 
-	void local_to_world( S_FLOAT_32&x, S_FLOAT_32& y){
+	void local_to_world( float&x, float& y){
 		x =x + offsetx_;
 		y =y + offsety_;
 	}
 
-	bool worldxy_inthismap( S_FLOAT_32 x, S_FLOAT_32 y);
+	bool worldxy_inthismap( float x, float y);
 
 	NS_STL::string get_respath(){ return res_path_;}
 
 public:
-	//µØÍ¼±àºÅ
-	S_INT_32	mapid_;
+	//åœ°å›¾ç¼–å·
+	int		mapid_;
 
-	//¿í¶ÈºÍ¸ß¶È(µØÍ¼×ø±ê)
-	S_INT_32	leftx_, lefty_;
-	S_INT_32	bottomx_, bottomy_;
-	S_INT_32	width_;
-	S_INT_32	height_;
+	//å®½åº¦å’Œé«˜åº¦(åœ°å›¾åæ ‡)
+	int		leftx_, lefty_;
+	int		bottomx_, bottomy_;
+	int		width_;
+	int		height_;
 
 	NS_STL::string	mapdesc_;
 
-	//Ïà¶ÔÊÀ½çµØÍ¼µÄ×ø±êÆ«ÒÆ
-	S_INT_32		offsetx_, offsety_;
+	//ç›¸å¯¹ä¸–ç•Œåœ°å›¾çš„åæ ‡åç§»
+	int		offsetx_, offsety_;
 
-	//¸±±¾µØÍ¼À©Õ¹ÅäÖÃ
-	//ÊÇ·ñ¸±±¾µØÍ¼
+	//å‰¯æœ¬åœ°å›¾æ‰©å±•é…ç½®
+	//æ˜¯å¦å‰¯æœ¬åœ°å›¾
 	bool			is_instancemap_;
-	//¸±±¾µØÍ¼Ïà¹ØÅäÖÃ
+	//å‰¯æœ¬åœ°å›¾ç›¸å…³é…ç½®
 	InstMapOption	instmap_opt_;
 
-	//ËùÊôµÄcss·şÎñÆ÷,Ö»¶ÔÖ÷ÊÀ½çÓĞĞ§£¬¶Ô¸±±¾ÎŞĞ§
+	//æ‰€å±çš„cssæœåŠ¡å™¨,åªå¯¹ä¸»ä¸–ç•Œæœ‰æ•ˆï¼Œå¯¹å‰¯æœ¬æ— æ•ˆ
 	CSSOption*	owner_css_;
 
 protected:
-	//×ÊÔ´Î»ÖÃ
+	//èµ„æºä½ç½®
 	NS_STL::string	res_path_;
 };
 

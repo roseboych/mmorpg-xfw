@@ -41,7 +41,7 @@ void Player::send_to_css( BasicProtocol* p)
 		css_svr_->send_protocol( p);
 }
 
-void Player::set_curchrid( S_INT_32 cid)
+void Player::set_curchrid( int cid)
 {
 	chrid_ =cid;
 	is_chrload_ =false;

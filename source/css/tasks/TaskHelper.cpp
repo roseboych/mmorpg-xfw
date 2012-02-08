@@ -43,16 +43,16 @@ TaskBase* TaskHelper::get_taskbyclsname( NS_STL::string clsname)
 	return 0;
 }
 
-S_INT_8 TaskHelper::get_task( S_INT_32 tid, Player* cplayer, BaseStoryService* psvr, NPCEntity* npc)
+char TaskHelper::get_task( int tid, Player* cplayer, BaseStoryService* psvr, NPCEntity* npc)
 {
-	S_INT_8 ret =0;
+	char ret =0;
 
 	return ret;
 }
 
-S_INT_8	TaskHelper::submit_task( S_INT_32 tid, Player* cplayer, BaseStoryService* psvr, NPCEntity* npc)
+char TaskHelper::submit_task( int tid, Player* cplayer, BaseStoryService* psvr, NPCEntity* npc)
 {
-	S_INT_8 ret =0;
+	char ret =0;
 
 	return ret;
 }

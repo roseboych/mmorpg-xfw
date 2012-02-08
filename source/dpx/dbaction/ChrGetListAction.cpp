@@ -32,7 +32,7 @@ void ChrGetListAction::release()
 	chrs_.clear();
 }
 
-ChrListInfo* ChrGetListAction::get_chrinfo( S_INT_32 cid)
+ChrListInfo* ChrGetListAction::get_chrinfo( int cid)
 {
 	for( size_t ii =0; ii < chrs_.size(); ++ii)
 	{
@@ -67,7 +67,7 @@ void ChrGetListAction::run_indbpool( otl_connect *pconn)
 		//获取角色列表
 		while( !cur.eof())
 		{
-			S_INT_16 sv, rc, pf;
+			short sv, rc, pf;
 			NS_STL::string strname, petname;
 			ChrListInfo* chr =FRAMEWK_NEW ChrListInfo();
 			cur >> chr->chrid_ >> strname >> rc >> pf >> sv >> chr->lastposx_ >> chr->lastposy_ >> chr->lastposz_
@@ -91,8 +91,8 @@ void ChrGetListAction::run_indbpool( otl_connect *pconn)
 
 		cur2 << uuid_.userid_ << (short)GLOBALCONFIG_INS->get_regionsn();
 
-		S_INT_32 cid, icode;
-		S_INT_16 iav, inp;
+		int cid, icode;
+		short iav, inp;
 
 		while( !cur2.eof())
 		{

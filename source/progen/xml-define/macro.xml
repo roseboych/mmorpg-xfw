@@ -2,8 +2,36 @@
     <meta proid="1000002,1000003" />
 
     <macro-define>
-        <macro name="CHR_PETNAME_LEN" value="32" type="int32" desc="宠物名字长度"></macro>
+        <!--character defined-->
+        <macro name="SPEED_ONESECOND" value="400" type="int32" desc="每秒速度	4m(400cm)"></macro>
+        <macro name="CHRNUMS_MAX" value="5" type="int32" desc="玩家支持的角色数"></macro>
         <macro name="CHR_NICKNAME_LEN" value="32" type="int32" desc="角色名字长度"></macro>
+        <macro name="CHRITEMS_MAX" value="13" type="int32" desc="角色最大装备数"></macro>
+        <macro name="CHRSKILLS_MAX" value="2" type="int32" desc="角色装备技能树"></macro>
+
+        <!--pet system defined-->
+        <macro name="CHR_PETNAME_LEN" value="32" type="int32" desc="宠物名字长度"></macro>
+        
+        <!--buffer system defined-->
+        <macro name="MASK_BUFFER_IDHEAD" value="0xFF000000" type="int32" desc=""></macro>
+        <macro name="MASK_BUFFER_IDBIT" value="0x00FFFFFF" type="int32" desc=""></macro>
+        <macro name="MASK_BUFFER_LENGTH" value="24" type="int32" desc=""></macro>
+
+        <macro name="BUFFERID_HEAD_SYS" value="0x10000000" type="int32" desc="系统buffer类型 0x10000000开始.(比如：在线检测,系统活动)"></macro>
+        <macro name="BUFFERID_HEAD_APP" value="0x20000000" type="int32" desc="应用定义的buff类型 0x20000000开始"></macro>
+        <!--定义的buffer编号-->
+        <macro name="BUFFERID_SYS_ONLINET" value="0x10000001" type="int32" desc="连续上线时间"></macro>
+        
+        <!--chat system defined-->
+        <macro name="MESSAGE_LEN_MAX" value="256" type="int32" desc="聊天消息最大长度"></macro>
+        
+        <!--world defined-->
+        <macro name="MAP_PLANE_DIAMETER" value="1000" type="int32" desc="格子直径	10m(1000cm)"></macro>
+        <macro name="VIEW_PLANE_NUM" value="9" type="int32" desc="可视范围90m "></macro>
+        <macro name="VIEW_PLANE_RADIUS" value="4" type="int32" desc="可视区域格子数 VIEW_PLANE_RADIUS*2+1=VIEW_PLANE_NUM"></macro>
+        
+        <macro name="INVALIDATE_PANEINDEX" value="0x7FFFFFFF" type="int32" desc="无效的格子"></macro>
+        
     </macro-define>
 
 </pro-region>

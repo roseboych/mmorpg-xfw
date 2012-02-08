@@ -13,7 +13,7 @@
 class ConditionContext;
 class TiXmlElement;
 
-//¶¨ÒåÁËÌõ¼şµÄ×éºÏ·½Ê½
+//å®šä¹‰äº†æ¡ä»¶çš„ç»„åˆæ–¹å¼
 enum CONDITION_CONNECTOR
 {
 	CONDITION_CONNECTOR_AND =0,
@@ -21,7 +21,7 @@ enum CONDITION_CONNECTOR
 	CONDITION_CONNECTOR_NOT,
 };
 
-//¶¨ÒåÁËÖ§³ÖµÄÔËËã·û
+//å®šä¹‰äº†æ”¯æŒçš„è¿ç®—ç¬¦
 enum CONDITION_OPERATOR
 {
 	// >
@@ -43,13 +43,13 @@ enum CONDITION_OPERATOR
 /**
 * @class ConditionElement
 * 
-* @brief Ìõ¼şÅĞ¶¨½Úµã»ùÀà
+* @brief æ¡ä»¶åˆ¤å®šèŠ‚ç‚¹åŸºç±»
 **/
 class ConditionElement
 {
 public:
 	/**
-	* ´Óxml½ÚµãÖĞ¹¹Ôìcondition
+	* ä»xmlèŠ‚ç‚¹ä¸­æ„é€ condition
 	* @param e
 	* @return
 	**/
@@ -57,17 +57,17 @@ public:
 
 public:
 	/**
-	* ÊÇ·ñÊÇÒ¶×Ó½Úµã£¬Ö»ÓĞÒ¶×Ó½Úµã½øĞĞÂß¼­ÔËËã
+	* æ˜¯å¦æ˜¯å¶å­èŠ‚ç‚¹ï¼Œåªæœ‰å¶å­èŠ‚ç‚¹è¿›è¡Œé€»è¾‘è¿ç®—
 	* @return
 	**/
-	virtual S_BOOL	is_leaf() =0;
+	virtual bool	is_leaf() =0;
 
 	/**
-	* ¸ù¾İÌõ¼ş¼ÆËãÉè¶¨µÄÌõ¼şÂß¼­
+	* æ ¹æ®æ¡ä»¶è®¡ç®—è®¾å®šçš„æ¡ä»¶é€»è¾‘
 	* @param context
 	* @return
 	**/
-	virtual S_BOOL	condition_calcuate( ConditionContext& context) =0;
+	virtual bool	condition_calcuate( ConditionContext& context) =0;
 };
 
 #endif	//__CONDITIONELEMENT__H__

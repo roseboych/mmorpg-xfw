@@ -24,7 +24,7 @@ CSSLocalLink::CSSLocalLink()
 {
 }
 
-S_INT_32 CSSLocalLink::get_serverindex()
+int CSSLocalLink::get_serverindex()
 {
 	return opt_->server_index_;
 }

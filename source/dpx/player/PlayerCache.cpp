@@ -24,7 +24,7 @@ void PlayerCache::clear_chrlist()
 	chrs_.clear();
 }
 
-ChrListInfo* PlayerCache::is_chrinlist( S_INT_32 cid)
+ChrListInfo* PlayerCache::is_chrinlist( int cid)
 {
 	if( !chrs_init_)
 		return 0;
@@ -38,7 +38,7 @@ ChrListInfo* PlayerCache::is_chrinlist( S_INT_32 cid)
 	return 0;
 }
 
-void PlayerCache::rm_chrinlist( S_INT_32 cid)
+void PlayerCache::rm_chrinlist( int cid)
 {
 	for( CHRLIST_VECTOR::iterator iter =chrs_.begin(); iter != chrs_.end(); ++iter)
 	{
@@ -51,7 +51,7 @@ void PlayerCache::rm_chrinlist( S_INT_32 cid)
 	}
 }
 
-void PlayerCache::chrdata_load( S_INT_32 cid)
+void PlayerCache::chrdata_load( int cid)
 {
 	//导入数据
 	for( size_t ii =0; ii < chrs_.size(); ++ii)

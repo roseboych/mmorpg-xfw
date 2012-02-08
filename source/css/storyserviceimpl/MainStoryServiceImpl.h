@@ -37,14 +37,14 @@ public:
 	virtual void uninit_service();
 
 	virtual Player* get_player( const BasicProtocol::internal_uuid& uuid);
-	virtual Player* player_regist( const BasicProtocol::internal_uuid& uuid, S_INT_32 chrid);
+	virtual Player* player_regist( const BasicProtocol::internal_uuid& uuid, int chrid);
 	virtual void	player_unregist( const BasicProtocol::internal_uuid& uuid);
 	virtual void	player_unregist( Player* user);
 
 public:
 	//支持的最大玩家
 	ACE_Auto_Array_Ptr<Player>	players_;
-	S_INT_32					player_nums_;
+	int							player_nums_;
 
 public:
 	//--------------------------------------协议处理--------------------------------------

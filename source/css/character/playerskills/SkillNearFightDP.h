@@ -27,7 +27,7 @@ public:
 
 	virtual void init_skillruntime();
 
-	virtual void set_skillid( S_INT_32 id){ dpsk_data_.skillid_ =id;}
+	virtual void set_skillid( int id){ dpsk_data_.skillid_ =id;}
 	virtual void set_lastruntime( S_TIMESTAMP st){ dpsk_data_.last_runtime_ =st;}
 	virtual S_TIMESTAMP get_lastruntime(){ return dpsk_data_.last_runtime_;}
 

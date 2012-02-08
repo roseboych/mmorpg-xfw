@@ -49,30 +49,30 @@ public:
 	/**
 	* @see UnitBase::get_id()
 	**/
-	virtual S_INT_32 get_id();
+	virtual int get_id();
 
 	virtual ACTOR_TYPE_ENUM get_actortype(){ return ACTOR_TYPE_PLAYER;}
 
 	bool is_unused(){ return status_ == PLAYERSTATUS_NONE;}
 
-	inline virtual void set_position( S_FLOAT_32 x, S_FLOAT_32 y, S_FLOAT_32 z);
+	inline virtual void set_position( float x, float y, float z);
 	inline virtual void set_position( coordinate_pointer& p);
-	inline virtual void set_positionx( S_FLOAT_32 v);
-	inline virtual void set_positiony( S_FLOAT_32 v);
-	inline virtual void set_positionz( S_FLOAT_32 v);
+	inline virtual void set_positionx( float v);
+	inline virtual void set_positiony( float v);
+	inline virtual void set_positionz( float v);
 	inline virtual coordinate_pointer get_position();
-	inline virtual S_FLOAT_32 get_positionx();
-	inline virtual S_FLOAT_32 get_positiony();
-	inline virtual S_FLOAT_32 get_positionz();
-	inline virtual void set_facing( S_FLOAT_32 v);
-	inline virtual S_FLOAT_32 get_facing();
+	inline virtual float get_positionx();
+	inline virtual float get_positiony();
+	inline virtual float get_positionz();
+	inline virtual void set_facing( float v);
+	inline virtual float get_facing();
 
 	inline bool is_needupdatepos( const ACE_UINT64& tnow);
 
 	/**
 	* @see UnitBase::moveto( coordinate_pointer& pos, S_FLOAT_32& face)
 	**/
-	virtual void moveto( coordinate_pointer& pos, S_FLOAT_32& face);
+	virtual void moveto( coordinate_pointer& pos, float& face);
 
 	/**
 	* 属性加载完成
@@ -101,8 +101,8 @@ public:
 	* @param stmp
 	* @param chrid
 	**/
-	void regist( S_INT_32 uid, S_TIMESTAMP stmp, S_INT_32 chrid);
-	void regist( S_INT_32 gid, S_INT_32 uid, S_TIMESTAMP stmp, S_INT_32 chrid);
+	void regist( int uid, S_TIMESTAMP stmp, int chrid);
+	void regist( int gid, int uid, S_TIMESTAMP stmp, int chrid);
 	/**
 	* 玩家数据初始化
 	**/
@@ -142,7 +142,7 @@ public:
 	* 学习一个技能
 	* @param skid
 	**/
-	void skill_study( S_INT_32 skid);
+	void skill_study( int skid);
 
 	/**
 	* 使用一个技能
@@ -151,7 +151,7 @@ public:
 	* @param targetid	目标id
 	* @param st			玩家的当前状态
 	**/
-	void skill_used( S_INT_32 skid, S_INT_64 targetid, CHRSTATE_TYPE_ENUM st);
+	void skill_used( int skid, S_INT_64 targetid, CHRSTATE_TYPE_ENUM st);
 
 public:
 	//---------------------------------其他函数---------------------------------------------------
@@ -178,7 +178,7 @@ public:
 
 	//上次更新坐标时间
 	ACE_UINT64		t_lastupdate_;
-	S_FLOAT_32		lastposx_, lastposy_, lastposz_, lastfacing_;
+	float			lastposx_, lastposy_, lastposz_, lastfacing_;
 
 protected:
 	//当前的攻击目标
@@ -186,7 +186,7 @@ protected:
 
 public:
 	//玩家全局索引，系统定义
-	S_INT_32	global_index_;
+	int									global_index_;
 
 	//玩家分配pool
 	static boost::object_pool<Player>	player_pools_;

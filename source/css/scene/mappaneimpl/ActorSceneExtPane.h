@@ -88,7 +88,7 @@ public:
 	UNITOBJECT_MAP	in_view_objs_;
 	UNITOBJECT_MAP	out_view_objs_;
 	//原来的区域
-	S_INT_32	oldpanex_, oldpaney_;
+	int			oldpanex_, oldpaney_;
 	//当前所在的pane
 	MapPane*	cur_pane_;
 };

@@ -22,23 +22,23 @@ class PlayerCache
 {
 public:
 	typedef NS_STL::vector<ChrListInfo*>	CHRLIST_VECTOR;
-	typedef NS_STL::map<S_INT_32, PRO::equipment_item*>	EQUIPITEMS_MAP;
-	typedef NS_STL::map<S_INT_32, PRO::petdata_item*>	PETDATA_MAP;
-	typedef NS_STL::map<S_INT_32, PRO::bufferdata_item*>	BUFFERDATA_MAP;
+	typedef NS_STL::map<int, PRO::equipment_item*>	EQUIPITEMS_MAP;
+	typedef NS_STL::map<int, PRO::petdata_item*>	PETDATA_MAP;
+	typedef NS_STL::map<int, PRO::bufferdata_item*>	BUFFERDATA_MAP;
 
 public:
 	PlayerCache();
 	virtual ~PlayerCache();
 
 	//角色列表缓存
-	ChrListInfo* is_chrinlist( S_INT_32 cid);
-	void rm_chrinlist( S_INT_32 cid);
+	ChrListInfo* is_chrinlist( int cid);
+	void rm_chrinlist( int cid);
 
 	/**
 	* 加载角色数据
 	* @param cid
 	**/
-	void chrdata_load( S_INT_32 cid);
+	void chrdata_load( int cid);
 
 protected:
 	/**

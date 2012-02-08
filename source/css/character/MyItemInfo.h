@@ -11,7 +11,7 @@
 #include "../css_pre.h"
 
 #include <reslib/items/ItemInfoBase.h>
-#include <prolib/datastore/character_define.h>
+#include <prolib/Pro_define.h>
 
 class IPlayerProperty;
 
@@ -25,8 +25,8 @@ class MyItemInfo
 public:
 	MyItemInfo( PRO::equipment_item& info, ItemInfoBase* p);
 
-	inline S_INT_32 get_itemid();
-	inline S_INT_32 get_itemcode();
+	inline int get_itemid();
+	inline int get_itemcode();
 
 	/**
 	* 是否已经装备

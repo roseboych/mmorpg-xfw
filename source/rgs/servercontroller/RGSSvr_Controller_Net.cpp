@@ -27,7 +27,7 @@ void RGSSvr::controller_login_req( BasicProtocol* p, bool& autorelease)
 	Pro_CtrlLogin_req* req =dynamic_cast<Pro_CtrlLogin_req*>( p);
 
 	RGSOption* opt =GLOBALCONFIG_INS->get_rgsoption();
-	S_INT_8 ret =opt->has_privilege( req->name_, req->pwd_)?0:1;
+	char ret =opt->has_privilege( req->name_, req->pwd_)?0:1;
 
 	if( !controller_svr_.finish_login( ret == 0))
 		ret =1;

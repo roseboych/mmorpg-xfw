@@ -92,7 +92,7 @@ public:
 	//玩家标识号
 	uuid_session		uuid_;
 	//全局索引,系统初始化时分配
-	S_INT_32			global_index_;
+	int					global_index_;
 
 	//玩家所在的svr
 	BaseStoryService*	insvr_;

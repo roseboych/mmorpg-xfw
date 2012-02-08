@@ -223,7 +223,7 @@ void SceneManagePaneImpl::unitobj_leavemap( UnitBase* pobj)
 	ACE_ASSERT( pobj);
 }
 
-void SceneManagePaneImpl::unitobj_moveto( Player* pobj, coordinate_pointer& pos, S_FLOAT_32& face)
+void SceneManagePaneImpl::unitobj_moveto( Player* pobj, coordinate_pointer& pos, float& face)
 {
 	USE_PROTOCOL_NAMESPACE;
 	//TODO:移动检测
@@ -279,8 +279,8 @@ void SceneManagePaneImpl::calcuate_unit_inview_tmp()
 			continue;
 
 		//获取当前所在的pane(x,y)
-		S_INT_32 panex =POSX2PANEX( user->get_positionx());
-		S_INT_32 paney =POSY2PANEY( user->get_positiony());
+		int panex =POSX2PANEX( user->get_positionx());
+		int paney =POSY2PANEY( user->get_positiony());
 
 		//没有变化
 		ActorSceneExtPane *ext =user->get_scene_ext<ActorSceneExtPane>();
@@ -334,8 +334,8 @@ void SceneManagePaneImpl::calcuate_unit_outview_tmp()
 			continue;
 
 		//获取当前所在的pane(x,y)
-		S_INT_32 panex =POSX2PANEX( user->get_positionx());
-		S_INT_32 paney =POSY2PANEY( user->get_positiony());
+		int panex =POSX2PANEX( user->get_positionx());
+		int paney =POSY2PANEY( user->get_positiony());
 
 		ActorSceneExtPane* ext =user->get_scene_ext<ActorSceneExtPane>();
 		//没有变化
@@ -406,8 +406,8 @@ void SceneManagePaneImpl::broadcast_inview( UnitBase* sender, BasicProtocol* p, 
 
 void SceneManagePaneImpl::notify_allobjs_inview( Player* pl)
 {
-	S_INT_32 panex =POSX2PANEX( pl->get_positionx());
-	S_INT_32 paney =POSY2PANEY( pl->get_positiony());
+	int panex =POSX2PANEX( pl->get_positionx());
+	int paney =POSY2PANEY( pl->get_positiony());
 
 	NS_STL::vector<MapPane*> pss;
 	get_playerviewpanes( panex, paney, pss);

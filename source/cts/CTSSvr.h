@@ -38,9 +38,9 @@ class SvrTeamOption;
 class CTSSvr
 {
 	//userid来索引的列表
-	typedef NS_STL::map< S_INT_32, Player*>	PLAYERALL_MAP;
+	typedef NS_STL::map< int, Player*>	PLAYERALL_MAP;
 	typedef NS_STL::list<Player*> PLAYER_LIST;
-	typedef NS_STL::map< S_INT_32, TeamProxySession*> TEAMPROXY_MAP;
+	typedef NS_STL::map< int, TeamProxySession*> TEAMPROXY_MAP;
 	typedef NS_STL::list<TeamProxySession*>	EMPTY_TEAMPROXY_LIST;
 public:
 	CTSSvr(void);
@@ -75,7 +75,7 @@ public:
 	inline GTSLink* get_gtslink( int ind);
 	inline GTSLink* get_gtslinkbysindex( int user_index_);
 	inline Player* get_player( int ind);
-	inline Player* get_playerbyid( S_INT_32 userid);
+	inline Player* get_playerbyid( int userid);
 
 	/**
 	* 发送到rgs
@@ -89,10 +89,10 @@ public:
 	/**
 	* 获取个空闲的玩家代理
 	**/
-	TeamProxySession* get_playerproxy( S_INT_32 userid, S_TIMESTAMP st, S_INT_32 sindex);
-	TeamProxySession* is_playerproxy( S_INT_32 userid);
-	inline TeamProxySession* get_playerproxy( S_INT_32 ind);
-	void free_waitproxy( S_INT_32 userid);
+	TeamProxySession* get_playerproxy( int userid, S_TIMESTAMP st, int sindex);
+	TeamProxySession* is_playerproxy( int userid);
+	inline TeamProxySession* get_playerproxy( int ind);
+	void free_waitproxy( int userid);
 	void free_player( Player* user);
 
 protected:
@@ -108,15 +108,15 @@ protected:
 
 	//可以被连接的css
 	ACE_Auto_Array_Ptr<CSSLink>	csssvr_;
-	S_INT_32					csssvr_nums_;
+	int							csssvr_nums_;
 
 	//可以被连接的gts
 	ACE_Auto_Array_Ptr<GTSLink>	gtssvr_;
-	S_INT_32					gtssvr_nums_;
+	int							gtssvr_nums_;
 
 	//支持的玩家总数
 	ACE_Auto_Array_Ptr<Player>	players_;
-	S_INT_32					player_nums_;
+	int							player_nums_;
 	PLAYERALL_MAP				login_players_;
 
 	//副本状态维护
@@ -128,8 +128,8 @@ protected:
 	TEAMPROXY_MAP							wait_proxys_;
 
 	//本服务器的server_index_
-	S_INT_32		cts_serverindex_;
-	S_INT_32		cts_teamid_;
+	int				cts_serverindex_;
+	int				cts_teamid_;
 
 	SvrTeamOption*	owner_svrteam_;
 
@@ -203,7 +203,7 @@ inline Player* CTSSvr::get_player( int ind)
 }
 
 inline 
-Player* CTSSvr::get_playerbyid( S_INT_32 userid)
+Player* CTSSvr::get_playerbyid( int userid)
 {
 	PLAYERALL_MAP::iterator fiter =login_players_.find( userid);
 	if( fiter == login_players_.end())
@@ -213,7 +213,7 @@ Player* CTSSvr::get_playerbyid( S_INT_32 userid)
 }
 
 inline 
-TeamProxySession* CTSSvr::get_playerproxy( S_INT_32 ind)
+TeamProxySession* CTSSvr::get_playerproxy( int ind)
 {
 	if( ind < 0 || ind >= player_nums_)
 		return 0;

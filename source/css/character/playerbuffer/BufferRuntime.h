@@ -10,7 +10,7 @@
 
 #include "../../css_pre.h"
 
-#include <prolib/datastore/buffer_define.h>
+#include <prolib/Pro_define.h>
 #include <corelib/script/ScriptContext.h>
 #include <reslib/buffers/BufferDesc.h>
 
@@ -28,16 +28,16 @@ public:
 	BufferRuntime( const PRO::bufferdata_item& buf, BufferDesc* conf, MyBufferContainer* powner);
 	~BufferRuntime();
 
-	S_INT_32 get_bufferid(){ return buff_conf_->buffer_id_;}
+	int get_bufferid(){ return buff_conf_->buffer_id_;}
 
 	/**
 	* 获取buffer创建时间
 	* @return
 	**/
-	S_INT_32 get_createtime(){ buffer_data_.createtime_;}
+	int get_createtime(){ buffer_data_.createtime_;}
 
-	S_INT_32 get_lasttime(){ buffer_data_.scopetime_;}
-	void set_lasttime( S_INT_32 t){ buffer_data_.scopetime_ =t;}
+	int get_lasttime(){ buffer_data_.scopetime_;}
+	void set_lasttime( int t){ buffer_data_.scopetime_ =t;}
 
 	bool is_supportscript(){ return buff_conf_->is_supportscript();}
 	bool will_affectbaseprop(){ return buff_conf_->will_affectbaseprop();}

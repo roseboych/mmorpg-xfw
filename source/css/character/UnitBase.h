@@ -14,7 +14,7 @@
 
 #include "../css_pre.h"
 
-#include <prolib/datastore/character_define.h>
+#include <prolib/Pro_define.h>
 #include <reslib/world/res_struct_def.h>
 #include "UnitEventListener.h"
 
@@ -22,6 +22,16 @@
 
 struct lua_State;
 class ActorSceneExt;
+
+#pragma pack(push,1)
+
+union entity_uuid
+{
+	S_INT_64	uuid_;
+	int			parts_[2];
+};
+
+#pragma pack(pop)
 
 /**
 * @class UnitBase
@@ -49,7 +59,7 @@ public:
 	/**
 	* 获取移动对象的唯一索引
 	**/
-	virtual S_INT_32 get_id(){ return NO_INITVALUE;}
+	virtual int get_id(){ return NO_INITVALUE;}
 	inline S_INT_64 get_uuid();
 
 	/**
@@ -73,17 +83,17 @@ public:
 	/**
 	* 活动对象，坐标管理
 	**/
-	inline virtual void set_position( S_FLOAT_32 x, S_FLOAT_32 y, S_FLOAT_32 z){}
+	inline virtual void set_position( float x, float y, float z){}
 	inline virtual void set_position( coordinate_pointer& p){}
-	inline virtual void set_positionx( S_FLOAT_32 v){}
-	inline virtual void set_positiony( S_FLOAT_32 v){}
-	inline virtual void set_positionz( S_FLOAT_32 v){}
+	inline virtual void set_positionx( float v){}
+	inline virtual void set_positiony( float v){}
+	inline virtual void set_positionz( float v){}
 	inline virtual coordinate_pointer get_position(){ coordinate_pointer c; return c;}
-	inline virtual S_FLOAT_32 get_positionx(){ return NO_INITVALUE;}
-	inline virtual S_FLOAT_32 get_positiony(){ return NO_INITVALUE;}
-	inline virtual S_FLOAT_32 get_positionz(){ return NO_INITVALUE;}
-	inline virtual void set_facing( S_FLOAT_32 v){}
-	inline virtual S_FLOAT_32 get_facing(){ return NO_INITVALUE;}
+	inline virtual float get_positionx(){ return NO_INITVALUE;}
+	inline virtual float get_positiony(){ return NO_INITVALUE;}
+	inline virtual float get_positionz(){ return NO_INITVALUE;}
+	inline virtual void set_facing( float v){}
+	inline virtual float get_facing(){ return NO_INITVALUE;}
 
 	/**
 	* 移动到指定位置
@@ -91,7 +101,7 @@ public:
 	* @param rot
 	* @param vec
 	**/
-	virtual void moveto( coordinate_pointer& pos, S_FLOAT_32& face){}
+	virtual void moveto( coordinate_pointer& pos, float& face){}
 
 	template< class T>
 	T* get_scene_ext(){ return (T*)scene_ext_;}

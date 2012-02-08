@@ -22,10 +22,12 @@
 #include <map>
 #include <string>
 
-#include <prolib/datastore/character_define.h>
+#include <prolib/Pro_define.h>
+
 #include "reslib/skills/SkillDesc.h"
 #include "reslib/skills/SkillTree.h"
 #include "reslib/skills/PlayerStateSkills.h"
+#include "reslib/character/character_define.h"
 
 NAMESPACE_APPSCRIPT_BEGIN
 

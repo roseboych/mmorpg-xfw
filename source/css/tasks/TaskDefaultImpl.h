@@ -21,8 +21,8 @@ class TaskDefaultImpl : public TaskBase
 public:
 	TaskDefaultImpl();
 
-	virtual S_BOOL get_task( Player* curplayer, TaskInfo* tparam);
-	virtual S_BOOL submit_task( Player* curplayer, TaskInfo* tparam);
+	virtual bool get_task( Player* curplayer, TaskInfo* tparam);
+	virtual bool submit_task( Player* curplayer, TaskInfo* tparam);
 
 };
 

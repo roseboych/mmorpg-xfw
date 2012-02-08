@@ -18,7 +18,7 @@ BaseStoryService* get_thiscontext()
 	return (BaseStoryService*)TLSContext::get_app_userdata();
 }
 
-ContentServiceThread::ContentServiceThread( S_INT_32 n):inherit(),
+ContentServiceThread::ContentServiceThread( int n):inherit(),
 initialized_( false),
 will_exit_( false),
 thread_nums_( n)

@@ -28,7 +28,7 @@
 **/
 class RGSSvr
 {
-	typedef NS_STL::map<S_INT_32, PlayerInfo*>	USEDUSER_MAP;
+	typedef NS_STL::map<int, PlayerInfo*>	USEDUSER_MAP;
 	typedef NS_STL::list< PlayerInfo*> EMPTYUSER_LIST;
 public:
 	RGSSvr(void);
@@ -60,8 +60,8 @@ public:
 	void init_svr();
 	void uninit_svr();
 
-	inline LGSLink* get_lgslink( S_INT_32 ind);
-	inline CTSLink* get_ctslink( S_INT_32 ind);
+	inline LGSLink* get_lgslink( int ind);
+	inline CTSLink* get_ctslink( int ind);
 
 	inline ControllerLink* get_controllerlink();
 
@@ -77,7 +77,7 @@ public:
 	* @param userid
 	* @return PlayerInfo*
 	**/
-	PlayerInfo* find_byuserid( S_INT_32 userid);
+	PlayerInfo* find_byuserid( int userid);
 
 	/**
 	* 注册一个登陆玩家
@@ -108,7 +108,7 @@ protected:
 protected:
 	//存在的所有用户信息
 	ACE_Auto_Array_Ptr<PlayerInfo>	players_;
-	S_INT_32	player_nums_;
+	int				player_nums_;
 	
 	//根据userid索引的用户信息
 	USEDUSER_MAP	userid_players_;
@@ -119,10 +119,10 @@ protected:
 
 	//所有的lgs信息
 	ACE_Auto_Array_Ptr<LGSLink>	lgssvr_;
-	S_INT_32	lgssvr_nums_;
+	int			lgssvr_nums_;
 	//所有的cts信息
 	ACE_Auto_Array_Ptr<CTSLink>	ctssvr_;
-	S_INT_32	ctssvr_nums_;
+	int			ctssvr_nums_;
 
 	//管理工具连接对象
 	ControllerLink	controller_svr_;
@@ -158,19 +158,19 @@ public:
 	void cts_selteamconfirm_ack( BasicProtocol* p, bool& autorelease);
 
 	//lgs server
-	void lgs_login_req( BasicProtocol* p, bool& autorelease, S_INT_32 server_index);
-	void lgs_userlost_ntf( BasicProtocol* p, bool& autorelease, S_INT_32 server_index);
+	void lgs_login_req( BasicProtocol* p, bool& autorelease, int server_index);
+	void lgs_userlost_ntf( BasicProtocol* p, bool& autorelease, int server_index);
 	//sel team server
-	void lgs_selteam_req( BasicProtocol* p, bool& autorelease, S_INT_32 server_index);
+	void lgs_selteam_req( BasicProtocol* p, bool& autorelease, int server_index);
 	void cts_selteam_ack( BasicProtocol*p, bool& autorelease);
 	void cts_teamtimeout_ntf( BasicProtocol* p, bool& autorelease);
 	//退服请求
 	void cts_quitteam_req( BasicProtocol*p, bool& autorelease);
-	void lgs_quitteamreconn_req( BasicProtocol*p, bool& autorelease, S_INT_32 server_index);
+	void lgs_quitteamreconn_req( BasicProtocol*p, bool& autorelease, int server_index);
 };
 
 inline 
-LGSLink* RGSSvr::get_lgslink( S_INT_32 ind)
+LGSLink* RGSSvr::get_lgslink( int ind)
 {
 	if( ind < 0 || ind >= lgssvr_nums_)
 		return 0;
@@ -178,7 +178,7 @@ LGSLink* RGSSvr::get_lgslink( S_INT_32 ind)
 }
 
 inline 
-CTSLink* RGSSvr::get_ctslink( S_INT_32 ind)
+CTSLink* RGSSvr::get_ctslink( int ind)
 {
 	if( ind < 0 || ind >= ctssvr_nums_)
 		return 0;

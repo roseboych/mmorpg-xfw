@@ -3,7 +3,49 @@
 
     <global-struct>
         
-        
+        <!--character system defined-->
+        <struct name="character_baseinfo" desc="角色的基本信息">
+            <member name="name_" type="staticstring" macrolen="CHR_NICKNAME_LEN" desc="角色昵称" />
+            <member name="sex_" type="int8" desc="性别 0:男 1:女" />
+            <member name="race_" type="int8" desc="种族" />
+            <member name="profession_" type="int8" desc="职业" />
+            <member name="moneys_" type="int32" desc="money" />
+            <member name="level_" type="int32" desc="角色等级" />
+            <member name="bagslots_" type="int8" desc="背包空格数" />
+            <member name="skill1_" type="int32" desc="技能"></member>
+            <member name="skill2_" type="int32" desc="技能"></member>
+            <member name="petid_" type="int32" desc="petid"></member>
+            <member name="hp_" type="int32" desc="hp"></member>
+            <member name="mp_" type="int32" desc="mp"></member>
+            <member name="power_" type="int32" desc="额外附加的点数"></member>
+            <member name="agile_" type="int32" desc=""></member>
+            <member name="endurance_" type="int32" desc=""></member>
+            <member name="intellect_" type="int32" desc=""></member>
+            <member name="spirit_" type="int32" desc=""></member>
+            <member name="armor_" type="int32" desc=""></member>
+            <member name="posx_" type="float32" desc="坐标"></member>
+            <member name="posy_" type="float32" desc="坐标"></member>
+            <member name="posz_" type="float32" desc="坐标"></member>
+            <member name="facing_" type="float32" desc="面向"></member>
+            <member name="died_" type="int8" desc="是否死亡" />
+            <member name="exp_" type="int32" desc="exp"></member>
+        </struct>
+
+        <struct name="equipment_item" desc="玩家装备信息项">
+            <member name="itemid_" type="int32" desc="id" />
+            <member name="inavatar_" type="int16" desc="是否装备	0:在背包中 1:普通装 2:属于时装" />
+            <member name="inpart_" type="int16" desc="装备位置	inavatar=1,2 有效 0-12" />
+            <member name="itemcode_" type="int32" desc="物品编号" />
+            <member name="validatetype_" type="int16" desc="有效期计算方式 0:按次计 1:按绝对时间计 2:永久" />
+            <member name="starttime_" type="int32" desc="开始时间 validatetype=0 表示剩余次数 =3保留 =1剩余的在线时间 =2开始时间yyyymmddhh" />
+            <member name="endtime_" type="int32" desc="结束时间 validatetype=2时有效，表示结束时间  =0保存堆跌次数" />
+        </struct>
+
+        <struct name="petdata_item" desc="宠物信息">
+            <member name="petid_" type="int32" desc="宠物id" />
+            <member name="petcode_" type="int32" desc="宠物编号 配置ID" />
+            <member name="petname_" type="staticstring" macrolen="CHR_PETNAME_LEN" desc="宠物昵称" />
+        </struct>
         
         <!--
         defined global struct that buffer system will used
@@ -14,6 +56,7 @@
             <member name="createtime_" type="int32" desc="" />
             <member name="scopetime_" type="int32" desc="" />
         </struct>
+        
     </global-struct>
 
 </pro-region>

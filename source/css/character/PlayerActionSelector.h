@@ -52,7 +52,7 @@ public:
 	* @param id
 	* @return
 	**/
-	BaseActionState* get_statebyid( S_INT_32 id);
+	BaseActionState* get_statebyid( int id);
 
 	/**
 	* 获取缺省状态
@@ -65,7 +65,7 @@ public:
 	* @param newstate
 	* @return
 	**/
-	BaseActionState* goto_state( S_INT_32 newstate);
+	BaseActionState* goto_state( int newstate);
 
 	/**
 	* 在player完成数据注册之后调用

@@ -41,7 +41,7 @@ bool TaskConfig::load_taskconfig()
 	IConfigContentSource* dsrc =GLOBALCONFIG_INS->get_confsrc();
 	ACE_ASSERT( dsrc != 0);
 
-	//¶ÁÈ¡ÈÎÎñ»ù´¡½Å±¾
+	//è¯»å–ä»»åŠ¡åŸºç¡€è„šæœ¬
 	task_script_ =dsrc->get_txtfilecontent( "appdata/tasks", "task-base.lua");
 
 	NS_STL::string cnt =dsrc->get_txtfilecontent( "appdata/tasks", "taskdrama.xml");
@@ -53,10 +53,10 @@ bool TaskConfig::load_taskconfig()
 	TiXmlElement* valtasks =root->FirstChildElement( "support-task");
 	ACE_ASSERT( valtasks != 0);
 
-	//¼ÓÔØ¿ÉÓÃµÄÈÎÎñÅäÖÃ
+	//åŠ è½½å¯ç”¨çš„ä»»åŠ¡é…ç½®
 	for( TiXmlElement* e =valtasks->FirstChildElement( "task"); e != NULL; e =e->NextSiblingElement( "task"))
 	{
-		S_INT_32 iid =XmlUtil::GetXmlAttrInt( e, "id", NO_INITVALUE);
+		int iid =XmlUtil::GetXmlAttrInt( e, "id", NO_INITVALUE);
 		if( iid == NO_INITVALUE)
 		{
 			MODULE_LOG_ERROR( MODULE_BOOT, "load tasks.xml error - task:%d hasn't a legal id!", iid);
@@ -76,7 +76,7 @@ bool TaskConfig::load_taskconfig()
 
 		ptask->is_validate_ =XmlUtil::GetXmlAttrYesNo( e, "validate", false);
 
-		//¼ÓÔØÈÎÎñĞÅÏ¢
+		//åŠ è½½ä»»åŠ¡ä¿¡æ¯
 		if( !ptask->load_task())
 		{
 			MODULE_LOG_ERROR( MODULE_BOOT, "load task[appdata/tasks/%d] failed", iid);
@@ -84,21 +84,21 @@ bool TaskConfig::load_taskconfig()
 		}
 	}
 
-	//¼ÓÔØÈÎÎñ×éºÏĞÅÏ¢
+	//åŠ è½½ä»»åŠ¡ç»„åˆä¿¡æ¯
 
 	return true;
 }
 
 bool TaskConfig::regist_to_storyscriptcontext( app::script::ScriptContext& context)
 {
-	//×¢²áÈÎÎñ»ù´¡½Å±¾
+	//æ³¨å†Œä»»åŠ¡åŸºç¡€è„šæœ¬
 	if( !context.run_script( task_script_.c_str()))
 	{
 		MODULE_LOG_ERROR( MODULE_BOOT, "regist appdata/tasks/task-base.lua script file failed");
 		return false;
 	}
 
-	//×¢²á¸÷¸ö¸±±¾µÄ½Å±¾
+	//æ³¨å†Œå„ä¸ªå‰¯æœ¬çš„è„šæœ¬
 	TASKINFO_MAP::iterator eiter =tasks_res_.end();
 	for( TASKINFO_MAP::iterator iter =tasks_res_.begin(); iter != eiter; ++iter)
 	{
@@ -117,7 +117,7 @@ bool TaskConfig::regist_to_storyscriptcontext( app::script::ScriptContext& conte
 	return true;
 }
 
-TaskInfo* TaskConfig::get_taskinfobyid( S_INT_32 id)
+TaskInfo* TaskConfig::get_taskinfobyid( int id)
 {
 	TASKINFO_MAP::iterator fiter =tasks_res_.find( id);
 	if( fiter == tasks_res_.end())

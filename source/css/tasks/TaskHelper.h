@@ -22,7 +22,7 @@ class BaseStoryService;
 /**
 * @class TaskHelper
 * 
-* @brief ÈÎÎñÏµÍ³°ïÖúÀà
+* @brief ä»»åŠ¡ç³»ç»Ÿå¸®åŠ©ç±»
 * 
 **/
 class TaskHelper
@@ -33,37 +33,37 @@ public:
 	~TaskHelper();
 
 	/**
-	* »ñÈ¡ÈÎÎñ
-	* @param tid	ÈÎÎñid
-	* @param cplayr	ÇëÇóÈË
+	* è·å–ä»»åŠ¡
+	* @param tid	ä»»åŠ¡id
+	* @param cplayr	è¯·æ±‚äºº
 	* @param psvr	
-	* @param npc	ÈÎÎñËùÔÚµÄnpc
-	* @return		0:³É¹¦ 
+	* @param npc	ä»»åŠ¡æ‰€åœ¨çš„npc
+	* @return		0:æˆåŠŸ 
 	**/
-	S_INT_8 get_task( S_INT_32 tid, Player* cplayer, BaseStoryService* psvr, NPCEntity* npc);
+	char	get_task( int tid, Player* cplayer, BaseStoryService* psvr, NPCEntity* npc);
 
 	/**
-	* Ìá½»ÈÎÎñ
-	* @param tid	ÈÎÎñid
-	* @param cplayr	ÇëÇóÈË
+	* æäº¤ä»»åŠ¡
+	* @param tid	ä»»åŠ¡id
+	* @param cplayr	è¯·æ±‚äºº
 	* @param psvr	
-	* @param npc	ÈÎÎñËùÔÚµÄnpc
-	* @return		0:³É¹¦ 
+	* @param npc	ä»»åŠ¡æ‰€åœ¨çš„npc
+	* @return		0:æˆåŠŸ 
 	**/
-	S_INT_8	submit_task( S_INT_32 tid, Player* cplayer, BaseStoryService* psvr, NPCEntity* npc);
+	char	submit_task( int tid, Player* cplayer, BaseStoryService* psvr, NPCEntity* npc);
 
 protected:
-	void release();
+	void	release();
 
 	/**
-	* ¸ù¾İÀàÃû»ñÈ¡ÊµÀı
+	* æ ¹æ®ç±»åè·å–å®ä¾‹
 	* @param clsname
 	* @return
 	**/
 	TaskBase* get_taskbyclsname( NS_STL::string clsname);
 
 protected:
-	//ÈÎÎñc++ÊµÏÖ
+	//ä»»åŠ¡c++å®ç°
 	TASKIMPL_V	taskimpl_;
 };
 

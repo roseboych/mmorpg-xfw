@@ -42,7 +42,7 @@ void MySkillContainer::reset()
 	runtimes_.clear();
 }
 
-SkillRuntime* MySkillContainer::get_skillruntime( S_INT_32 skid)
+SkillRuntime* MySkillContainer::get_skillruntime( int skid)
 {
 	SKILLRUNTIME_MAP::iterator fiter =runtimes_.find( skid);
 	if( fiter == runtimes_.end())
@@ -67,7 +67,8 @@ void MySkillContainer::regist_finish()
 	for( ; iter != eiter; ++iter)
 	{
 		SkillDesc* pd =(*iter);
-		if( !SkillHelper::is_skillexist( pd->skillid_, owner_player_->baseinfo_.skill_))
+		int skill[] ={ owner_player_->baseinfo_.skill1_, owner_player_->baseinfo_.skill2_};
+		if( !SkillHelper::is_skillexist( pd->skillid_, skill))
 			continue;
 
 		SkillRuntime* sr =FRAMEWK_NEW SkillRuntime( pd);
@@ -80,7 +81,7 @@ void MySkillContainer::regist_finish()
 	this->owner_player_->send_to_gts( ntf);
 }
 
-SkillDesc* MySkillContainer::get_skillfromtree( S_INT_32 skid)
+SkillDesc* MySkillContainer::get_skillfromtree( int skid)
 {
 	return skill_tree_->get_skilldesc( skid);
 }
@@ -92,7 +93,8 @@ SkillRuntime* MySkillContainer::study_skill( SkillDesc* pdesc)
 	sr->build_runtimepkg();
 
 	//设置技能标签
-	SkillHelper::set_skillflag( pdesc->skillid_, owner_player_->baseinfo_.skill_, sizeof(owner_player_->baseinfo_.skill_)/sizeof( S_INT_32), true);
+	int skill[] ={ owner_player_->baseinfo_.skill1_, owner_player_->baseinfo_.skill2_};
+	SkillHelper::set_skillflag( pdesc->skillid_, skill, sizeof(skill)/sizeof(int), true);
 	
 	return sr;
 }

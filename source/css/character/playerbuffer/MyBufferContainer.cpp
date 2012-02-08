@@ -35,7 +35,7 @@ void MyBufferContainer::reset()
 	buff_runtimes_.clear();
 }
 
-BufferRuntime* MyBufferContainer::get_bufferbyid( S_INT_32 buffcode)
+BufferRuntime* MyBufferContainer::get_bufferbyid( int buffcode)
 {
 	BUFFRUNTIME_MAP::iterator fiter =buff_runtimes_.find( buffcode);
 	if( fiter == buff_runtimes_.end())
@@ -48,7 +48,7 @@ void MyBufferContainer::init_baseinfo( PRO::Pro_ChrLoad_ack* pack)
 {
 	reset();
 
-	for( PRO::Pro_ChrLoad_ack::BUFFERDATA_LIST::iterator iter =pack->buffers_.begin(); iter != pack->buffers_.end(); ++iter)
+	for( NS_STL::list<PRO::bufferdata_item>::iterator iter =pack->buffers_.begin(); iter != pack->buffers_.end(); ++iter)
 	{
 		PRO::bufferdata_item& buf =(*iter);
 		
@@ -99,7 +99,7 @@ void MyBufferContainer::tick( const ACE_UINT64& tnow)
 		owner_->calcuate_playerproperty();
 }
 
-BufferRuntime* MyBufferContainer::attach_newbuffer( S_INT_32 buffcode)
+BufferRuntime* MyBufferContainer::attach_newbuffer( int buffcode)
 {
 	BufferDesc* pconf =BUFFER_CFG->get_bufferbycode( buffcode);
 	if( pconf == 0)
@@ -138,7 +138,7 @@ BufferRuntime* MyBufferContainer::attach_newbuffer( S_INT_32 buffcode)
 	return prun;
 }
 
-void MyBufferContainer::cancel_onebuffer( S_INT_32 buffcode)
+void MyBufferContainer::cancel_onebuffer( int buffcode)
 {
 	BufferRuntime* buff =get_bufferbyid( buffcode);
 	if( buff == 0)
@@ -155,7 +155,7 @@ void MyBufferContainer::cancel_onebuffer( S_INT_32 buffcode)
 		owner_->calcuate_playerproperty();
 }
 
-void MyBufferContainer::notify_bufferchange( BufferRuntime& buff, S_INT_8 type)
+void MyBufferContainer::notify_bufferchange( BufferRuntime& buff, char type)
 {
 	USE_PROTOCOL_NAMESPACE;
 

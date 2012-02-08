@@ -19,6 +19,7 @@
 #include <reslib/deploy/GlobalConfig.h>
 #include <reslib/deploy/RGSOption.h>
 #include <reslib/deploy/DBConfig.h>
+#include <prolib/Pro_all.h>
 
 #pragma pack( push, 8)
 #include <boost/bind.hpp>
@@ -129,8 +130,6 @@ int RGSModule::main_loop()
 }
 
 //------------------------Global_Data-----------------------------------//
-#include <prolib/Pro_boot.h>
-
 void RGSModule::exit_module( void*)
 {
 	//关闭acceptor

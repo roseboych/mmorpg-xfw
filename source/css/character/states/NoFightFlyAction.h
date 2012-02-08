@@ -22,7 +22,7 @@ class NoFightFlyAction : public BaseActionState
 public:
 	NoFightFlyAction();
 
-	virtual S_INT_8 get_statetype(){ return ( S_INT_8)CHRSTATE_NOFIGHT_FLY;}
+	virtual char get_statetype(){ return ( char)CHRSTATE_NOFIGHT_FLY;}
 };
 
 #endif	//__NOFIGHTFLYACTION__H__

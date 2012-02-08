@@ -1,0 +1,32 @@
+<pro-region>
+    <meta proid="5000,5500" />
+
+    <pro-meta>
+
+        <pro id="APP_PETSUMMON_NTF" name="Pro_PetSummon_ntf">
+            <desc><![CDATA[召唤宠物通知]]></desc>
+            <members>
+                <member name="chrid_" type="int32" desc="角色id"></member>
+                <member name="petcode_" type="int32" desc="宠物petcode_ >0: 放出宠物, -1:收起宠物"></member>
+                <member name="petname_" type="staticstring" macrolen="CHR_PETNAME_LEN" desc="宠物名称"></member>
+            </members>
+        </pro>
+        
+        <pro id="APP_PETSUMMON_REQ" name="Pro_PetSummon_req">
+            <desc><![CDATA[召唤宠物请求]]></desc>
+            <members>
+                <member name="petid_" type="int32" desc="宠物实例id,-1表示收宠"></member>
+            </members>
+        </pro>
+        
+        <pro id="APP_PETSUMMON_ACK" name="Pro_PetSummon_ack">
+            <desc><![CDATA[召唤宠物请求回复]]></desc>
+            <members>
+                <member name="result_" type="int8" desc="0成功，1:招宠失败，宠物不存在 2:收宠失败，没有活动宠物"></member>
+                <member name="petid_" type="int32" desc="宠物实例id,-1表示收宠回复"></member>
+            </members>
+        </pro>
+        
+    </pro-meta>
+    
+</pro-region>

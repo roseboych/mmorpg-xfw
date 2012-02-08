@@ -13,13 +13,13 @@ PRO::petdata_item& MyPetInfo::get_petdata()
 }
 
 inline 
-S_INT_32 MyPetInfo::get_petid()
+int MyPetInfo::get_petid()
 {
 	return petdata_.petid_;
 }
 
 inline 
-S_INT_32 MyPetInfo::get_petcode()
+int MyPetInfo::get_petcode()
 {
 	return petdata_.petcode_;
 }

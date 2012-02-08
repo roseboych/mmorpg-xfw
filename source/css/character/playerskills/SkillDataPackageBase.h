@@ -28,7 +28,7 @@ public:
 	* 设置技能编号
 	* @param id
 	**/
-	virtual void set_skillid( S_INT_32 id){}
+	virtual void set_skillid( int id){}
 	/**
 	* 设置最后运行时间
 	* @param st
@@ -53,7 +53,7 @@ public:
 	* @param iid
 	* @return
 	**/
-	static SkillDataPackageBase* get_skilldatapackage( S_INT_16 iid);
+	static SkillDataPackageBase* get_skilldatapackage( short iid);
 
 	static void script_regist( lua_State* l);
 };

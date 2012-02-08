@@ -26,42 +26,42 @@
 /**
 * @class TaskConfig
 * 
-* @brief ÈÎÎñĞÅÏ¢ÅäÖÃ¹ÜÀí
+* @brief ä»»åŠ¡ä¿¡æ¯é…ç½®ç®¡ç†
 **/
 class TaskConfig
 {
-	typedef NS_STL::map< S_INT_32, TaskInfo*>	TASKINFO_MAP;
+	typedef NS_STL::map< int, TaskInfo*>	TASKINFO_MAP;
 public:
 	TaskConfig();
 	~TaskConfig();
 
 	/**
-	* ³õÊ¼»¯ÈÎÎñ×ÊÔ´
+	* åˆå§‹åŒ–ä»»åŠ¡èµ„æº
 	* @return
 	**/
 	bool load_taskconfig();
 
 	/**
-	* ×¢²áËùÓĞµÄgamesetting½Å±¾µ½½Å±¾»·¾³
+	* æ³¨å†Œæ‰€æœ‰çš„gamesettingè„šæœ¬åˆ°è„šæœ¬ç¯å¢ƒ
 	* @param context
 	* @param bool
 	**/
 	bool regist_to_storyscriptcontext( app::script::ScriptContext& context);
 
 	/**
-	* ¸ù¾İÈÎÎñ±àºÅ»ñÈ¡ÈÎÎñÅäÖÃĞÅÏ¢
+	* æ ¹æ®ä»»åŠ¡ç¼–å·è·å–ä»»åŠ¡é…ç½®ä¿¡æ¯
 	* @param id
 	* @return
 	**/
-	TaskInfo* get_taskinfobyid( S_INT_32 id);
+	TaskInfo* get_taskinfobyid( int id);
 
 protected:
 	void release();
 
 protected:
-	//ËùÓĞ×¢²áµÄÈÎÎñ
+	//æ‰€æœ‰æ³¨å†Œçš„ä»»åŠ¡
 	TASKINFO_MAP	tasks_res_;
-	//ÈÎÎñÏµÍ³»ù´¡½Å±¾
+	//ä»»åŠ¡ç³»ç»ŸåŸºç¡€è„šæœ¬
 	NS_STL::string	task_script_;
 };
 

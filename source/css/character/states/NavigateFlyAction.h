@@ -22,7 +22,7 @@ class NavigateFlyAction : public BaseActionState
 public:
 	NavigateFlyAction();
 
-	virtual S_INT_8 get_statetype(){ return ( S_INT_8)CHRSTATE_NAV_FLY;}
+	virtual char get_statetype(){ return ( char)CHRSTATE_NAV_FLY;}
 };
 
 #endif	//__NAVIGATEFLYACTION__H__

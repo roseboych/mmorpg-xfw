@@ -48,12 +48,12 @@ protected:
 
 	void release();
 
-	ChrListInfo* get_chrinfo( S_INT_32 cid);
+	ChrListInfo* get_chrinfo( int cid);
 
 public:
 	//输入的参数和环境
-	Player*	player_;
-	uuid_session uuid_;
+	Player*			player_;
+	uuid_session	uuid_;
 
 	//返回值
 	NS_STL::vector<ChrListInfo*>	chrs_;

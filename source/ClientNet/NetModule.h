@@ -10,7 +10,6 @@
 
 #include "windows.h"
 
-#include "prolib/pre.h"
 #include "prolib/Pro_all.h"
 #include "prolib/BasicProtocol.h"
 #include "prolib/ProtocolFactory.h"
@@ -188,7 +187,7 @@ public:
 	void connect_lgs( const char* ip, int port, const char* uname, const char* pwd);
 	void disconnect_lgs();
 
-	void connect_gts( const char* ip, int port, S_INT_32 server_index, S_TIMESTAMP token);
+	void connect_gts( const char* ip, int port, int server_index, S_TIMESTAMP token);
 	void disconnect_gts();
 
 	/**
@@ -285,7 +284,7 @@ protected:
 
 	NS_STL::string gts_ip_;
 	int		gts_port_;
-	S_INT_32 server_index_;
+	int		server_index_;
 	S_TIMESTAMP token_;
 	PROTOCOL_LIST	gts_send_pros_;
 	SOCKET	gts_socket_;

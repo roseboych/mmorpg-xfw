@@ -93,7 +93,7 @@ private:
 	NS_STL::list< ProfilerThreadCollector*>	waiting_send_collector_;
 	ACE_Thread_Mutex	threadcollector_mutex_;
 	
-	S_UINT_32		frequency_;
+	unsigned int	frequency_;
 
 	//当前分析器的过滤条件
 	EProfileThreadType	active_profilethreadtype_;

@@ -32,6 +32,7 @@ namespace progen.export_to_c
 #include <prolib/BasicProtocol.h>
 #include <prolib/ProtocolFactory.h>
 #include <prolib/SingletonT.h>
+#include <prolib/SerializeFactoryContainer.h>
 
 #include <prolib/gen/pro_macro_def.h>
 #include <prolib/gen/pro_enum_def.h>

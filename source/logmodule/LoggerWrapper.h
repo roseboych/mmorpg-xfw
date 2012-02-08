@@ -15,7 +15,7 @@
 /**
 * @class LoggerWrapper
 *
-* @brief log4c的日志封装类
+* @brief log4c鐨勬棩蹇楀皝瑁呯被
 *
 */
 class LoggerWrapper

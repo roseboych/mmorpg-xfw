@@ -63,7 +63,7 @@ public:
 	void uninit_svr();
 
 	inline RGSLink* get_rgslink();
-	inline Player* get_player( S_INT_32 ind);
+	inline Player* get_player( int ind);
 
 	/**
 	* 获取可用的player
@@ -96,18 +96,18 @@ protected:
 
 protected:
 	//可以连接的rgs
-	RGSLink	rgssvr_;
+	RGSLink						rgssvr_;
 
 	//可以使用的玩家数
 	ACE_Auto_Array_Ptr<Player>	players_;
-	S_INT_32	max_users_;
+	int							max_users_;
 	//可用的玩家列表
-	EMPTY_PLAYERS_LIST	empty_players_;
+	EMPTY_PLAYERS_LIST			empty_players_;
 	//正在使用的玩家列表
-	USED_PLAYERS_VECTOR	used_players_;
+	USED_PLAYERS_VECTOR			used_players_;
 
 	//svrteam信息
-	SvrTeamInfo	svr_update_;
+	SvrTeamInfo					svr_update_;
 
 	//---------------------------系统维护实现--------------------------------//
 public:
@@ -160,7 +160,7 @@ RGSLink* LGSSvr::get_rgslink()
 }
 
 inline 
-Player* LGSSvr::get_player( S_INT_32 ind)
+Player* LGSSvr::get_player( int ind)
 {
 	if( ind < 0 || ind >= max_users_)
 		return 0;

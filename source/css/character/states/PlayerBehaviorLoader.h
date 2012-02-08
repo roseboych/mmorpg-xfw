@@ -35,7 +35,7 @@ private:
 	/**
 	* 根据名字或者对应的类型
 	**/
-	static S_INT_8 get_behavior_type( const NS_STL::string& name);
+	static char get_behavior_type( const NS_STL::string& name);
 };
 
 #endif	//__PLAYERBEHAVIORLOADER__H__

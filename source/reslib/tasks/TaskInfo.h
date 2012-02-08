@@ -23,7 +23,7 @@ class TaskParamBase;
 /**
 * @class TaskInfo
 * 
-* @brief ÈÎÎñÅäÖÃĞÅÏ¢
+* @brief ä»»åŠ¡é…ç½®ä¿¡æ¯
 **/
 class TaskInfo
 {
@@ -34,40 +34,40 @@ public:
 	~TaskInfo();
 
 	/**
-	* ¼ÓÔØÈÎÎñĞÅÏ¢
+	* åŠ è½½ä»»åŠ¡ä¿¡æ¯
 	* @param e
 	* @return
 	**/
-	S_BOOL	load_task();
+	bool	load_task();
 
 	/**
-	* ¸ù¾İ½±ÀøµÄ·Ö×é±àºÅ»ñÈ¡½±ÀøĞÅÏ¢
+	* æ ¹æ®å¥–åŠ±çš„åˆ†ç»„ç¼–å·è·å–å¥–åŠ±ä¿¡æ¯
 	* @param gid
 	* @return
 	**/
-	TaskRewardGroup* get_rewardbygid( S_INT_32 gid);
+	TaskRewardGroup* get_rewardbygid( int gid);
 
 protected:
 	void release();
 
 public:
-	//ÈÎÎñ±àºÅ
-	S_INT_32			task_id_;
-	//ÊÇ·ñÓĞĞ§
-	S_BOOL				is_validate_;
-	//Ö§³ÖÀàĞÍ
+	//ä»»åŠ¡ç¼–å·
+	int					task_id_;
+	//æ˜¯å¦æœ‰æ•ˆ
+	bool				is_validate_;
+	//æ”¯æŒç±»å‹
 	FUNCTION_SUPPORT	fun_type_;
-	//c++²ÎÊıÅäÖÃ
+	//c++å‚æ•°é…ç½®
 	TaskParamBase*		clsimpl_param_;
-	//½Å±¾Ö§³Ö
+	//è„šæœ¬æ”¯æŒ
 	NS_STL::string		task_script_;
 
-	//ÈÎÎñÏûºÄ
+	//ä»»åŠ¡æ¶ˆè€—
 	TASKCONSUME_V		taskconsumes_;
-	//ÈÎÎñ½±Àø
+	//ä»»åŠ¡å¥–åŠ±
 	TASKREWARDGROUP_V	taskrewards_;
 
-	//ÈÎÎñĞÅÏ¢´æ·ÅÂ·¾¶
+	//ä»»åŠ¡ä¿¡æ¯å­˜æ”¾è·¯å¾„
 	NS_STL::string	res_path_;
 };
 

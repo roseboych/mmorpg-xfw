@@ -59,7 +59,7 @@ protected:
 
 public:
 	//全局索引
-	S_INT_16	server_index_;
+	int			server_index_;
 	DPXLink*	server_link_;
 };
 

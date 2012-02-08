@@ -51,7 +51,7 @@ bool Player::can_beattacked( UnitBase* pattack)
 	}
 }
 
-void Player::skill_study( S_INT_32 skid)
+void Player::skill_study( int skid)
 {
 	USE_PROTOCOL_NAMESPACE;
 
@@ -67,7 +67,7 @@ void Player::skill_study( S_INT_32 skid)
 		//学习技能
 		app::script::ScriptContext& context =CONTENTSERVICE_INS->get_scriptcontext();
 		try{
-			ret =luabind::call_function<S_INT_8>( context.get_luastate(), "skill_study", pdesc->skillidsn_.c_str(), this);
+			ret =luabind::call_function<char>( context.get_luastate(), "skill_study", pdesc->skillidsn_.c_str(), this);
 		}
 		catch( ...){
 			lua_pop( context.get_luastate(), 1);
@@ -98,7 +98,7 @@ void Player::skill_study( S_INT_32 skid)
 	this->send_to_gts( ack);
 }
 
-void Player::skill_used( S_INT_32 skid, S_INT_64 targetid, CHRSTATE_TYPE_ENUM st)
+void Player::skill_used( int skid, S_INT_64 targetid, CHRSTATE_TYPE_ENUM st)
 {
 	USE_PROTOCOL_NAMESPACE;
 
@@ -172,7 +172,7 @@ void Player::skill_used( S_INT_32 skid, S_INT_64 targetid, CHRSTATE_TYPE_ENUM st
 	{
 		app::script::ScriptContext& context =CONTENTSERVICE_INS->get_scriptcontext();
 		try{
-			ret =luabind::call_function<S_INT_8>( context.get_luastate(), "skill_use", pdesc->skillidsn_.c_str(), this, sr->get_runtimedata());
+			ret =luabind::call_function<char>( context.get_luastate(), "skill_use", pdesc->skillidsn_.c_str(), this, sr->get_runtimedata());
 		}
 		catch( ...){
 			lua_pop( context.get_luastate(), 1);

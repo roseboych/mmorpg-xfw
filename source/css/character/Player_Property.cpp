@@ -38,7 +38,7 @@ void Player::calcuate_playerproperty()
 	inc_spirit( baseinfo_.spirit_);
 
 	//计算装备对属性的影响
-	for( int ind =0; ind < PRO::AVATAR_SLOT_MAX; ++ind)
+	for( int ind =0; ind < AVATAR_SLOT_MAX; ++ind)
 	{
 		if( avatar_items_[ind] == 0)
 			continue;

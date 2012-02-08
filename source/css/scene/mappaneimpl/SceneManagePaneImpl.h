@@ -70,7 +70,7 @@ public:
 	* @param pos
 	* @param face
 	**/
-	virtual void unitobj_moveto( Player* pobj, coordinate_pointer& pos, S_FLOAT_32& face);
+	virtual void unitobj_moveto( Player* pobj, coordinate_pointer& pos, float& face);
 
 	/**
 	* 通知视野范围内的所有玩家信息
@@ -89,7 +89,7 @@ public:
 	* @param row
 	* @return MapPane*
 	**/
-	inline MapPane* get_mappane( S_INT_32 column, S_INT_32 row);
+	inline MapPane* get_mappane( int column, int row);
 
 	/**
 	* 根据x,y坐标获取pane
@@ -97,7 +97,7 @@ public:
 	* @param y
 	* @return
 	**/
-	inline MapPane* get_mappanebyxy( S_FLOAT_32 x, S_FLOAT_32 y);
+	inline MapPane* get_mappanebyxy( float x, float y);
 
 	/**
 	* 获取指定玩家的可视区域
@@ -105,8 +105,8 @@ public:
 	* @param r	玩家所在的row
 	* @param mp
 	**/
-	inline void get_playerviewpanes( S_INT_32 c, S_INT_32 r, NS_STL::vector<MapPane*>& mp);
-	inline void get_playerviewpanes( S_INT_32 x1, S_INT_32 y1, S_INT_32 x2, S_INT_32 y2, NS_STL::vector<MapPane*>& mp);
+	inline void get_playerviewpanes( int c, int r, NS_STL::vector<MapPane*>& mp);
+	inline void get_playerviewpanes( int x1, int y1, int x2, int y2, NS_STL::vector<MapPane*>& mp);
 
 	/**
 	* 定时计算活动对象的的in,out动作
@@ -125,13 +125,13 @@ protected:
 	//格子数
 	ACE_Auto_Array_Ptr<MapPane>	panes_;
 	//格子的列数和行数
-	S_INT_32	pane_columns_;
-	S_INT_32	pane_rows_;
-	S_INT_32	pane_column_min_, pane_column_max_;
-	S_INT_32	pane_row_min_, pane_row_max_;
+	int		pane_columns_;
+	int		pane_rows_;
+	int		pane_column_min_, pane_column_max_;
+	int		pane_row_min_, pane_row_max_;
 	//地图的宽和高
-	S_INT_32	map_width_;
-	S_INT_32	map_height_;
+	int		map_width_;
+	int		map_height_;
 
 };
 

@@ -125,10 +125,18 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="xml-define\avatar.xml" />
     <Content Include="xml-define\boost.xml" />
+    <Content Include="xml-define\buffersystem.xml" />
+    <Content Include="xml-define\character.xml" />
+    <Content Include="xml-define\chatsystem.xml" />
+    <Content Include="xml-define\chraoi.xml" />
+    <Content Include="xml-define\entitystate.xml" />
     <Content Include="xml-define\enum.xml" />
     <Content Include="xml-define\macro.xml" />
+    <Content Include="xml-define\petsystem.xml" />
     <Content Include="xml-define\servercontroller.xml" />
+    <Content Include="xml-define\skillsystem.xml" />
     <Content Include="xml-define\struct.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

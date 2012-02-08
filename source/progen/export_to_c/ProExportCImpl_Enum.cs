@@ -55,8 +55,13 @@ namespace progen.export_to_c
                 if (!AppUtil.IsEmptyString(it.Desc))
                     cur_stream_.WriteComment(it.Desc, 1);
 
-                if( it.HasSetValue)
-                    cur_stream_.WriteString(String.Format("{0} ={1},", it.Name, it.Value), 1);
+                if (it.HasSetValue)
+                {
+                    if( it.IsHexValue)
+                        cur_stream_.WriteString(String.Format("{0} ={1},", it.Name, it.HexValue), 1);
+                    else
+                        cur_stream_.WriteString(String.Format("{0} ={1},", it.Name, it.Value), 1);
+                }
                 else
                     cur_stream_.WriteString(String.Format("{0},", it.Name), 1);
             }

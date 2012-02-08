@@ -77,7 +77,7 @@ void Player::reset()
 	is_in_inst =false;
 }
 
-S_INT_32 Player::get_id()
+int Player::get_id()
 {
 	return uuid_.userid_;
 }
@@ -90,14 +90,14 @@ void Player::send_to_gts( BasicProtocol* p)
 		gts_link_->send_protocol( p);
 }
 
-void Player::regist( S_INT_32 uid, S_TIMESTAMP stmp, S_INT_32 chrid)
+void Player::regist( int uid, S_TIMESTAMP stmp, int chrid)
 {
 	uuid_.set_uuid( uid, stmp);
 	this->chrid_ =chrid;
 	this->status_ =PLAYERSTATUS_REGIST;
 }
 
-void Player::regist( S_INT_32 gid, S_INT_32 uid, S_TIMESTAMP stmp, S_INT_32 chrid)
+void Player::regist( int gid, int uid, S_TIMESTAMP stmp, int chrid)
 {
 	regist( uid, stmp, chrid);
 	this->global_index_ =gid;
@@ -137,7 +137,7 @@ void Player::regist_fin( PRO::Pro_ChrFin_NTF* fin)
 	cur_state_ =action_selector_.get_default_state();
 }
 
-void Player::moveto( coordinate_pointer& pos, S_FLOAT_32& face)
+void Player::moveto( coordinate_pointer& pos, float& face)
 {
 	//保存位置
 	set_position( pos);

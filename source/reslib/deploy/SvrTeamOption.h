@@ -32,9 +32,9 @@
 class SvrTeamOption
 {
 public:
-	typedef NS_STL::map< S_INT_32, GTSOption*>		GTSOPTION_MAP;
-	typedef NS_STL::map< S_INT_32, CSSOption*>		CSSOPTION_MAP;
-	typedef NS_STL::map< S_INT_32, INSCellOption*>	INSCELLOPTION_MAP;
+	typedef NS_STL::map< int, GTSOption*>		GTSOPTION_MAP;
+	typedef NS_STL::map< int, CSSOption*>		CSSOPTION_MAP;
+	typedef NS_STL::map< int, INSCellOption*>	INSCELLOPTION_MAP;
 	
 public:
 	SvrTeamOption();
@@ -49,7 +49,7 @@ public:
 	* @param sn
 	* @return
 	**/
-	GTSOption* get_gtsoption( S_INT_32 sn);
+	GTSOption* get_gtsoption( int sn);
 
 	/**
 	* 获取所有的gts配置信息
@@ -60,14 +60,14 @@ public:
 	/**
 	* 获取gts的数量
 	**/
-	S_INT_32 get_gtsnums();
+	int get_gtsnums();
 
 	/**
 	* 根据sn获取css配置信息
 	* @param sn
 	* @return
 	**/
-	CSSOption*	get_cssoption( S_INT_32 sn);
+	CSSOption*	get_cssoption( int sn);
 
 	/**
 	* 获取所有的css配置信息
@@ -75,15 +75,15 @@ public:
 	**/
 	void		get_cssoptions( NS_STL::list<CSSOption*>& ret);
 
-	CSSOption*	get_cssoptbymapid( S_INT_32 mid);
+	CSSOption*	get_cssoptbymapid( int mid);
 
 	/**
 	* 获取css的数量
 	**/
-	S_INT_32	get_cssnums();
+	int	get_cssnums();
 
-	S_INT_32		get_inscellnums();
-	INSCellOption*	get_inscellopt( S_INT_32 cellid);
+	int				get_inscellnums();
+	INSCellOption*	get_inscellopt( int cellid);
 
 	/**
 	* 检查配置的有效性
@@ -102,9 +102,9 @@ protected:
 
 public:
 	//服务器组编号
-	S_INT_32	sn_;
+	int		sn_;
 	//支持的最大玩家数
-	S_INT_32	maxuser_;
+	int		maxuser_;
 
 	//cts配置信息
 	CTSOption			ctsopt_;
@@ -118,7 +118,7 @@ public:
 	INSCELLOPTION_MAP	inscells_;
 
 	//系统分配的序列号
-	S_INT_32	server_index_;
+	int					server_index_;
 };
 
 #endif	//__SVRTEAMOPTION__H__

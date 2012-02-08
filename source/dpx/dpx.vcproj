@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="gb2312"?>
+<?xml version="1.0" encoding="gb2312"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
@@ -135,7 +135,7 @@
 				AdditionalDependencies="prolib.lib corelib.lib logmodule.lib reslib.lib apr-1.lib aprutil-1.lib apriconv-1.lib xml.lib ACEs.lib"
 				OutputFile="..\..\run\dpx\$(ProjectName).exe"
 				AdditionalLibraryDirectories="..\lib;..\..\3lib\boost\bin;..\..\3lib\apr\release;&quot;..\..\3lib\apr-util\release&quot;;&quot;..\..\3lib\apr-iconv\release&quot;"
-				GenerateDebugInformation="true"
+				GenerateDebugInformation="false"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
 				TargetMachine="1"

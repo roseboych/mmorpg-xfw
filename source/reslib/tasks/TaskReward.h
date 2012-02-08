@@ -19,31 +19,31 @@ class TiXmlElement;
 /**
 * @class TaskReward
 * 
-* @brief ÈÎÎñ½±ÀøĞÅÏ¢
+* @brief ä»»åŠ¡å¥–åŠ±ä¿¡æ¯
 **/
 class TaskReward
 {
 public:
 	TaskReward();
 
-	S_INT_32 get_itemid();
-	S_INT_32 get_itemnum(){
+	int get_itemid();
+	int get_itemnum(){
 		return item_nums_;
 	}
 
 	operator ItemInfoBase* () const;
 
 public:
-	//ÎïÆ·ÅäÖÃ
+	//ç‰©å“é…ç½®
 	ItemInfoBase*	item_;
-	//ÊıÁ¿
-	S_INT_32		item_nums_;
+	//æ•°é‡
+	int				item_nums_;
 };
 
 /**
 * @class TaskRewardGroup
 * 
-* @brief ÈÎÎñ½±Àø·Ö×é
+* @brief ä»»åŠ¡å¥–åŠ±åˆ†ç»„
 **/
 class TaskRewardGroup
 {
@@ -55,22 +55,22 @@ public:
 	bool load_reward( TiXmlElement* e1);
 
 	/**
-	* ½±ÀøĞèÒªÕ¼¾İµÄ±³°ü¸ñ×ÓÊı
+	* å¥–åŠ±éœ€è¦å æ®çš„èƒŒåŒ…æ ¼å­æ•°
 	**/
-	S_INT_32 get_reward_slotnums(){
-		return (S_INT_32)rewards_.size();
+	int get_reward_slotnums(){
+		return (int)rewards_.size();
 	}
 
 protected:
 	void release();
 
 public:
-	//·Ö×é±àºÅ
-	S_INT_32		group_id_;
-	//½±ÀøµÄ¾­Ñé
-	S_INT_32		exp_;
+	//åˆ†ç»„ç¼–å·
+	int		group_id_;
+	//å¥–åŠ±çš„ç»éªŒ
+	int		exp_;
 
-	//·Ö×é°üº¬µÄ½±Àø
+	//åˆ†ç»„åŒ…å«çš„å¥–åŠ±
 	TASKREWARDS_V	rewards_;
 };
 

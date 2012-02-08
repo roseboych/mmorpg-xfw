@@ -50,9 +50,9 @@ void TaskInfo::release()
 	clsimpl_param_ =0;
 }
 
-S_BOOL TaskInfo::load_task()
+bool TaskInfo::load_task()
 {
-	//¹¹ÔìÂ·¾¶
+	//æž„é€ è·¯å¾„
 	{
 		res_path_ ="appdata/tasks/";
 		char buf[16] ={0,};
@@ -87,7 +87,7 @@ S_BOOL TaskInfo::load_task()
 	{
 		for( TiXmlElement* e1 =pconsume->FirstChildElement( "item"); e1 != NULL; e1 =e1->NextSiblingElement( "item"))
 		{
-			S_INT_32 itemid =XmlUtil::GetXmlAttrInt( e1, "id", NO_INITVALUE);
+			int itemid =XmlUtil::GetXmlAttrInt( e1, "id", NO_INITVALUE);
 			ItemInfoBase* pitem =ITEMRES_CFG->get_iteminfobyid( itemid);
 			if( pitem == 0)
 			{
@@ -117,7 +117,7 @@ S_BOOL TaskInfo::load_task()
 	{
 		for( TiXmlElement* e1 =preward->FirstChildElement( "group"); e1 != NULL; e1 =e1->NextSiblingElement( "group"))
 		{
-			S_INT_32 gid =XmlUtil::GetXmlAttrInt( e1, "id", NO_INITVALUE);
+			int gid =XmlUtil::GetXmlAttrInt( e1, "id", NO_INITVALUE);
 			TaskRewardGroup *pgroup =FRAMEWK_NEW TaskRewardGroup();
 			pgroup->group_id_ =gid;
 			taskrewards_.push_back( pgroup);
@@ -133,7 +133,7 @@ S_BOOL TaskInfo::load_task()
 	//load c++ implementation
 	if( fun_type_ == FUNSUPPORT_CLASSIMPL)
 	{
-		//¼ÓÔØ¶ÔÓ¦µÄc++ÅäÖÃ
+		//åŠ è½½å¯¹åº”çš„c++é…ç½®
 		TiXmlElement* tc =e->FirstChildElement( "task-condition");
 		ACE_ASSERT( tc != 0);
 		NS_STL::string cimpl =XmlUtil::GetXmlAttrStr( tc, "classimpl");
@@ -161,7 +161,7 @@ S_BOOL TaskInfo::load_task()
 	return true;
 }
 
-TaskRewardGroup* TaskInfo::get_rewardbygid( S_INT_32 gid)
+TaskRewardGroup* TaskInfo::get_rewardbygid( int gid)
 {
 	for( size_t ii =0; ii < taskrewards_.size(); ++ii)
 	{

@@ -47,8 +47,8 @@ void ActorSceneExtPane::join_outview( UnitBase* pobj)
 inline 
 bool ActorSceneExtPane::get_moveinregion( pane_region* r_enter)
 {
-	S_INT_32 panex1 =POSX2PANEX( owner_actor_->get_positionx());
-	S_INT_32 paney1 =POSY2PANEY( owner_actor_->get_positiony());
+	int panex1 =POSX2PANEX( owner_actor_->get_positionx());
+	int paney1 =POSY2PANEY( owner_actor_->get_positiony());
 
 	//没有移动位置
 	if( panex1 == oldpanex_ && paney1 == oldpaney_)
@@ -109,8 +109,8 @@ bool ActorSceneExtPane::get_moveinregion( pane_region* r_enter)
 inline 
 bool ActorSceneExtPane::get_moveoutregion( pane_region* r_exit)
 {
-	S_INT_32 panex1 =POSX2PANEX( owner_actor_->get_positionx());
-	S_INT_32 paney1 =POSY2PANEY( owner_actor_->get_positiony());
+	int panex1 =POSX2PANEX( owner_actor_->get_positionx());
+	int paney1 =POSY2PANEY( owner_actor_->get_positiony());
 
 	//没有移动位置
 	if( panex1 == oldpanex_ && paney1 == oldpaney_)

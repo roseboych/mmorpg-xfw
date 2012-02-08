@@ -2,7 +2,7 @@
 * corelib
 *
 * @category		log module
-* @package		
+* @package
 * @author		Created by Lu Jianfeng ( lujf1978@163.com ), 2009
 */
 #include "logmodule/LoggerWrapper.h"

@@ -36,16 +36,16 @@ public:
 
 public:
 	//ins在world中的编号
-	int sn_;
+	int		sn_;
 
 	//实例数量
-	int nums_;
+	int		nums_;
 
 	//分配的cell信息
 	INSCELL_LIST	inscells_;
 
 	//所在的服务器组
-	CSSOption*	cssopt_;
+	CSSOption*		cssopt_;
 };
 
 #endif	//__CSSOPTION__H__

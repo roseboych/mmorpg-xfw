@@ -50,12 +50,12 @@ protected:
 
 public:
 	//输入的参数和环境
-	Player*	player_;
-	uuid_session uuid_;
+	Player*				player_;
+	uuid_session		uuid_;
 	PRO::Pro_ChrCreate_req* param_;
 
 	//输出的结果
-	S_INT_32	ret_;
+	int			ret_;
 	ChrListInfo	*chrinfo_;
 };
 

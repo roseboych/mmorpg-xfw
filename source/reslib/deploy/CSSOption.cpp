@@ -30,19 +30,19 @@ void CSSOption::release()
 	inss_.clear();
 }
 
-S_INT_32 CSSOption::get_maxuser()
+int CSSOption::get_maxuser()
 {
 	return svrteamopt_->maxuser_;
 }
 
-S_INT_32 CSSOption::get_mapsize()
+int CSSOption::get_mapsize()
 {
-	return (S_INT_32)mapids_.size();
+	return (int)mapids_.size();
 }
 
-S_INT_32 CSSOption::get_instancesize()
+int CSSOption::get_instancesize()
 {
-	S_INT_32 ret =0;
+	int ret =0;
 
 	INSOPT_MAP::iterator iter, eiter =inss_.end();
 	for( iter =inss_.begin(); iter != eiter; ++iter)
@@ -54,13 +54,13 @@ S_INT_32 CSSOption::get_instancesize()
 	return ret;
 }
 
-bool CSSOption::test_mapincss( S_INT_32 mid)
+bool CSSOption::test_mapincss( int mid)
 {
 	MAPS_LIST::iterator fiter =NS_STL::find( mapids_.begin(), mapids_.end(), mid);
 	return fiter != mapids_.end();
 }
 
-INSOption* CSSOption::get_insoption( S_INT_32 sn)
+INSOption* CSSOption::get_insoption( int sn)
 {
 	INSOPT_MAP::iterator fiter =inss_.find( sn);
 	if( fiter == inss_.end())

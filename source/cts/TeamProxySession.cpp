@@ -25,7 +25,7 @@ void TeamProxySession::reset()
 	player_ =0;
 }
 
-void TeamProxySession::proxy( S_INT_32 uid, S_TIMESTAMP st, S_INT_32 si)
+void TeamProxySession::proxy( int uid, S_TIMESTAMP st, int si)
 {
 	uuid_.set_uuid( uid, st);
 	this->server_index_ =si;

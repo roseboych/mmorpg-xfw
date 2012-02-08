@@ -54,10 +54,10 @@ public:
 	/**
 	* 登陆请求准备
 	**/
-	void login_prepare( S_INT_32 serverindex, S_TIMESTAMP session, LGSLink* l);
+	void login_prepare( int serverindex, S_TIMESTAMP session, LGSLink* l);
 	void login_succ();
 
-	void login_succ_of_lnkkeep( S_INT_32 serverindex, LGSLink* l);
+	void login_succ_of_lnkkeep( int serverindex, LGSLink* l);
 
 	/**
 	* 选服请求
@@ -68,9 +68,9 @@ public:
 
 	void selteam_timeout();
 	void quit_team();
-	void quitteam_reconn( S_INT_32 serverindex, S_TIMESTAMP session, LGSLink* l);
+	void quitteam_reconn( int serverindex, S_TIMESTAMP session, LGSLink* l);
 	
-	void link_keep( S_TIMESTAMP& token, S_INT_32 teamid, S_INT_32 gtsid, S_INT_32 proxyindex);
+	void link_keep( S_TIMESTAMP& token, int teamid, int gtsid, int proxyindex);
 	void lnkkeep_confirm();
 
 	inline bool is_selteamconfirm();
@@ -103,17 +103,17 @@ public:
 	//玩家退服/断线重连的令牌
 	S_TIMESTAMP	qt_token_;
 	//断线重连保存的gts索引
-	S_INT_32	lnkkeep_teamid_;
-	S_INT_32	lnkkeep_gtsid_;
-	S_INT_32	lnkkeep_proxyindex_;
+	int			lnkkeep_teamid_;
+	int			lnkkeep_gtsid_;
+	int			lnkkeep_proxyindex_;
 
 	//计时用时间戳
 	ACE_UINT64	tstamp_;
 
 	//玩家标识
-	uuid_session uuid_;
+	uuid_session	uuid_;
 	//lgs使用的临时serverindex
-	S_INT_32	server_index_;
+	int				server_index_;
 
 	//对应的lgs连接
 	LGSLink	*lgs_link_;

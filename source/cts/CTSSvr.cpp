@@ -289,7 +289,7 @@ void CTSSvr::broadcast_to_css( BasicProtocol* p)
 		delete p;
 }
 
-TeamProxySession* CTSSvr::get_playerproxy( S_INT_32 userid, S_TIMESTAMP st, S_INT_32 sindex)
+TeamProxySession* CTSSvr::get_playerproxy( int userid, S_TIMESTAMP st, int sindex)
 {
 	if( empty_proxys_.size() == 0)
 		return 0;
@@ -304,7 +304,7 @@ TeamProxySession* CTSSvr::get_playerproxy( S_INT_32 userid, S_TIMESTAMP st, S_IN
 	return ret;
 }
 
-TeamProxySession* CTSSvr::is_playerproxy( S_INT_32 userid)
+TeamProxySession* CTSSvr::is_playerproxy( int userid)
 {
 	TEAMPROXY_MAP::iterator fiter =wait_proxys_.find( userid);
 	if( fiter == wait_proxys_.end())
@@ -313,7 +313,7 @@ TeamProxySession* CTSSvr::is_playerproxy( S_INT_32 userid)
 	return fiter->second;
 }
 
-void CTSSvr::free_waitproxy( S_INT_32 userid)
+void CTSSvr::free_waitproxy( int userid)
 {
 	TEAMPROXY_MAP::iterator fiter =wait_proxys_.find( userid);
 	if( fiter == wait_proxys_.end())

@@ -59,11 +59,11 @@ public:
 	* 设置当前角色
 	* @param cid
 	**/
-	void set_curchrid( S_INT_32 cid);
+	void set_curchrid( int cid);
 
 public:
 	//当前使用的角色
-	S_INT_32	chrid_;
+	int			chrid_;
 	//所在的csslink
 	CSSLink*	css_svr_;
 
@@ -71,7 +71,7 @@ public:
 	//玩家的唯一标识
 	uuid_session	uuid_;
 	//玩家全局索引，系统定义
-	int	global_index_;
+	int				global_index_;
 };
 
 inline 

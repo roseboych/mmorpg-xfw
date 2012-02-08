@@ -13,7 +13,7 @@
 /**
 * @class EnterInstTask
 * 
-* @brief 进入任务副本条件判定实现
+* @brief 杩涘叆浠诲姟鍓湰鏉′欢鍒ゅ畾瀹炵幇
 * 
 **/
 class EnterInstTask : public EnterInstConditionBase
@@ -23,7 +23,7 @@ class EnterInstTask : public EnterInstConditionBase
 public:
 	EnterInstTask();
 
-	virtual S_BOOL join_instance( EnterInstParamBase* param, Player* curplayer);
+	virtual bool join_instance( EnterInstParamBase* param, Player* curplayer);
 };
 
 #endif	//__ENTERINSTTASK__H__

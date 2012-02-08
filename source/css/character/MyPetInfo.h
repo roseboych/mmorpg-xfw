@@ -9,7 +9,7 @@
 #define __MYPETINFO__H__
 
 #include "../css_pre.h"
-#include <prolib/datastore/character_define.h>
+#include <prolib/Pro_define.h>
 
 /**
 * @class MyPetInfo
@@ -22,8 +22,8 @@ public:
 	MyPetInfo();
 	MyPetInfo( const PRO::petdata_item& pdata);
 
-	inline S_INT_32 get_petid();
-	inline S_INT_32	get_petcode();
+	inline int get_petid();
+	inline int	get_petcode();
 	inline const char* get_petname();
 	inline void set_petname( const char* v);
 

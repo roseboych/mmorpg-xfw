@@ -43,7 +43,7 @@ DPXOption* SvrTeamOption::get_dpxoption()
 	return &dpxopt_;
 }
 
-GTSOption* SvrTeamOption::get_gtsoption( S_INT_32 sn)
+GTSOption* SvrTeamOption::get_gtsoption( int sn)
 {
 	GTSOPTION_MAP::iterator fiter =gtss_.find( sn);
 	if( fiter == gtss_.end())
@@ -59,12 +59,12 @@ void SvrTeamOption::get_gtsoptions( NS_STL::list<GTSOption*>& ret)
 		ret.push_back( iter->second);
 }
 
-S_INT_32 SvrTeamOption::get_gtsnums()
+int SvrTeamOption::get_gtsnums()
 {
-	return (S_INT_32)gtss_.size();
+	return (int)gtss_.size();
 }
 
-CSSOption* SvrTeamOption::get_cssoption( S_INT_32 sn)
+CSSOption* SvrTeamOption::get_cssoption( int sn)
 {
 	CSSOPTION_MAP::iterator fiter =csss_.find( sn);
 	if( fiter == csss_.end())
@@ -80,12 +80,12 @@ void SvrTeamOption::get_cssoptions( NS_STL::list<CSSOption*>& ret)
 		ret.push_back( iter->second);
 }
 
-S_INT_32 SvrTeamOption::get_cssnums()
+int SvrTeamOption::get_cssnums()
 {
-	return (S_INT_32)csss_.size();
+	return (int)csss_.size();
 }
 
-CSSOption* SvrTeamOption::get_cssoptbymapid( S_INT_32 mid)
+CSSOption* SvrTeamOption::get_cssoptbymapid( int mid)
 {
 	CSSOPTION_MAP::iterator iter, eiter =csss_.end();
 	for( iter =csss_.begin(); iter != eiter; ++iter)
@@ -98,12 +98,12 @@ CSSOption* SvrTeamOption::get_cssoptbymapid( S_INT_32 mid)
 	return 0;
 }
 
-S_INT_32 SvrTeamOption::get_inscellnums()
+int SvrTeamOption::get_inscellnums()
 {
-	return (S_INT_32)inscells_.size();
+	return (int)inscells_.size();
 }
 
-INSCellOption* SvrTeamOption::get_inscellopt( S_INT_32 cellid)
+INSCellOption* SvrTeamOption::get_inscellopt( int cellid)
 {
 	INSCELLOPTION_MAP::iterator fiter =inscells_.find( cellid);
 	if( fiter == inscells_.end())
@@ -127,7 +127,7 @@ bool SvrTeamOption::check_validate()
 
 bool SvrTeamOption::check_gtsoption()
 {
-	S_INT_32 tuser =0;
+	int tuser =0;
 	for( GTSOPTION_MAP::iterator iter =gtss_.begin(); iter != gtss_.end(); ++iter)
 	{
 		GTSOption* opt =iter->second;
@@ -161,7 +161,7 @@ void SvrTeamOption::build_config()
 	this->get_cssoptions( css);
 	css.sort( normal_sort<CSSOption>);
 
-	S_INT_32 index =0;
+	int index =0;
 	for( NS_STL::list<CSSOption*>::iterator iter =css.begin(); iter != css.end(); ++iter, ++index)
 		(*iter)->server_index_ =index;
 	css.clear();

@@ -47,12 +47,12 @@ protected:
 
 public:
 	//输入的参数和环境
-	S_INT_32	userid_;
-	Player*	player_;
-	uuid_session uuid_;
+	int				userid_;
+	Player*			player_;
+	uuid_session	uuid_;
 
 	//输出的结果
-	S_INT_8		ret_;
+	char			ret_;
 
 };
 

@@ -1,0 +1,146 @@
+<pro-region>
+    <meta proid="5500,6000" />
+
+    <pro-meta>
+
+        <pro id="APP_SKILLINIT_NTF" name="Pro_SkillInit_ntf">
+            <desc><![CDATA[player技能数据初始化]]></desc>
+            <destruct-block>
+                <c>
+                    <![CDATA[
+    NS_STL::list< SerializeObject*>::iterator iter =pkgs_.begin(), eiter =pkgs_.end();
+    for( ; iter != eiter; ++iter)
+        delete (*iter);
+    pkgs_.clear();
+                    ]]>
+                </c>
+                <java></java>
+            </destruct-block>
+            <custom-function>
+                <c>
+                    <![CDATA[
+    void add_skillinfo( SerializeObject* obj)
+    {
+        if( obj != 0)
+            pkgs_.push_back( obj);
+    }
+  					]]>
+                </c>
+                <java>
+                    <![CDATA[]]>
+                </java>
+            </custom-function>
+            <members>
+                <member name="chrid_" type="int32" desc="技能所属的角色id"></member>
+                <member name="pkgs_" type="serializeobj" desc="技能数据包内容" islist="yes"></member>
+            </members>
+        </pro>
+        
+        <pro id="APP_SKILLSTATECHG_NTF" name="Pro_SkillStateChg_ntf">
+            <desc><![CDATA[技能数据变化通知]]></desc>
+            <destruct-block>
+                <c>
+                    <![CDATA[
+    NS_STL::list< SerializeObject*>::iterator iter =pkgs_.begin(), eiter =pkgs_.end();
+    for( ; iter != eiter; ++iter)
+        delete (*iter);
+    pkgs_.clear();
+                    ]]>
+                </c>
+                <java></java>
+            </destruct-block>
+            <custom-function>
+                <c>
+                    <![CDATA[
+    void add_skillinfo( SerializeObject* obj)
+    {
+        if( obj != 0)
+            pkgs_.push_back( obj);
+    }
+  					]]>
+                </c>
+                <java>
+                    <![CDATA[]]>
+                </java>
+            </custom-function>
+            <members>
+                <member name="chrid_" type="int32" desc="技能所属的角色id"></member>
+                <member name="pkgs_" type="serializeobj" desc="变化的技能数据包内容" islist="yes"></member>
+            </members>
+        </pro>
+        
+        <pro id="APP_SKILLSTUDY_REQ" name="Pro_SkillStudy_req">
+            <desc><![CDATA[技能学习请求]]></desc>
+            <members>
+                <member name="skillid_" type="int32" desc="需要学习的技能信息"></member>
+            </members>
+        </pro>
+        
+        <pro id="APP_SKILLSTUDY_ACK" name="Pro_SkillStudy_ack">
+            <desc><![CDATA[技能学习请求回复]]></desc>
+            <construct-block>
+                <c>
+                    <![CDATA[
+    skillobj_ =0;
+                    ]]>
+                </c>
+                <java></java>
+            </construct-block>
+            <destruct-block>
+                <c>
+                    <![CDATA[
+    if( skillobj_)
+        delete skillobj_;
+    skillobj_ =0;
+                    ]]>
+                </c>
+                <java></java>
+            </destruct-block>
+            <members>
+                <member name="skillid_" type="int32" desc="需要学习的技能信息"></member>
+                <member name="ret_" type="int8" desc="0:成功 1:技能不存在 2:技能已经学会 《0:未达到学习技能的条件"></member>
+                <member name="skillobj_" type="serializeobj" desc="如果成功附带新生成的技能数据" ></member>
+            </members>
+        </pro>
+        
+        <pro id="APP_SKILLUSED_REQ" name="Pro_SkillUsed_req">
+            <desc><![CDATA[技能使用请求]]></desc>
+            <members>
+                <member name="skillid_" type="int32" desc="使用的技能"></member>
+                <member name="target_unit_" type="int64" desc="攻击对象	-1:如果技能是范围攻击，没有攻击对象."></member>
+                <member name="curstate_" type="int8" desc="当前的状态"></member>
+            </members>
+        </pro>
+        
+        <pro id="APP_SKILLUSED_ACK" name="Pro_SkillUsed_ack">
+            <desc><![CDATA[技能使用请求]]></desc>
+            <construct-block>
+                <c>
+                    <![CDATA[
+    skillobj_ =0;
+                    ]]>
+                </c>
+                <java></java>
+            </construct-block>
+            <destruct-block>
+                <c>
+                    <![CDATA[
+    if( skillobj_)
+        delete skillobj_;
+    skillobj_ =0;
+                    ]]>
+                </c>
+                <java></java>
+            </destruct-block>
+            <members>
+                <member name="skillid_" type="int32" desc=""></member>
+                <member name="curstate_" type="int8" desc="当前的状态"></member>
+                <member name="target_unit_" type="int64" desc="包含当前攻击对象"></member>
+                <member name="ret_" type="int8" desc="0:成功 1:技能不存在 2:技能处于cooldown状态 3:不能攻击被攻击对象 4:不能切换到指定状态 5:技能在当前状态下不可用 6:不是主动技能 《0:技能使用失败的其他原因"></member>
+                <member name="skillobj_" type="serializeobj" desc="如果成功附带新生成的技能状态数据" ></member>
+            </members>
+        </pro>
+
+    </pro-meta>
+    
+</pro-region>

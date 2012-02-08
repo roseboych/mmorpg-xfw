@@ -24,12 +24,17 @@ namespace progen
                 {
                     export_to_c.ProExportCImpl exp = new export_to_c.ProExportCImpl();
                     exp.GenerateProLib();
+
+                    //deploy generate files
+                    exp.DeployProLib();
                 }
 
                 if (ExportConfig.Instance().Export2Java)
                 {
                     export_to_java.ProExportJavaImpl exp = new export_to_java.ProExportJavaImpl();
                     exp.GenerateProLib();
+
+                    exp.DeployProLib();
                 }
             }
             catch(Exception se)

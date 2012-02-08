@@ -24,9 +24,9 @@ bool ToTranscriptConfig::init_teleports(TiXmlElement *root)
 {
 	for( TiXmlElement* tels =root->FirstChildElement("teleport"); tels != 0; tels =tels->NextSiblingElement( "teleport"))
 	{
-		S_INT_32 mid =XmlUtil::GetXmlAttrInt( tels, "id");
+		int mid =XmlUtil::GetXmlAttrInt( tels, "id");
 
-		NS_STL::pair<S_INT_32, transcript_teleport_info> vs( mid, transcript_teleport_info());
+		NS_STL::pair<int, transcript_teleport_info> vs( mid, transcript_teleport_info());
 		NS_STL::pair< TRANSCRIPTTELEPORTS_MAP::iterator, bool> rt;
 
 		rt =all_transcript_teleports_.insert( vs);
@@ -50,7 +50,7 @@ bool ToTranscriptConfig::init_teleports(TiXmlElement *root)
 	return true;
 }
 
-transcript_teleport_info* ToTranscriptConfig::get_teleportinfobyid( S_INT_32 telid)
+transcript_teleport_info* ToTranscriptConfig::get_teleportinfobyid( int telid)
 {
 	TRANSCRIPTTELEPORTS_MAP::iterator fiter =all_transcript_teleports_.find( telid);
 	if( fiter == all_transcript_teleports_.end())

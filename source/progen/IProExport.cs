@@ -8,5 +8,7 @@ namespace progen
     public interface IProExport
     {
         void GenerateProLib();
+
+        void DeployProLib();
     }
 }
