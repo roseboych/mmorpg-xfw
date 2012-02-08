@@ -15,7 +15,7 @@ TaskDefaultImpl::TaskDefaultImpl()
 {
 }
 
-S_BOOL TaskDefaultImpl::get_task( Player* curplayer, TaskInfo* tparam)
+bool TaskDefaultImpl::get_task( Player* curplayer, TaskInfo* tparam)
 {
 	TaskDefaultImplParam* tdef =dynamic_cast<TaskDefaultImplParam*>(tparam->clsimpl_param_);
 	if( curplayer->get_level() >= tdef->minlevel_ && curplayer->get_level() <= tdef->maxlevel_)
@@ -24,7 +24,7 @@ S_BOOL TaskDefaultImpl::get_task( Player* curplayer, TaskInfo* tparam)
 	return false;
 }
 
-S_BOOL TaskDefaultImpl::submit_task( Player* curplayer, TaskInfo* tparam)
+bool TaskDefaultImpl::submit_task( Player* curplayer, TaskInfo* tparam)
 {
 	return true;
 }

@@ -24,7 +24,7 @@ class Player;
 **/
 class MySkillContainer
 {
-	typedef NS_STL::map<S_INT_32, SkillRuntime*>	SKILLRUNTIME_MAP;
+	typedef NS_STL::map<int, SkillRuntime*>	SKILLRUNTIME_MAP;
 public:
 	MySkillContainer();
 	~MySkillContainer();
@@ -39,9 +39,9 @@ public:
 
 	void tick( const ACE_UINT64& tnow);
 
-	SkillRuntime* get_skillruntime( S_INT_32 skid);
+	SkillRuntime* get_skillruntime( int skid);
 
-	SkillDesc* get_skillfromtree( S_INT_32 skid);
+	SkillDesc* get_skillfromtree( int skid);
 
 	/**
 	* 学习一个技能
@@ -56,7 +56,7 @@ protected:
 	//可用的技能
 	SKILLRUNTIME_MAP	runtimes_;
 
-	Player*	owner_player_;
+	Player*		owner_player_;
 	//所属的技能树
 	SkillTree*	skill_tree_;
 };

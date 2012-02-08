@@ -25,7 +25,7 @@ public:																\
 /**
 * @class TaskParamBase
 * 
-* @brief ÈÎÎñÊµÏÖ²ÎÊıÀà»ùÀà
+* @brief ä»»åŠ¡å®ç°å‚æ•°ç±»åŸºç±»
 **/
 class TaskParamBase
 {
@@ -34,7 +34,7 @@ public:
 
 public:
 	/**
-	* ¼ÓÔØÅäÖÃĞÅÏ¢
+	* åŠ è½½é…ç½®ä¿¡æ¯
 	* @param ptr
 	* @return
 	**/

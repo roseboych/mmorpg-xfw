@@ -1,0 +1,155 @@
+<pro-region>
+    <meta proid="2000,2500" />
+
+    <pro-meta>
+        
+        <pro id="GAME_CHRLIST_REQ" name="Pro_ChrList_req">
+            <desc><![CDATA[角色列表请求]]></desc>
+            <members>
+            </members>
+        </pro>
+        
+        <pro id="GAME_CHRLIST_ACK" name="Pro_ChrList_ack">
+            <desc><![CDATA[角色列表请求]]></desc>
+            <local-struct name="chrinfo" desc="">
+                <member name="chrid_" type="int32" desc="角色id"></member>
+                <member name="name_" type="staticstring" macrolen="CHR_NICKNAME_LEN" desc="角色昵称"></member>
+                <member name="race_" type="int8" desc="种族"></member>
+                <member name="profession_" type="int8" desc="职业"></member>
+                <member name="sex_" type="int8" desc="性别 0 男的, 1女的"></member>
+                <member name="hp_" type="int32" desc=""></member>
+                <member name="mp_" type="int32" desc=""></member>
+                <member name="exp_" type="int32" desc=""></member>
+                <member name="level_" type="int32" desc="角色等级"></member>
+                <member name="moneys_" type="int32" desc="moneys"></member>
+                <member name="petid_" type="int32" desc="宠物实例的ID"></member>
+                <member name="petcode_" type="int32" desc="宠物配置值ID"></member>
+                <member name="petname_" type="staticstring" macrolen="CHR_PETNAME_LEN" desc="petname"></member>
+                <member name="equiplen_" type="int32" desc="角色装备id"></member>
+                <member name="equips_" type="int32" desc="装备数组" isarray="yes" macrolen="CHRITEMS_MAX" array-ref="equiplen_"></member>
+            </local-struct>
+            
+            <members>
+                <member name="chrs_" type="local-struct" struct-name="chrinfo" desc="" islist="yes"></member>
+            </members>
+        </pro>
+
+        <pro id="GAME_CHRCREATE_REQ" name="Pro_ChrCreate_req">
+            <desc><![CDATA[角色创建请求]]></desc>
+            <members>
+                <member name="name_" type="staticstring" macrolen="CHR_NICKNAME_LEN" desc="角色昵称"></member>
+                <member name="race_" type="int8" desc="种族"></member>
+                <member name="profession_" type="int8" desc="职业 1:战士 2:法师"></member>
+                <member name="sex_" type="int8" desc="性别 0 男的, 1女的"></member>
+                <member name="posx_" type="float32" desc="服务器使用"></member>
+                <member name="posy_" type="float32" desc=""></member>
+                <member name="posz_" type="float32" desc=""></member>
+                <member name="facing_" type="float32" desc=""></member>
+            </members>
+        </pro>
+        
+        <pro id="GAME_CHRCREATE_ACK" name="Pro_ChrCreate_ack">
+            <desc><![CDATA[角色创建请求]]></desc>
+            <members>
+                <member name="result_" type="int8" desc="0成功，1:必须先获取角色列表 2:超过最大角色数 3:其他错误 4:昵称重复"></member>
+                <member name="chrid_" type="int32" desc="角色id"></member>
+                <member name="name_" type="staticstring" macrolen="CHR_NICKNAME_LEN" desc="角色昵称"></member>
+                <member name="race_" type="int8" desc="种族"></member>
+                <member name="profession_" type="int8" desc="职业"></member>
+                <member name="sex_" type="int8" desc="性别 0 男的, 1女的"></member>
+                <member name="hp_" type="int32" desc=""></member>
+                <member name="mp_" type="int32" desc=""></member>
+                <member name="exp_" type="int32" desc=""></member>
+                <member name="level_" type="int32" desc="角色等级"></member>
+                <member name="moneys_" type="int32" desc="moneys"></member>
+                <member name="petid_" type="int32" desc="宠物实例的ID"></member>
+                <member name="petcode_" type="int32" desc="宠物配置值ID"></member>
+                <member name="petname_" type="staticstring" macrolen="CHR_PETNAME_LEN" desc="petname"></member>
+                <member name="equiplen_" type="int32" desc="角色装备id"></member>
+                <member name="equips_" type="int32" desc="装备数组" isarray="yes" macrolen="CHRITEMS_MAX" array-ref="equiplen_"></member>
+            </members>
+        </pro>
+        
+        <pro id="GAME_CHRSEL_REQ" name="Pro_ChrSel_req">
+            <desc><![CDATA[角色选择请求]]></desc>
+            <members>
+                <member name="chrid_" type="int32" desc="角色id"></member>
+            </members>
+        </pro>
+        
+        <pro id="GAME_CHRSEL_ACK" name="Pro_ChrSel_ack">
+            <desc><![CDATA[角色选择请求]]></desc>
+            <members>
+                <member name="result_" type="int8" desc="0成功，1:先获取角色列表 2:选择的角色不存在 3:其他错误"></member>
+                <member name="chrid_" type="int32" desc="角色id"></member>
+                <member name="race_" type="int8" desc="种族"></member>
+                <member name="profession_" type="int8" desc="职业"></member>
+                <member name="lastposx_" type="float32" desc="[服务器使用]最后使用的位置"></member>
+                <member name="lastposy_" type="float32" desc=""></member>
+                <member name="lastposz_" type="float32" desc=""></member>
+                <member name="lastfacing_" type="float32" desc=""></member>
+                <member name="lastmap_" type="int32" desc="最后的地图"></member>
+            </members>
+        </pro>
+        
+        <pro id="GAME_CHRDEL_REQ" name="Pro_ChrDel_req">
+            <desc><![CDATA[角色删除请求]]></desc>
+            <members>
+                <member name="chrid_" type="int32" desc="角色id"></member>
+            </members>
+        </pro>
+        
+        <pro id="GAME_CHRDEL_ACK" name="Pro_ChrDel_ack">
+            <desc><![CDATA[角色删除请求]]></desc>
+            <members>
+                <member name="result_" type="int8" desc="0成功 1:先获取角色列表 2:删除的角色不存在 3:其他错误"></member>
+                <member name="chrid_" type="int32" desc="角色id"></member>
+            </members>
+        </pro>
+        
+        <pro id="GAME_CHRREGTOWORLD_REQ" name="Pro_ChrRegistToWorld_req">
+            <desc><![CDATA[玩家注册到世界地图 cts to css, css to gts]]></desc>
+            <construct-block>
+                <c>
+                    <![CDATA[
+is_quitinst_ =0;
+  					]]>
+                </c>
+                <java></java>
+            </construct-block>            
+            <members>
+                <member name="chrid_" type="int32" desc="角色id"></member>
+                <member name="mapid_" type="int32" desc="地图id"></member>
+                <member name="cssindex_" type="int32" desc="gts使用"></member>
+                <member name="is_quitinst_" type="int8" desc="是否是退出副本时触发的事件 0:no 1:yes"></member>
+            </members>
+        </pro>
+        
+        <pro id="GAME_CHRLOAD_REQ" name="Pro_ChrLoad_req">
+            <desc><![CDATA[玩家角色加载请求 css to dpx]]></desc>
+            <members>
+                <member name="chrid_" type="int32" desc="角色id"></member>
+                <member name="cssindex_" type="int32" desc=""></member>
+            </members>
+        </pro>
+        
+        <pro id="GAME_CHRLOAD_ACK" name="Pro_ChrLoad_ack">
+            <desc><![CDATA[玩家角色加载请求 dpx to css]]></desc>
+            <members>
+                <member name="items_" type="global-struct" struct-name="equipment_item" desc="" islist="yes"></member>
+                <member name="pets_" type="global-struct" struct-name="petdata_item" desc="" islist="yes"></member>
+                <member name="buffers_" type="global-struct" struct-name="bufferdata_item" desc="" islist="yes"></member>
+            </members>
+        </pro>
+        
+        <pro id="GAME_CHRFIN_NTF" name="Pro_ChrFin_NTF">
+            <desc><![CDATA[选服结束后的玩家信息初始化完成通知]]></desc>
+            <members>
+                <member name="chrid_" type="int32" desc="角色id"></member>
+                <member name="baseinfo_" type="global-struct" struct-name="character_baseinfo" desc="" ></member>
+            </members>
+        </pro>
+
+    </pro-meta>
+    
+</pro-region>

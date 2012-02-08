@@ -32,9 +32,9 @@ void ChrUpdateInfoAction::run_indbpool( otl_connect *pconn)
 	
 		otl_stream cur( 50, DBPROC_CHRUPDATE, *pconn, otl_implicit_select);
 
-		S_INT_16 dv =baseinfo_.died_;
-		S_INT_16 bs =baseinfo_.bagslots_;
-		cur << chrid_ << baseinfo_.moneys_ << baseinfo_.level_ << bs << baseinfo_.skill_[0] << baseinfo_.skill_[1]
+		short dv =baseinfo_.died_;
+		short bs =baseinfo_.bagslots_;
+		cur << chrid_ << baseinfo_.moneys_ << baseinfo_.level_ << bs << baseinfo_.skill1_ << baseinfo_.skill2_
 			<< baseinfo_.hp_ << baseinfo_.mp_ << baseinfo_.posx_ << baseinfo_.posy_ << baseinfo_.posz_ << baseinfo_.facing_
 			<< dv << baseinfo_.exp_;
 

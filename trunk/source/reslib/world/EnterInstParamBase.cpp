@@ -1,7 +1,7 @@
 /**
 * reslib
 *
-* @category		副本配置
+* @category		鍓湰閰嶇疆
 * @package		
 * @author		Created by Lu Jianfeng ( lujf1978@163.com ), 2011
 */
@@ -12,7 +12,7 @@
 
 EnterInstParamBase* EnterInstParamBase::create( NS_STL::string clsname)
 {
-	//参数类命名规则：在实现类之后加Param
+	//鍙傛暟绫诲懡鍚嶈鍒欙細鍦ㄥ疄鐜扮被涔嬪悗鍔燩aram
 	clsname +="Param";
 
 	if( clsname == EnterInstTaskParam::get_classname())

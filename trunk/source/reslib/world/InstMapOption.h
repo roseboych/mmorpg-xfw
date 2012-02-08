@@ -1,7 +1,7 @@
 /**
 * reslib
 *
-* @category		¸±±¾ÅäÖÃ
+* @category		å‰¯æœ¬é…ç½®
 * @package		
 * @author		Created by Lu Jianfeng ( lujf1978@163.com ), 2011
 */
@@ -21,7 +21,7 @@ class StoryMapOption;
 /**
 * @class InstMapOption
 * 
-* @brief ¸±±¾µØÍ¼Ïà¹ØÅäÖÃ
+* @brief å‰¯æœ¬åœ°å›¾ç›¸å…³é…ç½®
 * 
 **/
 class InstMapOption
@@ -30,34 +30,34 @@ public:
 	InstMapOption();
 
 	/**
-	* ¼ÓÔØºÍ¸±±¾Ïà¹ØµÄÅäÖÃÑ¡Ïî
+	* åŠ è½½å’Œå‰¯æœ¬ç›¸å…³çš„é…ç½®é€‰é¡¹
 	* @param e
 	**/
-	S_BOOL	load_instmapopt( TiXmlElement* e, StoryMapOption* storyopt);
+	bool	load_instmapopt( TiXmlElement* e, StoryMapOption* storyopt);
 
 protected:
 	/*
-	* ¼ÓÔØ½øÈë¸±±¾ÅĞ¶¨
+	* åŠ è½½è¿›å…¥å‰¯æœ¬åˆ¤å®š
 	* @param e
 	* @return
 	*/
-	S_BOOL	load_enterinstopt( TiXmlElement* e);
+	bool	load_enterinstopt( TiXmlElement* e);
 
 public:
-	//ÊÇ·ñ¼ì²é½øÈë¸±±¾Ìõ¼ş
-	S_BOOL				is_check_enterinst_;
-	//½øÈë¸±±¾Ö§³Ö
+	//æ˜¯å¦æ£€æŸ¥è¿›å…¥å‰¯æœ¬æ¡ä»¶
+	bool				is_check_enterinst_;
+	//è¿›å…¥å‰¯æœ¬æ”¯æŒ
 	FUNCTION_SUPPORT	enterinst_fun_;
-	//c++²ÎÊı
+	//c++å‚æ•°
 	EnterInstParamBase*	enterinst_param_;
 	NS_STL::string		enterinst_class_;
-	//condition²ÎÊı
+	//conditionå‚æ•°
 	ConditionElement*	enterinst_condition_;
 
-	//½Å±¾ĞÅÏ¢
+	//è„šæœ¬ä¿¡æ¯
 	NS_STL::string		inst_script_;
 
-	//¸±±¾×´Ì¬¿ØÖÆÊµÏÖ
+	//å‰¯æœ¬çŠ¶æ€æ§åˆ¶å®ç°
 	NS_STL::string		ctrl_classname_;
 };
 

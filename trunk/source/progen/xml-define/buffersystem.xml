@@ -1,0 +1,17 @@
+<pro-region>
+    <meta proid="3500,4000" />
+
+    <pro-meta>
+
+        <pro id="APP_BUFFCHANGE_NTF" name="Pro_BuffChange_ntf">
+            <desc><![CDATA[buffer变化通知]]></desc>
+            <members>
+                <member name="chrid_" type="int32" desc="buffer所属的角色id"></member>
+                <member name="ntf_type_" type="int8" desc="0:新增的buffer 1:buffer失效 2:buffer更新"></member>
+                <member name="change_buff_" type="global-struct" struct-name="bufferdata_item" desc="" ></member>
+            </members>
+        </pro>
+        
+    </pro-meta>
+    
+</pro-region>

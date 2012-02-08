@@ -62,10 +62,10 @@ protected:
 public:
 	//连接类型
 	NETSVR_TYPE_ENUM	type_;
-	S_INT_32		svrsn_;
-	S_INT_32		sn_;
+	int					svrsn_;
+	int					sn_;
 	//全局索引
-	S_INT_16		server_index_;
+	int					server_index_;
 };
 
 #endif //__CTS_SERVICE__H__

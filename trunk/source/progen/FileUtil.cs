@@ -34,6 +34,29 @@ namespace progen
             }
         }
 
+        public static bool DelDir( string path)
+        {
+            bool babs = Path.IsPathRooted(path);
+            if (!babs)
+                path = Path.Combine(GetCurPath(), path);
+
+            if (!Directory.Exists(path))
+                return true;
+
+            if (File.Exists(path))
+                throw new SystemException(String.Format("dir that want to be deleted , {0} is a file, not a path", path));
+
+            try
+            {
+                Directory.Delete(path, true);
+                return true;
+            }
+            catch (Exception se)
+            {
+                throw se;
+            }
+        }
+
         public static string GetCurPath()
         {
             return Directory.GetCurrentDirectory();
@@ -86,7 +109,7 @@ namespace progen
             if( !IsPathExist( dir))
                 return ret;
 
-            string[] files =Directory.GetFiles(dir, "*.xml", SearchOption.TopDirectoryOnly);
+            string[] files =Directory.GetFiles(dir, ext, SearchOption.TopDirectoryOnly);
             for (int ind = 0; ind < files.Length; ++ind)
             {
                 string fname =Path.GetFileName(files[ind]);

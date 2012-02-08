@@ -29,7 +29,7 @@ class ContentServiceThread : public ACE_Task_Base
 	typedef ACE_Task_Base inherit;
 
 public:
-	ContentServiceThread( S_INT_32 n =5);
+	ContentServiceThread( int n =5);
 	virtual ~ContentServiceThread();
 
 	/**
@@ -49,7 +49,7 @@ public:
 	* 设置线程数
 	* @param n
 	**/
-	void set_threadnum( S_INT_32 n){ 
+	void set_threadnum( int n){ 
 		if( n <= 0)
 			thread_nums_ =1;
 		else
@@ -60,8 +60,8 @@ protected:
 	friend BaseStoryService* get_thiscontext();
 
 	//支持的线程数
-	S_INT_32	thread_nums_;
-	bool	initialized_;
+	int			thread_nums_;
+	bool		initialized_;
 	//是否退出线程
 	bool volatile	will_exit_;
 };

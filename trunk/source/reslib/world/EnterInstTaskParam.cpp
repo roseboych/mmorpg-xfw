@@ -1,7 +1,7 @@
 /**
 * reslib
 *
-* @category		¸±±¾ÅäÖÃ
+* @category		å‰¯æœ¬é…ç½®
 * @package		
 * @author		Created by Lu Jianfeng ( lujf1978@163.com ), 2011
 */

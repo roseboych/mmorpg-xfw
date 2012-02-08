@@ -27,8 +27,8 @@ class TiXmlElement;
 **/
 class TeleportConfig
 {
-	typedef NS_STL::map< S_INT_32, Teleport>		ALLTELEPORT_MAP;
-	typedef NS_STL::map< S_INT_32, TeleportPair>	TELEPORTPAIR_MAP;
+	typedef NS_STL::map< int, Teleport>		ALLTELEPORT_MAP;
+	typedef NS_STL::map< int, TeleportPair>	TELEPORTPAIR_MAP;
 public:
 	TeleportConfig();
 
@@ -38,7 +38,7 @@ public:
 	**/
 	bool init_teleports( TiXmlElement* root);
 
-	TeleportPair* get_teleportpair( S_INT_32 iid);
+	TeleportPair* get_teleportpair( int iid);
 
 protected:
 	/**
@@ -46,7 +46,7 @@ protected:
 	* @param mapid
 	* @return 
 	**/
-	Teleport* get_mapteleport( S_INT_32 mapid);
+	Teleport* get_mapteleport( int mapid);
 
 private:
 	//所有的转跳点

@@ -30,7 +30,7 @@ public:
 
 	virtual void send_protocol( BasicProtocol* p);
 
-	virtual S_INT_32 get_serverindex();
+	virtual int get_serverindex();
 
 	void set_option( CSSOption* s);
 

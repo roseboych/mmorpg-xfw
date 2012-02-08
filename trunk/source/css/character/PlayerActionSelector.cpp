@@ -54,7 +54,7 @@ void PlayerActionSelector::reset_selector()
 	death_run_.reset_state();
 }
 
-BaseActionState* PlayerActionSelector::get_statebyid( S_INT_32 id)
+BaseActionState* PlayerActionSelector::get_statebyid( int id)
 {
 	if( id == CHRSTATE_NOFIGHT_SITDOWN)
 		return &nofight_sitdown_;
@@ -123,7 +123,7 @@ BaseActionState* PlayerActionSelector::get_default_state()
 	}
 }
 
-BaseActionState* PlayerActionSelector::goto_state( S_INT_32 newstate)
+BaseActionState* PlayerActionSelector::goto_state( int newstate)
 {
 	BaseActionState* curstate =owner_->get_curstate();
 	ACE_ASSERT( curstate != 0);

@@ -178,7 +178,7 @@ namespace progen.pro_meta
             List<ProRegion> pros = new List<ProRegion>();
 
             {
-                List<string> allxml = FileUtil.ListFilesOfDir(xmlpath, ".xml");
+                List<string> allxml = FileUtil.ListFilesOfDir(xmlpath, "*.xml");
                 foreach (string xml in allxml)
                 {
                     string p = FileUtil.GetFile(xmlpath, xml);

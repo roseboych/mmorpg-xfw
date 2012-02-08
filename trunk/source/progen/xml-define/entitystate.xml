@@ -1,0 +1,61 @@
+<pro-region>
+    <meta proid="4500,5000" />
+
+    <pro-meta>
+
+        <pro id="APP_PLAYERMOVE_REQ" name="Pro_PlayerMove_req">
+            <desc><![CDATA[玩家移动请求]]></desc>
+            <members>
+                <member name="locationx_" type="float32" desc=""></member>
+                <member name="locationy_" type="float32" desc=""></member>
+                <member name="locationz_" type="float32" desc=""></member>
+                <member name="facing_" type="float32" desc=""></member>
+                <member name="curstate_" type="int8" desc="当前状态"></member>
+            </members>
+        </pro>
+        
+        <pro id="APP_PLAYERMOVE_ACK" name="Pro_PlayerMove_ack">
+            <desc><![CDATA[玩家移动回复，只在失败的情况下回复]]></desc>
+            <members>
+                <member name="result_" type="int8" desc="1:非法移动 2:非法状态"></member>
+                <member name="locationx_" type="float32" desc=""></member>
+                <member name="locationy_" type="float32" desc=""></member>
+                <member name="locationz_" type="float32" desc=""></member>
+                <member name="facing_" type="float32" desc=""></member>
+                <member name="curstate_" type="int8" desc="当前状态"></member>
+            </members>
+        </pro>
+        
+        <pro id="APP_PLAYERMOVE_NTF" name="Pro_PlayerMove_ntf">
+            <desc><![CDATA[玩家移动通知]]></desc>
+            <members>
+                <member name="chrid_" type="int32" desc=""></member>
+                <member name="locationx_" type="float32" desc=""></member>
+                <member name="locationy_" type="float32" desc=""></member>
+                <member name="locationz_" type="float32" desc=""></member>
+                <member name="facing_" type="float32" desc=""></member>
+                <member name="curstate_" type="int8" desc="当前状态"></member>
+            </members>
+        </pro>
+        
+        <pro id="DB_POSROTSAVE_NTF" name="Pro_DBPosRotSave_ntf">
+            <desc><![CDATA[普通数据保存通知]]></desc>
+            <members>
+                <member name="lastposx_" type="float32" desc=""></member>
+                <member name="lastposy_" type="float32" desc=""></member>
+                <member name="lastposz_" type="float32" desc=""></member>
+                <member name="lastfacing_" type="float32" desc=""></member>
+            </members>
+        </pro>
+        
+        <pro id="DB_PLAYERBASEINFO_SAVE" name="Pro_DBPlayerBaseInfo_sav">
+            <desc><![CDATA[普通数据保存通知]]></desc>
+            <members>
+                <member name="chrid_" type="int32" desc="角色id"></member>
+                <member name="baseinfo_" type="global-struct" struct-name="character_baseinfo" desc="玩家基本信息" ></member>
+            </members>
+        </pro>
+        
+    </pro-meta>
+    
+</pro-region>

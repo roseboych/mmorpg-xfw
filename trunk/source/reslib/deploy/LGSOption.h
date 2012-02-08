@@ -26,14 +26,14 @@ public:
 	LGSOption();
 
 public:
-	int sn_;
-	NS_STL::string ip_;
-	int port_;
+	int				sn_;
+	NS_STL::string	ip_;
+	int				port_;
 	//支持的最大玩家数
-	int maxuser_;
+	int				maxuser_;
 
 	//系统分配的序列号
-	int server_index_;
+	int				server_index_;
 };
 
 #endif	//__LGSOPTION__H__

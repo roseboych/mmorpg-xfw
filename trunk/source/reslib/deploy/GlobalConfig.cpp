@@ -437,7 +437,7 @@ void GlobalConfig::build_config()
 	rgsopt_.max_users_ =all_user;
 }
 
-CSSOption* GlobalConfig::get_cssoptbymapid( S_INT_32 mid)
+CSSOption* GlobalConfig::get_cssoptbymapid( int mid)
 {
 	CSSOption* ret =0;
 	SVRTEAMOPTION_MAP::iterator iter =svrteams_.begin(), eiter =svrteams_.end();

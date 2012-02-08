@@ -1,0 +1,45 @@
+<pro-region>
+    <meta proid="4000,4500" />
+
+    <pro-meta>
+
+        <pro id="APP_TEAMCHAT_REQ" name="Pro_TeamChat_req">
+            <desc><![CDATA[群聊天请求]]></desc>
+            <members>
+                <member name="chattype_" type="int8" desc="0:地图内聊天 1:aoi聊天 2:工会频道聊天 3:好友频道聊天 4:小队频道聊天"></member>
+                <member name="msg_" type="staticstring" macrolen="MESSAGE_LEN_MAX" desc="消息"></member>
+            </members>
+        </pro>
+        
+        <pro id="APP_TEAMCHAT_NTF" name="Pro_TeamChat_ntf">
+            <desc><![CDATA[群聊天广播]]></desc>
+            <members>
+                <member name="chattype_" type="int8" desc="0:地图内聊天 1:aoi聊天 2:工会频道聊天 3:好友频道聊天 4:小队频道聊天"></member>
+                <member name="charid_" type="int32" desc="角色id"></member>
+                <member name="nick_" type="staticstring" macrolen="CHR_NICKNAME_LEN" desc="角色名称"></member>
+                <member name="msg_" type="staticstring" macrolen="MESSAGE_LEN_MAX" desc="消息"></member>
+            </members>
+        </pro>
+        
+        <pro id="APP_P2PCHAT_REQ" name="Pro_P2PChat_req">
+            <desc><![CDATA[私聊请求]]></desc>
+            <members>
+                <member name="chattype_" type="int8" desc="0:工会频道聊天 1:好友频道聊天 2:小队频道聊天"></member>
+                <member name="target_chrid_" type="int32" desc="聊天对象"></member>
+                <member name="msg_" type="staticstring" macrolen="MESSAGE_LEN_MAX" desc="消息"></member>
+            </members>
+        </pro>
+        
+        <pro id="APP_P2PCHAT_NTF" name="Pro_P2PChat_ntf">
+            <desc><![CDATA[聊天广播]]></desc>
+            <members>
+                <member name="chattype_" type="int8" desc="0:工会频道聊天 1:好友频道聊天 2:小队频道聊天"></member>
+                <member name="charid_" type="int32" desc="角色id"></member>
+                <member name="nick_" type="staticstring" macrolen="CHR_NICKNAME_LEN" desc="角色名称"></member>
+                <member name="msg_" type="staticstring" macrolen="MESSAGE_LEN_MAX" desc="消息"></member>
+            </members>
+        </pro>
+
+    </pro-meta>
+    
+</pro-region>

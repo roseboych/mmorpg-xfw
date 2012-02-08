@@ -30,11 +30,11 @@ public:
 
 public:
 	//服务器地址和端口
-	NS_STL::string ip_;
-	int port_;
+	NS_STL::string	ip_;
+	int				port_;
 
 	//玩家数量
-	int maxuser_;
+	int			maxuser_;
 
 	//数据库配置
 	DBConfig	db_;

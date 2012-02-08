@@ -156,7 +156,7 @@ void RGSSvr::svr_controller_disconnect()
 
 void RGSSvr::broadcast_to_lgs( BasicProtocol *p)
 {
-	for( S_INT_32 ss =1; ss < lgssvr_nums_; ++ss)
+	for( int ss =1; ss < lgssvr_nums_; ++ss)
 	{
 		if( lgssvr_[ss].is_connected())
 			lgssvr_[ss].send_protocol( p->clone());
@@ -170,7 +170,7 @@ void RGSSvr::broadcast_to_lgs( BasicProtocol *p)
 
 void RGSSvr::broadcast_to_cts( BasicProtocol* p)
 {
-	for( S_INT_32 ss =1; ss < ctssvr_nums_; ++ss)
+	for( int ss =1; ss < ctssvr_nums_; ++ss)
 	{
 		if( ctssvr_[ss].is_connected())
 			ctssvr_[ss].send_protocol( p->clone());
@@ -187,7 +187,7 @@ void RGSSvr::close_all_service()
 	//ACE_Guard<ACE_Thread_Mutex> mon( get_mutex());
 }
 
-PlayerInfo* RGSSvr::find_byuserid( S_INT_32 userid)
+PlayerInfo* RGSSvr::find_byuserid( int userid)
 {
 	USEDUSER_MAP::iterator fiter =userid_players_.find( userid);
 	if( fiter == userid_players_.end())

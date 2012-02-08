@@ -19,13 +19,13 @@ class TiXmlElement;
 /**
 * @class ConditionValue
 * 
-* @brief Ìõ¼ş¼ÆËãÖĞ¶¨ÒåµÄÖµ
+* @brief æ¡ä»¶è®¡ç®—ä¸­å®šä¹‰çš„å€¼
 **/
 class ConditionValue
 {
 public:
 	/**
-	* ·µ»ØÉèÖÃµÄÖµ
+	* è¿”å›è®¾ç½®çš„å€¼
 	**/
 	virtual PropertyOperatorValue get_conditionvalue( ConditionContext& context) =0;
 };
@@ -33,14 +33,14 @@ public:
 /**
 * @class ConditionValueConst
 * 
-* @brief ·â×°ÁË³£Á¿Öµ
+* @brief å°è£…äº†å¸¸é‡å€¼
 **/
 class ConditionValueConst : public ConditionValue
 {
 public:
-	ConditionValueConst( S_INT_32 val);
-	ConditionValueConst( S_FLOAT_32 val);
-	ConditionValueConst( const S_CHAR_8* val);
+	ConditionValueConst( int val);
+	ConditionValueConst( float val);
+	ConditionValueConst( const char* val);
 
 	ConditionValueConst( TiXmlElement* e);
 
@@ -53,7 +53,7 @@ protected:
 /**
 * @class ConditionValueObject
 * 
-* @brief ·â×°ÁË¶ÔÏóÊôĞÔ
+* @brief å°è£…äº†å¯¹è±¡å±æ€§
 **/
 class ConditionValueObject : public ConditionValue
 {

@@ -22,7 +22,7 @@ class FightRunAction : public BaseActionState
 public:
 	FightRunAction();
 
-	virtual S_INT_8 get_statetype(){ return ( S_INT_8)CHRSTATE_FIGHT_RUN;}
+	virtual char get_statetype(){ return ( char)CHRSTATE_FIGHT_RUN;}
 
 };
 

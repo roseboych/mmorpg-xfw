@@ -135,7 +135,7 @@
 				AdditionalDependencies="prolib.lib corelib.lib logmodule.lib reslib.lib apr-1.lib aprutil-1.lib apriconv-1.lib xml.lib ACEs.lib"
 				OutputFile="..\..\run\gts\$(ProjectName).exe"
 				AdditionalLibraryDirectories="..\lib;..\..\3lib\boost\bin;..\..\3lib\apr\release;&quot;..\..\3lib\apr-util\release&quot;;&quot;..\..\3lib\apr-iconv\release&quot;"
-				GenerateDebugInformation="true"
+				GenerateDebugInformation="false"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
 				TargetMachine="1"

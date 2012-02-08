@@ -49,7 +49,7 @@ public:
 public:
 	SERVER_REGIST_STATUS_ENUM	status_;
 	//配置
-	CSSOption* opt_;
+	CSSOption*					opt_;
 
 	GuardConnector<CSS_Service> connector_;
 };

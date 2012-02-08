@@ -27,14 +27,14 @@ WorldInfoConfig::~WorldInfoConfig()
 
 bool WorldInfoConfig::regist_to_storyscriptcontext( app::script::ScriptContext& context)
 {
-	//×¢²á¸±±¾»ù´¡½Å±¾
+	//æ³¨å†Œå‰¯æœ¬åŸºç¡€è„šæœ¬
 	if( !context.run_script( inst_script_.c_str()))
 	{
 		MODULE_LOG_ERROR( MODULE_BOOT, "regist appdata/maps/ins/inst-base.lua script file failed");
 		return false;
 	}
 
-	//×¢²á¸÷¸ö¸±±¾µÄ½Å±¾
+	//æ³¨å†Œå„ä¸ªå‰¯æœ¬çš„è„šæœ¬
 	INSTSTORYOPTION_MAP::iterator eiter =instmaps_.end();
 	for( INSTSTORYOPTION_MAP::iterator iter =instmaps_.begin(); iter != eiter; ++iter)
 	{
@@ -82,7 +82,7 @@ bool WorldInfoConfig::load_worldconfig()
 	worldwidth_ =XmlUtil::GetXmlAttrInt( root, "width", 0);
 	worldheight_ =XmlUtil::GetXmlAttrInt( root, "height", 0);
 
-	//¼ÓÔØ³öÉúµã
+	//åŠ è½½å‡ºç”Ÿç‚¹
 	TiXmlElement* bn =root->FirstChildElement( "bornpos");
 	if( bn)
 	{
@@ -94,7 +94,7 @@ bool WorldInfoConfig::load_worldconfig()
 			born.posz_ =XmlUtil::GetXmlAttrFloat( e, "z", 0);
 			born.face_ =XmlUtil::GetXmlAttrFloat( e, "f", 0);
 
-			S_INT_32 bnid =XmlUtil::GetXmlAttrInt( e, "race", 0);
+			int bnid =XmlUtil::GetXmlAttrInt( e, "race", 0);
 			if( bnid < 0)
 				return false;
 
@@ -102,7 +102,7 @@ bool WorldInfoConfig::load_worldconfig()
 		}
 	}
 
-	//¼ÓÔØ×ªÌøµã
+	//åŠ è½½è½¬è·³ç‚¹
 	TiXmlElement* teleports =root->FirstChildElement( "allteleports");
 	if( teleports)
 	{
@@ -117,20 +117,20 @@ bool WorldInfoConfig::load_worldconfig()
 			return false;
 	}
 
-	//¼ÓÔØÖ÷Âß¼­µØÍ¼
+	//åŠ è½½ä¸»é€»è¾‘åœ°å›¾
 	TiXmlElement* maps =root->FirstChildElement( "mainstorys");
 	if( maps == 0)
 		return false;
 
 	for( TiXmlElement* e =maps->FirstChildElement( "map"); e != NULL; e =e->NextSiblingElement( "map"))
 	{
-		S_INT_32 mid =XmlUtil::GetXmlAttrInt( e, "id", NO_INITVALUE);
+		int mid =XmlUtil::GetXmlAttrInt( e, "id", NO_INITVALUE);
 		if( mid == NO_INITVALUE)
 			continue;
 		if( get_mainstorymapres( mid))
 			continue;
 
-		S_INT_32 offsetx, offsety;
+		int offsetx, offsety;
 		offsetx =XmlUtil::GetXmlAttrInt( e, "offsetx", 0);
 		offsety =XmlUtil::GetXmlAttrInt( e, "offsety", 0);
 
@@ -148,7 +148,7 @@ bool WorldInfoConfig::load_worldconfig()
 		mainmaps_[mid] =mr;
 	}
 
-	//¼ÓÔØ¸±±¾»ù´¡½Å±¾
+	//åŠ è½½å‰¯æœ¬åŸºç¡€è„šæœ¬
 	inst_script_ =dsrc->get_txtfilecontent( "appdata/maps/ins", "inst-base.lua");
 	if( inst_script_.size() <= 0)
 	{
@@ -156,13 +156,13 @@ bool WorldInfoConfig::load_worldconfig()
 		return false;
 	}
 
-	//¼ÓÔØ¸±±¾ÅäÖÃ
+	//åŠ è½½å‰¯æœ¬é…ç½®
 	TiXmlElement* inststorys =root->FirstChildElement( "inststorys");
 	if( inststorys)
 	{
 		for( TiXmlElement* e =inststorys->FirstChildElement( "ins"); e != NULL; e =e->NextSiblingElement( "ins"))
 		{
-			S_INT_32 mid =XmlUtil::GetXmlAttrInt( e, "id", NO_INITVALUE);
+			int mid =XmlUtil::GetXmlAttrInt( e, "id", NO_INITVALUE);
 			if( mid == NO_INITVALUE)
 				continue;
 			if( get_instancemapres( mid))
@@ -184,7 +184,7 @@ bool WorldInfoConfig::load_worldconfig()
 	return true;
 }
 
-StoryMapOption* WorldInfoConfig::get_mainstorybyxy( S_FLOAT_32 x, S_FLOAT_32 y)
+StoryMapOption* WorldInfoConfig::get_mainstorybyxy( float x, float y)
 {
 	MAINSTORYOPTION_MAP::iterator iter =mainmaps_.begin(), eiter =mainmaps_.end();
 	for( ; iter != eiter; ++iter)
@@ -197,7 +197,7 @@ StoryMapOption* WorldInfoConfig::get_mainstorybyxy( S_FLOAT_32 x, S_FLOAT_32 y)
 	return 0;
 }
 
-StoryMapOption* WorldInfoConfig::get_mainstorymapres( S_INT_32 mid)
+StoryMapOption* WorldInfoConfig::get_mainstorymapres( int mid)
 {
 	MAINSTORYOPTION_MAP::iterator fiter =mainmaps_.find( mid);
 	if( fiter == mainmaps_.end())
@@ -209,7 +209,7 @@ void WorldInfoConfig::get_mainstorymapres( NS_STL::list<int>& mids, NS_STL::vect
 {
 	if( mids.size() == 0)
 	{
-		//»ñÈ¡ËùÓÐµÄ
+		//èŽ·å–æ‰€æœ‰çš„
 		for( MAINSTORYOPTION_MAP::iterator iter =mainmaps_.begin(); iter != mainmaps_.end(); ++iter)
 			mr.push_back( iter->second);
 	}
@@ -225,7 +225,7 @@ void WorldInfoConfig::get_mainstorymapres( NS_STL::list<int>& mids, NS_STL::vect
 	}
 }
 
-StoryMapOption* WorldInfoConfig::get_instancemapres( S_INT_32 insid)
+StoryMapOption* WorldInfoConfig::get_instancemapres( int insid)
 {
 	INSTSTORYOPTION_MAP::iterator fiter =instmaps_.find( insid);
 	if( fiter == instmaps_.end())
@@ -233,17 +233,17 @@ StoryMapOption* WorldInfoConfig::get_instancemapres( S_INT_32 insid)
 	return fiter->second;
 }
 
-S_INT_32 WorldInfoConfig::get_mainstorynum()
+int WorldInfoConfig::get_mainstorynum()
 {
-	return (S_INT_32)mainmaps_.size();
+	return (int)mainmaps_.size();
 }
 
-S_INT_32 WorldInfoConfig::get_insstorynum()
+int WorldInfoConfig::get_insstorynum()
 {
-	return (S_INT_32)instmaps_.size();
+	return (int)instmaps_.size();
 }
 
-world_bornpos* WorldInfoConfig::get_bornpos( S_INT_32 race)
+world_bornpos* WorldInfoConfig::get_bornpos( int race)
 {
 	WORLDBORNPOS_MAP::iterator fiter =bornpos_.find( race);
 	if( fiter == bornpos_.end())

@@ -17,7 +17,7 @@
 	<states>
 		<!--
 		state节点定义了某个状态支持的技能配置
-		name:状态名称，在<prolib/datastore/character_define.h>中定义
+		name:状态名称
 		-->
 		<state name="nofightsitdown">
 		</state>

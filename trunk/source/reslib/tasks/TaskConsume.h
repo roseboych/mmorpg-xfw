@@ -16,7 +16,7 @@ class ItemInfoBase;
 /**
 * @class TaskConsume
 * 
-* @brief ÈÎÎñÏûºÄĞÅÏ¢
+* @brief ä»»åŠ¡æ¶ˆè€—ä¿¡æ¯
 **/
 class TaskConsume
 {
@@ -24,22 +24,22 @@ public:
 	TaskConsume();
 
 	/**
-	* ÑéÖ¤Êı¾İµÄºÏ·¨ĞÔ
+	* éªŒè¯æ•°æ®çš„åˆæ³•æ€§
 	**/
-	S_BOOL		validate();
+	bool		validate();
 
-	S_INT_32	get_itemid();
-	S_BOOL		is_taskitem();
+	int			get_itemid();
+	bool		is_taskitem();
 
 public:
-	//¶ÔÓ¦µÄÎïÆ·ÅäÖÃ
+	//å¯¹åº”çš„ç‰©å“é…ç½®
 	ItemInfoBase*	item_;
-	//ÊÇ·ñ±ØĞëÊÇÈÎÎñÎïÆ·
-	S_BOOL			must_taskitem_;
-	//ÎïÆ·ÊıÁ¿
-	S_INT_32		item_nums_;
-	//Íê³ÉÈÎÎñÊ±ÊÇ·ñ´Ó±³°üÏú»Ù
-	S_BOOL			will_destroy_;
+	//æ˜¯å¦å¿…é¡»æ˜¯ä»»åŠ¡ç‰©å“
+	bool			must_taskitem_;
+	//ç‰©å“æ•°é‡
+	int				item_nums_;
+	//å®Œæˆä»»åŠ¡æ—¶æ˜¯å¦ä»èƒŒåŒ…é”€æ¯
+	bool			will_destroy_;
 };
 
 #endif	//__TASKCONSUME__H__

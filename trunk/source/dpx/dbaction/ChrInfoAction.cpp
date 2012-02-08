@@ -63,16 +63,18 @@ void ChrInfoAction::run_indbpool( otl_connect *pconn)
 
 		cur << chrid_;
 
-		S_INT_16 sv, rc, pf, bagslots, dv;
+		short sv, rc, pf, bagslots, dv;
 		if( !cur.eof())
 		{
-			cur >> baseinfo_.name_ >> rc >> pf >> sv >>baseinfo_.moneys_ >> baseinfo_.level_
-				>> bagslots >> baseinfo_.skill_[0] >> baseinfo_.skill_[1] >> baseinfo_.petid_
+			NS_STL::string name;
+			cur >> name >> rc >> pf >> sv >>baseinfo_.moneys_ >> baseinfo_.level_
+				>> bagslots >> baseinfo_.skill1_ >> baseinfo_.skill2_ >> baseinfo_.petid_
 				>> baseinfo_.hp_ >> baseinfo_.mp_ >> baseinfo_.power_ >> baseinfo_.agile_
 				>> baseinfo_.endurance_ >> baseinfo_.intellect_ >> baseinfo_.spirit_
 				>> baseinfo_.armor_ >> baseinfo_.posx_ >> baseinfo_.posy_ >> baseinfo_.posz_ >> baseinfo_.facing_ >> dv
 				>> baseinfo_.exp_;
 
+			baseinfo_.name_ =name;
 			baseinfo_.race_ =rc;
 			baseinfo_.profession_ =pf;
 			baseinfo_.sex_ =sv;
@@ -108,7 +110,9 @@ void ChrInfoAction::run_indbpool( otl_connect *pconn)
 			PRO::petdata_item *pitem =FRAMEWK_NEW PRO::petdata_item();
 			pets_.push_back( pitem);
 
-			cur3 >> pitem->petid_ >> pitem->petcode_ >> pitem->petname_;
+			NS_STL::string petname;
+			cur3 >> pitem->petid_ >> pitem->petcode_ >> petname;
+			pitem->petname_ =petname;
 		}
 
 		cur3.close();

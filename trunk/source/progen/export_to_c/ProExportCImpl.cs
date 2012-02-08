@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.Threading;
 
 using progen.pro_meta;
 
@@ -22,6 +23,8 @@ namespace progen.export_to_c
         {
             //make output directory
             path_root_ = ExportConfig.Instance().Export2CPath;
+            FileUtil.DelDir(path_root_);
+            Thread.Sleep(3000);
             FileUtil.MakeDir( ref path_root_);
 
             //generate macro define
@@ -32,6 +35,23 @@ namespace progen.export_to_c
             GenerateGlobalStruct();
 
             GenerateProtocols();
+        }
+
+        public void DeployProLib()
+        {
+            string targetpath =ExportConfig.Instance().Target2CPath;
+            FileUtil.DelDir(targetpath);
+            Thread.Sleep(3000);
+            FileUtil.MakeDir(ref targetpath);
+
+            //copy generate files into target dir
+            List<string> allfile = FileUtil.ListFilesOfDir( path_root_, "*.*");
+            foreach (string f in allfile)
+            {
+                string src = FileUtil.GetFile(path_root_, f);
+                string des = FileUtil.GetFile(targetpath, f);
+                File.Copy(src, des, true);
+            }
         }
 
         #endregion
@@ -82,22 +102,14 @@ namespace progen.export_to_c
             string type = "";
             if (sm.Type == ProMetaConst.DATATYPE_INT8)
                 type ="S_INT_8";
+            else if (sm.Type == ProMetaConst.DATATYPE_INT16)
+                type = "S_INT_16";
             else if (sm.Type == ProMetaConst.DATATYPE_INT32)
                 type = "S_INT_32";
             else if (sm.Type == ProMetaConst.DATATYPE_INT64)
                 type = "S_INT_64";
-            else if (sm.Type == ProMetaConst.DATATYPE_UINT8)
-                type = "S_UINT_8";
             else if (sm.Type == ProMetaConst.DATATYPE_UINT32)
                 type = "S_UINT_32";
-            else if (sm.Type == ProMetaConst.DATATYPE_UINT64)
-                type = "S_UINT_32";
-            else if (sm.Type == ProMetaConst.DATATYPE_BOOL)
-                type = "S_BOOL";
-            else if (sm.Type == ProMetaConst.DATATYPE_CHAR8)
-                type = "S_CHAR_8";
-            else if (sm.Type == ProMetaConst.DATATYPE_UCHAR8)
-                type = "S_UCHAR_8";
             else if (sm.Type == ProMetaConst.DATATYPE_FLOAT32)
                 type = "S_FLOAT_32";
             else if (sm.Type == ProMetaConst.DATATYPE_TIMESTAMP)
@@ -109,10 +121,12 @@ namespace progen.export_to_c
                 else
                     type = String.Format("StaticString< {0} >", sm.ILen);
             }
+            else if(sm.Type == ProMetaConst.DATATYPE_SERIALIZEOBJ)
+                type = "SerializeObject*";
             else
                 throw new pro_meta.exception.AnalysisException(String.Format("{0} member type not supported", sm.Type));
 
-            if (sm.IsList)
+            if (sm.IsList && sm.Type != ProMetaConst.DATATYPE_SERIALIZEOBJ)
                 return String.Format("std::list< {0} >", type);
             else
                 return type;

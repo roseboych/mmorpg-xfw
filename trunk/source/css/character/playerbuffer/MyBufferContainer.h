@@ -31,7 +31,7 @@ NAMESPACE_APPSCRIPT_END
 **/
 class MyBufferContainer
 {
-	typedef NS_STL::map< S_INT_32, BufferRuntime>	BUFFRUNTIME_MAP;
+	typedef NS_STL::map< int, BufferRuntime>	BUFFRUNTIME_MAP;
 public:
 	MyBufferContainer();
 	~MyBufferContainer();
@@ -60,32 +60,32 @@ public:
 	* @param buffcode
 	* @return
 	**/
-	BufferRuntime* attach_newbuffer( S_INT_32 buffcode);
+	BufferRuntime* attach_newbuffer( int buffcode);
 
 	/**
 	* 消除一个buffer
 	* @param buffcode
 	**/
-	void cancel_onebuffer( S_INT_32 buffcode);
+	void cancel_onebuffer( int buffcode);
 
 protected:
 	/**
 	* 根据buffer编号获取buffer信息
 	* @param buffcode
 	**/
-	BufferRuntime* get_bufferbyid( S_INT_32 buffcode);
+	BufferRuntime* get_bufferbyid( int buffcode);
 
 	/**
 	* 通知buffer变化
 	* @param type 0:增加 1:删除 2:修改
 	**/
-	void notify_bufferchange( BufferRuntime& buff, S_INT_8 type);
+	void notify_bufferchange( BufferRuntime& buff, char type);
 
 protected:
 	//所有运行时buffer
 	BUFFRUNTIME_MAP	buff_runtimes_;
 
-	Player*	owner_;
+	Player			*owner_;
 };
 
 #endif	//__MYBUFFERCONTAINER__H__

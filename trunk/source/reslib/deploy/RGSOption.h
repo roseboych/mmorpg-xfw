@@ -39,16 +39,16 @@ public:
 	bool has_privilege( NS_STL::string name, NS_STL::string pwd);
 
 public:
-	NS_STL::string ip_;
-	int port_;
-	DBConfig	dbinfo_;
+	NS_STL::string	ip_;
+	int				port_;
+	DBConfig		dbinfo_;
 
 	//controller配置信息
-	int controller_port_;
+	int						controller_port_;
 	CONTROLLER_USERS_MAP	controller_users_;
 
 	//最大玩家数
-	int max_users_;
+	int				max_users_;
 };
 
 #endif	//__RGSOPTION__H__

@@ -18,17 +18,17 @@ will_destroy_( true)
 
 }
 
-S_INT_32 TaskConsume::get_itemid()
+int TaskConsume::get_itemid()
 {
 	return item_->get_itemid();
 }
 
-S_BOOL TaskConsume::is_taskitem()
+bool TaskConsume::is_taskitem()
 {
 	return item_->is_taskitem();
 }
 
-S_BOOL TaskConsume::validate()
+bool TaskConsume::validate()
 {
 	if( item_ == 0)
 		return false;

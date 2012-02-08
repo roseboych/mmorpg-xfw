@@ -24,7 +24,7 @@
 class ProtocolFactory
 {
 public:
-	ProtocolFactory();
+	ProtocolFactory(){}
 
 public:
 	/**

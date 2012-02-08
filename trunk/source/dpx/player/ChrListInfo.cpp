@@ -10,5 +10,5 @@
 ChrListInfo::ChrListInfo()
 {
 	equiplen_ =CHRITEMS_MAX;
-	memset( (void*)&equips_[0], -1, sizeof( S_INT_32)*CHRITEMS_MAX);
+	memset( (void*)&equips_[0], -1, sizeof( int)*CHRITEMS_MAX);
 }

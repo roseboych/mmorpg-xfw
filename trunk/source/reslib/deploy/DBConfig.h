@@ -29,8 +29,8 @@ struct DBConfig
 	NS_STL::string dbname_;
 
 	//系统配置
-	int dbthreadnum_;
-	int dbloopstep_;
+	int		dbthreadnum_;
+	int		dbloopstep_;
 };
 
 #endif	//__DBCONFIG__H__

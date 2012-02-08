@@ -37,7 +37,7 @@ void SvrTeamInfo::init_svrteaminfo()
 
 void SvrTeamInfo::update_teaminfo( PRO::Pro_SvrTeamInfo_NTF* info)
 {
-	PRO::Pro_SvrTeamInfo_NTF::SVRTEAMINF_LIST::iterator iter =info->teams_.begin();
+	NS_STL::list<PRO::Pro_SvrTeamInfo_NTF::svrteaminfo>::iterator iter =info->teams_.begin();
 
 	for( ; iter != info->teams_.end(); ++iter)
 	{

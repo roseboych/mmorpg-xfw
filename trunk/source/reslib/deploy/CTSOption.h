@@ -29,11 +29,11 @@ public:
 
 public:
 	//服务器ip+port
-	NS_STL::string ip_;
-	int port_;
+	NS_STL::string	ip_;
+	int				port_;
 
 	//总的玩家数
-	int totleusers_;
+	int		totleusers_;
 };
 
 #endif	//__CTSOPTION__H__

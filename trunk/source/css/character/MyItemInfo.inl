@@ -13,13 +13,13 @@ PRO::equipment_item& MyItemInfo::get_itemdata()
 }
 
 inline 
-S_INT_32 MyItemInfo::get_itemid()
+int MyItemInfo::get_itemid()
 {
 	return itemdata_.itemid_;
 }
 
 inline 
-S_INT_32 MyItemInfo::get_itemcode()
+int MyItemInfo::get_itemcode()
 {
 	return itemdata_.itemcode_;
 }

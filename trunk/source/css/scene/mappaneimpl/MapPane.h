@@ -26,7 +26,7 @@ class MapPane
 {
 	friend class SceneManagePaneImpl;
 public:
-	typedef NS_STL::map<S_INT_32, UnitBase*>	UNITOBJ_MAP;
+	typedef NS_STL::map<int, UnitBase*>	UNITOBJ_MAP;
 
 public:
 	MapPane();
@@ -70,8 +70,8 @@ protected:
 	SceneSectorProperty		sector_prop_;
 
 	//pane坐标
-	S_INT_32 pane_x_;
-	S_INT_32 pane_y_;
+	int		pane_x_;
+	int		pane_y_;
 };
 
 #endif	//__MAPPANE__H__

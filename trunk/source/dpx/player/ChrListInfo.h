@@ -9,7 +9,6 @@
 #define __CHRLISTINFO__H__
 
 #include "dpx/dpx_pre.h"
-#include <prolib/datastore/character_define.h>
 
 /**
 * @class ChrListInfo
@@ -23,38 +22,38 @@ public:
 
 public:
 	//角色id
-	S_INT_32	chrid_;
+	int			chrid_;
 	//角色昵称
 	StaticString<CHR_NICKNAME_LEN> name_;
 	//种族
-	S_INT_8		race_;
+	char		race_;
 	//职业
-	S_INT_8		profession_;
+	char		profession_;
 	//性别 0 男的， 1女的
-	S_INT_8		sex_;
-	S_FLOAT_32	lastposx_;
-	S_FLOAT_32	lastposy_;
-	S_FLOAT_32	lastposz_;
-	S_FLOAT_32	lastfacing_;
+	char		sex_;
+	float		lastposx_;
+	float		lastposy_;
+	float		lastposz_;
+	float		lastfacing_;
 	//hp
-	S_INT_32	hp_;
+	int			hp_;
 	//mp
-	S_INT_32	mp_;
+	int			mp_;
 	//exp
-	S_INT_32	exp_;
+	int			exp_;
 	//角色等级
-	S_INT_32	level_;
+	int			level_;
 	//moneys
-	S_INT_32	moneys_;
+	int			moneys_;
 	//petid
-	S_INT_32	petid_;
+	int			petid_;
 	//petcode
-	S_INT_32	petcode_;
+	int			petcode_;
 	//petname
 	StaticString<CHR_PETNAME_LEN> petname_;
 	//角色装备id
-	S_INT_16	equiplen_;
-	S_INT_32	equips_[CHRITEMS_MAX];
+	short		equiplen_;
+	int			equips_[CHRITEMS_MAX];
 };
 
 #endif	//__CHRLISTINFO__H__

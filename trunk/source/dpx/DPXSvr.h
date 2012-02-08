@@ -77,11 +77,11 @@ protected:
 
 	//可以被连接的css
 	ACE_Auto_Array_Ptr<CSSLink>	csssvr_;
-	S_INT_32	csssvr_nums_;
+	int							csssvr_nums_;
 
 	//dpx支持的最大玩家列表
 	ACE_Auto_Array_Ptr<Player>	players_;
-	S_INT_32	player_nums_;
+	int							player_nums_;
 
 	//---------------------------系统维护实现--------------------------------//
 public:

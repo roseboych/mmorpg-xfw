@@ -157,10 +157,10 @@ private:
 	NS_STL::map< NS_STL::string, NS_STL::string> cnfprop_;
 
 	//logs配置信息
-	LGSOPTION_MAP	lgss_;
-	RGSOption		rgsopt_;
+	LGSOPTION_MAP		lgss_;
+	RGSOption			rgsopt_;
 	SVRTEAMOPTION_MAP	svrteams_;
-	DBConfig		dbconf_;
+	DBConfig			dbconf_;
 
 	//配置内容数据源
 	IConfigContentSource*	conf_src_;

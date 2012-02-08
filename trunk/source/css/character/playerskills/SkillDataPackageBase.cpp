@@ -22,7 +22,7 @@ SkillDataPackageBase::~SkillDataPackageBase()
 
 }
 
-SkillDataPackageBase* SkillDataPackageBase::get_skilldatapackage( S_INT_16 iid)
+SkillDataPackageBase* SkillDataPackageBase::get_skilldatapackage( short iid)
 {
 	if( iid == SKILLDATAPKG_NEARFIGHT)
 		return FRAMEWK_NEW SkillNearFightDP();

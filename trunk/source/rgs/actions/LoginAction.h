@@ -53,13 +53,13 @@ public:
 	uuid_session uuid_;
 
 	//输出的结果
-	S_INT_8		ret_;
-	S_INT_32	uid_;
-	S_INT_32	validatetime_;
-	S_INT_16	lastregion_;
-	S_INT_32	lastlogout_;
-	S_INT_16	types_;
-	S_INT_16	isdel_;
+	char		ret_;
+	int			uid_;
+	int			validatetime_;
+	short		lastregion_;
+	int			lastlogout_;
+	short		types_;
+	short		isdel_;
 };
 
 #endif	//__LOGINACTION__H__

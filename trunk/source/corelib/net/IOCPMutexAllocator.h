@@ -42,9 +42,9 @@ public:
 
 private:
 	//预先分配的线程锁池
-	ACE_Auto_Array_Ptr<MutexDescription> mutexs_;
+	ACE_Auto_Array_Ptr<MutexDescription>	mutexs_;
 	//mutexs_数组的大小
-	int	mutex_size_;
+	int					mutex_size_;
 
 	ACE_Thread_Mutex	allocator_mutex_;
 };

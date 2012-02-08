@@ -14,7 +14,7 @@
 /**
 * @class ConditionNode
 * 
-* @brief Ìõ¼şÅĞ¶¨×Ó½Úµã
+* @brief æ¡ä»¶åˆ¤å®šå­èŠ‚ç‚¹
 **/
 class ConditionNode : public ConditionElement
 {
@@ -24,17 +24,17 @@ public:
 
 	virtual ~ConditionNode();
 
-	virtual S_BOOL is_leaf(){ return false;}
+	virtual bool is_leaf(){ return false;}
 
-	virtual S_BOOL condition_calcuate( ConditionContext& context);
+	virtual bool condition_calcuate( ConditionContext& context);
 
 	ConditionElement* get_left(){ return left_;}
 	ConditionElement* get_right(){ return right_;}
 
 protected:
-	//Ìõ¼ş×éºÏ·½Ê½
+	//æ¡ä»¶ç»„åˆæ–¹å¼
 	CONDITION_CONNECTOR	connector_;
-	//Ìõ¼ş
+	//æ¡ä»¶
 	ConditionElement	*left_, *right_;
 };
 

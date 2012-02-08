@@ -17,7 +17,7 @@
 /**
 * @class ConditionContext
 * 
-* @brief Ìõ¼şÅĞ¶¨ÓÃµ½µÄ»·¾³Àà
+* @brief æ¡ä»¶åˆ¤å®šç”¨åˆ°çš„ç¯å¢ƒç±»
 **/
 class ConditionContext
 {
@@ -42,7 +42,7 @@ public:
 	}
 
 protected:
-	//Ö§³ÖµÄ¶ÔÏóÁĞ±í obj.property
+	//æ”¯æŒçš„å¯¹è±¡åˆ—è¡¨ obj.property
 	CONTEXT_MAP	context_;
 };
 

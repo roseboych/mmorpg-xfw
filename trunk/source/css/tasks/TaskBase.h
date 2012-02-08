@@ -27,7 +27,7 @@ public:																\
 /**
 * @class TaskBase
 * 
-* @brief ÈÎÎñÊµÏÖ»ùÀà¡£Ã¿¸ö¾ßÌåµÄÊµÏÖÀà¶ÔÓ¦task.xmlÀïÃæµÄÒ»¸öÅäÖÃ½Úµã
+* @brief ä»»åŠ¡å®ç°åŸºç±»ã€‚æ¯ä¸ªå…·ä½“çš„å®ç°ç±»å¯¹åº”task.xmlé‡Œé¢çš„ä¸€ä¸ªé…ç½®èŠ‚ç‚¹
 **/
 class TaskBase
 {
@@ -35,20 +35,20 @@ public:
 	virtual const NS_STL::string& get_classname() =0;
 
 	/**
-	* »ñÈ¡ÈÎÎñ¼ì²â
+	* è·å–ä»»åŠ¡æ£€æµ‹
 	* @param curplayer
 	* @param tparam
 	* @return
 	**/
-	virtual S_BOOL get_task( Player* curplayer, TaskInfo* tparam) =0;
+	virtual bool get_task( Player* curplayer, TaskInfo* tparam) =0;
 
 	/**
-	* Ìá½»ÈÎÎñ
+	* æäº¤ä»»åŠ¡
 	* @param curplayer
 	* @param tparam
 	* @return
 	**/
-	virtual S_BOOL submit_task( Player* curplayer, TaskInfo* tparam) =0;
+	virtual bool submit_task( Player* curplayer, TaskInfo* tparam) =0;
 };
 
 #endif	//__TASKBASE__H__

@@ -99,7 +99,7 @@ void Player::proxy_confirm( TeamProxySession* proxy)
 	}
 }
 
-void Player::set_curchrid( S_INT_32 cid)
+void Player::set_curchrid( int cid)
 {
 	this->curchrid_ =cid;
 

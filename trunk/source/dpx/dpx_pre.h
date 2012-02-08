@@ -10,7 +10,7 @@
 
 #include <prolib/core_type.h>
 #include <prolib/StaticString.h>
-#include <prolib/pre.h>
+#include <prolib/Pro_all.h>
 
 //log macro
 #include <corelib/log/logmacro.h>

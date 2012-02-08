@@ -28,7 +28,7 @@ void InstCtrlBase::init_ctrl()
 	this->is_initialized_ =true;
 }
 
-S_BOOL InstCtrlBase::tick( const ACE_UINT64& now_t)
+bool InstCtrlBase::tick( const ACE_UINT64& now_t)
 {
 	if( !is_initialized_)
 		return false;

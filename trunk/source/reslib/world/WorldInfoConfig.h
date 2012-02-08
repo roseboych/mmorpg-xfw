@@ -31,54 +31,54 @@ NAMESPACE_APPSCRIPT_END
 /**
 * @class WorldInfoConfig
 * 
-* @brief ÊÀ½çĞÅÏ¢ÅäÖÃ
+* @brief ä¸–ç•Œä¿¡æ¯é…ç½®
 **/
 class WorldInfoConfig
 {
-	typedef NS_STL::map< S_INT_32, world_bornpos>	WORLDBORNPOS_MAP;
-	typedef NS_STL::map< S_INT_32, StoryMapOption*>	MAINSTORYOPTION_MAP;
-	typedef NS_STL::map< S_INT_32, StoryMapOption*>	INSTSTORYOPTION_MAP;
+	typedef NS_STL::map< int, world_bornpos>	WORLDBORNPOS_MAP;
+	typedef NS_STL::map< int, StoryMapOption*>	MAINSTORYOPTION_MAP;
+	typedef NS_STL::map< int, StoryMapOption*>	INSTSTORYOPTION_MAP;
 
 public:
 	WorldInfoConfig();
 	~WorldInfoConfig();
 
 	/**
-	* ³õÊ¼»¯µØÍ¼×ÊÔ´
+	* åˆå§‹åŒ–åœ°å›¾èµ„æº
 	* @return
 	**/
 	bool load_worldconfig();
 
 	/**
-	* ×¢²áËùÓĞµÄbuffer½Å±¾µ½½Å±¾»·¾³
+	* æ³¨å†Œæ‰€æœ‰çš„bufferè„šæœ¬åˆ°è„šæœ¬ç¯å¢ƒ
 	* @param context
 	* @param bool
 	**/
 	bool regist_to_storyscriptcontext( app::script::ScriptContext& context);
 
 	/**
-	* »ñÈ¡Ö÷Âß¼­ÖĞÊ¹ÓÃµÄµØÍ¼×ÊÔ´
+	* è·å–ä¸»é€»è¾‘ä¸­ä½¿ç”¨çš„åœ°å›¾èµ„æº
 	* @param mid
 	* @return
 	**/
-	StoryMapOption* get_mainstorymapres( S_INT_32 mid);
+	StoryMapOption* get_mainstorymapres( int mid);
 	void			get_mainstorymapres( NS_STL::list<int>& mids, NS_STL::vector<StoryMapOption*>& mr);
-	StoryMapOption* get_mainstorybyxy( S_FLOAT_32 x, S_FLOAT_32 y);
+	StoryMapOption* get_mainstorybyxy( float x, float y);
 
 	/**
-	* ¸ù¾İµØÍ¼id»ñÈ¡¸±±¾µØÍ¼ÃèÊö
+	* æ ¹æ®åœ°å›¾idè·å–å‰¯æœ¬åœ°å›¾æè¿°
 	* @param ct
 	* @return
 	**/
-	StoryMapOption* get_instancemapres( S_INT_32 insid);
+	StoryMapOption* get_instancemapres( int insid);
 
 	/**
-	* ¼ÆËã×ÜµÄµØÍ¼Êı,°üÀ¨¸±±¾ÊıÁ¿£¬ÓÃÀ´¼ÆËãĞèÒªÆô¶¯µÄÏß³ÌÊı
+	* è®¡ç®—æ€»çš„åœ°å›¾æ•°,åŒ…æ‹¬å‰¯æœ¬æ•°é‡ï¼Œç”¨æ¥è®¡ç®—éœ€è¦å¯åŠ¨çš„çº¿ç¨‹æ•°
 	**/
-	S_INT_32			get_mainstorynum();
-	S_INT_32			get_insstorynum();
+	int			get_mainstorynum();
+	int			get_insstorynum();
 
-	world_bornpos*		get_bornpos( S_INT_32 race);
+	world_bornpos*		get_bornpos( int race);
 
 	TeleportConfig&		get_teleportconfig(){ return teleport_config_;}
 	ToTranscriptConfig& get_totranscriptconfig(){ return totranscript_config_;}
@@ -90,22 +90,22 @@ protected:
 	void release();
 
 private:
-	//Õû¸öÊÀ½çµÄ³¤¿í
+	//æ•´ä¸ªä¸–ç•Œçš„é•¿å®½
 	int		worldwidth_;
 	int		worldheight_;
 
-	//³öÉúµã
+	//å‡ºç”Ÿç‚¹
 	WORLDBORNPOS_MAP		bornpos_;
-	//×ªÌøµã
+	//è½¬è·³ç‚¹
 	TeleportConfig			teleport_config_;
-	//¸±±¾×ªÌøµã
+	//å‰¯æœ¬è½¬è·³ç‚¹
 	ToTranscriptConfig		totranscript_config_;
 
-	//msµØÍ¼×ÊÔ´
+	//msåœ°å›¾èµ„æº
 	MAINSTORYOPTION_MAP		mainmaps_;
-	//insµØÍ¼×ÊÔ´
+	//insåœ°å›¾èµ„æº
 	INSTSTORYOPTION_MAP		instmaps_;
-	//¸±±¾½Å±¾
+	//å‰¯æœ¬è„šæœ¬
 	NS_STL::string			inst_script_;
 };
 

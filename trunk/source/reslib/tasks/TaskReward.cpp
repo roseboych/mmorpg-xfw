@@ -21,7 +21,7 @@ item_( 0)
 {
 }
 
-S_INT_32 TaskReward::get_itemid()
+int TaskReward::get_itemid()
 {
 	return item_->get_itemid();
 }
@@ -55,10 +55,10 @@ bool TaskRewardGroup::load_reward( TiXmlElement* e1)
 {
 	exp_ =XmlUtil::GetXmlAttrInt( e1, "exp", 0);
 
-	//¼ÓÔØ½±ÀøÎïÆ·
+	//åŠ è½½å¥–åŠ±ç‰©å“
 	for( TiXmlElement* e =e1->FirstChildElement( "item"); e != NULL; e =e->NextSiblingElement( "item"))
 	{
-		S_INT_32 itemid =XmlUtil::GetXmlAttrInt( e, "id", NO_INITVALUE);
+		int itemid =XmlUtil::GetXmlAttrInt( e, "id", NO_INITVALUE);
 		ItemInfoBase* pitem =ITEMRES_CFG->get_iteminfobyid( itemid);
 		if( pitem == 0)
 			return false;

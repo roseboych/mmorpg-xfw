@@ -32,7 +32,7 @@ void RGSSvr::svr_teaminfo_ntf( BasicProtocol* p, bool& autorelease)
 	svr_update_.update_teaminfo( ntf);
 }
 
-void RGSSvr::lgs_login_req( BasicProtocol* p, bool& autorelease, S_INT_32 server_index)
+void RGSSvr::lgs_login_req( BasicProtocol* p, bool& autorelease, int server_index)
 {
 	Pro_Login_req* req =dynamic_cast<Pro_Login_req*>(p);
 	LGSLink* l =this->get_lgslink( server_index);
@@ -64,7 +64,7 @@ void RGSSvr::lgs_login_req( BasicProtocol* p, bool& autorelease, S_INT_32 server
 	RGSMODULE->append_returntask( rc);
 }
 
-void RGSSvr::lgs_userlost_ntf( BasicProtocol* p, bool& autorelease, S_INT_32 server_index)
+void RGSSvr::lgs_userlost_ntf( BasicProtocol* p, bool& autorelease, int server_index)
 {
 	RGS_GETPLAYER_FROMCACHE( user, p);
 
@@ -119,7 +119,7 @@ void RGSSvr::cts_teamtimeout_ntf( BasicProtocol* p, bool& autorelease)
 	autorelease =false;
 }
 
-void RGSSvr::lgs_selteam_req( BasicProtocol* p, bool& autorelease, S_INT_32 server_index)
+void RGSSvr::lgs_selteam_req( BasicProtocol* p, bool& autorelease, int server_index)
 {
 	RGS_GETPLAYER_FROMCACHE( user, p);
 
@@ -186,12 +186,12 @@ void RGSSvr::cts_quitteam_req( BasicProtocol*p, bool& autorelease)
 	cts->send_protocol( ack);
 }
 
-void RGSSvr::lgs_quitteamreconn_req( BasicProtocol*p, bool& autorelease, S_INT_32 server_index)
+void RGSSvr::lgs_quitteamreconn_req( BasicProtocol*p, bool& autorelease, int server_index)
 {
 	Pro_SvrQuitTeamReconn_req* req =dynamic_cast<Pro_SvrQuitTeamReconn_req*>(p);
 	PlayerInfo* user =find_byuserid( req->userid_);
 
-	S_INT_8 ret =0;
+	char ret =0;
 	if( user == 0)
 		ret =1;
 	else

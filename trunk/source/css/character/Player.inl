@@ -7,7 +7,7 @@
 */
 
 inline 
-void Player::set_position( S_FLOAT_32 x, S_FLOAT_32 y, S_FLOAT_32 z)
+void Player::set_position( float x, float y, float z)
 {
 	this->baseinfo_.posx_ =x;
 	this->baseinfo_.posy_ =y;
@@ -34,47 +34,47 @@ coordinate_pointer Player::get_position()
 }
 
 inline 
-S_FLOAT_32 Player::get_positionx()
+float Player::get_positionx()
 {
 	return baseinfo_.posx_;
 }
 
-inline S_FLOAT_32 Player::get_positiony()
+inline float Player::get_positiony()
 {
 	return baseinfo_.posy_;
 }
 
-inline S_FLOAT_32 Player::get_positionz()
+inline float Player::get_positionz()
 {
 	return baseinfo_.posz_;
 }
 
 inline 
-void Player::set_positionx( S_FLOAT_32 v)
+void Player::set_positionx( float v)
 {
 	baseinfo_.posx_ =v;
 }
 
 inline 
-void Player::set_positiony( S_FLOAT_32 v)
+void Player::set_positiony( float v)
 {
 	baseinfo_.posy_ =v;
 }
 
 inline 
-void Player::set_positionz( S_FLOAT_32 v)
+void Player::set_positionz( float v)
 {
 	baseinfo_.posz_ =v;
 }
 
 inline 
-void Player::set_facing( S_FLOAT_32 v)
+void Player::set_facing( float v)
 {
 	baseinfo_.facing_ =v;
 }
 
 inline 
-S_FLOAT_32 Player::get_facing()
+float Player::get_facing()
 {
 	return baseinfo_.facing_;
 }

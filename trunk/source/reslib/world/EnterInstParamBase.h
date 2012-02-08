@@ -1,7 +1,7 @@
 /**
 * reslib
 *
-* @category		副本配置
+* @category		鍓湰閰嶇疆
 * @package		
 * @author		Created by Lu Jianfeng ( lujf1978@163.com ), 2011
 */
@@ -23,7 +23,7 @@ public:																\
 /**
 * @class EnterInstParamBase
 * 
-* @brief 进入副本地图判定条件配置基类
+* @brief 杩涘叆鍓湰鍦板浘鍒ゅ畾鏉′欢閰嶇疆鍩虹被
 * 
 **/
 class EnterInstParamBase
@@ -33,7 +33,7 @@ public:
 
 public:
 	/**
-	* 加载配置信息
+	* 鍔犺浇閰嶇疆淇℃伅
 	* @param ptr
 	* @return
 	**/

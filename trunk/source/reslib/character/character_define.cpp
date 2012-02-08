@@ -6,10 +6,9 @@
 * @author		Created by Lu Jianfeng ( lujf1978@163.com ), 2010
 * 定义了和角色相关的常量
 */
-#include <prolib/core_type.h>
-#include <string>
+#include "character_define.h"
 
-#include <prolib/datastore/character_define.h>
+#include <prolib/gen/pro_enum_def.h>
 
 //玩家游戏状态定义
 const NS_STL::string g_chrstate_desc[CHRSTATE_MAX] =

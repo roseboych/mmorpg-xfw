@@ -4,18 +4,42 @@
     <pro-meta>
         <pro id="CONTROLLER_LOGIN_REQ" name="Pro_CtrlLogin_req" onlyserver="yes">
             <desc><![CDATA[ 管理工具登陆 ]]></desc>
+            <members>
+                <member name="name_" type="staticstring" ilen="16" desc=""></member>
+                <member name="pwd_" type="staticstring" ilen="16" desc=""></member>
+            </members>
         </pro>
 
         <pro id="CONTROLLER_LOGIN_ACK" name="Pro_CtrlLogin_ack" onlyserver="yes">
             <desc><![CDATA[ 管理工具登陆 ]]></desc>
+            <members>
+                <member name="result_" type="int8" desc="0:success 1:failed"></member>
+            </members>
         </pro>
 
         <pro id="CONTROLLER_PROFILER_FILTERCTRL" name="Pro_CtrlProfilerFilterCtrl" onlyserver="yes">
             <desc><![CDATA[ 性能分析参数设置 ]]></desc>
+            <members>
+                <member name="machine_type_" type="int8" desc="1:rgs 2:lgs 3:cts 4:dpx 5:css 6:gts"></member>
+                <member name="machine_id1_" type="int32" desc="when machine_type = 2 machine_id1_ = lgs sn, when machine_type = 3, 4, 5, 6 machine_id1_ = svrteam sn"></member>
+                <member name="machine_id2_" type="int32" desc="when machine_type = 3, 4, 5, 6 machine_id2_ = sn"></member>
+                <member name="profiler_scope_" type="int32" desc="filter flag"></member>
+                <member name="profiler_thread_" type="int32" desc=""></member>
+                <member name="level_" type="int8" desc=""></member>
+            </members>
         </pro>
 
         <pro id="CONTROLLER_PROFILER_ANALYSISCTRL" name="Pro_CtrlProfilerAnalysisCtrl" onlyserver="yes">
             <desc><![CDATA[ 性能分析开关控制 ]]></desc>
+            <members>
+                <member name="machine_type_" type="int8" desc="1:rgs 2:lgs 3:cts 4:dpx 5:css 6:gts"></member>
+                <member name="machine_id1_" type="int32" desc="when machine_type = 2 machine_id1_ = lgs sn, when machine_type = 3, 4, 5, 6 machine_id1_ = svrteam sn"></member>
+                <member name="machine_id2_" type="int32" desc="when machine_type = 3, 4, 5, 6 machine_id2_ = sn"></member>
+                <member name="ctrl_" type="int8" desc="1:start 0:stop"></member>
+                <member name="transfer_" type="int8" desc="1:net 2:local file 4:all"></member>
+                <member name="transfer_net_ip_" type="staticstring" ilen="24" desc=""></member>
+                <member name="transfer_net_port_" type="int32" desc=""></member>
+            </members>
         </pro>
 
     </pro-meta>

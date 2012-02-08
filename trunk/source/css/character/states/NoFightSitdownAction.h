@@ -22,7 +22,7 @@ class NoFightSitdownAction : public BaseActionState
 public:
 	NoFightSitdownAction();
 
-	virtual S_INT_8 get_statetype(){ return ( S_INT_8)CHRSTATE_NOFIGHT_SITDOWN;}
+	virtual char get_statetype(){ return ( char)CHRSTATE_NOFIGHT_SITDOWN;}
 };
 
 #endif	//__NOFIGHTSITDOWNACTION__H__

@@ -30,8 +30,8 @@ class SvrTeamOption;
 class CSSOption
 {
 public:
-	typedef NS_STL::list<S_INT_32>	MAPS_LIST;
-	typedef NS_STL::map<S_INT_32, INSOption*>	INSOPT_MAP;
+	typedef NS_STL::list<int>	MAPS_LIST;
+	typedef NS_STL::map<int, INSOption*>	INSOPT_MAP;
 
 public:
 	CSSOption();
@@ -41,24 +41,24 @@ public:
 	* 获取支持的最大玩家数
 	* @return
 	**/
-	S_INT_32 get_maxuser();
+	int get_maxuser();
 
 	/**
 	* 需要打开的地图
 	* @return
 	**/
-	S_INT_32 get_mapsize();
+	int get_mapsize();
 
-	S_INT_32 get_instancesize();
+	int get_instancesize();
 
 	/**
 	* 检查给出的地图是否在css服务器中
 	* @param mid
 	* @return
 	**/
-	bool test_mapincss( S_INT_32 mid);
+	bool test_mapincss( int mid);
 
-	INSOption* get_insoption( S_INT_32 sn);
+	INSOption* get_insoption( int sn);
 
 	void get_insoptions( NS_STL::list<INSOption*>& ret);
 
@@ -67,10 +67,10 @@ protected:
 
 public:
 	//css的编号
-	S_INT_32		sn_;
+	int				sn_;
 	//服务器地址和端口
 	NS_STL::string	ip_;
-	S_INT_32		port_;
+	int				port_;
 
 	//需要加载的地图
 	MAPS_LIST	mapids_;
@@ -81,7 +81,7 @@ public:
 	SvrTeamOption*	svrteamopt_;
 
 	//系统分配的序列号
-	S_INT_32 server_index_;
+	int			server_index_;
 };
 
 #endif	//__CSSOPTION__H__

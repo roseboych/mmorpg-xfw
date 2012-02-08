@@ -11,5 +11,10 @@ namespace progen.export_to_java
         {
 
         }
+
+        public void DeployProLib()
+        {
+
+        }
     }
 }

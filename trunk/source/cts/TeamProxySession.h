@@ -30,14 +30,14 @@ public:
 	**/
 	void reset();
 
-	void proxy( S_INT_32 uid, S_TIMESTAMP st, S_INT_32 si);
+	void proxy( int uid, S_TIMESTAMP st, int si);
 
 	void proxy_ack( S_TIMESTAMP st);
 
 	void selteam_confirm( Player* p);
 
-	inline bool is_samesession( S_INT_32 uid, S_TIMESTAMP st);
-	inline bool is_proxysame( S_INT_32 uid, S_TIMESTAMP st);
+	inline bool is_samesession( int uid, S_TIMESTAMP st);
+	inline bool is_proxysame( int uid, S_TIMESTAMP st);
 
 	inline void send_to_gts( BasicProtocol* p);
 
@@ -46,7 +46,7 @@ public:
 public:
 	//保存玩家的session记录
 	uuid_session	uuid_;
-	S_INT_32	server_index_;
+	int				server_index_;
 
 	//生成的token
 	S_TIMESTAMP	proxy_timestamp_;
@@ -58,19 +58,19 @@ public:
 	Player*	player_;
 
 	//proxy 编号
-	S_INT_32	proxy_index_;
+	int			proxy_index_;
 	//玩家所在的gts服务器
 	GTSLink*	gts_link_;
 };
 
 inline 
-bool TeamProxySession::is_samesession( S_INT_32 uid, S_TIMESTAMP st)
+bool TeamProxySession::is_samesession( int uid, S_TIMESTAMP st)
 {
 	return uuid_.is_samesession( uid, st);
 }
 
 inline 
-bool TeamProxySession::is_proxysame( S_INT_32 uid, S_TIMESTAMP st)
+bool TeamProxySession::is_proxysame( int uid, S_TIMESTAMP st)
 {
 	return uid == uuid_.userid_ && st == proxy_timestamp_;
 }

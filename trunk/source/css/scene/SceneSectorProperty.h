@@ -13,7 +13,7 @@
 #endif
 
 #include "../css_pre.h"
-#include <prolib/datastore/world_define.h>
+#include <prolib/Pro_define.h>
 
 /**
 * @class SceneSectorProperty

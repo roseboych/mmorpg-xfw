@@ -44,7 +44,7 @@ public:
 	* 代理
 	* @param uid
 	**/
-	void proxy( S_INT_32 uid, S_TIMESTAMP st);
+	void proxy( int uid, S_TIMESTAMP st);
 
 	void proxy_confirm( Player* p);
 
@@ -61,14 +61,14 @@ public:
 
 	//断线保持时临时存储的css指向
 	CSSLink*			lnkkeep_csslink_;
-	S_INT_32			lnkkeep_chrid_;
+	int					lnkkeep_chrid_;
 
 	S_TIMESTAMP token_;
 
-	Player*	player_;
+	Player*		player_;
 
 	//系统使用
-	S_INT_32	proxy_index_;
+	int			proxy_index_;
 };
 
 inline 

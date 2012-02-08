@@ -17,7 +17,7 @@ EnterInstTask::EnterInstTask()
 {
 }
 
-S_BOOL EnterInstTask::join_instance( EnterInstParamBase* param, Player* curplayer)
+bool EnterInstTask::join_instance( EnterInstParamBase* param, Player* curplayer)
 {
 	EnterInstTaskParam* ptr =dynamic_cast<EnterInstTaskParam*>( param);
 	if( curplayer->get_level() >= ptr->level_)

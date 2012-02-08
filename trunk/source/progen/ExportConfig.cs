@@ -14,9 +14,11 @@ namespace progen
 
         private bool export_2_c_ = false;
         private string export_2_c_path_ = "";
+        private string target_2_c_path_ = "";
 
         private bool export_2_java_ = false;
         private string export_2_java_path_ = "";
+        private string target_2_java_path_ = "";
 
         #region .ini property
 
@@ -30,6 +32,11 @@ namespace progen
             get { return this.export_2_c_path_; }
         }
 
+        public string Target2CPath
+        {
+            get { return this.target_2_c_path_; }
+        }
+
         public bool Export2Java
         {
             get { return this.export_2_java_; }
@@ -38,6 +45,11 @@ namespace progen
         public string Export2JavaPath
         {
             get { return this.export_2_java_path_; }
+        }
+
+        public string Target2JavaPath
+        {
+            get { return this.target_2_java_path_; }
         }
 
         #endregion
@@ -56,9 +68,11 @@ namespace progen
         {
             export_2_c_ = ReadYesNo("c", "generate", false);
             export_2_c_path_ = ReadString("c", "export_path", "./temp/c/");
+            target_2_c_path_ = ReadString("c", "target_path", "../prolib/gen/");
 
             export_2_java_ = ReadYesNo("java", "generate", false);
             export_2_java_path_ = ReadString("java", "export_path", "./temp/java/");
+            target_2_java_path_ = ReadString("java", "target_path", "./");
         }
 
         public string ReadString(string Section, string Ident, string Default)

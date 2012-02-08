@@ -14,7 +14,6 @@
 
 #include "reslib/reslib_def.h"
 
-#include <prolib/datastore/character_define.h>
 #include "reslib/skills/SkillDesc.h"
 #include "reslib/skills/SkillTree.h"
 

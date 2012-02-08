@@ -183,7 +183,7 @@ void CTSModule::ctssvr_teamproxy_timer( ACE_UINT64 t)
 
 	USE_PROTOCOL_NAMESPACE;
 
-	NS_STL::vector<S_INT_32> users;
+	NS_STL::vector<int> users;
 	for( TEAMPROXY_MAP::iterator iter =wait_proxys_.begin(); iter != wait_proxys_.end(); ++iter)
 	{
 		TeamProxySession* proxy =iter->second;

@@ -85,7 +85,7 @@ public:
 	* 当玩家注册到副本失败时调用
 	* @param globalindex	全局索引
 	**/
-	void reset_adapterplayer_instcache( S_INT_32 globalindex);
+	void reset_adapterplayer_instcache( int globalindex);
 
 	/**
 	* 获取自身的配置
@@ -104,14 +104,14 @@ public:
 	* @param mapid
 	* @return
 	**/
-	BaseStoryService* get_storyservicebymap( S_INT_32 mapid);
+	BaseStoryService* get_storyservicebymap( int mapid);
 
 	/**
 	* 根据cellid获取对应的服务
 	* @param cellid
 	* @return
 	**/
-	InstanceStoryServiceImpl* get_inststorysvrbycellid( S_INT_32 cellid);
+	InstanceStoryServiceImpl* get_inststorysvrbycellid( int cellid);
 
 	/**
 	* 发送到rgs
@@ -139,14 +139,14 @@ protected:
 
 	//可以被连接的gts
 	ACE_Auto_Array_Ptr<GTSLink> gtssvr_;
-	S_INT_32					gtssvr_nums_;
+	int							gtssvr_nums_;
 
 	//css连接的封装
 	CSSLinkWrap	csssvr_;
 
 	//css支持的最大玩家, adapterplayer用来派发协议到对应的contentservice
 	ACE_Auto_Array_Ptr<AdapterPlayer>	players_;
-	S_INT_32							player_nums_;
+	int									player_nums_;
 	//访问玩家列表用到的锁
 	ACE_Thread_Mutex					player_mutex_;
 
@@ -155,10 +155,10 @@ protected:
 
 	//支持的主游戏模式
 	ACE_Auto_Array_Ptr<MainStoryServiceImpl>		mainstorys_;
-	S_INT_32										mainstory_nums_;
+	int												mainstory_nums_;
 	//支持的副本实例
 	ACE_Auto_Array_Ptr<InstanceStoryServiceImpl>	inststorys_;
-	S_INT_32										inststory_nums_;
+	int												inststory_nums_;
 
 	//需要处理的服务内容
 	STORYSERVICE_LIST	dosvrs_;

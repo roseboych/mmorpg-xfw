@@ -44,8 +44,8 @@ void DPXSvr::css_playerbaseinfo_sav( BasicProtocol* p, bool& autorelease)
 	user->baseinfo_.moneys_ =sav->baseinfo_.moneys_;
 	user->baseinfo_.level_ =sav->baseinfo_.level_;
 	user->baseinfo_.bagslots_ =sav->baseinfo_.bagslots_;
-	user->baseinfo_.skill_[0] =sav->baseinfo_.skill_[0];
-	user->baseinfo_.skill_[1] =sav->baseinfo_.skill_[1];
+	user->baseinfo_.skill1_ =sav->baseinfo_.skill1_;
+	user->baseinfo_.skill2_ =sav->baseinfo_.skill2_;
 	user->baseinfo_.hp_ =sav->baseinfo_.hp_;
 	user->baseinfo_.mp_ =sav->baseinfo_.mp_;
 	user->baseinfo_.power_ =sav->baseinfo_.power_;

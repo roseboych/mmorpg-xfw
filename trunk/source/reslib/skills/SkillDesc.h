@@ -37,16 +37,16 @@ public:
 	int				skillid_;
 	NS_STL::string	skillidsn_;
 	//是否主动技能
-	bool	driving_;
+	bool		driving_;
 	//是否单体技能
-	bool	singleattack_;
+	bool		singleattack_;
 	//瞬发技能
 	bool		immediate_;
 	//冷却时间(单位秒),缺省0
-	int		cooltime_;
+	int			cooltime_;
 	//使用的技能数据包类型
-	short	data_package_;
-	NS_STL::string desc_;
+	short		data_package_;
+	NS_STL::string	desc_;
 
 	//技能脚本
 	NS_STL::string	skill_script_;

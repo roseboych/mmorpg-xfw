@@ -24,7 +24,7 @@ void BaseActionState::set_owner( Player* p)
 	this->owner_player_ =p;
 }
 
-bool BaseActionState::can_gotonextstate( S_INT_32 s)
+bool BaseActionState::can_gotonextstate( int s)
 {
 	BehaviorTreeNode& node =s_behavior_tree_[ this->get_statetype()];
 	return node.is_ingotostate( s);
@@ -41,19 +41,19 @@ void BaseActionState::regist_finish()
 	ACE_ASSERT( state_skills_ != 0);
 }
 
-bool BaseActionState::is_skillinstate( S_INT_32 skid)
+bool BaseActionState::is_skillinstate( int skid)
 {
 	return state_skills_->get_skilldesc( skid) != 0;
 }
 
 bool BaseActionState::is_nofightstate()
 {
-	S_INT_8 st =get_statetype();
+	char st =get_statetype();
 	return st >= CHRSTATE_NOFIGHT_SITDOWN && st <= CHRSTATE_NOFIGHT_FLY;
 }
 
 bool BaseActionState::is_fightstate()
 {
-	S_INT_8 st =get_statetype();
+	char st =get_statetype();
 	return st >= CHRSTATE_FIGHT_STAND && st <= CHRSTATE_FIGHT_FLY;
 }

@@ -66,7 +66,7 @@ public:
 	**/
 	void prepare();
 
-	inline bool is_samesession( S_INT_32 userid, S_TIMESTAMP st);
+	inline bool is_samesession( int userid, S_TIMESTAMP st);
 	inline bool is_samesession( uuid_session& u);
 	inline bool is_waitproxy();
 	inline bool is_selteamsucc();
@@ -87,7 +87,7 @@ public:
 	* 选择角色
 	* @param cid
 	**/
-	void set_curchrid( S_INT_32 cid);
+	void set_curchrid( int cid);
 
 	/**
 	* 玩家定时心跳处理
@@ -99,13 +99,13 @@ public:
 
 public:
 	//当前使用的角色
-	S_INT_32	curchrid_;
+	int			curchrid_;
 	//关联到的css服务器
 	CSSLink*	css_svr_;
 	//是否在迁移css服务器
-	S_BOOL		is_switchcss_;
+	bool		is_switchcss_;
 	//是否是副本服务器
-	S_BOOL		is_instsvr_;
+	bool		is_instsvr_;
 
 	//是否强制关闭
 	bool		have_force_close_;
@@ -128,7 +128,7 @@ public:
 };
 
 inline 
-bool Player::is_samesession( S_INT_32 userid, S_TIMESTAMP st)
+bool Player::is_samesession( int userid, S_TIMESTAMP st)
 {
 	return uuid_.is_samesession( userid, st);
 }

@@ -1,0 +1,155 @@
+<pro-region>
+    <meta proid="2500,3000" />
+
+    <pro-meta>
+        
+        <pro id="AOI_UNITENTER_NTF" name="Pro_AppUnitEnter_ntf" onlyserver="no">
+            <desc><![CDATA[ 其他玩家进入视野 ]]></desc>
+            <local-struct name="player_info" desc="">
+                <member name="chrid_" type="int32" desc="角色id"></member>
+                <!--
+                macrolen: global macro define
+                ilen: int
+                -->
+                <member name="nickname_" type="staticstring" macrolen="CHR_NICKNAME_LEN" desc="角色名称"></member>
+                <member name="sex_" type="int8" desc="性别"></member>
+                <member name="race_" type="int8" desc="种族"></member>
+                <member name="profession_" type="int8"></member>
+                <member name="petid_" type="int32" desc="-1为无效值"></member>
+                <member name="petcode_" type="int32" desc="宠物怪物id"></member>
+                <member name="petname_" type="staticstring" macrolen="CHR_PETNAME_LEN" desc="宠物名称"></member>
+                <member name="locationx_" type="float32"></member>
+                <member name="locationy_" type="float32"></member>
+                <member name="locationz_" type="float32"></member>
+                <member name="facing_" type="float32" desc="面向"></member>
+                <member name="state_" type="int8"></member>
+            </local-struct>
+
+            <construct-block>
+                <c></c>
+                <java></java>
+            </construct-block>
+
+            <destruct-block>
+                <c></c>
+                <java></java>
+            </destruct-block>
+
+            <custom-function>
+                <c>
+                    <![CDATA[
+bool put_unitinfo( player_info& info) 
+{
+    if( players_.size() >= 42) return false;
+    else players_.push_back( info);
+    return true;
+}
+  					]]>
+                </c>
+                <java>
+                    <![CDATA[]]>
+                </java>
+            </custom-function>
+
+            <members>
+                <member name="players_" type="local-struct" struct-name="player_info" desc="进入玩家视野的列表" islist="yes"></member>
+            </members>
+        </pro>
+
+        <pro id="AOI_UNITLEAVE_NTF" name="Pro_AppUnitLeave_ntf">
+            <desc><![CDATA[其他玩家离开视野]]></desc>
+            <local-struct name="player_info" desc="">
+                <member name="chrid_" type="int32" desc="角色id"></member>
+            </local-struct>
+            <custom-function>
+                <c>
+                    <![CDATA[
+bool put_player( S_INT_32 chrid) 
+{
+    player_info i; i.chrid_=chrid;
+    if( players_.size() >= 180) return false;
+    else players_.push_back( i);
+    return true;
+}
+  					]]>
+                </c>
+                <java>
+                    <![CDATA[]]>
+                </java>
+            </custom-function>
+            <members>
+                <member name="players_" type="local-struct" struct-name="player_info" desc="进入离开视野的列表" islist="yes"></member>
+            </members>
+        </pro>
+        
+        <pro id="AOI_TELEPORT_REQ" name="Pro_AppTeleport_req">
+            <desc><![CDATA[地图切换请求]]></desc>
+            <members>
+                <member name="telid_" type="int8" desc="使用的teleport配置"></member>
+                <member name="teltoid_" type="int8" desc="teleport配置下的to的id"></member>
+            </members>
+        </pro>
+        
+        <pro id="AOI_TELEPORT_ACK" name="Pro_AppTeleport_ack">
+            <desc><![CDATA[地图切换响应]]></desc>
+            <members>
+                <member name="result_" type="int8" desc="0:成功 1:转跳点无效 2:必须先进入世界 3:同一个地图内 4:开始点不是当前地图 5:目标地图不在服务器组支持中 6:玩家正在进入副本 7:其他切换地图请求处理中"></member>
+                <member name="mapid_" type="int32" desc="地图id"></member>
+                <member name="locationx_" type="float32"></member>
+                <member name="locationy_" type="float32"></member>
+                <member name="locationz_" type="float32"></member>
+                <member name="facing_" type="float32" desc="面向"></member>
+                <member name="cssindex_" type="int32" desc="以下为服务器使用"></member>
+                <member name="chrid_" type="int32" desc="以下为服务器使用"></member>
+            </members>
+        </pro>
+        
+        <pro id="AOI_ENTERINS_REQ" name="Pro_AppEnterIns_req">
+            <desc><![CDATA[进入副本请求]]></desc>
+            <members>
+                <member name="telid_" type="int8" desc="副本转跳点配置id"></member>
+                <member name="posx_" type="float32" desc="服务器使用 位置 css->cts"></member>
+                <member name="posy_" type="float32"></member>
+                <member name="posz_" type="float32"></member>
+                <member name="cellid_" type="int32" desc="服务器使用 副本服务器cellid, cts->css"></member>
+                <member name="chrid_" type="int32" desc="服务器使用"></member>
+            </members>
+        </pro>
+        
+        <pro id="AOI_ENTERINS_ACK" name="Pro_AppEnterIns_ack">
+            <desc><![CDATA[进入副本回复]]></desc>
+            <members>
+                <member name="result_" type="int8" desc="0:成功 1:转跳点无效 2:必须先进入世界 3:已经存在一个进入副本请求 4:开始点不是当前地图 5:没有可用的副本 6:不能从副本进入副本 7:不允许进入副本 8:其他切换地图请求处理中 9:不满足进入副本条件"></member>
+                <member name="cssindex_" type="int32" desc="以下为服务器使用"></member>
+            </members>
+        </pro>
+        
+        <pro id="AOI_ENTERINSOT_NTF" name="Pro_AppEnterInsOvertime_ntf">
+            <desc><![CDATA[进入副本超时通知]]></desc>
+            <members>
+                <member name="cellid_" type="int32" desc="cts -> inst maps时使用, 缺省值-1"></member>
+            </members>
+        </pro>
+        
+        <pro id="AOI_ENTERINSCONFIRM_NTF" name="Pro_AppEnterInsConfirm_ntf">
+            <desc><![CDATA[进入副本预分配占位确认]]></desc>
+            <members>
+            </members>
+        </pro>
+        
+        <pro id="AOI_QUITINS_REQ" name="Pro_AppQuitInst_req">
+            <desc><![CDATA[退出副本]]></desc>
+            <members>
+            </members>
+        </pro>
+        
+        <pro id="AOI_QUITINS_ACK" name="Pro_AppQuitInst_ack">
+            <desc><![CDATA[退出副本]]></desc>
+            <members>
+                <member name="result_" type="int8" desc="0:成功 1:不在副本内"></member>
+            </members>
+        </pro>
+
+    </pro-meta>
+    
+</pro-region>

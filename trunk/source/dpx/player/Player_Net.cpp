@@ -35,7 +35,8 @@ BasicProtocol* Player::construct_chrlistpro()
 		cr.petcode_ =pc->petcode_;
 		cr.petname_ =pc->petname_;
 		cr.equiplen_ =pc->equiplen_;
-		memcpy( &cr.equips_[0], &(pc->equips_[0]), sizeof( S_INT_32)*CHRITEMS_MAX);
+		for( int ind =0; ind < CHRITEMS_MAX; ++ind)
+			cr.equips_[ind] =pc->equips_[ind];
 
 		ack->chrs_.push_back( cr);
 	}

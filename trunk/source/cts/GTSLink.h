@@ -33,7 +33,7 @@ public:
 	* 检查玩家索引是否在gts上
 	* @param userindex
 	**/
-	bool is_useringts( S_INT_32 userindex);
+	bool is_useringts( int userindex);
 
 public:
 	//配置

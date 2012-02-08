@@ -31,12 +31,12 @@ void BaseSceneManage::uninit_scenemanage()
 
 }
 
-void BaseSceneManage::world_to_local( S_FLOAT_32& x, S_FLOAT_32& y)
+void BaseSceneManage::world_to_local( float& x, float& y)
 {
 	owner_service_->get_storyoption()->world_to_local( x, y);
 }
 
-void BaseSceneManage::local_to_world( S_FLOAT_32& x, S_FLOAT_32& y)
+void BaseSceneManage::local_to_world( float& x, float& y)
 {
 	owner_service_->get_storyoption()->local_to_world( x, y);
 }

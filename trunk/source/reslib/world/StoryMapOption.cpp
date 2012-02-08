@@ -24,7 +24,7 @@ offsety_( offsety),
 is_instancemap_( binst),
 owner_css_( 0)
 {
-	//¹¹ÔìÂ·¾¶
+	//æž„é€ è·¯å¾„
 	char buf[16] ={0,};
 	NS_STL::string ret =ACE_OS::itoa( mapid, buf, 10);
 	res_path_ += ret;
@@ -44,7 +44,7 @@ bool StoryMapOption::load_mapres()
 
 	TiXmlElement* root =doc.RootElement();
 
-	S_INT_32 mid =XmlUtil::GetXmlAttrInt( root, "mapid", NO_INITVALUE);
+	int mid =XmlUtil::GetXmlAttrInt( root, "mapid", NO_INITVALUE);
 	if( mapid_ == NO_INITVALUE || mid != mapid_)
 		return false;
 
@@ -64,7 +64,7 @@ bool StoryMapOption::load_mapres()
 	return true;
 }
 
-bool StoryMapOption::worldxy_inthismap( S_FLOAT_32 x, S_FLOAT_32 y)
+bool StoryMapOption::worldxy_inthismap( float x, float y)
 {
 	return ( x >= ( leftx_ + offsetx_) && x <= ( bottomx_ + offsetx_)) &&
 		( y >= ( lefty_ + offsety_) && y <= ( bottomy_ + offsety_));

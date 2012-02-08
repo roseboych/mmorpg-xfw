@@ -29,7 +29,7 @@ ctrl_classname_( "")
 	inst_script_ ="";
 }
 
-S_BOOL InstMapOption::load_instmapopt( TiXmlElement* e, StoryMapOption* storyopt)
+bool InstMapOption::load_instmapopt( TiXmlElement* e, StoryMapOption* storyopt)
 {
 	IConfigContentSource* dsrc =GLOBALCONFIG_INS->get_confsrc();
 	ACE_ASSERT( dsrc != 0);
@@ -47,7 +47,7 @@ S_BOOL InstMapOption::load_instmapopt( TiXmlElement* e, StoryMapOption* storyopt
 	return true;
 }
 
-S_BOOL InstMapOption::load_enterinstopt( TiXmlElement* e)
+bool InstMapOption::load_enterinstopt( TiXmlElement* e)
 {
 	is_check_enterinst_ =XmlUtil::GetXmlAttrYesNo( e, "check", false);
 	if( !is_check_enterinst_)

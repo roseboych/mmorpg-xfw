@@ -51,7 +51,7 @@ Player* MainStoryServiceImpl::get_player( const BasicProtocol::internal_uuid& uu
 	return &players_[uuid.global_index_];
 }
 
-Player* MainStoryServiceImpl::player_regist( const BasicProtocol::internal_uuid& uuid, S_INT_32 chrid)
+Player* MainStoryServiceImpl::player_regist( const BasicProtocol::internal_uuid& uuid, int chrid)
 {
 	Player* user =get_player( uuid);
 	ACE_ASSERT( user != 0);

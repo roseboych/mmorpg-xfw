@@ -23,9 +23,9 @@ public:
 	virtual bool load_params( TiXmlElement* ptr);
 
 public:
-	//¿ÉÒÔ½ÓÈÎÎñµÄ×îµÍºÍ×î¸ßµÈ¼¶
-	S_INT_32	minlevel_;
-	S_INT_32	maxlevel_;
+	//å¯ä»¥æ¥ä»»åŠ¡çš„æœ€ä½å’Œæœ€é«˜ç­‰çº§
+	int		minlevel_;
+	int		maxlevel_;
 };
 
 #endif	//__TASKDEFAULTIMPLPARAM__H__

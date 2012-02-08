@@ -37,7 +37,7 @@ class BaseStoryService
 {
 public:
 	typedef NS_STL::list<BasicCommand* >		COMMAND_LIST;
-	typedef NS_STL::map< S_INT_32, Player*>		ONLINEPLAYER_MAP;
+	typedef NS_STL::map< int, Player*>		ONLINEPLAYER_MAP;
 	typedef NS_STL::map< S_INT_64, UnitBase*>	ONLINEENTITY_MAP;
 
 public:

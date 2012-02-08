@@ -19,6 +19,7 @@ namespace progen.export_to_c
                 GenHFileHeaderB("pro_struct_def");
 
                 cur_stream_.WriteString(ExportCConst.IncludeFiles1, 0);
+                cur_stream_.WriteString(String.Format("#include <prolib/StaticString.h>"), 0);
                 cur_stream_.WriteString(String.Format("#include <prolib/gen/pro_macro_def.h>"), 0);
                 cur_stream_.WriteString(String.Format("#include <prolib/gen/pro_enum_def.h>"), 0);
                 cur_stream_.WriteEmptyLine();
@@ -62,7 +63,18 @@ namespace progen.export_to_c
                 if (!AppUtil.IsEmptyString(it.Desc))
                     cur_stream_.WriteComment(it.Desc, 1);
 
-                cur_stream_.WriteString(String.Format("{0} {1};", DataType2CType(it), it.Name), 1);
+                if (it.IsBaseArray)
+                {
+                    string sname = "";
+                    if ( it.MacroLen != null)
+                        sname = String.Format("{0}[{1}]", it.Name, it.MacroLen.Name);
+                    else
+                        sname = String.Format("{0}[{1}]", it.Name, it.ILen);
+
+                    cur_stream_.WriteString(String.Format("{0}    {1};", DataType2CType(it), sname), 1);
+                }
+                else
+                    cur_stream_.WriteString(String.Format("{0} {1};", DataType2CType(it), it.Name), 1);
             }
 
             cur_stream_.WriteString("};", 0);

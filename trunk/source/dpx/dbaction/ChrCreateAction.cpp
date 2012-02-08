@@ -49,10 +49,10 @@ void ChrCreateAction::run_indbpool( otl_connect *pconn)
 		otl_stream cur( 50, DBPROC_CHRADDINFO, *pconn, otl_implicit_select);
 
 		//TODO:增加初试坐标
-		S_INT_16 sv =param_->sex_;
-		S_INT_16 rc =param_->race_;
-		S_INT_16 pf =param_->profession_;
-		S_INT_16 bgs =50;
+		short sv =param_->sex_;
+		short rc =param_->race_;
+		short pf =param_->profession_;
+		short bgs =50;
 		cur << param_->uuid_.userid_ << (short)GLOBALCONFIG_INS->get_regionsn()
 			<< param_->name_.c_str() << rc << pf << sv << 1000 << 1000 << 0 << 1000000
 			<< param_->posx_ << param_->posy_ << param_->posz_ << param_->facing_

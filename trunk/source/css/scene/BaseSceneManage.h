@@ -67,7 +67,7 @@ public:
 	* @param pos
 	* @param face
 	**/
-	virtual void unitobj_moveto( Player* pobj, coordinate_pointer& pos, S_FLOAT_32& face) =0;
+	virtual void unitobj_moveto( Player* pobj, coordinate_pointer& pos, float& face) =0;
 
 	/**
 	* 通知视野范围内的所有玩家信息
@@ -81,8 +81,8 @@ public:
 
 public:
 	//坐标转化
-	void world_to_local( S_FLOAT_32& x, S_FLOAT_32& y);
-	void local_to_world( S_FLOAT_32& x, S_FLOAT_32& y);
+	void world_to_local( float& x, float& y);
+	void local_to_world( float& x, float& y);
 
 protected:
 	BaseStoryService*	owner_service_;

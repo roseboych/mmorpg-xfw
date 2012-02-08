@@ -7,7 +7,7 @@
 */
 #include "reslib/buffers/BufferDesc.h"
 
-#include <prolib/datastore/buffer_define.h>
+#include <prolib/Pro_define.h>
 
 BufferDesc::BufferDesc():
 buffer_id_( NO_INITVALUE),

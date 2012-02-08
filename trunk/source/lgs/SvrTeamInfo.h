@@ -23,12 +23,12 @@ class SvrTeamInfo
 public:
 	struct teaminfo
 	{
-		S_INT_32	server_index_;
-		S_INT_32	teamid_;
-		S_INT_32	max_user_;
-		S_INT_32	cur_user_;
+		int		server_index_;
+		int		teamid_;
+		int		max_user_;
+		int		cur_user_;
 		//0:不可用 1:可用
-		S_INT_8		is_validate_;
+		char	is_validate_;
 	};
 
 public:
@@ -55,19 +55,19 @@ public:
 	* @param tid
 	* @return
 	**/
-	bool is_teamexist( S_INT_32 tid);
+	bool is_teamexist( int tid);
 
 protected:
-	inline teaminfo* get_teaminfo( S_INT_32 ind);
+	inline teaminfo* get_teaminfo( int ind);
 
 protected:
 	//组信息
 	ACE_Auto_Array_Ptr<teaminfo>	teams_;
-	S_INT_32	team_nums_;
+	int								team_nums_;
 };
 
 inline 
-SvrTeamInfo::teaminfo* SvrTeamInfo::get_teaminfo( S_INT_32 ind)
+SvrTeamInfo::teaminfo* SvrTeamInfo::get_teaminfo( int ind)
 {
 	SvrTeamInfo::teaminfo* ret =0;
 	if( ind < 0 || ind >= team_nums_)

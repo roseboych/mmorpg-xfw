@@ -21,7 +21,7 @@
 #include "reslib/buffers/BufferDesc.h"
 
 #include <corelib/corelibdef.h>
-#include <prolib/datastore/buffer_define.h>
+#include <prolib/Pro_define.h>
 
 NAMESPACE_APPSCRIPT_BEGIN
 

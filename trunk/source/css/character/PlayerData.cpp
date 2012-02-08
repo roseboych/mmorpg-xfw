@@ -34,16 +34,16 @@ void PlayerData::reset()
 		delete iter->second;
 	myitems_.clear();
 
-	ACE_OS::memset( (void*)&avatar_items_[0], 0, sizeof( MyItemInfo*)*PRO::AVATAR_SLOT_MAX);
+	ACE_OS::memset( (void*)&avatar_items_[0], 0, sizeof( MyItemInfo*)*AVATAR_SLOT_MAX);
 
 	mybuffers_.reset();
 }
 
 void PlayerData::init_baseinfo( PRO::Pro_ChrLoad_ack* pack)
 {
-	ACE_OS::memset( (void*)&avatar_items_[0], 0, sizeof( MyItemInfo*)*PRO::AVATAR_SLOT_MAX);
+	ACE_OS::memset( (void*)&avatar_items_[0], 0, sizeof( MyItemInfo*)*AVATAR_SLOT_MAX);
 
-	for( PRO::Pro_ChrLoad_ack::EQUIPITEM_LIST::iterator iter =pack->items_.begin(); iter != pack->items_.end(); ++iter)
+	for( NS_STL::list<PRO::equipment_item>::iterator iter =pack->items_.begin(); iter != pack->items_.end(); ++iter)
 	{
 		PRO::equipment_item &info =(*iter);
 
@@ -65,7 +65,7 @@ void PlayerData::init_baseinfo( PRO::Pro_ChrLoad_ack* pack)
 	mybuffers_.init_baseinfo( pack);
 
 	//宠物信息
-	for( PRO::Pro_ChrLoad_ack::PETDATA_LIST::iterator iter =pack->pets_.begin(); iter != pack->pets_.end(); ++iter)
+	for( NS_STL::list<PRO::petdata_item>::iterator iter =pack->pets_.begin(); iter != pack->pets_.end(); ++iter)
 	{
 		PRO::petdata_item& pt =(*iter);
 
@@ -80,7 +80,7 @@ void PlayerData::init_others( PRO::Pro_ChrFin_NTF* pfin)
 	this->baseinfo_ =pfin->baseinfo_;
 }
 
-MyPetInfo* PlayerData::get_petinfo( S_INT_32 petid)
+MyPetInfo* PlayerData::get_petinfo( int petid)
 {
 	for( size_t ii =0; ii < mypets_.size(); ++ii)
 	{
@@ -91,7 +91,7 @@ MyPetInfo* PlayerData::get_petinfo( S_INT_32 petid)
 	return 0;
 }
 
-MyPetInfo* PlayerData::pet_followme( S_INT_32 petid)
+MyPetInfo* PlayerData::pet_followme( int petid)
 {
 	MyPetInfo* ret =get_petinfo( petid);
 	if( ret == 0)

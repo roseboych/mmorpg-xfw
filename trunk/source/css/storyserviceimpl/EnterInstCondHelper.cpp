@@ -42,7 +42,7 @@ EnterInstConditionBase* EnterInstCondHelper::get_enterinstimpl( NS_STL::string c
 	return 0;
 }
 
-S_BOOL EnterInstCondHelper::can_joininstance( BaseStoryService* psvr, StoryMapOption* instopt, Player* curplayer)
+bool EnterInstCondHelper::can_joininstance( BaseStoryService* psvr, StoryMapOption* instopt, Player* curplayer)
 {
 	if( !instopt->instmap_opt_.is_check_enterinst_)
 		return true;
@@ -59,7 +59,7 @@ S_BOOL EnterInstCondHelper::can_joininstance( BaseStoryService* psvr, StoryMapOp
 	else if( instopt->instmap_opt_.enterinst_fun_ == FUNSUPPORT_CONDITION)
 	{
 		ConditionContext context;
-		//ע�ỷ��
+		//注册环境
 		context.regist_context( "curplayer", curplayer);
 
 		return instopt->instmap_opt_.enterinst_condition_->condition_calcuate( context);

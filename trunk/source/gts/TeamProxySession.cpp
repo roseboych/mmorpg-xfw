@@ -35,7 +35,7 @@ void TeamProxySession::lnkkeep_reset()
 	player_ =0;
 }
 
-void TeamProxySession::proxy( S_INT_32 uid, S_TIMESTAMP st)
+void TeamProxySession::proxy( int uid, S_TIMESTAMP st)
 {
 	status_ =PROXYSTATUS_CONFIRM;
 

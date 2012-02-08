@@ -82,7 +82,7 @@ void CSSSvr::init_svr()
 	if( css->get_mapsize() > 0)
 		WORLDINFO->get_mainstorymapres( css->mapids_, ress);
 
-	mainstory_nums_ =(S_INT_32)ress.size();
+	mainstory_nums_ =(int)ress.size();
 	mainstorys_.reset( FRAMEWK_NEW MainStoryServiceImpl[mainstory_nums_]);
 	for( int ii =0; ii < mainstory_nums_; ++ii)
 	{
@@ -342,7 +342,7 @@ void CSSSvr::broadcast_to_gts( BasicProtocol* p)
 	gtssvr_[0].send_protocol( p);
 }
 
-BaseStoryService* CSSSvr::get_storyservicebymap( S_INT_32 mapid)
+BaseStoryService* CSSSvr::get_storyservicebymap( int mapid)
 {
 	StoryMapOption* pm =WORLDINFO->get_mainstorymapres( mapid);
 	if( pm == 0)
@@ -357,7 +357,7 @@ BaseStoryService* CSSSvr::get_storyservicebymap( S_INT_32 mapid)
 	return 0;
 }
 
-InstanceStoryServiceImpl* CSSSvr::get_inststorysvrbycellid( S_INT_32 cellid)
+InstanceStoryServiceImpl* CSSSvr::get_inststorysvrbycellid( int cellid)
 {
 	for( int ii =0; ii < inststory_nums_; ++ii)
 	{
@@ -377,7 +377,7 @@ void CSSSvr::notify_instinitctrl()
 	}
 }
 
-void CSSSvr::reset_adapterplayer_instcache( S_INT_32 globalindex)
+void CSSSvr::reset_adapterplayer_instcache( int globalindex)
 {
 	AdapterPlayer* user =get_adapterplayer( globalindex);
 	if( user == 0)

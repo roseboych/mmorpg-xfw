@@ -10,7 +10,7 @@
 
 #include "../css_pre.h"
 
-#include <prolib/datastore/character_define.h>
+#include <prolib/Pro_define.h>
 #include <reslib/skills/PlayerStateSkills.h>
 #include "BehaviorTreeNode.h"
 
@@ -32,9 +32,9 @@ public:
 
 	/**
 	* 获取state类型
-	* @return 类型在<prolib/datastore/character_define.h>中定义
+	* @return
 	**/
-	virtual S_INT_8 get_statetype() =0;
+	virtual char get_statetype() =0;
 
 	bool is_nofightstate();
 	bool is_fightstate();
@@ -44,7 +44,7 @@ public:
 	* @param s
 	* @return
 	**/
-	bool can_gotonextstate( S_INT_32 s);
+	bool can_gotonextstate( int s);
 
 	void regist_finish();
 
@@ -53,7 +53,7 @@ public:
 	* @param skid
 	* @return
 	**/
-	bool is_skillinstate( S_INT_32 skid);
+	bool is_skillinstate( int skid);
 
 	/**
 	* 在切换到该状态之前，判断是否能进入该状态
@@ -76,14 +76,14 @@ public:
 	**/
 	virtual void end_state(){}
 
-	static BehaviorTreeNode& get_behaviortreenode( S_INT_32 s){ return s_behavior_tree_[s];}
+	static BehaviorTreeNode& get_behaviortreenode( int s){ return s_behavior_tree_[s];}
 
 protected:
 	//可用的技能列表
 	PlayerStateSkills*	state_skills_;
 
 	//状态机所属的player
-	Player* owner_player_;
+	Player*				owner_player_;
 
 protected:
 	//配置信息

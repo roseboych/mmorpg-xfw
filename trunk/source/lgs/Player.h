@@ -79,7 +79,7 @@ public:
 
 	//退服重连
 	void quitteam_reconn_begin();
-	void quitteam_reconn( S_INT_32 uid);
+	void quitteam_reconn( int uid);
 
 	/**
 	* 玩家定时心跳处理
@@ -102,7 +102,7 @@ public:
 	* @param rid
 	* @param st
 	**/
-	inline bool is_samesession( S_INT_32 rid, S_TIMESTAMP st);
+	inline bool is_samesession( int rid, S_TIMESTAMP st);
 	inline bool is_samesession( uuid_session& u);
 
 	/**
@@ -122,7 +122,7 @@ public:
 	//玩家状态
 	PLAYER_STATUS_ENUM	status_;
 	//登陆失败次数
-	S_INT_8			login_fail_nums_;
+	char			login_fail_nums_;
 	//玩家userid
 	uuid_session	uuid_;
 	//时间戳
@@ -135,11 +135,11 @@ public:
 	//关联的socket服务
 	LGS_Service	service_;
 	//系统索引
-	S_INT_32	server_index_;
+	int			server_index_;
 };
 
 inline 
-bool Player::is_samesession( S_INT_32 rid, S_TIMESTAMP st)
+bool Player::is_samesession( int rid, S_TIMESTAMP st)
 {
 	return uuid_.is_samesession( rid, st);
 }

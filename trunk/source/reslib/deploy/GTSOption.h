@@ -36,17 +36,17 @@ public:
 
 public:
 	//gts的编号
-	int sn_;
+	int				sn_;
 	//服务器地址和端口
-	NS_STL::string ip_;
-	int port_;
+	NS_STL::string	ip_;
+	int				port_;
 	//开始索引号
-	int startuser_;
+	int		startuser_;
 	//玩家数量
-	int usernum_;
+	int		usernum_;
 
 	//系统分配的序列号
-	int server_index_;
+	int		server_index_;
 };
 
 #endif	//__GTSOPTION__H__

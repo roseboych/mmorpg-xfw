@@ -28,10 +28,10 @@ bool TeleportConfig::init_teleports( TiXmlElement* root)
 
 	for( TiXmlElement* mp =mps->FirstChildElement("map"); mp != 0; mp =mp->NextSiblingElement( "map"))
 	{
-		S_INT_32 mid =XmlUtil::GetXmlAttrInt( mp, "id");
+		int mid =XmlUtil::GetXmlAttrInt( mp, "id");
 		
-		NS_STL::pair<S_INT_32, Teleport> vs( mid, Teleport());
-		NS_STL::pair< NS_STL::map< S_INT_32, Teleport>::iterator, bool> rt;
+		NS_STL::pair<int, Teleport> vs( mid, Teleport());
+		NS_STL::pair< NS_STL::map< int, Teleport>::iterator, bool> rt;
 
 		rt =teleports_.insert( vs);
 		if( rt.second == false)
@@ -64,12 +64,12 @@ bool TeleportConfig::init_teleports( TiXmlElement* root)
 	//解析所有的转跳点
 	for( TiXmlElement* ps =tps->FirstChildElement( "port"); ps != 0; ps =ps->NextSiblingElement( "port"))
 	{
-		S_INT_32 id =XmlUtil::GetXmlAttrInt( ps, "id");
+		int id =XmlUtil::GetXmlAttrInt( ps, "id");
 		if( get_teleportpair( id))
 			return false;
 
-		NS_STL::pair<S_INT_32,TeleportPair> vv( id, TeleportPair());
-		NS_STL::pair< NS_STL::map< S_INT_32, TeleportPair>::iterator, bool> rt;
+		NS_STL::pair<int,TeleportPair> vv( id, TeleportPair());
+		NS_STL::pair< NS_STL::map< int, TeleportPair>::iterator, bool> rt;
 
 		rt =teleportpairs_.insert( vv);
 		if( rt.second == false)
@@ -78,7 +78,7 @@ bool TeleportConfig::init_teleports( TiXmlElement* root)
 		TeleportPair& tp =(rt.first)->second;
 		tp.set_iid( id);
 
-		NS_STL::vector<S_INT_32> ss;
+		NS_STL::vector<int> ss;
 		if( !ShareUtil::splitstr2int( XmlUtil::GetXmlAttrStr( ps, "from").c_str(), ":", ss))
 			return false;
 
@@ -97,9 +97,9 @@ bool TeleportConfig::init_teleports( TiXmlElement* root)
 
 		for( TiXmlElement* t =ps->FirstChildElement( "to"); t != 0; t =t->NextSiblingElement( "to"))
 		{
-			S_INT_32 dd =XmlUtil::GetXmlAttrInt( t, "id");
+			int dd =XmlUtil::GetXmlAttrInt( t, "id");
 
-			NS_STL::vector<S_INT_32> ss1;
+			NS_STL::vector<int> ss1;
 			if( !ShareUtil::splitstr2int( XmlUtil::GetXmlAttrStr( t, "tp").c_str(), ":", ss1))
 				return false;
 			if( ss1.size() != 2)
@@ -120,7 +120,7 @@ bool TeleportConfig::init_teleports( TiXmlElement* root)
 	return true;
 }
 
-Teleport* TeleportConfig::get_mapteleport( S_INT_32 mapid)
+Teleport* TeleportConfig::get_mapteleport( int mapid)
 {
 	ALLTELEPORT_MAP::iterator fiter =teleports_.find( mapid);
 	if( fiter == teleports_.end())
@@ -128,7 +128,7 @@ Teleport* TeleportConfig::get_mapteleport( S_INT_32 mapid)
 	return &(fiter->second);
 }
 
-TeleportPair* TeleportConfig::get_teleportpair( S_INT_32 iid)
+TeleportPair* TeleportConfig::get_teleportpair( int iid)
 {
 	TELEPORTPAIR_MAP::iterator fiter =teleportpairs_.find( iid);
 	if( fiter == teleportpairs_.end())

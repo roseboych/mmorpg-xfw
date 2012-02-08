@@ -10,8 +10,7 @@
 
 #include "../dpx_pre.h"
 
-#include <prolib/datastore/character_define.h>
-#include <prolib/datastore/buffer_define.h>
+#include <prolib/Pro_define.h>
 #include <corelib/db/BasicPoolAction.h>
 
 #include "dbaction_def.h"
@@ -56,15 +55,15 @@ private:
 
 public:
 	//输入的参数和环境
-	Player*	player_;
-	uuid_session uuid_;
-	S_INT_32	chrid_;
+	Player*			player_;
+	uuid_session	uuid_;
+	int				chrid_;
 
 	//输出的结果
 	PRO::character_baseinfo	baseinfo_;
-	EQUIPITEM_LIST	items_;
-	PETDATA_LIST	pets_;
-	BUFFERDATA_LIST	buffers_;
+	EQUIPITEM_LIST			items_;
+	PETDATA_LIST			pets_;
+	BUFFERDATA_LIST			buffers_;
 };
 
 #endif	//__CHRINFOACTION__H__

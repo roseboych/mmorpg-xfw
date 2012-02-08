@@ -22,7 +22,7 @@ class Player;
 /**
 * @class EnterInstCondHelper
 * 
-* @brief ½øÈë¸±±¾Ìõ¼şÅĞ¶¨°ïÖúÀà
+* @brief è¿›å…¥å‰¯æœ¬æ¡ä»¶åˆ¤å®šå¸®åŠ©ç±»
 * 
 **/
 class EnterInstCondHelper
@@ -33,19 +33,19 @@ public:
 	~EnterInstCondHelper();
 
 	/**
-	* ÊÇ·ñÄÜ½øÈë¸±±¾Ìõ¼şÅĞ¶¨
+	* æ˜¯å¦èƒ½è¿›å…¥å‰¯æœ¬æ¡ä»¶åˆ¤å®š
 	* @param psvr
-	* @param instopt		¸±±¾µØÍ¼ÅäÖÃ
+	* @param instopt		å‰¯æœ¬åœ°å›¾é…ç½®
 	* @param curplayer
 	* @return
 	**/
-	S_BOOL can_joininstance( BaseStoryService* psvr, StoryMapOption* instopt, Player* curplayer);
+	bool can_joininstance( BaseStoryService* psvr, StoryMapOption* instopt, Player* curplayer);
 
 protected:
 	EnterInstConditionBase* get_enterinstimpl( NS_STL::string clsname);
 
 private:
-	//Ö§³ÖµÄËùÓĞÌõ¼ş
+	//æ”¯æŒçš„æ‰€æœ‰æ¡ä»¶
 	ENTERINSTCOND_VECTOR	conds_;
 };
 
