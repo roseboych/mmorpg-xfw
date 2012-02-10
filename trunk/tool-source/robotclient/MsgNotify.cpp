@@ -1,5 +1,5 @@
 #include "StdAfx.h"
-#include ".\msgnotify.h"
+#include "MsgNotify.h"
 
 MsgNotify::MsgNotify(void)
 {

@@ -65,7 +65,7 @@ void SelSvrTeamTestImpl::do_lgs( BasicProtocol *p)
 		{
 			Pro_SvrTeamInfo_NTF* ntf =dynamic_cast<Pro_SvrTeamInfo_NTF*>(p);
 
-			Pro_SvrTeamInfo_NTF::SVRTEAMINF_LIST::iterator iter=ntf->teams_.begin(), eiter =ntf->teams_.end();
+			NS_STL::list<Pro_SvrTeamInfo_NTF::svrteaminfo>::iterator iter=ntf->teams_.begin(), eiter =ntf->teams_.end();
 			for( ; iter != eiter; ++iter)
 			{
 				Pro_SvrTeamInfo_NTF::svrteaminfo& sinfo =(*iter);

@@ -96,13 +96,13 @@ public:
 
 		lstclients_.SetImageList( img, LVSIL_SMALL);
 
-		lstclients_.InsertColumn(0, _T("会话ID"), LVCFMT_RIGHT, 60);
-		lstclients_.InsertColumn(1, _T("名称"), LVCFMT_LEFT, 80);
-		lstclients_.InsertColumn(2, _T("IP地址"), LVCFMT_LEFT, 90);
-		lstclients_.InsertColumn(3, _T("端口"), LVCFMT_RIGHT, 44);
-		lstclients_.InsertColumn(4, _T("时间"), LVCFMT_RIGHT, 60);
-		lstclients_.InsertColumn(5, _T("开始ID"), LVCFMT_RIGHT, 50);
-		lstclients_.InsertColumn(6, _T("用户数"), LVCFMT_RIGHT, 50);
+		lstclients_.InsertColumn(0, _T("浼氳瘽ID"), LVCFMT_RIGHT, 60);
+		lstclients_.InsertColumn(1, _T("鍚嶇О"), LVCFMT_LEFT, 80);
+		lstclients_.InsertColumn(2, _T("IP鍦板潃"), LVCFMT_LEFT, 90);
+		lstclients_.InsertColumn(3, _T("绔彛"), LVCFMT_RIGHT, 44);
+		lstclients_.InsertColumn(4, _T("鏃堕棿"), LVCFMT_RIGHT, 60);
+		lstclients_.InsertColumn(5, _T("寮�濮婭D"), LVCFMT_RIGHT, 50);
+		lstclients_.InsertColumn(6, _T("nums"), LVCFMT_RIGHT, 50);
 
 		if ( !g_opt.load( "robotserver.ini"))
 		{

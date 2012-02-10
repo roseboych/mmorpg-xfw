@@ -50,7 +50,7 @@ void SelRoleTestImpl::do_lgs( BasicProtocol *p)
 
 			Pro_SvrTeamInfo_NTF* ntf =dynamic_cast<Pro_SvrTeamInfo_NTF*>(p);
 
-			Pro_SvrTeamInfo_NTF::SVRTEAMINF_LIST::iterator iter=ntf->teams_.begin(), eiter =ntf->teams_.end();
+			NS_STL::list<Pro_SvrTeamInfo_NTF::svrteaminfo>::iterator iter=ntf->teams_.begin(), eiter =ntf->teams_.end();
 			for( ; iter != eiter; ++iter)
 			{
 				Pro_SvrTeamInfo_NTF::svrteaminfo& sinfo =(*iter);
@@ -160,7 +160,7 @@ void SelRoleTestImpl::do_gts( BasicProtocol *p)
 			Pro_ChrList_ack* lack =dynamic_cast<Pro_ChrList_ack*>(p);
 
 			chrid_ =NO_INITVALUE;
-			for( Pro_ChrList_ack::CHR_LIST::iterator iter =lack->chrs_.begin(); iter != lack->chrs_.end(); ++iter)
+			for( NS_STL::list<Pro_ChrList_ack::chrinfo>::iterator iter =lack->chrs_.begin(); iter != lack->chrs_.end(); ++iter)
 			{
 				Pro_ChrList_ack::chrinfo& c =(*iter);
 				chrid_ =c.chrid_;

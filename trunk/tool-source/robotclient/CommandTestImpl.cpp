@@ -138,7 +138,7 @@ BasicProtocol* CommandTestImpl::recv_from_lgs()
 				data_len_ =0;
 
 				CString *pstr =new CString();
-				pstr->Format( "ºÍlgsµÄsocketÁ¬½Ó¶Ï¿ª\r\n");
+				pstr->Format( "å’Œlgsçš„socketè¿æ¥æ–­å¼€\r\n");
 				PostMessage( parent_wnd_, WM_USER+0x200, (WPARAM)pstr, 0);
 
 				return false;
@@ -151,7 +151,7 @@ BasicProtocol* CommandTestImpl::recv_from_lgs()
 		if( rlen >= 0)
 			data_len_ += rlen;
 
-		//·ÖÎöÏÖÓĞÊı¾İ
+		//åˆ†æç°æœ‰æ•°æ®
 		while( 1)
 		{
 			if( data_len_ < sizeof( S_INT_32))
@@ -166,12 +166,12 @@ BasicProtocol* CommandTestImpl::recv_from_lgs()
 			bool bexit =false;
 			if( ret)
 			{
-				//¼ÇÂ¼ÊÕµ½µÄĞ­Òé
+				//è®°å½•æ”¶åˆ°çš„åè®®
 				//MODULE_LOG_DEBUG((MODULE_TEMP, "command test recv protocol:%d", ret->iid_));
 				bexit =true;
 			}
 
-			//ÒÆ¶¯ÄÚ´æ
+			//ç§»åŠ¨å†…å­˜
 			data_len_ -= sizeof( S_INT_32);
 			data_len_ -= dlen;
 			pbuf += dlen;
@@ -295,7 +295,7 @@ BasicProtocol* CommandTestImpl::recv_from_gts()
 				gts_data_len_ =0;
 
 				CString *pstr =new CString();
-				pstr->Format( "ºÍgtsµÄsocketÁ¬½Ó¶Ï¿ª\r\n");
+				pstr->Format( "å’Œgtsçš„socketè¿æ¥æ–­å¼€\r\n");
 				PostMessage( parent_wnd_, WM_USER+0x200, (WPARAM)pstr, 0);
 
 				return false;
@@ -308,7 +308,7 @@ BasicProtocol* CommandTestImpl::recv_from_gts()
 		if( rlen >= 0)
 			gts_data_len_ += rlen;
 
-		//·ÖÎöÏÖÓĞÊı¾İ
+		//åˆ†æç°æœ‰æ•°æ®
 		while( 1)
 		{
 			if( gts_data_len_ < sizeof( S_INT_32))
@@ -323,12 +323,12 @@ BasicProtocol* CommandTestImpl::recv_from_gts()
 			bool bexit =false;
 			if( ret)
 			{
-				//¼ÇÂ¼ÊÕµ½µÄĞ­Òé
+				//è®°å½•æ”¶åˆ°çš„åè®®
 				//MODULE_LOG_DEBUG((MODULE_TEMP, "command test recv protocol:%d", ret->iid_));
 				bexit =true;
 			}
 
-			//ÒÆ¶¯ÄÚ´æ
+			//ç§»åŠ¨å†…å­˜
 			gts_data_len_ -= sizeof( S_INT_32);
 			gts_data_len_ -= dlen;
 			pbuf += dlen;
@@ -435,7 +435,7 @@ void CommandTestImpl::lgs_linkdo()
 			if( lack->result_ == 0)
 				this->userid_ =lack->userid_;
 
-			fm.Format( TEXT("µÇÂ½·µ»Ø ret:%d userid:%d\r\n"), lack->result_, lack->userid_);
+			fm.Format( TEXT("ç™»é™†è¿”å› ret:%d userid:%d\r\n"), lack->result_, lack->userid_);
 			*pstr =fm;
 
 			if( lack->result_ == 0 && lack->is_lnkkeep_ == 1)
@@ -445,29 +445,29 @@ void CommandTestImpl::lgs_linkdo()
 				this->gts_token_ =lack->token_;
 				this->svr_index_ =lack->proxy_index_;
 
-				fm.Format( "¶ÏÏß±£³Ö£¬ÖØÁ¬Ä£Ê½\r\n");
+				fm.Format( "æ–­çº¿ä¿æŒï¼Œé‡è¿æ¨¡å¼\r\n");
 				*pstr = fm + *pstr;
 
-				//·¢Æğµ½gtsµÄÁ¬½Ó
-				//¿ªÊ¼Á¬½Ógts
+				//å‘èµ·åˆ°gtsçš„è¿æ¥
+				//å¼€å§‹è¿æ¥gts
 				if( !connect_to_gts())
 				{
-					fm.Format("Á¬½ÓgtsÊ§°Ü\r\n");
+					fm.Format("è¿æ¥gtså¤±è´¥\r\n");
 					*pstr = fm + *pstr;
 				}
 				else
 				{
-					fm.Format("Á¬½Ógts³É¹¦.................\r\n");
+					fm.Format("è¿æ¥gtsæˆåŠŸ.................\r\n");
 					*pstr = fm + *pstr;
 
 					thread_step_ =3;
-					//·¢ËÍÁ¬½ÓÇëÇó
+					//å‘é€è¿æ¥è¯·æ±‚
 					Pro_SvrSelTeamConfirm_req* req =new Pro_SvrSelTeamConfirm_req();
 					req->proxy_index_ =svr_index_;
 					req->token_ =gts_token_;
 
 					if( !send_to_gts( req))
-						*pstr = "·¢ËÍPro_SvrSelTeamConfirm_req Ê§°Ü\r\n" + *pstr;
+						*pstr = "å‘é€Pro_SvrSelTeamConfirm_req å¤±è´¥\r\n" + *pstr;
 				}
 			}
 			break;
@@ -476,10 +476,10 @@ void CommandTestImpl::lgs_linkdo()
 		{
 			Pro_SvrTeamInfo_NTF* ntf =dynamic_cast<Pro_SvrTeamInfo_NTF*>(recv);
 
-			for( Pro_SvrTeamInfo_NTF::SVRTEAMINF_LIST::iterator iter=ntf->teams_.begin(); iter != ntf->teams_.end(); ++iter)
+			for( NS_STL::list<Pro_SvrTeamInfo_NTF::svrteaminfo>::iterator iter=ntf->teams_.begin(); iter != ntf->teams_.end(); ++iter)
 			{
 				Pro_SvrTeamInfo_NTF::svrteaminfo& sinfo =(*iter);
-				fm.Format( "·şÎñÆ÷×é[%d] validate[%d] maxuser[%d] curuser[%d]\r\n", sinfo.server_index_, sinfo.is_validate_, sinfo.maxuser_, sinfo.curuser_);
+				fm.Format( "æœåŠ¡å™¨ç»„[%d] validate[%d] maxuser[%d] curuser[%d]\r\n", sinfo.server_index_, sinfo.is_validate_, sinfo.maxuser_, sinfo.curuser_);
 				*pstr += fm;
 			}
 
@@ -487,43 +487,43 @@ void CommandTestImpl::lgs_linkdo()
 		}
 	case SVR_SELSERVER_ACK:
 		{
-			//Ñ¡·ş·µ»Ø
+			//é€‰æœè¿”å›
 			Pro_SvrSelTeam_ack* lack =dynamic_cast<Pro_SvrSelTeam_ack*>(recv);
 			if( lack->result_ == 0)
 			{
-				//±£´æ·şÎñÆ÷×é
+				//ä¿å­˜æœåŠ¡å™¨ç»„
 				svr_index_ =lack->proxy_index_;
 				gts_ip_ =lack->gts_ip_.c_str();
 				gts_port_ =lack->gts_port_;
 				gts_token_ =lack->token_;
 			}
 
-			fm.Format( "Ñ¡·şÇëÇó·µ»Ø[%d] ip:%s port:%d token:%u\r\n", lack->result_, lack->gts_ip_.c_str(), 
+			fm.Format( "é€‰æœè¯·æ±‚è¿”å›[%d] ip:%s port:%d token:%u\r\n", lack->result_, lack->gts_ip_.c_str(), 
 				lack->gts_port_, lack->token_);
 
 			*pstr = fm;
 
 			if( lack->result_ == 0)
 			{
-				//¿ªÊ¼Á¬½Ógts
+				//å¼€å§‹è¿æ¥gts
 				if( !connect_to_gts())
 				{
-					fm.Format("Á¬½ÓgtsÊ§°Ü\r\n");
+					fm.Format("è¿æ¥gtså¤±è´¥\r\n");
 					*pstr += fm;
 				}
 				else
 				{
-					fm.Format("Á¬½Ógts³É¹¦.................\r\n");
+					fm.Format("è¿æ¥gtsæˆåŠŸ.................\r\n");
 					*pstr += fm;
 
 					thread_step_ =3;
-					//·¢ËÍÁ¬½ÓÇëÇó
+					//å‘é€è¿æ¥è¯·æ±‚
 					Pro_SvrSelTeamConfirm_req* req =new Pro_SvrSelTeamConfirm_req();
 					req->proxy_index_ =svr_index_;
 					req->token_ =gts_token_;
 
 					if( !send_to_gts( req))
-						*pstr += "·¢ËÍPro_SvrSelTeamConfirm_req Ê§°Ü\r\n";
+						*pstr += "å‘é€Pro_SvrSelTeamConfirm_req å¤±è´¥\r\n";
 				}
 
 			}
@@ -532,23 +532,23 @@ void CommandTestImpl::lgs_linkdo()
 		}
 	case SVR_SELSERVERCONFIRM_ACK:
 		{
-			//Ñ¡·şÈ·ÈÏ
+			//é€‰æœç¡®è®¤
 			Pro_SvrSelTeamConfirm_ack* lack =dynamic_cast<Pro_SvrSelTeamConfirm_ack*>(recv);
 			if( lack->result_ == 0)
 			{
-				//Ñ¡·ş³É¹¦
+				//é€‰æœæˆåŠŸ
 				thread_step_ =2;
 				disconnect_to_lgs();
 			}
 
-			fm.Format( "lgs Ñ¡·şÈ·ÈÏ·µ»Ø[%d]\r\n", lack->result_);
+			fm.Format( "lgs é€‰æœç¡®è®¤è¿”å›[%d]\r\n", lack->result_);
 			*pstr =fm;
 
 			break;
 		}
 	case SVR_SELTEAMTIMEOUT_NTF:
 		{
-			fm.Format( "Ñ¡·ş³¬Ê±\r\n");
+			fm.Format( "é€‰æœè¶…æ—¶\r\n");
 			*pstr =fm;
 
 			break;
@@ -556,7 +556,7 @@ void CommandTestImpl::lgs_linkdo()
 	case SVR_QUITSERVERRECONN_ACK:
 		{
 			Pro_SvrQuitTeamReconn_ack* ack =dynamic_cast<Pro_SvrQuitTeamReconn_ack*>(recv);
-			fm.Format( "ÍË·şÖØÁ¬ÇëÇó·µ»Ø[%d] \r\n", ack->result_);
+			fm.Format( "é€€æœé‡è¿è¯·æ±‚è¿”å›[%d] \r\n", ack->result_);
 
 			*pstr = fm;
 			break;
@@ -565,7 +565,7 @@ void CommandTestImpl::lgs_linkdo()
 		{
 			if( recv->iid_ !=0)
 			{
-				fm.Format( "Î´´¦ÀíÏûÏ¢£º%d\r\n",recv->iid_);
+				fm.Format( "æœªå¤„ç†æ¶ˆæ¯ï¼š%d\r\n",recv->iid_);
 				*pstr +=fm;
 			}         
 			break;
@@ -597,7 +597,7 @@ void CommandTestImpl::gts_linkdo()
 		{
 			Pro_SvrSelTeamConfirm_ack *lack =dynamic_cast<Pro_SvrSelTeamConfirm_ack*>(recv);
 
-			fm.Format( "gts Ñ¡·şÈ·ÈÏ·µ»Ø[%d]\r\n", lack->result_);
+			fm.Format( "gts é€‰æœç¡®è®¤è¿”å›[%d]\r\n", lack->result_);
 			*pstr =fm;
 			break;
 		}
@@ -605,14 +605,14 @@ void CommandTestImpl::gts_linkdo()
 		{
 			Pro_ChrList_ack* lack =dynamic_cast<Pro_ChrList_ack*>(recv);
 			
-			fm.Format( "»ñÈ¡½ÇÉ«ÁĞ±í[%d]\r\n", lack->chrs_.size());
+			fm.Format( "è·å–è§’è‰²åˆ—è¡¨[%d]\r\n", lack->chrs_.size());
 			*pstr =fm;
 
-			for( Pro_ChrList_ack::CHR_LIST::iterator iter =lack->chrs_.begin(); iter != lack->chrs_.end(); ++iter)
+			for( NS_STL::list<Pro_ChrList_ack::chrinfo>::iterator iter =lack->chrs_.begin(); iter != lack->chrs_.end(); ++iter)
 			{
 				Pro_ChrList_ack::chrinfo& c =(*iter);
 
-				fm.Format( "½ÇÉ«[%d] name:%s level:%d race:%d profession:%d \r\n", c.chrid_, c.name_.c_str(), c.level_, c.race_, c.profession_);
+				fm.Format( "è§’è‰²[%d] name:%s level:%d race:%d profession:%d \r\n", c.chrid_, c.name_.c_str(), c.level_, c.race_, c.profession_);
 				*pstr +=fm;
 			}
 
@@ -622,12 +622,12 @@ void CommandTestImpl::gts_linkdo()
 		{
 			Pro_ChrCreate_ack* lack =dynamic_cast<Pro_ChrCreate_ack*>(recv);
 
-			fm.Format( "´´½¨½ÇÉ«·µ»Ø[%d]\r\n", lack->result_);
+			fm.Format( "åˆ›å»ºè§’è‰²è¿”å›[%d]\r\n", lack->result_);
 			*pstr =fm;
 
 			if( lack->result_ == 0)
 			{
-				fm.Format("´´½¨µÄ½ÇÉ«ĞÅÏ¢[%d] name:%s level:%d race:%d profession:%d \r\n", lack->chrid_, lack->name_.c_str(), 
+				fm.Format("åˆ›å»ºçš„è§’è‰²ä¿¡æ¯[%d] name:%s level:%d race:%d profession:%d \r\n", lack->chrid_, lack->name_.c_str(), 
 					lack->level_, lack->race_, lack->profession_);
 				*pstr +=fm;
 			}
@@ -641,7 +641,7 @@ void CommandTestImpl::gts_linkdo()
 			if( lack->result_ == 0)
 				chrid_ =lack->chrid_;
 
-			fm.Format( "Ñ¡Ôñ½ÇÉ«·µ»Ø[%d] µ±Ç°½ÇÉ«[%d] race:%d profession:%d\r\n", lack->result_, lack->chrid_, lack->race_, lack->profession_);
+			fm.Format( "é€‰æ‹©è§’è‰²è¿”å›[%d] å½“å‰è§’è‰²[%d] race:%d profession:%d\r\n", lack->result_, lack->chrid_, lack->race_, lack->profession_);
 			*pstr =fm;
 
 			break;
@@ -653,7 +653,7 @@ void CommandTestImpl::gts_linkdo()
 			if( lack->result_ == 0 && chrid_ == lack->chrid_)
 				chrid_ =NO_INITVALUE;
 
-			fm.Format( "É¾³ı½ÇÉ«·µ»Ø[%d] É¾³ı½ÇÉ«[%d] µ±Ç°½ÇÉ«[%d]\r\n", lack->result_, lack->chrid_, chrid_);
+			fm.Format( "åˆ é™¤è§’è‰²è¿”å›[%d] åˆ é™¤è§’è‰²[%d] å½“å‰è§’è‰²[%d]\r\n", lack->result_, lack->chrid_, chrid_);
 			*pstr =fm;
 
 			break;
@@ -661,7 +661,7 @@ void CommandTestImpl::gts_linkdo()
 	case AOI_TELEPORT_ACK:
 		{
 			Pro_AppTeleport_ack* ack =dynamic_cast<Pro_AppTeleport_ack*>(recv);
-			fm.Format( "µØÍ¼ÇĞ»»·µ»Ø[%d]\r\n", ack->result_);
+			fm.Format( "åœ°å›¾åˆ‡æ¢è¿”å›[%d]\r\n", ack->result_);
 			*pstr =fm;
 
 			break;
@@ -669,7 +669,7 @@ void CommandTestImpl::gts_linkdo()
 	case GAME_LOGOUT_NTF:
 		{
 			Pro_Logout_ntf *ntf =dynamic_cast<Pro_Logout_ntf*>(recv);
-			fm.Format( "Íæ¼Ò[%d]¶ÏÏßÁË\r\n", ntf->chrid_);
+			fm.Format( "ç©å®¶[%d]æ–­çº¿äº†\r\n", ntf->chrid_);
 			*pstr =fm;
 
 			break;
@@ -678,12 +678,12 @@ void CommandTestImpl::gts_linkdo()
 		{
 			Pro_SvrQuitTeam_ack *ack =dynamic_cast<Pro_SvrQuitTeam_ack*>(recv);
 
-			fm.Format( "ÍË·ş·µ»Ø[%d]\r\n", ack->result_);
+			fm.Format( "é€€æœè¿”å›[%d]\r\n", ack->result_);
 			*pstr =fm;
 
 			if( ack->result_ == 0)
 			{
-				//ÍË·ş³É¹¦
+				//é€€æœæˆåŠŸ
 				thread_step_ =1;
 
 				this->reconn_token_ =ack->token_;
@@ -695,12 +695,12 @@ void CommandTestImpl::gts_linkdo()
 				
 				if( !this->connect_to_lgs())
 				{
-					fm.Format( "Á¬½Óµ½lgs·şÎñÆ÷Ê§°Ü\r\n");
+					fm.Format( "è¿æ¥åˆ°lgsæœåŠ¡å™¨å¤±è´¥\r\n");
 					*pstr += fm;
 				}
 				else
 				{
-					fm.Format( "ÖØĞÂÁ¬½Óµ½lgs·şÎñÆ÷\r\n");
+					fm.Format( "é‡æ–°è¿æ¥åˆ°lgsæœåŠ¡å™¨\r\n");
 					*pstr += fm;
 
 					Pro_SvrQuitTeamReconn_req* req =new Pro_SvrQuitTeamReconn_req();
@@ -716,24 +716,24 @@ void CommandTestImpl::gts_linkdo()
 	case GAME_CHRLOAD_ACK:
 		{
 			Pro_ChrLoad_ack* ack =dynamic_cast<Pro_ChrLoad_ack*>(recv);
-			fm.Format( "Ñ¡Ïßºó·µ»ØÍæ¼ÒÊı¾İ\r\n");
+			fm.Format( "é€‰çº¿åè¿”å›ç©å®¶æ•°æ®\r\n");
 			*pstr =fm;
 
-			fm.Format( "Íæ¼Ò±³°üÊı¾İ\r\n");
+			fm.Format( "ç©å®¶èƒŒåŒ…æ•°æ®\r\n");
 			*pstr +=fm;
-			for( Pro_ChrLoad_ack::EQUIPITEM_LIST::iterator iter =ack->items_.begin(); iter != ack->items_.end(); ++iter)
+			for( NS_STL::list<equipment_item>::iterator iter =ack->items_.begin(); iter != ack->items_.end(); ++iter)
 			{
 				equipment_item& it =(*iter);
-				fm.Format( "ÎïÆ·[%d] code:%d inavatar_:%d inpart_:%d \r\n", it.itemid_, it.itemcode_, it.inavatar_, it.inpart_);
+				fm.Format( "ç‰©å“[%d] code:%d inavatar_:%d inpart_:%d \r\n", it.itemid_, it.itemcode_, it.inavatar_, it.inpart_);
 				*pstr += fm;
 			}
 
-			fm.Format( "Íæ¼Ò³èÎïÊı¾İ\r\n");
+			fm.Format( "ç©å®¶å® ç‰©æ•°æ®\r\n");
 			*pstr +=fm;
-			for( Pro_ChrLoad_ack::PETDATA_LIST::iterator iter =ack->pets_.begin(); iter != ack->pets_.end(); ++iter)
+			for( NS_STL::list<petdata_item>::iterator iter =ack->pets_.begin(); iter != ack->pets_.end(); ++iter)
 			{
 				petdata_item& it =(*iter);
-				fm.Format( "³èÎï[%d] code:%d name:%s \r\n", it.petid_, it.petcode_, it.petname_.c_str());
+				fm.Format( "å® ç‰©[%d] code:%d name:%s \r\n", it.petid_, it.petcode_, it.petname_.c_str());
 				*pstr += fm;
 			}
 
@@ -746,7 +746,7 @@ void CommandTestImpl::gts_linkdo()
 			this->y_ =ack->baseinfo_.posy_;
 			this->z_ =ack->baseinfo_.posz_;
 
-			fm.Format( "Ñ¡Ïßºó·µ»ØÍæ¼ÒÊı¾İ-½áÊø pos(x:%f,y:%f,z:%f) race:%d profession:%d\r\n", 
+			fm.Format( "é€‰çº¿åè¿”å›ç©å®¶æ•°æ®-ç»“æŸ pos(x:%f,y:%f,z:%f) race:%d profession:%d\r\n", 
 				ack->baseinfo_.posx_, ack->baseinfo_.posy_, ack->baseinfo_.posz_, ack->baseinfo_.race_, ack->baseinfo_.profession_);
 			*pstr =fm;
 
@@ -758,7 +758,7 @@ void CommandTestImpl::gts_linkdo()
 			for( std::list< Pro_AppUnitEnter_ntf::player_info>::iterator iter =ntf->players_.begin(); iter != ntf->players_.end(); ++iter)
 			{
 				Pro_AppUnitEnter_ntf::player_info& pinfo =(*iter);
-				fm.Format( "[%d][%s]½øÈëÎÒµÄÊÓÒ° race:%d profession:%d\r\n", pinfo.chrid_, pinfo.nickname_.c_str(), pinfo.race_, pinfo.profession_);
+				fm.Format( "[%d][%s]è¿›å…¥æˆ‘çš„è§†é‡ race:%d profession:%d\r\n", pinfo.chrid_, pinfo.nickname_.c_str(), pinfo.race_, pinfo.profession_);
 
 				*pstr += fm;
 			}
@@ -771,7 +771,7 @@ void CommandTestImpl::gts_linkdo()
 			for( std::list< Pro_AppUnitLeave_ntf::player_info>::iterator iter =ntf->players_.begin(); iter != ntf->players_.end(); ++iter)
 			{
 				Pro_AppUnitLeave_ntf::player_info& pinfo =(*iter);
-				fm.Format( "[%d]Àë¿ªÎÒµÄÊÓÒ°\r\n", pinfo.chrid_);
+				fm.Format( "[%d]ç¦»å¼€æˆ‘çš„è§†é‡\r\n", pinfo.chrid_);
 
 				*pstr += fm;
 			}
@@ -782,7 +782,7 @@ void CommandTestImpl::gts_linkdo()
 		{
 			Pro_AppEnterIns_ack* ack =dynamic_cast<Pro_AppEnterIns_ack*>( recv);
 
-			fm.Format( "½øÈë¸±±¾»Ø¸´ result:%d\r\n", ack->result_);
+			fm.Format( "è¿›å…¥å‰¯æœ¬å›å¤ result:%d\r\n", ack->result_);
 			*pstr += fm;
 
 			break;
@@ -791,7 +791,7 @@ void CommandTestImpl::gts_linkdo()
 		{
 			Pro_AppQuitInst_ack* ack =dynamic_cast<Pro_AppQuitInst_ack*>( recv);
 
-			fm.Format( "ÍË³ö¸±±¾»Ø¸´ result:%d\r\n", ack->result_);
+			fm.Format( "é€€å‡ºå‰¯æœ¬å›å¤ result:%d\r\n", ack->result_);
 			*pstr += fm;
 
 			break;
@@ -799,7 +799,7 @@ void CommandTestImpl::gts_linkdo()
 	case APP_PLAYERMOVE_NTF:
 		{
 			Pro_PlayerMove_ntf* ntf =dynamic_cast<Pro_PlayerMove_ntf*>(recv);
-			fm.Format( "Íæ¼Ò[%d][%d]ÒÆ¶¯µ½[x:%f,y:%f,z:%f] ×´Ì¬[%d]\r\n", ntf->chrid_,
+			fm.Format( "ç©å®¶[%d][%d]ç§»åŠ¨åˆ°[x:%f,y:%f,z:%f] çŠ¶æ€[%d]\r\n", ntf->chrid_,
 				ntf->locationx_, ntf->locationy_, ntf->locationz_, ntf->curstate_);
 			*pstr =fm;
 			break;
@@ -808,7 +808,7 @@ void CommandTestImpl::gts_linkdo()
 	case AOI_UNITMOVE_ACK:
 		{
 			Pro_AppUnitMove_ack* ack =dynamic_cast<Pro_AppUnitMove_ack*>(recv);
-			fm.Format( "±¾ÈËÒÆ¶¯µ½[x:%f,y:%f,z:%f] Ê§°Ü\r\n", ack->locationx_, ack->locationy_, ack->locationz_);
+			fm.Format( "æœ¬äººç§»åŠ¨åˆ°[x:%f,y:%f,z:%f] å¤±è´¥\r\n", ack->locationx_, ack->locationy_, ack->locationz_);
 			*pstr =fm;
 
 			break;
@@ -817,7 +817,7 @@ void CommandTestImpl::gts_linkdo()
 	case APP_PETSUMMON_ACK:
 		{
 			Pro_PetSummon_ack* ack =dynamic_cast<Pro_PetSummon_ack*>(recv);
-			fm.Format( "³èÎï:%d ÕÙ»½·µ»Ø[ret:%d]\r\n", ack->petid_, ack->result_);
+			fm.Format( "å® ç‰©:%d å¬å”¤è¿”å›[ret:%d]\r\n", ack->petid_, ack->result_);
 			*pstr =fm;
 
 			break;
@@ -826,7 +826,7 @@ void CommandTestImpl::gts_linkdo()
 		{
 			Pro_PetSummon_ntf* ntf =dynamic_cast<Pro_PetSummon_ntf*>(recv);
 
-			fm.Format( "Íæ¼Ò[%d] µÄ³èÎï %s[%d] ±»ÕÙ»½\r\n", ntf->chrid_, ntf->petname_.c_str(), ntf->petcode_);
+			fm.Format( "ç©å®¶[%d] çš„å® ç‰© %s[%d] è¢«å¬å”¤\r\n", ntf->chrid_, ntf->petname_.c_str(), ntf->petcode_);
 			*pstr =fm;
 
 			break;
@@ -835,7 +835,7 @@ void CommandTestImpl::gts_linkdo()
 		{
 			Pro_TeamChat_ntf* ntf =dynamic_cast<Pro_TeamChat_ntf*>(recv);
 
-			fm.Format( "ÊÕµ½Íæ¼Ò[%d][%s] µÄÁÄÌìÏûÏ¢:%s\r\n", ntf->chrid_, ntf->nick_.c_str(), ntf->msg_.c_str());
+			fm.Format( "æ”¶åˆ°ç©å®¶[%d][%s] çš„èŠå¤©æ¶ˆæ¯:%s\r\n", ntf->charid_, ntf->nick_.c_str(), ntf->msg_.c_str());
 			*pstr =fm;
 			break;
 		}
@@ -843,7 +843,7 @@ void CommandTestImpl::gts_linkdo()
 		{
 			if( recv->iid_ !=0)
 			{
-				fm.Format( "Î´´¦ÀíÏûÏ¢£º%d\r\n",recv->iid_);
+				fm.Format( "æœªå¤„ç†æ¶ˆæ¯ï¼š%d\r\n",recv->iid_);
 				*pstr +=fm;
 			}         
 			break;
@@ -861,12 +861,12 @@ std::string CommandTestImpl::get_status()
 	std::string ret ="";
 	if( userid_ == NO_INITVALUE)
 	{
-		ret ="Î´µÇÂ½\r\n";
+		ret ="æœªç™»é™†\r\n";
 		return ret;
 	}
 
 	CString fm;
-	fm.Format( "ÓÃ»§[%s / %d] chrid[%d] ÒÑ¾­µÇÂ½\r\n", username_.c_str(), userid_, chrid_);
+	fm.Format( "ç”¨æˆ·[%s / %d] chrid[%d] å·²ç»ç™»é™†\r\n", username_.c_str(), userid_, chrid_);
 	ret =(LPCTSTR)fm;
 
 	return ret;
@@ -890,7 +890,7 @@ void CommandTestImpl::logon( const char* name, const char* pwd)
 	{
 		if( !connect_to_lgs())
 		{
-			ret_desc_ ="lgs socket´ò¿ª´íÎó£¬·şÎñÆ÷¿ÉÄÜÃ»ÓĞÔËĞĞ£¡\r\n";
+			ret_desc_ ="lgs socketæ‰“å¼€é”™è¯¯ï¼ŒæœåŠ¡å™¨å¯èƒ½æ²¡æœ‰è¿è¡Œï¼\r\n";
 			return;
 		}
 	}
@@ -909,7 +909,7 @@ void CommandTestImpl::logon( const char* name, const char* pwd)
 
 	if( !send_to_lgs( req))
 	{
-		ret_desc_ ="·¢ËÍĞ­ÒéÊ§°Ü\r\n";
+		ret_desc_ ="å‘é€åè®®å¤±è´¥\r\n";
 		return;
 	}
 }
@@ -919,14 +919,14 @@ void CommandTestImpl::logout()
 	ret_desc_ ="";
 	if( !islogon())
 	{
-		ret_desc_ ="ÓÃ»§Î´µÇÂ½\r\n";
+		ret_desc_ ="ç”¨æˆ·æœªç™»é™†\r\n";
 		return;
 	}
 
 	Pro_Logout_req *req =new Pro_Logout_req();
 	if( !send_to_gts( req))
 	{
-		ret_desc_ ="·¢ËÍĞ­ÒéÊ§°Ü\r\n";
+		ret_desc_ ="å‘é€åè®®å¤±è´¥\r\n";
 		return;
 	}
 }
@@ -936,7 +936,7 @@ void CommandTestImpl::selsvrteam( int index)
 	ret_desc_ ="";
 	if( !islogon())
 	{
-		ret_desc_ ="ÓÃ»§Î´µÇÂ½\r\n";
+		ret_desc_ ="ç”¨æˆ·æœªç™»é™†\r\n";
 		return;
 	}
 
@@ -945,7 +945,7 @@ void CommandTestImpl::selsvrteam( int index)
 
 	if( !send_to_lgs( req))
 	{
-		ret_desc_ ="·¢ËÍĞ­ÒéÊ§°Ü\r\n";
+		ret_desc_ ="å‘é€åè®®å¤±è´¥\r\n";
 		return;
 	}
 }
@@ -955,7 +955,7 @@ void CommandTestImpl::quitteam()
 	ret_desc_ ="";
 	if( !islogon())
 	{
-		ret_desc_ ="ÓÃ»§Î´µÇÂ½\r\n";
+		ret_desc_ ="ç”¨æˆ·æœªç™»é™†\r\n";
 		return;
 	}
 
@@ -963,7 +963,7 @@ void CommandTestImpl::quitteam()
 
 	if( !send_to_gts( req))
 	{
-		ret_desc_ ="·¢ËÍĞ­ÒéÊ§°Ü\r\n";
+		ret_desc_ ="å‘é€åè®®å¤±è´¥\r\n";
 		return;
 	}
 }
@@ -973,14 +973,14 @@ void CommandTestImpl::getchrlist()
 	ret_desc_ ="";
 	if( !islogon())
 	{
-		ret_desc_ ="ÓÃ»§Î´µÇÂ½\r\n";
+		ret_desc_ ="ç”¨æˆ·æœªç™»é™†\r\n";
 		return;
 	}
 
 	Pro_ChrList_req* req =new Pro_ChrList_req();
 	if( !send_to_gts( req))
 	{
-		ret_desc_ ="·¢ËÍĞ­ÒéÊ§°Ü\r\n";
+		ret_desc_ ="å‘é€åè®®å¤±è´¥\r\n";
 		return;
 	}
 }
@@ -990,7 +990,7 @@ void CommandTestImpl::addonechr( const char* n, short s, short race, short profe
 	ret_desc_ ="";
 	if( !islogon())
 	{
-		ret_desc_ ="ÓÃ»§Î´µÇÂ½\r\n";
+		ret_desc_ ="ç”¨æˆ·æœªç™»é™†\r\n";
 		return;
 	}
 
@@ -1002,7 +1002,7 @@ void CommandTestImpl::addonechr( const char* n, short s, short race, short profe
 
 	if( !send_to_gts( req))
 	{
-		ret_desc_ ="·¢ËÍĞ­ÒéÊ§°Ü\r\n";
+		ret_desc_ ="å‘é€åè®®å¤±è´¥\r\n";
 		return;
 	}
 }
@@ -1012,7 +1012,7 @@ void CommandTestImpl::selchr( int cid)
 	ret_desc_ ="";
 	if( !islogon())
 	{
-		ret_desc_ ="ÓÃ»§Î´µÇÂ½\r\n";
+		ret_desc_ ="ç”¨æˆ·æœªç™»é™†\r\n";
 		return;
 	}
 
@@ -1021,7 +1021,7 @@ void CommandTestImpl::selchr( int cid)
 
 	if( !send_to_gts( req))
 	{
-		ret_desc_ ="·¢ËÍĞ­ÒéÊ§°Ü\r\n";
+		ret_desc_ ="å‘é€åè®®å¤±è´¥\r\n";
 		return;
 	}
 }
@@ -1031,7 +1031,7 @@ void CommandTestImpl::delchr( int cid)
 	ret_desc_ ="";
 	if( !islogon())
 	{
-		ret_desc_ ="ÓÃ»§Î´µÇÂ½\r\n";
+		ret_desc_ ="ç”¨æˆ·æœªç™»é™†\r\n";
 		return;
 	}
 
@@ -1040,7 +1040,7 @@ void CommandTestImpl::delchr( int cid)
 
 	if( !send_to_gts( req))
 	{
-		ret_desc_ ="·¢ËÍĞ­ÒéÊ§°Ü\r\n";
+		ret_desc_ ="å‘é€åè®®å¤±è´¥\r\n";
 		return;
 	}
 }
@@ -1050,7 +1050,7 @@ void CommandTestImpl::teleport( int v1, int v2)
 	ret_desc_ ="";
 	if( !islogon())
 	{
-		ret_desc_ ="ÓÃ»§Î´µÇÂ½\r\n";
+		ret_desc_ ="ç”¨æˆ·æœªç™»é™†\r\n";
 		return;
 	}
 
@@ -1060,7 +1060,7 @@ void CommandTestImpl::teleport( int v1, int v2)
 
 	if( !send_to_gts( req))
 	{
-		ret_desc_ ="·¢ËÍĞ­ÒéÊ§°Ü\r\n";
+		ret_desc_ ="å‘é€åè®®å¤±è´¥\r\n";
 		return;
 	}
 }
@@ -1070,7 +1070,7 @@ void CommandTestImpl::moveto( int x, int y, int z)
 	ret_desc_ ="";
 	if( !islogon())
 	{
-		ret_desc_ ="ÓÃ»§Î´µÇÂ½\r\n";
+		ret_desc_ ="ç”¨æˆ·æœªç™»é™†\r\n";
 		return;
 	}
 
@@ -1086,7 +1086,7 @@ void CommandTestImpl::moveto( int x, int y, int z)
 
 	if( !send_to_gts( req))
 	{
-		ret_desc_ ="·¢ËÍĞ­ÒéÊ§°Ü\r\n";
+		ret_desc_ ="å‘é€åè®®å¤±è´¥\r\n";
 		return;
 	}
 }
@@ -1096,7 +1096,7 @@ void CommandTestImpl::enterinst( int v1)
 	ret_desc_ ="";
 	if( !islogon())
 	{
-		ret_desc_ ="ÓÃ»§Î´µÇÂ½\r\n";
+		ret_desc_ ="ç”¨æˆ·æœªç™»é™†\r\n";
 		return;
 	}
 
@@ -1105,7 +1105,7 @@ void CommandTestImpl::enterinst( int v1)
 
 	if( !send_to_gts( req))
 	{
-		ret_desc_ ="·¢ËÍĞ­ÒéÊ§°Ü\r\n";
+		ret_desc_ ="å‘é€åè®®å¤±è´¥\r\n";
 		return;
 	}
 }
@@ -1115,7 +1115,7 @@ void CommandTestImpl::quitinst()
 	ret_desc_ ="";
 	if( !islogon())
 	{
-		ret_desc_ ="ÓÃ»§Î´µÇÂ½\r\n";
+		ret_desc_ ="ç”¨æˆ·æœªç™»é™†\r\n";
 		return;
 	}
 
@@ -1123,7 +1123,7 @@ void CommandTestImpl::quitinst()
 
 	if( !send_to_gts( req))
 	{
-		ret_desc_ ="·¢ËÍĞ­ÒéÊ§°Ü\r\n";
+		ret_desc_ ="å‘é€åè®®å¤±è´¥\r\n";
 		return;
 	}
 }
@@ -1133,7 +1133,7 @@ void CommandTestImpl::petfollow( int petid)
 	ret_desc_ ="";
 	if( !islogon())
 	{
-		ret_desc_ ="ÓÃ»§Î´µÇÂ½\r\n";
+		ret_desc_ ="ç”¨æˆ·æœªç™»é™†\r\n";
 		return;
 	}
 
@@ -1142,7 +1142,7 @@ void CommandTestImpl::petfollow( int petid)
 
 	if( !send_to_gts( req))
 	{
-		ret_desc_ ="·¢ËÍĞ­ÒéÊ§°Ü\r\n";
+		ret_desc_ ="å‘é€åè®®å¤±è´¥\r\n";
 		return;
 	}
 }
@@ -1152,7 +1152,7 @@ void CommandTestImpl::petback()
 	ret_desc_ ="";
 	if( !islogon())
 	{
-		ret_desc_ ="ÓÃ»§Î´µÇÂ½\r\n";
+		ret_desc_ ="ç”¨æˆ·æœªç™»é™†\r\n";
 		return;
 	}
 
@@ -1161,7 +1161,7 @@ void CommandTestImpl::petback()
 
 	if( !send_to_gts( req))
 	{
-		ret_desc_ ="·¢ËÍĞ­ÒéÊ§°Ü\r\n";
+		ret_desc_ ="å‘é€åè®®å¤±è´¥\r\n";
 		return;
 	}
 }
@@ -1171,7 +1171,7 @@ void CommandTestImpl::mapchat( const char* msg)
 	ret_desc_ ="";
 	if( !islogon())
 	{
-		ret_desc_ ="ÓÃ»§Î´µÇÂ½\r\n";
+		ret_desc_ ="ç”¨æˆ·æœªç™»é™†\r\n";
 		return;
 	}
 
@@ -1181,7 +1181,7 @@ void CommandTestImpl::mapchat( const char* msg)
 
 	if( !send_to_gts( req))
 	{
-		ret_desc_ ="·¢ËÍĞ­ÒéÊ§°Ü\r\n";
+		ret_desc_ ="å‘é€åè®®å¤±è´¥\r\n";
 		return;
 	}
 }

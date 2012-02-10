@@ -48,7 +48,7 @@ void ScriptDlg::OnBnClickedRunBut()
 
          int ret =scrimpl_.RunLuaShellCmd( cmd);
          if( ret != 1)
-             AfxMessageBox("½Å±¾error!");
+             AfxMessageBox("è„šæœ¬error!");
 		 else
 		 {
              run_result_ =scrimpl_.ret_desc_ + "\r\n" + run_result_;
@@ -58,7 +58,7 @@ void ScriptDlg::OnBnClickedRunBut()
 	 }
 	 else
 	 {
-		AfxMessageBox("ÇëÊäÈë½Å±¾!");
+		AfxMessageBox("è¯·è¾“å…¥è„šæœ¬!");
 	 }	
 }
 
@@ -81,7 +81,7 @@ BOOL ScriptDlg::OnInitDialog()
 
     UpdateData( false);
 
-	//Ö§³ÖµÄ½Å±¾º¯Êı
+	//æ”¯æŒçš„è„šæœ¬å‡½æ•°
 	support_fun_.AddString( "logon('1','1')");
 	support_fun_.AddString( "logout()");
 	support_fun_.AddString( "selsvrteam(0)");
