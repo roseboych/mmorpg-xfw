@@ -1,0 +1,4 @@
+<config>
+	<gts ip="127.0.0.1" port="18000" />
+	<default-user uid="0001" pwd="0001" />
+</config>
