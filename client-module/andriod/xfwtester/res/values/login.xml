@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="login_ip">gts port</string>
+	<string name="login_port">gts port</string>
+	<string name="login_logbut">login</string>
+</resources>
